@@ -362,16 +362,33 @@ git push
 ```
 
 #  从其他地方处理这个版本库的步骤
-##安装git和tortoiseGit和Node.js。
-## 选定一个目录作为Hexo的根目录，并新建一个网站。
-比如，我们选定D:\hexo_data作为Hexo的根目录。
-执行hexo init hexo_data
-cd hexo_data
-npm install
 
-## 检出版本库
+## 安装基础软件
 
-## 切换分支到my_doc
+安装 Git 和 TortoiseGit 和 Node.js 。
 
-## 将文件夹内的所有文件拷贝到hexo_data下。
+## 选定一个目录作为Hexo的根目录，并初始化它。  
 
+比如，我们选定"D:\hexo_blog"作为Hexo的根目录。那么需要
+```
+D:\> hexo init hexo_blog
+D:\> cd hexo_blog
+D:\hexo_blog> npm install
+D:\hexo_blog> npm install hexo-deployer-git --save
+```
+
+## 克隆版本库，并将其与hexo_blog合并
+```
+$ git clone https://github.com/zx9229/zx9229.github.io.git
+$ cd /d/zx9229.github.io/
+$ git branch -a
+$ git checkout -b my_blog remotes/origin/my_blog
+$ git branch -a
+$ cp -R * /d/hexo_blog/
+$ mv .[^.]* /d/hexo_blog/
+$ cd /d/hexo_blog/
+```
+
+## 修改文件并提交
+
+这就是正常的写文件并发布的步骤了。
