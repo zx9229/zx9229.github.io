@@ -1,0 +1,7 @@
+.deploy*/
+node_modules/
+public/
+scaffolds/
+themes/
+db.json
+package.json
