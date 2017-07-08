@@ -1,6 +1,8 @@
 .deploy*/
 node_modules/
 public/
+recycle_bin/
+RECYCLE_BIN/
 scaffolds/
 themes/
 db.json
