@@ -384,8 +384,9 @@ $ cd /d/zx9229.github.io/
 $ git branch -a
 $ git checkout -b my_blog remotes/origin/my_blog
 $ git branch -a
-$ cp -R * /d/hexo_blog/
-$ mv .[^.]* /d/hexo_blog/
+$ # 人工第一步: 查看"zx9229.github.io.git"下的所有文件和文件夹。
+$ # 人工第二步: 如果"hexo_blog"下存在这个文件/文件夹，手动删除掉它。
+$ mv * .[^.]* /d/hexo_blog/
 $ cd /d/hexo_blog/
 ```
 
