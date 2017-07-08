@@ -3,6 +3,10 @@ title: 第一次使用Hexo
 date: 2017-07-08 00:09:45
 tags:
 ---
+从一个什么都不知道的小白，到部署网站到GitHub，所需的全部操作。
+
+<!-- more -->
+
 假使你的机器是Windows，你准备使用Hexo。  
 建议你访问 `https://hexo.io/zh-cn/` 以学习Hexo。  
 这篇文章是我写了给自己看的。  
