@@ -371,6 +371,16 @@ git push
 
 安装 Git 和 TortoiseGit 和 Node.js 。
 
+## 从GitHub上clone下来repository，并切换到相应的分支。  
+
+```
+$ git clone https://github.com/zx9229/zx9229.github.io.git
+$ cd /d/zx9229.github.io/
+$ git branch -a
+$ git checkout -b my_blog remotes/origin/my_blog
+$ git branch -a
+```
+
 ## 选定一个目录作为Hexo的根目录，并初始化它。  
 
 比如，我们选定"D:\hexo_blog"作为Hexo的根目录。那么需要
@@ -381,13 +391,9 @@ D:\hexo_blog> npm install
 D:\hexo_blog> npm install hexo-deployer-git --save
 ```
 
-## 克隆版本库，并将其与hexo_blog合并
+## 将repository与hexo_blog合并  
+
 ```
-$ git clone https://github.com/zx9229/zx9229.github.io.git
-$ cd /d/zx9229.github.io/
-$ git branch -a
-$ git checkout -b my_blog remotes/origin/my_blog
-$ git branch -a
 $ # 人工第一步: 查看"zx9229.github.io.git"下的所有文件和文件夹。
 $ # 人工第二步: 如果"hexo_blog"下存在这个文件/文件夹，手动删除掉它。
 $ mv * .[^.]* /d/hexo_blog/
