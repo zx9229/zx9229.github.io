@@ -66,6 +66,66 @@ info breakpoints -- Status of user-settable breakpoints
 info breakpoints -- 用户可设置的断点的状态。
 ```
 
+## 给断点添加条件(条件断点?)  
+
+### 命令  
+```
+condition <break_num> (condition_expression)    # 给断点增加条件
+condition <break_num>                           # 删掉这个断点的条件
+```
+
+### gdb给出的解释  
+```
+condition -- Specify breakpoint number N to break only if COND is true
+condition -- 只有当COND为true时，指定的断点号N才会中断。
+```
+
+### 例子  
+例：某断点的断点号为"1"，当程序在此处中断时，我们能找到一个名为"buf"的字符数组变量。我们想修改这个断点的中断条件为`当buf的内容为"FAIL"时才中断`，我们需要：
+```
+(gdb) info break     # 此时，1号断点的条件是：只要执行到这儿，就中断。
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
+(gdb) condition  1  (strcmp(buf, "FAIL") == 0)    # 修改为：执行到这儿时，buf的内容为"FAIL"时中断。
+(gdb) info break     # 此时可以看到，这个断点已经加上条件判断了。
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
+	stop only if (strcmp(buf, "FAIL") == 0)
+(gdb) condition 1    # 删掉1号断点的条件。
+Breakpoint 1 now unconditional.
+(gdb) info break     # 此时可以看到，这个断点已经没有条件了。
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
+(gdb)
+```
+备注：不知道为什么，为某个函数打断点时我在A线程里，为这个断点加条件时我也在A线程里，当B线程执行到这个断点处时，条件竟然失效了，同时断点还是生效的。表示很奇怪。
+
+## 附加到某进程上  
+
+### 命令  
+```
+(gdb) attach <ProcessID>
+```
+
+### gdb给出的解释  
+```
+attach -- Attach to a process or file outside of GDB
+attach -- 附加到GDB之外的进程或文件。
+```
+
+### 例子  
+例：假定我写了一个名为"test_exe"的程序。其源码路径为"/root/src_folder/"，其可执行文件路径为"/root/exe_folder/test_exe"，程序已经启动，程序的PID为12345。此时，我要用gdb调试这个进程的话，我要：
+```
+# gdb                                        # 进入gdb
+(gdb) directory "/root/src_folder/"          # 添加源码搜索路径(可选)
+(gdb) file      "/root/exe_folder/test_exe"  # 使用test_exe作为要调试的程序(可选)
+(gdb) attach    12345                        # 附加到进程12345上
+...(执行调试操作)...
+(gdb) detach                                 # 分离先前附加的进程或文件
+(gdb) quit                                   # 退出gdb
+# 
+```
+
 ## 下一步(相当于"F10")
 
 ### 命令
