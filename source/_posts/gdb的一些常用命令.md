@@ -100,6 +100,43 @@ Num     Type           Disp Enb Address            What
 ```
 备注：不知道为什么，为某个函数打断点时我在A线程里，为这个断点加条件时我也在A线程里，当B线程执行到这个断点处时，条件竟然失效了，同时断点还是生效的。表示很奇怪。
 
+## 给断点设置要执行的命令列表
+
+### 命令
+```
+commands <break_num>
+```
+
+### gdb给出的解释  
+```
+commands -- Set commands to be executed when a breakpoint is hit
+commands -- 设置在命中断点时执行的命令
+```
+
+### 例子  
+```
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
+(gdb) commands 1    # 给断点1添加要执行的命令"打印buf的值"。
+Type commands for breakpoint(s) 1, one per line.
+End with a line saying just "end".
+>print buf
+>end
+(gdb) info break    # 可以看到这个断点下面绑定了哪些命令。
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
+        print buf
+(gdb) commands 1    # 绑定一个空的命令列表，就是变相的清除其命令列表。
+Type commands for breakpoint(s) 1, one per line.
+End with a line saying just "end".
+>end
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
+(gdb)
+```
+
 ## 附加到某进程上  
 
 ### 命令  
