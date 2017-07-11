@@ -83,22 +83,51 @@ condition -- 只有当COND为true时，指定的断点号N才会中断。
 ### 例子  
 例：某断点的断点号为"1"，当程序在此处中断时，我们能找到一个名为"buf"的字符数组变量。我们想修改这个断点的中断条件为`当buf的内容为"FAIL"时才中断`，我们需要：
 ```
-(gdb) info break     # 此时，1号断点的条件是：只要执行到这儿，就中断。
+(gdb) info breakpoints     # 此时，1号断点的条件是：只要执行到这儿，就中断。
 Num     Type           Disp Enb Address            What
 1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
 (gdb) condition  1  (strcmp(buf, "FAIL") == 0)    # 修改为：执行到这儿时，buf的内容为"FAIL"时中断。
-(gdb) info break     # 此时可以看到，这个断点已经加上条件判断了。
+(gdb) info breakpoints     # 此时可以看到，这个断点已经加上条件判断了。
 Num     Type           Disp Enb Address            What
 1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
 	stop only if (strcmp(buf, "FAIL") == 0)
-(gdb) condition 1    # 删掉1号断点的条件。
+(gdb) condition 1          # 删掉1号断点的条件。
 Breakpoint 1 now unconditional.
-(gdb) info break     # 此时可以看到，这个断点已经没有条件了。
+(gdb) info breakpoints     # 此时可以看到，这个断点已经没有条件了。
 Num     Type           Disp Enb Address            What
 1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9
 (gdb)
 ```
 备注：不知道为什么，为某个函数打断点时我在A线程里，为这个断点加条件时我也在A线程里，当B线程执行到这个断点处时，条件竟然失效了，同时断点还是生效的。表示很奇怪。
+
+## 监视点
+
+### 命令
+```
+watch (watch_expression)    # 监视条件
+```
+
+### gdb给出的解释  
+```
+watch -- Set a watchpoint for an expression
+watch -- 为一个表达式设置一个监视点
+```
+
+### 说明  
+监视点的设定不依赖于断点的位置。但是与变量的作用域有关。也就是说，我们写了一个表达式，这个表达式涉及了很多变量，在某一个位置，要能同时访问到这些变量，我们才可以在程序运行到这个位置的时候设置监视点。在不确定发生问题的地方时，通过使用监视点的表达式，可以很方便的找出问题代码。比如我们`watch (20<i)`，一旦i大于20了，程序就会被中断，gdb会指出条件从false变成true的那一段代码。
+
+## 查看监视点的状态  
+
+### 命令
+```
+info watchpoints(可缩写为"info watch")
+```
+
+### gdb给出的解释  
+```
+info watchpoints -- Status of watchpoints
+info watchpoints -- 监视点的状态
+```
 
 ## 给断点设置要执行的命令列表
 
