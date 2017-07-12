@@ -166,6 +166,32 @@ Num     Type           Disp Enb Address            What
 (gdb)
 ```
 
+## 启用断点/监视点  
+
+### 命令  
+```
+(gdb) enable <break_num>
+```
+
+### gdb给出的解释  
+```
+enable -- Enable some breakpoints
+enable -- 启用一些断点。
+```
+
+## 禁用断点/监视点  
+
+### 命令  
+```
+(gdb) disable <break_num>
+```
+
+### gdb给出的解释  
+```
+disable -- Disable some breakpoints
+disable -- 禁用一些断点。
+```
+
 ## 附加到某进程上  
 
 ### 命令  
