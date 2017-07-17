@@ -19,10 +19,7 @@ echo "HEXO_DIR=${HEXO_DIR}"
 echo "====== create HEXO_DIR              ======"
 if [ ! -d ${HEXO_DIR} ]; then
     mkdir ${HEXO_DIR}
-    if [ $? -ne 0 ]; then
-        echo "ERROR: mkdir ${HEXO_DIR}"
-        exit 1
-    fi
+    if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 else
     echo "ERROR: HEXO_DIR exists"
     exit 2
@@ -30,40 +27,27 @@ fi
 
 echo "====== change to HEXO_DIR           ======"
 cd ${HEXO_DIR}
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 pwd
-if [ $? -ne 0 ]; then
-    echo "ERROR: cd"
-    exit 3
-fi
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
 echo "====== hexo init                    ======"
 hexo init
-if [ $? -ne 0 ]; then
-    echo "ERROR: hexo init"
-    exit 4
-fi
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
 echo "====== npm install                  ======"
 npm install
-if [ $? -ne 0 ]; then
-    echo "ERROR: npm install"
-    exit 5
-fi
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
 echo "====== hexo-deployer-git            ======"
 npm install hexo-deployer-git --save
-if [ $? -ne 0 ]; then
-    echo "ERROR: npm install hexo-deployer-git"
-    exit 6
-fi
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
 echo "====== change to REPO_DIR           ======"
 cd ${REPO_DIR}
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 pwd
-if [ $? -ne 0 ]; then
-    echo "ERROR: REPO_DIR"
-    exit 7
-fi
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
 echo "====== get all name                 ======"
 index=0
@@ -90,48 +74,35 @@ done
 
 echo "====== change to HEXO_DIR           ======"
 cd ${HEXO_DIR}
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 pwd
-if [ $? -ne 0 ]; then
-    echo "ERROR: cd"
-    exit 8
-fi
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
 echo "====== create RECYCLE_BIN           ======"
 RECYCLE_BIN="recycle_bin"
 mkdir "${RECYCLE_BIN}"
-if [ $? -ne 0 ]; then
-    echo "ERROR: mkdir"
-    exit 9
-fi
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
 echo "====== move all name to RECYCLE_BIN ======"
 for((i=0;i<${#namelist[@]};++i)); do
     name=${namelist[${i}]}
     if [ -d "${name}" ] || [ -f "${name}" ]; then
         mv "${name}" "${RECYCLE_BIN}"
-        if [ $? -ne 0 ]; then
-            echo "ERROR: mv"
-            exit 10
-        fi
+        if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
     fi
 done
 
 echo "====== change to REPO_DIR           ======"
 cd ${REPO_DIR}
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 pwd
-if [ $? -ne 0 ]; then
-    echo "ERROR: REPO_DIR"
-    exit 11
-fi
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
 echo "====== move all name to HEXO_DIR    ======"
 for((i=0;i<${#namelist[@]};++i)); do
     name=${namelist[${i}]}
     mv "${name}" "${HEXO_DIR}"
-    if [ $? -ne 0 ]; then
-        echo "ERROR: mv"
-        exit 12
-    fi
+    if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 done
 
 echo "=========================================="
