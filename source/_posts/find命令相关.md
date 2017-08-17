@@ -21,7 +21,8 @@ touch --date="2017-08-15 08:30:00" newFile
 find .    -newer oldFile            ! -newer newFile
 find . \( -newer oldFile \) -and \( ! -newer newFile \)
 ```
-`ls -l`显示的时间为"修改时间"。你可以`man ls`然后查看和尝试`-t`(sort by modification time)选项。  
+
+### find的几个选项  
 ```
 -anewer file
        File was last accessed more recently than file was modified.
@@ -34,3 +35,25 @@ find . \( -newer oldFile \) -and \( ! -newer newFile \)
        文件的修改时间比file的修改时间要新(file_time<File_time)。
 ```
 可以在man find的`OPERATORS`部分，找到`( expr )`,`! expr`,`-not`,`-a`,`-and`,`-o`,`-or`等运算符。  
+
+## 查看mtime,atime,ctime的几种方式  
+
+### 用ls查看  
+```
+-c     with -lt: sort by, and show, ctime (time of last modification of file status information)
+       with -l: show ctime and sort by name        (ls -lc: 以名字进行排序,显示ctime[Change Time,状态时间])
+       otherwise: sort by ctime
+-u     with -lt: sort by, and show, access time
+       with -l: show access time and sort by name  (ls -lu: 以名字进行排序,显示atime[Access Time,访问时间])
+       otherwise: sort by access time
+-l     use a long listing format                   (ls -l : 以名字进行排序,显示mtime[Modify Time,修改时间])
+-t     sort by modification time
+```
+`ls -l`显示的时间为"修改时间"。你可以`man ls`然后查看和尝试`-t`(sort by modification time)选项。  
+
+### 用stat查看
+```
+$ stat --help
+Usage: stat [OPTION]... FILE...
+Display file or file system status.
+```
