@@ -1,5 +1,5 @@
 ---
-title: find命令相关
+title: find相关
 date: 2017-07-25 09:37:09
 tags:
 ---
