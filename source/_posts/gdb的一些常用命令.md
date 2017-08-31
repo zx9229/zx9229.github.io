@@ -337,6 +337,33 @@ file -- Use FILE as program to be debugged
 file -- 使用FILE作为程序进行调试
 ```
 
+## 设置要调试的core文件  
+
+### 命令  
+```
+(gdb) core-file <FILE>
+```
+
+### gdb给出的解释  
+```
+core-file -- Use FILE as core dump for examining memory and registers
+core-file -- 使用FILE作为核心转储文件来检查内存和寄存器
+```
+
+### 例子  
+例：假定我写了一个名为"test_exe"的程序。其源码路径为"/root/src_folder/"，其可执行文件路径为"/root/exe_folder/test_exe"，程序崩溃后自动生成了core.12345文件。此时，我要用gdb分析这次崩溃的话，我要：
+```
+# gdb                                        # 进入gdb
+(gdb) directory "/root/src_folder/"          # 添加源码搜索路径(可选)
+(gdb) file      "/root/exe_folder/test_exe"  # 使用test_exe作为要调试的程序(可选)
+(gdb) core-file core.12345                   # 设置要分析的core文件
+(gdb) backtrace                              # 查看调用堆栈
+(gdb) frame NUM                              # 显示编号为NUM的那个栈帧
+...(执行调试操作)...
+(gdb) quit                                   # 退出gdb
+#
+```
+
 ## 给gdb添加源码搜索路径
 
 ### 命令

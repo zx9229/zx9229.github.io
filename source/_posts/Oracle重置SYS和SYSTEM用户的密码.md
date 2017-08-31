@@ -3,9 +3,19 @@ title: Oracle重置SYS和SYSTEM用户的密码
 date: 2017-08-31 11:14:42
 tags:
 ---
+重置SYS和SYSTEM的密码的操作详情。  
 
-## 用管理员用户登录操作系统, 建议用`Administrator`登录操作系统.  
-假如我们使用一个普通用户登录操作系统，然后以管理员身份运行PowerShell，可能会出现权限不足的情况。  
+<!-- more -->
+
+## SYS和SYSTEM的区别  
+具体区别我也不知道，不过在网上看到了一个很形象的比喻：用QQ群作个比喻, sys就相当于群主, system就相当于群管理员.  
+
+
+## 重置SYS和SYSTEM密码的步骤  
+
+### 用管理员用户登录操作系统  
+建议用`Administrator`登录操作系统。  
+假如我们使用一个普通用户登录操作系统，然后以管理员身份运行PowerShell，重置密码时，可能会出现权限不足的情况。举例如下：  
 ```
 Windows PowerShell
 版权所有 (C) 2013 Microsoft Corporation。保留所有权利。
@@ -24,7 +34,9 @@ ORA-01031: 权限不足
 SQL> exit
 PS C:\Windows\system32>
 ```
-下面是用Administrator登录操作系统后，运行PowerShell的情况。  
+
+### 在sqlplus环境下修改某用户的密码  
+下面是用Administrator登录操作系统后，运行PowerShell的情况：  
 ```
 Windows PowerShell
 版权所有 (C) 2013 Microsoft Corporation。保留所有权利。
@@ -38,7 +50,7 @@ Copyright (c) 1982, 2010, Oracle.  All rights reserved.
 
 SQL> conn /as sysdba
 已连接。
-SQL> alter user system identified by system_pwd;
+SQL> ALTER USER system IDENTIFIED BY system_pwd;
 
 用户已更改。
 
