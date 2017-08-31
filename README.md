@@ -1,8 +1,10 @@
 ## 网址  
 https://zx9229.github.io/
 
-## 操作  
+## 常用操作  
 ```
+$ hexo new "新文章的标题"
+  新建一篇文章。
 $ hexo clean
   清除缓存文件 (db.json) 和已生成的静态文件 (public)。
 $ hexo generate
@@ -17,4 +19,17 @@ $ git pull --rebase
   拉取最新的版本到本地。
 $ git push
   将本地版本库的分支推送到远程服务器上。
+```
+
+## 下载版本库到本地  
+```
+$ mkdir /d/_FOLDER_TEMP_STORE_REPO/
+$ cd    /d/_FOLDER_TEMP_STORE_REPO/
+$ git clone https://github.com/zx9229/zx9229.github.io.git
+$ cd ./zx9229.github.io/
+$ git branch -a
+$ git checkout -b my_blog remotes/origin/my_blog
+$ git branch -a
+$ sh auto_get_a_hexo_blog.sh
+$ cd ../hexo_blog/
 ```
