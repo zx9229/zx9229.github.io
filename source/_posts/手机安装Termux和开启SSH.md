@@ -63,9 +63,10 @@ scp -P 端口号 -r  ~/.ssh/id_rsa  用户名@IP地址:~/目录
 ```
 # shell脚本需要以LF作为换行符,切勿以CRLF作为换行符.
 ftp -n <<EOF
-open IP地址 端口号
-user 用户名 密码
-lcd ~/.ssh/
+open 192.168.1.101 21
+user anonymous password
+binary
+lcd ~/.ssh
 cd  /
 put id_rsa
 close
@@ -84,3 +85,4 @@ wget ftp://ftp_user:ftp_pwd@127.0.0.1:21/dir1/dir2/filename
 ## 将私钥配置到Xshell里或putty里  
 
 ## 在手机上安装Termius软件以方便的敲命令  
+备注：Termius的旧名字是Server Auditor。  
