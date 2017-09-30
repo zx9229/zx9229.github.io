@@ -27,6 +27,12 @@ Termux官网：`https://termux.com/`
 
 ## 查看sshd使用的端口  
 在手机上执行命令`netstat -ntlp`，可以看到sshd监听了8022端口。  
+```
+--numeric , -n     显示数字IP地址(禁用域名解析功能).
+[--tcp|-t]         列出 TCP 协议的连接.
+-l, --listening    列出正在监听的套接字.
+-p, --program      查看PID和进程名.
+```
 
 ## 查看手机的IP地址  
 执行`ifconfig`命令。  
@@ -37,7 +43,7 @@ Termux官网：`https://termux.com/`
 ## 生成一对公钥和私钥  
 ```
 cd ~/.ssh/    # 切到该目录
-ls -alh       # 发现该目录是空的,或者有authorized_keys文件,但该文件的大小为0.
+ls -alh       # 发现该目录是空的,或者仅有authorized_keys文件,但该文件的大小为0.
 ssh-keygen    # 生成公私钥
 ls -alh       # 发现生成了id_rsa和id_rsa.pub文件
 ```
@@ -61,7 +67,8 @@ scp -P 端口号 -r  ~/.ssh/id_rsa  用户名@IP地址:~/目录
 1. 搭建一个迷你FTP服务器。可以搜索"20CN Mini Ftp 服务器"并下载这个绿色单文件FTP服务器软件，然后搭建FTP服务器。  
 2. 书写一个shell脚本(script.sh)，放到FTP服务器的根目录。执行脚本会将本地的id_rsa文件上传到服务器上。一个示例如下。  
 ```
-# shell脚本需要以LF作为换行符,切勿以CRLF作为换行符.
+# 记得修改"IP地址+端口+用户名+密码"的值哈.
+# shell 脚本需要以 UTF-8 无 BOM 格式编码, LF 作为换行符, 切勿以 CRLF 作为换行符.
 ftp -n <<EOF
 open 192.168.1.101 21
 user anonymous password
@@ -75,6 +82,7 @@ EOF
 ```
 3. 用wget从FTP服务器上下载script.sh到本地。  
 ```
+wget ftp://IP地址:端口/文件的路径
 wget ftp://用户名:密码@IP地址:端口/文件的路径
 wget ftp://ftp_user:ftp_pwd@127.0.0.1:21/dir1/dir2/filename
 ```
