@@ -32,6 +32,12 @@ Termux官网：`https://termux.com/`
 [--tcp|-t]         列出 TCP 协议的连接.
 -l, --listening    列出正在监听的套接字.
 -p, --program      查看PID和进程名.
+-a, --all          显示所有socket.
+```
+备注：用netstat排查问题时，经常使用的命令：  
+```
+Windows: netstat -ano
+  Linux: netstat -anp
 ```
 
 ## 查看手机的IP地址  
