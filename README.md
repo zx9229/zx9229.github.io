@@ -11,6 +11,8 @@ $ hexo generate
   生成静态文件。
 $ hexo deploy
   部署网站。
+$ hexo server -p 4000
+  启动服务器。因为指定了4000端口，所以访问网址为： http://localhost:4000/ 。
 $ git add *
   将文件添加到索引库中。
 $ git commit -m "message"
