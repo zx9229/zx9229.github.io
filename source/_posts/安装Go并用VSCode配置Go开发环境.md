@@ -92,6 +92,10 @@ The "gorename" command is not available. Use "go get -v golang.org/x/tools/cmd/g
 The "gocode" command is not available. Use "go get -v github.com/nsf/gocode" to install.  
 执行命令`go get -u -v github.com/nsf/gocode`以安装它。  
 
+#### 安装go-outline.exe  
+The "go-outline" command is not available. Use "go get -v github.com/ramya-rao-a/go-outline" to install.
+执行命令`go get -u -v github.com/ramya-rao-a/go-outline`以安装它。  
+
 ## 用代理方法安装软件  
 有些软件需要使用代理，才能安装成功，下面是一种代理的方式。  
 ### 预备知识(Windows相关)  
@@ -108,18 +112,18 @@ git是可以允许代理服务器的。假定我们的HTTP(S)代理服务的IP�
 4. 取消git的代理相关设置("git config --global --unset  http.proxy")。  
 5. 取消git的代理相关设置("git config --global --unset https.proxy")。  
 ### 使用代理安装软件的步骤  
-安装goreturns的命令("go get -u -v sourcegraph.com/sqs/goreturns")，使用代理安装的步骤如下：  
+安装goreturns的命令(`go get -u -v sourcegraph.com/sqs/goreturns`)，使用代理安装的步骤如下：  
 0. 我假定你的机器安装了Lantern(蓝灯)。查看它的"HTTP(S)代理服务器"的地址，我的是"127.0.0.1:30888"。  
 1. 打开cmd。所有的操作都在本cmd下。敏感操作都是先改过去，再改回来。  
-2. 查看Windows的"http_proxy"环境变量名("set http_proxy")。  
-3. 设置Windows的"http_proxy"环境变量名("set http_proxy=http://127.0.0.1:30888")。  
+2. 查看Windows的"http_proxy"环境变量名(`set http_proxy`)。  
+3. 设置Windows的"http_proxy"环境变量名(`set http_proxy=http://127.0.0.1:30888`)。  
 4. 查看Windows的"http_proxy"环境变量名，以确认设置。  
-5. 查看git的代理相关设置("git config --get-regexp .*proxy")。  
-6. 设置git的代理相关设置("git config --global  http.proxy http://127.0.0.1:30888")。  
-7. 设置git的代理相关设置("git config --global https.proxy http://127.0.0.1:30888")。  
-8. 查看git的代理相关设置("git config --get-regexp .*proxy")，以确认设置。  
-8. 执行命令("go get -u -v sourcegraph.com/sqs/goreturns")。  
-9.  删除git的代理相关设置("git config --global --unset  http.proxy")。  
-10. 删除git的代理相关设置("git config --global --unset https.proxy")。  
-11. 删除Windows的"http_proxy"环境变量名("set http_proxy=")。  
+5. 查看git的代理相关设置(`git config --get-regexp .*proxy`)。  
+6. 设置git的代理相关设置(`git config --global  http.proxy http://127.0.0.1:30888`)。  
+7. 设置git的代理相关设置(`git config --global https.proxy http://127.0.0.1:30888`)。  
+8. 查看git的代理相关设置(`git config --get-regexp .*proxy`)，以确认设置。  
+8. 执行命令(`go get -u -v sourcegraph.com/sqs/goreturns`)。  
+9.  删除git的代理相关设置(`git config --global --unset  http.proxy`)。  
+10. 删除git的代理相关设置(`git config --global --unset https.proxy`)。  
+11. 删除Windows的"http_proxy"环境变量名(`set http_proxy=`)。  
 备注：代理部分参考了[go get 获得 golang.org 的项目](https://www.cnblogs.com/ghj1976/p/5087049.html)。  
