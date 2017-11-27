@@ -59,7 +59,11 @@ ls -alh       # 发现生成了id_rsa和id_rsa.pub文件
 ```
 cd ~/.ssh/
 cat id_rsa.pub >>　authorized_keys
+chmod 644 authorized_keys  # 如果authorized_keys的权限不合理,用密钥登录时会失败.
 ```
+备注：`man ssh`然后搜索"authorized_keys"可以知道，"authorized_keys"是用来存储公钥的，一个公钥一行。  
+一个添加密钥的例子：  
+用户A有一台机器(我们称之为Local)和一台Linux的远程机器(我们称之为Remote)，在Remote机器上有一个名为RA的用户供A使用。用户A在Local机器上生成了一对公钥(id_rsa.pub)和私钥(id_rsa)，然后将id_rsa.pub添加到Remote的RA用户的authorized_keys文件里。至此，密钥添加完毕。用户A可以使用id_rsa登录Remote机器了。  
 
 ## 取出来生成的私钥  
 有各种方式取出来它。  

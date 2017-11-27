@@ -26,7 +26,7 @@ IP地址:端口  ansible_connection=ssh  ansible_ssh_user=某用户名  ansible_
 ```
 配置托管节点, 指定密钥的方式:  
 ```
-IP地址:端口  ansible_connection=ssh  ansible_ssh_user=某用户名  nsible_ssh_private_key_file=某用户名的私钥文件在主控端机器的路径
+IP地址:端口  ansible_connection=ssh  ansible_ssh_user=某用户名  ansible_ssh_private_key_file=某用户名的私钥文件在主控端机器的路径
 ```
 注: 具体参数详见"Inventory文件"->"Inventory 参数的说明"章节.  
 注: 配置完毕后, 可以执行"ansible all -m ping"寻找成就感.  
@@ -67,9 +67,9 @@ YAML基本语法: `http://www.ansible.com.cn/docs/YAMLSyntax.html`
       backup: yes
   - name: 解压被控机器上的压缩包
     unarchive:
-    remote_src: yes
-    src: 被控机器上的归档的绝对路径
-    dest: 解压到被控机器上的绝对路径
+      remote_src: yes
+      src: 被控机器上的归档的绝对路径
+      dest: 解压到被控机器上的绝对路径
 ```
 备注:  
 shell: `http://docs.ansible.com/ansible/latest/shell_module.html`  

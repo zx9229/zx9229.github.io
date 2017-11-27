@@ -14,7 +14,7 @@ Go的官网：[The Go Programming Language](https://golang.org/)
 它会一般会默认安装到"C:\Go\"下。同时会自动创建系统变量"GOROOT"，指向"C:\Go\"。  
 
 ## 创建GOPATH系统变量  
-手动创建GOPATH系统变量，并指定一个目录，比如"C:\Go_myGOPATH\"之类的。  
+手动创建GOPATH系统变量，并指定一个目录，比如"C:\Go_myGOPATH\"之类的。GOPATH可以配置多个目录。  
 
 ## 为VSCode配置Go开发环境  
 思路：用VSCode打开一个后缀为go的文件，使用VSCode推荐的配置。  
