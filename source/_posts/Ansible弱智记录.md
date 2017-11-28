@@ -4,7 +4,9 @@ date: 2017-10-28 19:44:41
 tags:
 ---
 
-<!-- 记录了Ansible的一些东西 -->
+记录了Ansible的一些东西
+
+<!-- more -->
 
 ## Ansible中文权威指南  
 Ansible中文权威指南: `http://www.ansible.com.cn/index.html`  
@@ -77,3 +79,42 @@ synchronize: `http://docs.ansible.com/ansible/latest/synchronize_module.html`
 copy: `http://docs.ansible.com/ansible/latest/copy_module.html`  
 unarchive: `http://docs.ansible.com/ansible/latest/unarchive_module.html`
 
+## 自己的笔记  
+搜索"YAML文件规范"可以找到[The Official YAML Web Site](http://www.yaml.org/)网站。  
+
+### YAML文件可以CRLF作为换行符  
+Linux下的.sh文件必须UTF8格式+以LF为换行符, 而YAML文件对换行符无要求.
+
+### YAML文件中的"#"  
+在YAML文件中, 以"#"作为注释符.(#和#后面的文字都会被忽略)。  
+
+### YAML文件中的"|"  
+当一个字符串包含换行符, 您可以通过使用|符号表明该字符串将跨越数行. 从而使用传统的文本风格. 在这种风格下, 换行符将不被转义.  
+
+### 几个例子  
+一个使用#和|的例子：  
+```
+---
+- hosts: 127.0.0.1
+  tasks:
+  #- name: 一个被注释掉的任务.
+  #  shell: echo ""
+  #  delegate_to: localhost  # 把这个任务委派给本机执行.
+  - name: 将shell脚本写进yml文件的例子.
+    remote_user: zhangsan                # 用哪一个用户登录127.0.0.1机器.
+    shell: |                             # 用"|"表示下面的字符串将跨越数行.
+      kill -9 $( pidof "PROGRAM_NAME" )  # 强杀程序.
+      if [ -d "${HOME}/PROGRAM_FOLDER" ] # 备份程序文件(如果存在的话).
+        then mv "${HOME}/PROGRAM_FOLDER" "${HOME}/PROGRAM_FOLDER.$(date +"%Y-%m-%d_%H-%M-%S").bak"
+        if [ $? -ne 0 ]; then echo "[ERROR] Error occurred."; exit 1; fi
+      fi
+      mkdir "${HOME}/PROGRAM_FOLDER"     # 创建文件夹(模拟:将压缩包解压到特定目录).
+      if [ $? -ne 0 ]; then echo "[ERROR] Error occurred."; exit 1; fi
+      echo "start PROGRAM_NAME"          # (模拟:启动程序).
+      exit 1                             # (模拟:启动程序,失败)(模拟成功时,修改成"exit 0").
+    args:
+      executable: /bin/bash  # 用哪一个shell执行命令,请写绝对路径.
+      chdir: /opt/           # 在执行命令之前,先切到某目录.
+  - name: 基本上绝对会执行成功的任务.
+    shell: echo ""
+```
