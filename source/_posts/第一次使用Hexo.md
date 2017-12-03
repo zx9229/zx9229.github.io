@@ -22,7 +22,7 @@ Git for Windows：https://git-for-windows.github.io/
 
 2. 为Git配置一个全局的name和email
 
-上面说过我的name是zhangsan，email是zhangsan@163.com。  
+假定我的name是zhangsan，email是zhangsan@163.com。  
 打开`Git Bash`，执行以下命令：  
 
 ```

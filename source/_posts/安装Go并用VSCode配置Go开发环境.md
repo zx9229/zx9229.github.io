@@ -11,17 +11,22 @@ tags:
 ## 安装Go  
 Go的官网：[The Go Programming Language](https://golang.org/)  
 在Windows下，我们可以下载最新版的安装包(此时是"go1.9.2.windows-amd64.msi")并安装它。  
-它会一般会默认安装到"C:\Go\"下。同时会自动创建系统变量"GOROOT"，指向"C:\Go\"。  
+它一般会默认安装到"C:\Go\"下。同时会自动创建系统变量"GOROOT"，并将其指向"C:\Go\"。  
 
 ## 创建GOPATH系统变量  
 手动创建GOPATH系统变量，并指定一个目录，比如"C:\Go_myGOPATH\"之类的。GOPATH可以配置多个目录。  
 
+## 安装git/svn/hg/bzr等  
+建议至少安装Git(Git for Windows).  
+[Installing Version Control Tools for `go get`](https://golang.org/s/gogetcmd)  
+
 ## 为VSCode配置Go开发环境  
-思路：用VSCode打开一个后缀为go的文件，使用VSCode推荐的配置。  
+思路：用VSCode打开一个后缀为go的文件，然后使用VSCode推荐的配置。  
 
 ### 安装Go插件  
 创建一个后缀为go的文件(比如test.go)并用VSCode打开。此时它会自动推荐一些插件。  
-如无意外，它会推荐一个插件。插件的名字是"Go"，发布者(publisher)是"lukehoban"，简介(shortDesc)是"Rich Go language support for Visual Studio Code"。  
+如无意外，它会推荐一个插件。该插件的名字是"Go"，发布者(publisher)是"lukehoban"，简介(shortDesc)是"Rich Go language support for Visual Studio Code"。  
+这个插件我用着不错，也推荐你安装它。  
 你可以进入这个插件的网页[Go - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=lukehoban.Go)，在"Overview"可以看到这个插件依赖了哪些工具做了哪些事。我在这里摘取了它的内容：  
 ```
 Completion Lists (using gocode)
@@ -50,7 +55,7 @@ Generate method stubs for interfaces (using impl)
 也就是说，在安装了这个插件之后，你还需要安装括号中的那些个程序，才能完整的使用这个插件。  
 
 ### 安装插件的依赖程序(用VSCode自动安装)  
-VSCode会在顶部提示一些信息，你可以"Install All"解决。
+VSCode会在顶部提示一些信息，你可以"Install All"解决。  
 
 ### 安装插件的依赖程序(手动安装)  
 预备知识：  
