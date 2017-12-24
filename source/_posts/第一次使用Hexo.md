@@ -49,7 +49,7 @@ Node.js官网：https://nodejs.org/en/
 
 5. 安装Hexo  
 
-打开`cmd`，然后执行 `npm install hexo-cli -g` 命令。其中`-g`表示全局安装。  
+打开"命令行提示"(`command-line prompt(cmd.exe)`)，然后执行 `npm install hexo-cli -g` 命令。其中`-g`表示全局安装。  
 Hexo的英文网站：https://hexo.io/  
 Hexo的中文网站：https://hexo.io/zh-cn/
 
