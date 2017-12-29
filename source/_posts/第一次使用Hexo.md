@@ -20,11 +20,10 @@ tags:
 Git官网：https://git-scm.com/
 Git for Windows：https://git-for-windows.github.io/
 
-2. 为Git配置一个全局的name和email
+2. 为Git配置一个全局的name和email  
 
 假定我的name是zhangsan，email是zhangsan@163.com。  
 打开`Git Bash`，执行以下命令：  
-
 ```
 USERNAME@MACHINE_NAME MINGW64 ~
 $ git config --global user.email "zhangsan@163.com"
@@ -38,30 +37,30 @@ $
 
 3. 安装TortoiseGit  
 
-TortoiseGit官网：https://tortoisegit.org/
+TortoiseGit官网：https://tortoisegit.org/  
 
 4. 安装Node.js  
 
 Node.js官网：https://nodejs.org/en/  
 `nvm does not support Windows`.  
 在Windows下建议下载LTS版本的安装包进行安装。  
-安装时，建议勾选`npm package manager`和`Add to PATH`以安装相应的组件和进行相应的设置。    
+安装时，建议勾选`npm package manager`和`Add to PATH`以安装相应的组件和进行相应的设置。  
 
 5. 安装Hexo  
 
 打开"命令行提示"(`command-line prompt(cmd.exe)`)，然后执行 `npm install hexo-cli -g` 命令。其中`-g`表示全局安装。  
 Hexo的英文网站：https://hexo.io/  
-Hexo的中文网站：https://hexo.io/zh-cn/
+Hexo的中文网站：https://hexo.io/zh-cn/  
 
 6. 建站以寻找成就感  
 
 在cmd下，将当前目录切到"D:\"下面。  
-在cmd下运行命令"hexo init hexo_demo"。  
+在cmd下运行命令`hexo init hexo_demo`。  
 将当前目录切到"D:\hexo_demo\"下。  
-在cmd下执行命令"mpm install"。  
-在cmd下执行命令"hexo server"。  
+在cmd下执行命令`mpm install`。  
+在cmd下执行命令`hexo server`。  
 在浏览器里访问`http://localhost:4000/`查看情况。  
-如果一切正常的话，我们会看到一个网站，此时我们的成就感的到初步提升。  
+如果一切正常的话，我们会看到一个网站，此时我们的成就感得到初步满足。  
 下面是具体的命令：  
 ```
 C:\Users\USERNAME> cd /d D:\
@@ -80,9 +79,9 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 ```
 
 
-# 一个使用Hexo的示例
+# 一个使用Hexo的示例  
 
-## 选择一个目录作为本次示例的根文件夹
+## 选择一个目录作为本次示例的根文件夹  
 
 假设我们选择"D:\hexo_demo"目录作为本次示例的根目录。  
 我们需要执行以下命令来初始化这个根目录。  
@@ -92,7 +91,7 @@ D:\> cd hexo_demo
 D:\hexo_demo> npm install
 ```
 
-## 写一篇文章
+## 写一篇文章  
 
 假设这篇文章的标题为"测试Hexo"  
 
@@ -100,7 +99,6 @@ D:\hexo_demo> npm install
 
 在根目录下执行命令 `hexo new "测试Hexo"`  
 此命令会自动生成一个名为"测试Hexo"的文件。  
-
 ```
 D:\hexo_demo> hexo new "测试Hexo"
 INFO  Created: D:\hexo_demo\source\_posts\测试Hexo.md
@@ -114,7 +112,6 @@ INFO  Created: D:\hexo_demo\source\_posts\测试Hexo.md
 
 在根目录下执行`hexo server`以启动服务器。  
 在浏览器里访问`http://localhost:4000/`查看文章的内容和效果。  
-
 ```
 D:\hexo_demo> hexo server
 INFO  Start processing
@@ -126,7 +123,6 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 我们书写了文章之后，应当将文章生成静态文件。生成命令是`hexo generate`。  
 我们如果要部署网站的话，是需要将生成的html静态文件部署到网站服务器上的。  
 Jekyll你把原文上传GitHub，可以直接生成博客，也可以用在线编辑器处理。Hexo是本地生成html再上传。所以Hexo要求本地环境。  
-
 ```
 D:\hexo_demo> hexo generate
 ...(略)...
@@ -150,7 +146,7 @@ D:\hexo_demo>
 
 ## 立即在这个repository上创建一个branch，随便起一个名字，比如`my_blog`  
 
-在GitHub网页上，找到名为`<Owner>.github.io`的repository，然后在master分支上创建一个名为`my_blog`的branch。  
+在GitHub网页上，找到名为`<Owner>.github.io`的repository，然后`create a branch`，其名字为`my_blog`。  
 建议在网页上创建这个branch，简单、快捷、方便。  
 用途：Hexo是利用源文件在本地生成html，然后将html上传到GitHub上。并非Jekyll那样把源文件上传到GitHub，然后GitHub用源文件直接生成博客。  
 生成的html传上去了，但是原文件并不在GitHub上，这样个人认为不太好。这个branch是用来存储源文件和Hexo的一些配置文件的。  
@@ -159,7 +155,6 @@ D:\hexo_demo>
 
 比如，我们选定"D:\hexo_data"作为Hexo的根目录。  
 我们执行以下命令以初始化这个根目录，为写文章和建站做准备。  
-
 ```
 D:\> hexo init hexo_data
 D:\> cd hexo_data
@@ -170,26 +165,24 @@ D:\hexo_data> npm install
 
 安装部署工具 hexo-deployer-git ，为后面将网站部署到GitHub上做准备。  
 在"D:\hexo_data>"目录下执行`npm install hexo-deployer-git --save`命令。  
-"--save"的含义：`--save: Package will appear in your dependencies.`。  
-使用`npm help install`可以查看详情。  
+"--save"的含义：`--save: Package will appear in your dependencies.`。使用`npm help install`可以查看详情。  
 ```
 D:\hexo_data> npm install hexo-deployer-git --save
 ...(略)...
 
 D:\hexo_data>
 ```
-备注：安装失败时可以用下面这种应急方式，文字中描述的路径是例子中的路径。  
-有时候安装`hexo-deployer-git`会失败。可能因为作者修改了代码，但是代码有问题，导致`build failing`，所以安装失败。  
-此时，你可以直接去`https://github.com/hexojs/hexo-deployer-git`下载release下的最新的源码包，比如`hexo-deployer-git-0.3.1.zip`。  
-源码包里面肯定有package.json文件，我们需要将源码包匹配到路径`D:\hexo_data\node_modules\hexo-deployer-git\package.json`才行。  
-然后根据package.json里的内容可知(或者根据压缩包的名称也能猜测)其版本号为0.3.1。  
-然后打开`D:\hexo_data\package.json`文件，在`dependencies`里面添加`"hexo-deployer-git": "^0.3.1"`，其中0.3.1是版本号。  
-备注：有一个安装指定版本的命令`npm install hexo-deployer-git@0.3.0 --save`测试失败了。先写在这里，以后再处理。  
-备注：我们可以安装[cnpm](http://npm.taobao.org/)，然后用cnpm安装它。  
+备注：如果用npm安装失败，我们可以安装[cnpm](http://npm.taobao.org/)，然后用cnpm安装它。  
 ```
  npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install hexo-deployer-git --save
 ```
+备注：也可以下载源码，拷贝到特定目录和修改文件，以实现安装的步骤。文字中描述的路径是例子中的路径。  
+去`https://github.com/hexojs/hexo-deployer-git`下载release下的最新的源码包，比如`hexo-deployer-git-0.3.1.zip`。  
+源码包里面肯定有package.json文件，我们需要将源码包匹配到路径`D:\hexo_data\node_modules\hexo-deployer-git\package.json`。  
+然后根据package.json里的内容可知(或者根据压缩包的名称也能猜测)其版本号为0.3.1。  
+然后打开`D:\hexo_data\package.json`文件，在`dependencies`里面添加`"hexo-deployer-git": "^0.3.1"`，其中0.3.1是版本号。  
+备注：有一个安装指定版本的命令`npm install hexo-deployer-git@0.3.0 --save`测试失败了。先写在这里，以后再处理。  
 
 ## 修改_config.yml配置文件，使其能将网站部署到GitHub上。  
 
@@ -227,10 +220,10 @@ deploy:
 
 ## 生成静态文件并部署网站到GitHub上以查看效果。  
 
-打开`Git Bash`，切换到根目录(/d/hexo_data)下，执行"hexo g"和"hexo d"命令。  
-注意，在执行"hexo d"后，可能会让你输入用户名和密码。  
-"hexo generate": 生成静态文件。  
-"hexo deploy"  : 部署网站。  
+打开`Git Bash`，切换到根目录(/d/hexo_data)下，执行`hexo g`和`hexo d`命令。  
+注意，在执行`hexo d`后，可能会让你输入用户名和密码。  
+`hexo generate`: 生成静态文件。  
+`hexo deploy`  : 部署网站。  
 ```
 USERNAME@MACHINE_NAME MINGW64 /d/hexo_data
 $ hexo generate
@@ -265,7 +258,7 @@ git branch -a    列出所有分支
 git checkout -b my_blog remotes/origin/my_blog    checkout远程的my_blog分支，在本地起名为my_blog分支，并切换到本地的my_blog分支。
 git checkout my_blog     切换到本地的my_blog分支。
 ```
-我们要执行以下命令
+我们要执行以下命令，以完成切换：  
 ```
 USERNAME@MACHINE_NAME MINGW64 /d
 $ cd zx9229.github.io/
@@ -295,6 +288,8 @@ $
 ```
 
 ## 移动 zx9229.github.io 内的所有文件到 hexo_data 下。  
+
+刚才我们在"D:\hexo_data"下执行"hexo deploy"把网站部署到GitHub上了。这里的hexo_data就是刚才的"D:\hexo_data"目录。  
 ```
 USERNAME@MACHINE_NAME MINGW64 /d/zx9229.github.io (my_blog)
 $ ls -a
@@ -310,9 +305,9 @@ USERNAME@MACHINE_NAME MINGW64 /d/hexo_data (my_blog)
 $
 ```
 
-
 ## 编辑.gitignore文件，忽略无意义的文件。  
-编辑.gitignore文件，忽略其他所有文件和文件夹，仅留下"_config.yml"和"source"文件夹。
+
+编辑.gitignore文件，忽略其他所有文件和文件夹，仅留下"source"文件夹和".gitignore"和"_config.yml"和"README.md"文件。  
 编辑之后的.gitignore文件内容可能如下所示
 ```
 .deploy*/
@@ -322,6 +317,7 @@ scaffolds/
 themes/
 db.json
 package.json
+package-lock.json
 ```
 
 ## 提交有意义的文件到服务器的my_blog分支下。  
@@ -365,7 +361,8 @@ To https://github.com/zx9229/zx9229.github.io.git
 USERNAME@MACHINE_NAME MINGW64 /d/hexo_data (my_blog)
 $
 ```
-## 以后写文章并发布的步骤
+
+## 以后写文章并发布的步骤  
 ```
 hexo new "新文章"
 hexo server
@@ -377,14 +374,13 @@ git pull --rebase
 git push
 ```
 
-#  从其他地方处理这个版本库的步骤
+#  从其他地方处理这个版本库的步骤  
 
-## 安装基础软件
+## 安装基础软件  
 
-安装 Git 和 TortoiseGit 和 Node.js 。
+安装 Git 和 TortoiseGit 和 Node.js 。  
 
 ## 从GitHub上clone下来repository，并切换到相应的分支。  
-
 ```
 $ git clone https://github.com/zx9229/zx9229.github.io.git
 $ cd /d/zx9229.github.io/
@@ -404,7 +400,6 @@ D:\hexo_blog> npm install hexo-deployer-git --save
 ```
 
 ## 将repository与hexo_blog合并  
-
 ```
 $ # 人工第一步: 查看"zx9229.github.io.git"下的所有文件和文件夹。
 $ # 人工第二步: 如果"hexo_blog"下存在这个文件/文件夹，手动删除掉它。
@@ -412,6 +407,6 @@ $ mv * .[^.]* /d/hexo_blog/
 $ cd /d/hexo_blog/
 ```
 
-## 修改文件并提交
+## 修改文件并提交  
 
-这就是正常的写文件并发布的步骤了。
+这就是正常的写文件并发布的步骤了。  
