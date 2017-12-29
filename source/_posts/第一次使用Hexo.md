@@ -184,6 +184,7 @@ D:\hexo_data>
 源码包里面肯定有package.json文件，我们需要将源码包匹配到路径`D:\hexo_data\node_modules\hexo-deployer-git\package.json`才行。  
 然后根据package.json里的内容可知(或者根据压缩包的名称也能猜测)其版本号为0.3.1。  
 然后打开`D:\hexo_data\package.json`文件，在`dependencies`里面添加`"hexo-deployer-git": "^0.3.1"`，其中0.3.1是版本号。  
+备注：有一个安装指定版本的命令`npm install hexo-deployer-git@0.3.0 --save`测试失败了。先写在这里，以后再处理。  
 
 ## 修改_config.yml配置文件，使其能将网站部署到GitHub上。  
 
