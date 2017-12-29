@@ -185,6 +185,11 @@ D:\hexo_data>
 然后根据package.json里的内容可知(或者根据压缩包的名称也能猜测)其版本号为0.3.1。  
 然后打开`D:\hexo_data\package.json`文件，在`dependencies`里面添加`"hexo-deployer-git": "^0.3.1"`，其中0.3.1是版本号。  
 备注：有一个安装指定版本的命令`npm install hexo-deployer-git@0.3.0 --save`测试失败了。先写在这里，以后再处理。  
+备注：我们可以安装[cnpm](http://npm.taobao.org/)，然后用cnpm安装它。  
+```
+ npm install -g cnpm --registry=https://registry.npm.taobao.org
+cnpm install hexo-deployer-git --save
+```
 
 ## 修改_config.yml配置文件，使其能将网站部署到GitHub上。  
 
