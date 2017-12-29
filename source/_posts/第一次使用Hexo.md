@@ -135,26 +135,25 @@ D:\hexo_demo>
 ```
 
 
-# 部署Hexo到GitHub上
+# 部署Hexo到GitHub上  
 
-## 创建一个repository
+## 创建一个repository  
 
-在GitHub网页上创建一个repository。  
+在GitHub网页上`Create a new repository`。  
 要创建的这个repository的名字是有规范的。  
 举例：我叫张三，我在注册GitHub账号时，填写的Email为"zhangsan@163.com"，Username为"zhangsan"。  
-那么，在GitHub上，我的Owner就是"zhangsan"。  
+那么，在GitHub上，我的`Owner`就是"zhangsan"。  
 此时我要创建的repository的名字应当为"zhangsan.github.io"。  
-这个repository的命名规范为`<Owner>.github.io`。  
+即：这个repository的命名规范为`<Owner>.github.io`。  
 如果不以这种方式命名，你一般会遇到一些很奇怪的现象。  
-创建repository时，建议勾选`Initialize this repository with a README`，因为这个文件里可以写一些说明，起到一个提示作用。  
+创建repository时，建议勾选`Initialize this repository with a README`。因为这个文件里可以写一些说明，起到一个提示作用。  
 
 ## 立即在这个repository上创建一个branch，随便起一个名字，比如`my_blog`  
 
 在GitHub网页上，找到名为`<Owner>.github.io`的repository，然后在master分支上创建一个名为`my_blog`的branch。  
 建议在网页上创建这个branch，简单、快捷、方便。  
-用途：Hexo是利用源文件在本地生成html，然后将html上传到GitHub上。并非Jekyll那样把源文件上传到GitHub，可以直接生成博客。  
-生成的html传上去了，但是原文件并不在GitHub上。这个branch是用来存储源文件和Hexo的一些配置文件的。  
-
+用途：Hexo是利用源文件在本地生成html，然后将html上传到GitHub上。并非Jekyll那样把源文件上传到GitHub，然后GitHub用源文件直接生成博客。  
+生成的html传上去了，但是原文件并不在GitHub上，这样个人认为不太好。这个branch是用来存储源文件和Hexo的一些配置文件的。  
 
 ## 选定一个目录作为Hexo的根目录，并新建一个网站。  
 
@@ -167,29 +166,35 @@ D:\> cd hexo_data
 D:\hexo_data> npm install
 ```
 
-## 安装 hexo-deployer-git。
+## 安装 hexo-deployer-git  
 
 安装部署工具 hexo-deployer-git ，为后面将网站部署到GitHub上做准备。  
 在"D:\hexo_data>"目录下执行`npm install hexo-deployer-git --save`命令。  
 "--save"的含义：`--save: Package will appear in your dependencies.`。  
 使用`npm help install`可以查看详情。  
-
 ```
 D:\hexo_data> npm install hexo-deployer-git --save
 ...(略)...
 
 D:\hexo_data>
 ```
+备注：安装失败时可以用下面这种应急方式，文字中描述的路径是例子中的路径。  
+有时候安装`hexo-deployer-git`会失败。可能因为作者修改了代码，但是代码有问题，导致`build failing`，所以安装失败。  
+此时，你可以直接去`https://github.com/hexojs/hexo-deployer-git`下载release下的最新的源码包，比如`hexo-deployer-git-0.3.1.zip`。  
+源码包里面肯定有package.json文件，我们需要将源码包匹配到路径`D:\hexo_data\node_modules\hexo-deployer-git\package.json`才行。  
+然后根据package.json里的内容可知(或者根据压缩包的名称也能猜测)其版本号为0.3.1。  
+然后打开`D:\hexo_data\package.json`文件，在`dependencies`里面添加`"hexo-deployer-git": "^0.3.1"`，其中0.3.1是版本号。  
 
 ## 修改_config.yml配置文件，使其能将网站部署到GitHub上。  
-打开配置文件_config.yml，找到deploy部分，其内容可能为：
+
+打开配置文件_config.yml，找到`deploy`部分，其内容可能为：  
 ```
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
 ```
-应当将其修改成
+应当将其修改成  
 ```
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -198,7 +203,7 @@ deploy:
   repo: https://github.com/zhangsan/zhangsan.github.io.git
   branch: master
 ```
-或
+或  
 ```
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -207,7 +212,7 @@ deploy:
   repo: https://zhangsan@github.com/zhangsan/zhangsan.github.io.git
   branch: master
 ```
-其中，repo的几种写法
+其中，repo的几种写法如下  
 ```
 仅指定用户名：https://zhangsan@github.com/zhangsan/zhangsan.github.io.git
 指定用户名和密码：https://zhangsan:mima@github.com/zhangsan/zhangsan.github.io.git
@@ -246,8 +251,9 @@ USERNAME@MACHINE_NAME MINGW64 /d
 $
 ```
 
-## 将当前分支从master切换到my_blog
-先列出来几个关于分支的命令
+## 将当前分支从master切换到my_blog  
+
+先列出来几个关于分支的命令  
 ```
 git branch -a    列出所有分支
 git checkout -b my_blog remotes/origin/my_blog    checkout远程的my_blog分支，在本地起名为my_blog分支，并切换到本地的my_blog分支。
