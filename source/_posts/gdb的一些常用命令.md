@@ -218,6 +218,22 @@ attach -- 附加到GDB之外的进程或文件。
 # 
 ```
 
+## 开始调试  
+
+### 命令  
+```
+(gdb) start
+```
+
+### gdb给出的解释
+```
+start -- Run the debugged program until the beginning of the main procedure
+start -- 运行调试程序，直到主程序开始
+```
+
+### 说明  
+调试器会进入main函数，并停在main函数入口处。  
+
 ## 下一步(相当于"F10")
 
 ### 命令
