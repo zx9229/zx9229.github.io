@@ -234,6 +234,21 @@ start -- 运行调试程序，直到主程序开始
 ### 说明  
 调试器会进入main函数，并停在main函数入口处。  
 
+## 调试带参数的程序  
+
+### 命令  
+```
+set args 参数1 参数2 参数3 ... 参数n
+start
+```
+### 例子  
+```
+[root@localhost ~]# gdb
+(gdb) file dmidecode
+(gdb) set args -s system-serial-number
+(gdb) start
+```
+
 ## 下一步(相当于"F10")
 
 ### 命令
