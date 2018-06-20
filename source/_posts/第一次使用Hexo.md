@@ -218,6 +218,29 @@ deploy:
 其通用格式为：https://{USERNAME}:{PASSWORD}@github.com/{USERNAME}/{REPOSITORY}.git
 ```
 
+## 修改_config.yml配置文件，以使用搜索。  
+
+打开配置文件_config.yml，找到`URL`部分，其内容可能为：  
+```
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://yoursite.com
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+```
+应当将其修改成  
+```
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://zx9229.github.io
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+```
+你可能需要向谷歌搜索提交自己的网站，或许才能正常使用站内搜索功能。  
+
+
 ## 生成静态文件并部署网站到GitHub上以查看效果。  
 
 打开`Git Bash`，切换到根目录(/d/hexo_data)下，执行`hexo g`和`hexo d`命令。  
