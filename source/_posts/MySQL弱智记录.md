@@ -45,6 +45,11 @@ REPLACE INTO schemas_name.table_B (field_1,field_2,field_3) SELECT field_1,field
 ```
 CREATE TABLE schemas_name.table_B AS SELECT * FROM schemas_name.table_A;
 ```
+#### 查询EVENTS
+```
+SELECT * FROM mysql.event;
+SELECT * FROM information_schema.events;
+```
 
 ## MySQL Workbench  
 ```
