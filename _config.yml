@@ -71,3 +71,8 @@ deploy:
   type: git
   repo: https://zx9229@github.com/zx9229/zx9229.github.io.git
   branch: master
+
+# Security
+## 详见 https://github.com/MikeCoder/hexo-blog-encrypt
+encrypt:
+  enable: true

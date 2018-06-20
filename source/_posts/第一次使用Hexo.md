@@ -241,6 +241,13 @@ permalink_defaults:
 你可能需要向谷歌搜索提交自己的网站，或许才能正常使用站内搜索功能。  
 
 
+## 推荐hexo-blog-encrypt  
+(https://github.com/MikeCoder/hexo-blog-encrypt)
+```
+npm install hexo-blog-encrypt --save
+```
+
+
 ## 生成静态文件并部署网站到GitHub上以查看效果。  
 
 打开`Git Bash`，切换到根目录(/d/hexo_data)下，执行`hexo g`和`hexo d`命令。  
