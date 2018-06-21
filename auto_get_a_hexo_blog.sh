@@ -45,6 +45,10 @@ echo "====== hexo-deployer-git            ======"
 npm install hexo-deployer-git --save
 if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 
+echo "====== hexo-blog-encrypt            ======"
+npm install hexo-blog-encrypt --save
+if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
+
 echo "====== change to REPO_DIR           ======"
 cd ${REPO_DIR}
 if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
