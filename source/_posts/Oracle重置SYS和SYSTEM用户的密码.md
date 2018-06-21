@@ -1,7 +1,10 @@
 ---
 title: Oracle重置SYS和SYSTEM用户的密码
 date: 2017-08-31 11:14:42
+categories:
+- MyDefaultCategory
 tags:
+toc: true
 ---
 重置SYS和SYSTEM的密码的操作详情。  
 

@@ -1,6 +1,8 @@
 ---
 title: gdb的所有命令列表
 date: 2017-07-08 20:27:44
+categories:
+- MyDefaultCategory
 tags:
 ---
 在gdb的命令行里输入 `help all` 可以得到gdb的所有命令列表。  

@@ -1,7 +1,10 @@
 ---
 title: 拿到 Windows Server 2012 后需要做什么
 date: 2017-11-16 14:54:27
+categories:
+- MyDefaultCategory
 tags:
+toc: true
 ---
 当我们拿到一台全新的操作系统后，我们通常要做一些基本操作。
 

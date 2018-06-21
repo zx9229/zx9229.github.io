@@ -1,6 +1,8 @@
 ---
 title: crontab相关
 date: 2017-08-21 13:36:44
+categories:
+- MyDefaultCategory
 tags:
 ---
 crontab相关。

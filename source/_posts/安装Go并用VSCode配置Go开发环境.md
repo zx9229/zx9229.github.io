@@ -1,7 +1,10 @@
 ---
 title: 安装Go并用VSCode配置Go开发环境
 date: 2017-11-19 20:58:18
+categories:
+- MyDefaultCategory
 tags:
+toc: true
 ---
 
 安装Go。配置GOPATH。使用代理安装Go的插件。  

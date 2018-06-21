@@ -1,6 +1,8 @@
 ---
 title: VirtualBox的一些问题和解决方案
 date: 2017-07-10 21:17:55
+categories:
+- MyDefaultCategory
 tags:
 ---
 我在使用VirtualBox，使用的过程中遇到了一些问题，现将对应的解决方案记录于此。

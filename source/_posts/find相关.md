@@ -1,7 +1,10 @@
 ---
 title: find相关
 date: 2017-07-25 09:37:09
+categories:
+- MyDefaultCategory
 tags:
+toc: true
 ---
 一些有用的find示例。
 

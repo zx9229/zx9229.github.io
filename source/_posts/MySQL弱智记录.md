@@ -1,7 +1,10 @@
 ---
 title: MySQL弱智记录
 date: 2017-10-25 19:34:24
+categories:
+- MyDefaultCategory
 tags:
+toc: true
 ---
 
 MySQL的一些最基本的信息
