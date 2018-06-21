@@ -92,6 +92,9 @@ if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
 echo "====== move all name to RECYCLE_BIN ======"
 for((i=0;i<${#namelist[@]};++i)); do
     name=${namelist[${i}]}
+    if [ "${name}" == "scaffolds" ] || [ "${name}" = "themes" ]; then
+        continue  # 这两个目录是官方默认的主题必需的目录,所以保留了它们.
+    fi
     if [ -d "${name}" ] || [ -f "${name}" ]; then
         mv "${name}" "${RECYCLE_BIN}"
         if [ $? -ne 0 ]; then echo "[ERROR]:${LINENO}"; exit 1; fi
