@@ -1,10 +1,12 @@
 ---
 title: 第一次使用Hexo
 date: 2017-07-08 00:09:45
+categories:
+- Hexo
 tags:
+toc: true
 ---
 从一个什么都不知道的小白，到部署网站到GitHub，所需的全部操作。
-
 <!-- more -->
 
 假使你的机器是Windows，你准备使用Hexo。  
@@ -217,36 +219,6 @@ deploy:
 指定用户名和密码：https://zhangsan:mima@github.com/zhangsan/zhangsan.github.io.git
 其通用格式为：https://{USERNAME}:{PASSWORD}@github.com/{USERNAME}/{REPOSITORY}.git
 ```
-
-## 修改_config.yml配置文件，以使用搜索。  
-
-打开配置文件_config.yml，找到`URL`部分，其内容可能为：  
-```
-# URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
-root: /
-permalink: :year/:month/:day/:title/
-permalink_defaults:
-```
-应当将其修改成  
-```
-# URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://zx9229.github.io
-root: /
-permalink: :year/:month/:day/:title/
-permalink_defaults:
-```
-你可能需要向谷歌搜索提交自己的网站，或许才能正常使用站内搜索功能。  
-
-
-## 推荐hexo-blog-encrypt  
-(https://github.com/MikeCoder/hexo-blog-encrypt)
-```
-npm install hexo-blog-encrypt --save
-```
-
 
 ## 生成静态文件并部署网站到GitHub上以查看效果。  
 

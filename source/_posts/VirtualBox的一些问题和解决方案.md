@@ -8,20 +8,20 @@ tags:
 <!-- more -->
 
 1. 设置虚机的网卡时，指定连接方式为"仅主机(Host-Only)网络"，然后出现错误提示"发现无效设置"。  
-![](/image/20170710-virtualbox-1.png)  
+![](20170710-virtualbox-1.png)  
 分析：  
 应当是宿主机上的"VirtualBox Host-Only Ethernet Adapter"或类似名字的网卡有问题导致的。  
 解决方式：  
 查看宿主机上的所有网卡，若无类似的网卡则在VirtualBox上创建一个，若该网卡被禁用，则启用它。  
 在VirtualBox上创建"VirtualBox Host-Only Ethernet Adapter"的步骤：  
 管理->全局设定->网络->仅主机(Host-Only)网络->添加。  
-![](/image/20170710-virtualbox-2.png)  
+![](20170710-virtualbox-2.png)  
 参考链接：  
 [为什么vbox下host-only无法设置?](https://www.zhihu.com/question/19900112/answer/21056117)
 
 2. 宿主机是Win10 x64，虚机是kail-linux-amd64，设置了"仅主机(Host-Only)网络"，但是虚机无法自动分配IPv4地址，无法联网。  
 原来的设置如下：  
-![](/image/20170710-virtualbox-3.png)  
+![](20170710-virtualbox-3.png)  
 解决方案：  
 将"控制芯片"换成其他几种试试。比如选择"PCnet-FAST Ⅲ (Am79C973)"试试。  
 备注说明：  
@@ -34,7 +34,7 @@ tags:
 解决方案：  
 ① 给虚机再添加一块网卡，连接方式为"仅主机(Host-Only)网络"。  
 ② 给这个虚机添加端口转发规则。就是将宿主机的某端口和虚机的某端口做一个映射。  
-![](/image/20170710-virtualbox-4.png)  
+![](20170710-virtualbox-4.png)  
 参考链接：  
 [快速理解VirtualBox的四种网络连接方式](http://penpenguanguan.com/997.html)  
 [VirtualBox的四种网络连接方式](http://www.cnblogs.com/adforce/p/3363373.html)  
