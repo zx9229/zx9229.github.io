@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>gdb的一些常用命令 | zx9229.github.io</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在使用gdb调试程序的过程中，有些命令是会被频繁使用的。对于我频繁用到的一些命令，在下面进行了举例说明。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gdb的一些常用命令">
+<meta property="og:url" content="http://zx9229.github.io/2017/07/08/gdb的一些常用命令/index.html">
+<meta property="og:site_name" content="zx9229.github.io">
+<meta property="og:description" content="在使用gdb调试程序的过程中，有些命令是会被频繁使用的。对于我频繁用到的一些命令，在下面进行了举例说明。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-21T15:07:48.489Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gdb的一些常用命令">
+<meta name="twitter:description" content="在使用gdb调试程序的过程中，有些命令是会被频繁使用的。对于我频繁用到的一些命令，在下面进行了举例说明。">
+  
+    <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">zx9229.github.io</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zx9229.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gdb的一些常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/08/gdb的一些常用命令/" class="article-date">
+  <time datetime="2017-07-08T12:31:53.000Z" itemprop="datePublished">2017-07-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gdb的一些常用命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目录</strong>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#查看源代码"><span class="toc-number">1.</span> <span class="toc-text">查看源代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令"><span class="toc-number">1.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-输入”help-all”后-你可能找会到它的解释"><span class="toc-number">1.2.</span> <span class="toc-text">gdb给出的解释(输入”help all”后, 你可能找会到它的解释)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">1.3.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置断点"><span class="toc-number">2.</span> <span class="toc-text">设置断点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-1"><span class="toc-number">2.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释"><span class="toc-number">2.2.</span> <span class="toc-text">gdb给出的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-1"><span class="toc-number">2.3.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看所有断点"><span class="toc-number">3.</span> <span class="toc-text">查看所有断点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-2"><span class="toc-number">3.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-1"><span class="toc-number">3.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给断点添加条件-条件断点"><span class="toc-number">4.</span> <span class="toc-text">给断点添加条件(条件断点?)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-3"><span class="toc-number">4.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-2"><span class="toc-number">4.2.</span> <span class="toc-text">gdb给出的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-2"><span class="toc-number">4.3.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#监视点"><span class="toc-number">5.</span> <span class="toc-text">监视点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-4"><span class="toc-number">5.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-3"><span class="toc-number">5.2.</span> <span class="toc-text">gdb给出的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-number">5.3.</span> <span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看监视点的状态"><span class="toc-number">6.</span> <span class="toc-text">查看监视点的状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-5"><span class="toc-number">6.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-4"><span class="toc-number">6.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给断点设置要执行的命令列表"><span class="toc-number">7.</span> <span class="toc-text">给断点设置要执行的命令列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-6"><span class="toc-number">7.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-5"><span class="toc-number">7.2.</span> <span class="toc-text">gdb给出的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-3"><span class="toc-number">7.3.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用断点-监视点"><span class="toc-number">8.</span> <span class="toc-text">启用断点/监视点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-7"><span class="toc-number">8.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-6"><span class="toc-number">8.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#禁用断点-监视点"><span class="toc-number">9.</span> <span class="toc-text">禁用断点/监视点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-8"><span class="toc-number">9.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-7"><span class="toc-number">9.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附加到某进程上"><span class="toc-number">10.</span> <span class="toc-text">附加到某进程上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-9"><span class="toc-number">10.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-8"><span class="toc-number">10.2.</span> <span class="toc-text">gdb给出的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-4"><span class="toc-number">10.3.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始调试"><span class="toc-number">11.</span> <span class="toc-text">开始调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-10"><span class="toc-number">11.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-9"><span class="toc-number">11.2.</span> <span class="toc-text">gdb给出的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明-1"><span class="toc-number">11.3.</span> <span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调试带参数的程序"><span class="toc-number">12.</span> <span class="toc-text">调试带参数的程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-11"><span class="toc-number">12.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-5"><span class="toc-number">12.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一步-相当于”F10”"><span class="toc-number">13.</span> <span class="toc-text">下一步(相当于”F10”)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-12"><span class="toc-number">13.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-10"><span class="toc-number">13.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进入函数-相当于”F11”"><span class="toc-number">14.</span> <span class="toc-text">进入函数(相当于”F11”)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-13"><span class="toc-number">14.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-11"><span class="toc-number">14.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跳出函数-相当于”Shift-F11”"><span class="toc-number">15.</span> <span class="toc-text">跳出函数(相当于”Shift+F11”)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-14"><span class="toc-number">15.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-12"><span class="toc-number">15.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始运行-相当于启动调试时按”F5”"><span class="toc-number">16.</span> <span class="toc-text">开始运行(相当于启动调试时按”F5”)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-15"><span class="toc-number">16.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-13"><span class="toc-number">16.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继续运行-相当于调试过程中按”F5”"><span class="toc-number">17.</span> <span class="toc-text">继续运行(相当于调试过程中按”F5”)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-16"><span class="toc-number">17.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-14"><span class="toc-number">17.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看调用堆栈"><span class="toc-number">18.</span> <span class="toc-text">查看调用堆栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-17"><span class="toc-number">18.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-15"><span class="toc-number">18.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调到编号为NUM的栈帧"><span class="toc-number">19.</span> <span class="toc-text">调到编号为NUM的栈帧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-18"><span class="toc-number">19.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-16"><span class="toc-number">19.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跳出循环"><span class="toc-number">20.</span> <span class="toc-text">跳出循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-19"><span class="toc-number">20.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-17"><span class="toc-number">20.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置要调试的程序"><span class="toc-number">21.</span> <span class="toc-text">设置要调试的程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-20"><span class="toc-number">21.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-18"><span class="toc-number">21.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置要调试的core文件"><span class="toc-number">22.</span> <span class="toc-text">设置要调试的core文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-21"><span class="toc-number">22.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-19"><span class="toc-number">22.2.</span> <span class="toc-text">gdb给出的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-6"><span class="toc-number">22.3.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给gdb添加源码搜索路径"><span class="toc-number">23.</span> <span class="toc-text">给gdb添加源码搜索路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-22"><span class="toc-number">23.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-20"><span class="toc-number">23.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看gdb的源码搜索路径"><span class="toc-number">24.</span> <span class="toc-text">查看gdb的源码搜索路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-23"><span class="toc-number">24.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-21"><span class="toc-number">24.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看变量的值"><span class="toc-number">25.</span> <span class="toc-text">查看变量的值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-24"><span class="toc-number">25.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-22"><span class="toc-number">25.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#显示当前工作目录"><span class="toc-number">26.</span> <span class="toc-text">显示当前工作目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-25"><span class="toc-number">26.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-23"><span class="toc-number">26.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看某表达式的数据类型"><span class="toc-number">27.</span> <span class="toc-text">查看某表达式的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-26"><span class="toc-number">27.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-24"><span class="toc-number">27.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#显示一个类-数据结构的定义"><span class="toc-number">28.</span> <span class="toc-text">显示一个类/数据结构的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-27"><span class="toc-number">28.1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gdb给出的解释-25"><span class="toc-number">28.2.</span> <span class="toc-text">gdb给出的解释</span></a></li></ol></li></ol>
+          </div>
+        
+        <p>在使用gdb调试程序的过程中，有些命令是会被频繁使用的。<br>对于我频繁用到的一些命令，在下面进行了举例说明。  </p>
+<a id="more"></a>
+<h2 id="查看源代码"><a href="#查看源代码" class="headerlink" title="查看源代码"></a>查看源代码</h2><h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(gdb) list                    输出从上次调用list命令开始往后的10行程序代码。</span><br><span class="line">(gdb) list [file:]lineno      输出文件file的lineno行附近的10行程序代码。</span><br><span class="line">(gdb) list [file:]line1,line2 输出文件file的line1到line2之间的程序代码。</span><br><span class="line">(gdb) list [file:]function    输出文件file的函数function前后的10行程序代码。</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-输入”help-all”后-你可能找会到它的解释"><a href="#gdb给出的解释-输入”help-all”后-你可能找会到它的解释" class="headerlink" title="gdb给出的解释(输入”help all”后, 你可能找会到它的解释)"></a>gdb给出的解释(输入”help all”后, 你可能找会到它的解释)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list -- List specified function or line</span><br><span class="line">list -- 列出指定的函数或行。</span><br></pre></td></tr></table></figure>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>例：某程序有 main.cpp,my.h,my.cpp 共3个文件。<br>代码里有一个类MY，该类有个成员函数void MY::init()。<br>现在程序运行到main.cpp中了。<br>我想查看my.cpp中的MY::init函数，我要怎么做？<br>(gdb) list my.cpp:1  将list命令的默认文件切换到my.cpp中。<br>(gdb) list MY::init  查看默认文件里面的MY::init函数。</p>
+<h2 id="设置断点"><a href="#设置断点" class="headerlink" title="设置断点"></a>设置断点</h2><h3 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(gdb) break [file:]lineno     在文件file的第lineno行设置断点。</span><br><span class="line">(gdb) break [file:]function   在文件file的函数function处(函数体里面的第一行代码所在的行号)设置断点。</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释"><a href="#gdb给出的解释" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">break -- Set breakpoint at specified line or function</span><br><span class="line">break -- 在指定的行或函数设置断点。</span><br></pre></td></tr></table></figure>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>例：某程序有 main.cpp,my.h,my.cpp 共3个文件。<br>代码里有一个类MY，该类有个成员函数void MY::init()。<br>现在程序运行到main.cpp中了。<br>我想在my.cpp中的MY::init函数处设置断点，我要怎么做？<br>(gdb) list my.cpp:1   将list命令的默认文件切换到my.cpp中，此时break命令的默认文件也变成my.cpp了。<br>(gdb) break MY::init  在默认文件的里面的MY::init函数处设置断点。</p>
+<h2 id="查看所有断点"><a href="#查看所有断点" class="headerlink" title="查看所有断点"></a>查看所有断点</h2><h3 id="命令-2"><a href="#命令-2" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) info breakpoints(可缩写为&quot;info b&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-1"><a href="#gdb给出的解释-1" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">info breakpoints -- Status of user-settable breakpoints</span><br><span class="line">info breakpoints -- 用户可设置的断点的状态。</span><br></pre></td></tr></table></figure>
+<h2 id="给断点添加条件-条件断点"><a href="#给断点添加条件-条件断点" class="headerlink" title="给断点添加条件(条件断点?)"></a>给断点添加条件(条件断点?)</h2><h3 id="命令-3"><a href="#命令-3" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">condition &lt;break_num&gt; (condition_expression)    # 给断点增加条件</span><br><span class="line">condition &lt;break_num&gt;                           # 删掉这个断点的条件</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-2"><a href="#gdb给出的解释-2" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">condition -- Specify breakpoint number N to break only if COND is true</span><br><span class="line">condition -- 只有当COND为true时，指定的断点号N才会中断。</span><br></pre></td></tr></table></figure>
+<h3 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h3><p>例：某断点的断点号为”1”，当程序在此处中断时，我们能找到一个名为”buf”的字符数组变量。我们想修改这个断点的中断条件为<code>当buf的内容为&quot;FAIL&quot;时才中断</code>，我们需要：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(gdb) info breakpoints     # 此时，1号断点的条件是：只要执行到这儿，就中断。</span><br><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line">1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9</span><br><span class="line">(gdb) condition  1  (strcmp(buf, &quot;FAIL&quot;) == 0)    # 修改为：执行到这儿时，buf的内容为&quot;FAIL&quot;时中断。</span><br><span class="line">(gdb) info breakpoints     # 此时可以看到，这个断点已经加上条件判断了。</span><br><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line">1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9</span><br><span class="line">	stop only if (strcmp(buf, &quot;FAIL&quot;) == 0)</span><br><span class="line">(gdb) condition 1          # 删掉1号断点的条件。</span><br><span class="line">Breakpoint 1 now unconditional.</span><br><span class="line">(gdb) info breakpoints     # 此时可以看到，这个断点已经没有条件了。</span><br><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line">1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9</span><br><span class="line">(gdb)</span><br></pre></td></tr></table></figure></p>
+<p>备注：不知道为什么，为某个函数打断点时我在A线程里，为这个断点加条件时我也在A线程里，当B线程执行到这个断点处时，条件竟然失效了，同时断点还是生效的。表示很奇怪。</p>
+<h2 id="监视点"><a href="#监视点" class="headerlink" title="监视点"></a>监视点</h2><h3 id="命令-4"><a href="#命令-4" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch (watch_expression)    # 监视条件</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-3"><a href="#gdb给出的解释-3" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">watch -- Set a watchpoint for an expression</span><br><span class="line">watch -- 为一个表达式设置一个监视点</span><br></pre></td></tr></table></figure>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>监视点的设定不依赖于断点的位置。但是与变量的作用域有关。也就是说，我们写了一个表达式，这个表达式涉及了很多变量，在某一个位置，要能同时访问到这些变量，我们才可以在程序运行到这个位置的时候设置监视点。在不确定发生问题的地方时，通过使用监视点的表达式，可以很方便的找出问题代码。比如我们<code>watch (20&lt;i)</code>，一旦i大于20了，程序就会被中断，gdb会指出条件从false变成true的那一段代码。</p>
+<h2 id="查看监视点的状态"><a href="#查看监视点的状态" class="headerlink" title="查看监视点的状态"></a>查看监视点的状态</h2><h3 id="命令-5"><a href="#命令-5" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info watchpoints(可缩写为&quot;info watch&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-4"><a href="#gdb给出的解释-4" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">info watchpoints -- Status of watchpoints</span><br><span class="line">info watchpoints -- 监视点的状态</span><br></pre></td></tr></table></figure>
+<h2 id="给断点设置要执行的命令列表"><a href="#给断点设置要执行的命令列表" class="headerlink" title="给断点设置要执行的命令列表"></a>给断点设置要执行的命令列表</h2><h3 id="命令-6"><a href="#命令-6" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commands &lt;break_num&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-5"><a href="#gdb给出的解释-5" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">commands -- Set commands to be executed when a breakpoint is hit</span><br><span class="line">commands -- 设置在命中断点时执行的命令</span><br></pre></td></tr></table></figure>
+<h3 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">(gdb) info break</span><br><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line">1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9</span><br><span class="line">(gdb) commands 1    # 给断点1添加要执行的命令&quot;打印buf的值&quot;。</span><br><span class="line">Type commands for breakpoint(s) 1, one per line.</span><br><span class="line">End with a line saying just &quot;end&quot;.</span><br><span class="line">&gt;print buf</span><br><span class="line">&gt;end</span><br><span class="line">(gdb) info break    # 可以看到这个断点下面绑定了哪些命令。</span><br><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line">1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9</span><br><span class="line">        print buf</span><br><span class="line">(gdb) commands 1    # 绑定一个空的命令列表，就是变相的清除其命令列表。</span><br><span class="line">Type commands for breakpoint(s) 1, one per line.</span><br><span class="line">End with a line saying just &quot;end&quot;.</span><br><span class="line">&gt;end</span><br><span class="line">(gdb) info break</span><br><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line">1       breakpoint     keep y   0x00000000004005c0 in main() at test.cpp:9</span><br><span class="line">(gdb)</span><br></pre></td></tr></table></figure>
+<h2 id="启用断点-监视点"><a href="#启用断点-监视点" class="headerlink" title="启用断点/监视点"></a>启用断点/监视点</h2><h3 id="命令-7"><a href="#命令-7" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) enable &lt;break_num&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-6"><a href="#gdb给出的解释-6" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enable -- Enable some breakpoints</span><br><span class="line">enable -- 启用一些断点。</span><br></pre></td></tr></table></figure>
+<h2 id="禁用断点-监视点"><a href="#禁用断点-监视点" class="headerlink" title="禁用断点/监视点"></a>禁用断点/监视点</h2><h3 id="命令-8"><a href="#命令-8" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) disable &lt;break_num&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-7"><a href="#gdb给出的解释-7" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">disable -- Disable some breakpoints</span><br><span class="line">disable -- 禁用一些断点。</span><br></pre></td></tr></table></figure>
+<h2 id="附加到某进程上"><a href="#附加到某进程上" class="headerlink" title="附加到某进程上"></a>附加到某进程上</h2><h3 id="命令-9"><a href="#命令-9" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) attach &lt;ProcessID&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-8"><a href="#gdb给出的解释-8" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">attach -- Attach to a process or file outside of GDB</span><br><span class="line">attach -- 附加到GDB之外的进程或文件。</span><br></pre></td></tr></table></figure>
+<h3 id="例子-4"><a href="#例子-4" class="headerlink" title="例子"></a>例子</h3><p>例：假定我写了一个名为”test_exe”的程序。其源码路径为”/root/src_folder/“，其可执行文件路径为”/root/exe_folder/test_exe”，程序已经启动，程序的PID为12345。此时，我要用gdb调试这个进程的话，我要：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># gdb                                        # 进入gdb</span><br><span class="line">(gdb) directory &quot;/root/src_folder/&quot;          # 添加源码搜索路径(可选)</span><br><span class="line">(gdb) file      &quot;/root/exe_folder/test_exe&quot;  # 使用test_exe作为要调试的程序(可选)</span><br><span class="line">(gdb) attach    12345                        # 附加到进程12345上</span><br><span class="line">...(执行调试操作)...</span><br><span class="line">(gdb) detach                                 # 分离先前附加的进程或文件</span><br><span class="line">(gdb) quit                                   # 退出gdb</span><br><span class="line">#</span><br></pre></td></tr></table></figure></p>
+<h2 id="开始调试"><a href="#开始调试" class="headerlink" title="开始调试"></a>开始调试</h2><h3 id="命令-10"><a href="#命令-10" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) start</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-9"><a href="#gdb给出的解释-9" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start -- Run the debugged program until the beginning of the main procedure</span><br><span class="line">start -- 运行调试程序，直到主程序开始</span><br></pre></td></tr></table></figure>
+<h3 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h3><p>调试器会进入main函数，并停在main函数入口处。  </p>
+<h2 id="调试带参数的程序"><a href="#调试带参数的程序" class="headerlink" title="调试带参数的程序"></a>调试带参数的程序</h2><h3 id="命令-11"><a href="#命令-11" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set args 参数1 参数2 参数3 ... 参数n</span><br><span class="line">start</span><br></pre></td></tr></table></figure>
+<h3 id="例子-5"><a href="#例子-5" class="headerlink" title="例子"></a>例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gdb</span><br><span class="line">(gdb) file dmidecode</span><br><span class="line">(gdb) set args -s system-serial-number</span><br><span class="line">(gdb) start</span><br></pre></td></tr></table></figure>
+<h2 id="下一步-相当于”F10”"><a href="#下一步-相当于”F10”" class="headerlink" title="下一步(相当于”F10”)"></a>下一步(相当于”F10”)</h2><h3 id="命令-12"><a href="#命令-12" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) next(可缩写为&quot;n&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-10"><a href="#gdb给出的解释-10" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">next -- Step program</span><br><span class="line">next -- 步进程序。</span><br></pre></td></tr></table></figure>
+<h2 id="进入函数-相当于”F11”"><a href="#进入函数-相当于”F11”" class="headerlink" title="进入函数(相当于”F11”)"></a>进入函数(相当于”F11”)</h2><h3 id="命令-13"><a href="#命令-13" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) step(可缩写为&quot;s&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-11"><a href="#gdb给出的解释-11" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">step -- Step program until it reaches a different source line</span><br><span class="line">step -- 步进程序，直到它到达了不同的源代码行。</span><br></pre></td></tr></table></figure>
+<h2 id="跳出函数-相当于”Shift-F11”"><a href="#跳出函数-相当于”Shift-F11”" class="headerlink" title="跳出函数(相当于”Shift+F11”)"></a>跳出函数(相当于”Shift+F11”)</h2><h3 id="命令-14"><a href="#命令-14" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) finish</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-12"><a href="#gdb给出的解释-12" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">finish -- Execute until selected stack frame returns</span><br><span class="line">finish -- 执行直到所选的堆栈帧返回。</span><br></pre></td></tr></table></figure>
+<h2 id="开始运行-相当于启动调试时按”F5”"><a href="#开始运行-相当于启动调试时按”F5”" class="headerlink" title="开始运行(相当于启动调试时按”F5”)"></a>开始运行(相当于启动调试时按”F5”)</h2><h3 id="命令-15"><a href="#命令-15" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) run(可缩写为&quot;r&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-13"><a href="#gdb给出的解释-13" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">run -- Start debugged program</span><br><span class="line">run -- 开始被调试的程序。</span><br></pre></td></tr></table></figure>
+<h2 id="继续运行-相当于调试过程中按”F5”"><a href="#继续运行-相当于调试过程中按”F5”" class="headerlink" title="继续运行(相当于调试过程中按”F5”)"></a>继续运行(相当于调试过程中按”F5”)</h2><h3 id="命令-16"><a href="#命令-16" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) continue(可缩写为&quot;c&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-14"><a href="#gdb给出的解释-14" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">continue -- Continue program being debugged</span><br><span class="line">continue -- 继续被调试的程序。</span><br></pre></td></tr></table></figure>
+<h2 id="查看调用堆栈"><a href="#查看调用堆栈" class="headerlink" title="查看调用堆栈"></a>查看调用堆栈</h2><h3 id="命令-17"><a href="#命令-17" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) backtrace(可缩写为&quot;bt&quot;) 或 info stack</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-15"><a href="#gdb给出的解释-15" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">backtrace -- Print backtrace of all stack frames</span><br><span class="line">backtrace -- 打印所有堆栈帧的追溯。</span><br><span class="line">info stack -- Backtrace of the stack</span><br><span class="line">info stack -- 堆栈的追溯。</span><br></pre></td></tr></table></figure>
+<h2 id="调到编号为NUM的栈帧"><a href="#调到编号为NUM的栈帧" class="headerlink" title="调到编号为NUM的栈帧"></a>调到编号为NUM的栈帧</h2><h3 id="命令-18"><a href="#命令-18" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) frame &lt;NUM&gt;(可缩写为&quot;f &lt;NUM&gt;&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-16"><a href="#gdb给出的解释-16" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame -- Select and print a stack frame</span><br><span class="line">frame -- 选择并打印某个栈帧。</span><br></pre></td></tr></table></figure>
+<h2 id="跳出循环"><a href="#跳出循环" class="headerlink" title="跳出循环"></a>跳出循环</h2><h3 id="命令-19"><a href="#命令-19" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) until 循环之后的lineno</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-17"><a href="#gdb给出的解释-17" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">until -- Execute until the program reaches a source line greater than the current</span><br><span class="line">until -- 设定一个比当前行号大的行，程序执行到该行时会被暂停住。</span><br></pre></td></tr></table></figure>
+<h2 id="设置要调试的程序"><a href="#设置要调试的程序" class="headerlink" title="设置要调试的程序"></a>设置要调试的程序</h2><h3 id="命令-20"><a href="#命令-20" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) file &lt;FILE&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-18"><a href="#gdb给出的解释-18" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file -- Use FILE as program to be debugged</span><br><span class="line">file -- 使用FILE作为程序进行调试</span><br></pre></td></tr></table></figure>
+<h2 id="设置要调试的core文件"><a href="#设置要调试的core文件" class="headerlink" title="设置要调试的core文件"></a>设置要调试的core文件</h2><h3 id="命令-21"><a href="#命令-21" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) core-file &lt;FILE&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-19"><a href="#gdb给出的解释-19" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">core-file -- Use FILE as core dump for examining memory and registers</span><br><span class="line">core-file -- 使用FILE作为核心转储文件来检查内存和寄存器</span><br></pre></td></tr></table></figure>
+<h3 id="例子-6"><a href="#例子-6" class="headerlink" title="例子"></a>例子</h3><p>例：假定我写了一个名为”test_exe”的程序。其源码路径为”/root/src_folder/“，其可执行文件路径为”/root/exe_folder/test_exe”，程序崩溃后自动生成了core.12345文件。此时，我要用gdb分析这次崩溃的话，我要：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># gdb                                        # 进入gdb</span><br><span class="line">(gdb) directory &quot;/root/src_folder/&quot;          # 添加源码搜索路径(可选)</span><br><span class="line">(gdb) file      &quot;/root/exe_folder/test_exe&quot;  # 使用test_exe作为要调试的程序(可选)</span><br><span class="line">(gdb) core-file core.12345                   # 设置要分析的core文件</span><br><span class="line">(gdb) backtrace                              # 查看调用堆栈</span><br><span class="line">(gdb) frame NUM                              # 显示编号为NUM的那个栈帧</span><br><span class="line">...(执行调试操作)...</span><br><span class="line">(gdb) quit                                   # 退出gdb</span><br><span class="line">#</span><br></pre></td></tr></table></figure></p>
+<h2 id="给gdb添加源码搜索路径"><a href="#给gdb添加源码搜索路径" class="headerlink" title="给gdb添加源码搜索路径"></a>给gdb添加源码搜索路径</h2><h3 id="命令-22"><a href="#命令-22" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) directory &lt;DIR&gt;(可缩写为&quot;dir &lt;DIR&gt;&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-20"><a href="#gdb给出的解释-20" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">directory -- Add directory DIR to beginning of search path for source files</span><br><span class="line">directory -- 将目录DIR添加到源文件的搜索路径的开头/搜索(源文件的)路径的开头。</span><br></pre></td></tr></table></figure>
+<h2 id="查看gdb的源码搜索路径"><a href="#查看gdb的源码搜索路径" class="headerlink" title="查看gdb的源码搜索路径"></a>查看gdb的源码搜索路径</h2><h3 id="命令-23"><a href="#命令-23" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) show directories(可缩写为&quot;show dir&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-21"><a href="#gdb给出的解释-21" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show directories -- Current search path for finding source files</span><br><span class="line">show directories -- (查找源文件的)当前搜索路径。</span><br></pre></td></tr></table></figure>
+<h2 id="查看变量的值"><a href="#查看变量的值" class="headerlink" title="查看变量的值"></a>查看变量的值</h2><h3 id="命令-24"><a href="#命令-24" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) print &lt;EXP&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-22"><a href="#gdb给出的解释-22" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print -- Print value of expression EXP</span><br><span class="line">print -- 显示变量或表达式的值。</span><br></pre></td></tr></table></figure>
+<h2 id="显示当前工作目录"><a href="#显示当前工作目录" class="headerlink" title="显示当前工作目录"></a>显示当前工作目录</h2><h3 id="命令-25"><a href="#命令-25" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) pwd</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-23"><a href="#gdb给出的解释-23" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pwd -- Print working directory</span><br><span class="line">pwd -- 显示工作目录。</span><br></pre></td></tr></table></figure>
+<h2 id="查看某表达式的数据类型"><a href="#查看某表达式的数据类型" class="headerlink" title="查看某表达式的数据类型"></a>查看某表达式的数据类型</h2><h3 id="命令-26"><a href="#命令-26" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) whatis &lt;EXP&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-24"><a href="#gdb给出的解释-24" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">whatis -- Print data type of expression EXP</span><br><span class="line">whatis -- 打印表达式EXP的数据类型。</span><br></pre></td></tr></table></figure>
+<h2 id="显示一个类-数据结构的定义"><a href="#显示一个类-数据结构的定义" class="headerlink" title="显示一个类/数据结构的定义"></a>显示一个类/数据结构的定义</h2><h3 id="命令-27"><a href="#命令-27" class="headerlink" title="命令"></a>命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(gdb) ptype &lt;TYPE&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gdb给出的解释-25"><a href="#gdb给出的解释-25" class="headerlink" title="gdb给出的解释"></a>gdb给出的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ptype -- Print definition of type TYPE</span><br><span class="line">ptype -- 显示类型TYPE的定义。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zx9229.github.io/2017/07/08/gdb的一些常用命令/" data-id="cjioord8a000b6cprha3k5nzo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/08/2017年06月的租房总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2017年06月的租房总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/08/gdb的所有命令列表/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">gdb的所有命令列表</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/21/为Hexo博客添加目录/">为Hexo博客添加目录</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/21/Hexo相关/">Hexo相关</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/19/安装Go并用VSCode配置Go开发环境/">安装Go并用VSCode配置Go开发环境</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/16/拿到-Windows-Server-2012-后需要做什么/">拿到 Windows Server 2012 后需要做什么</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/28/Ansible弱智记录/">Ansible弱智记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 zx9229<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

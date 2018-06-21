@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>手机安装Termux和开启SSH | zx9229.github.io</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="手机安装Termux，以及为linux环境开启SSH。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机安装Termux和开启SSH">
+<meta property="og:url" content="http://zx9229.github.io/2017/09/28/手机安装Termux和开启SSH/index.html">
+<meta property="og:site_name" content="zx9229.github.io">
+<meta property="og:description" content="手机安装Termux，以及为linux环境开启SSH。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-21T15:07:48.491Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手机安装Termux和开启SSH">
+<meta name="twitter:description" content="手机安装Termux，以及为linux环境开启SSH。">
+  
+    <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">zx9229.github.io</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zx9229.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-手机安装Termux和开启SSH" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/28/手机安装Termux和开启SSH/" class="article-date">
+  <time datetime="2017-09-28T15:10:33.000Z" itemprop="datePublished">2017-09-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      手机安装Termux和开启SSH
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目录</strong>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#手机安装Termux"><span class="toc-number">1.</span> <span class="toc-text">手机安装Termux</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开启SSH"><span class="toc-number">2.</span> <span class="toc-text">开启SSH</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官方帮助文档"><span class="toc-number">2.1.</span> <span class="toc-text">官方帮助文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装openssh"><span class="toc-number">2.2.</span> <span class="toc-text">安装openssh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开启-SSH-server"><span class="toc-number">2.3.</span> <span class="toc-text">开启 SSH server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看sshd使用的端口"><span class="toc-number">2.4.</span> <span class="toc-text">查看sshd使用的端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看手机的IP地址"><span class="toc-number">2.5.</span> <span class="toc-text">查看手机的IP地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看当前登录终端的用户名"><span class="toc-number">2.6.</span> <span class="toc-text">查看当前登录终端的用户名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成一对公钥和私钥"><span class="toc-number">2.7.</span> <span class="toc-text">生成一对公钥和私钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将公钥导入信任主机列表"><span class="toc-number">2.8.</span> <span class="toc-text">将公钥导入信任主机列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取出来生成的私钥"><span class="toc-number">2.9.</span> <span class="toc-text">取出来生成的私钥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法1-用scp将文件发送到某Linux主机上"><span class="toc-number">2.9.1.</span> <span class="toc-text">方法1:用scp将文件发送到某Linux主机上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2-用ftp将文件发送到某FTP服务器"><span class="toc-number">2.9.2.</span> <span class="toc-text">方法2:用ftp将文件发送到某FTP服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将私钥配置到Xshell里或putty里"><span class="toc-number">2.10.</span> <span class="toc-text">将私钥配置到Xshell里或putty里</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在手机上安装Termius软件以方便的敲命令"><span class="toc-number">2.11.</span> <span class="toc-text">在手机上安装Termius软件以方便的敲命令</span></a></li></ol></li></ol>
+          </div>
+        
+        <p>手机安装Termux，以及为linux环境开启SSH。</p>
+<a id="more"></a>
+<h1 id="手机安装Termux"><a href="#手机安装Termux" class="headerlink" title="手机安装Termux"></a>手机安装Termux</h1><p>Termux官网：<code>https://termux.com/</code><br>可以在”GET IT ON F-Droid”上下载到安装包。<br>将”.apk”文件传到Android手机上，然后安装。  </p>
+<h1 id="开启SSH"><a href="#开启SSH" class="headerlink" title="开启SSH"></a>开启SSH</h1><h2 id="官方帮助文档"><a href="#官方帮助文档" class="headerlink" title="官方帮助文档"></a>官方帮助文档</h2><p><a href="https://termux.com/help.html" target="_blank" rel="noopener">Termux Help</a><br><a href="https://termux.com/ssh.html" target="_blank" rel="noopener">Using SSH</a>  </p>
+<h2 id="安装openssh"><a href="#安装openssh" class="headerlink" title="安装openssh"></a>安装openssh</h2><p>在手机上执行<code>sshd</code>命令，不出意外的话，该程序尚未安装。然后Termux会提示你执行一个命令以安装它。<br>该命令为<code>pkg install openssh</code>。执行该命令，安装openssh。  </p>
+<h2 id="开启-SSH-server"><a href="#开启-SSH-server" class="headerlink" title="开启 SSH server"></a>开启 SSH server</h2><p>在手机上执行<code>sshd</code>命令。  </p>
+<h2 id="查看sshd使用的端口"><a href="#查看sshd使用的端口" class="headerlink" title="查看sshd使用的端口"></a>查看sshd使用的端口</h2><p>在手机上执行命令<code>netstat -ntlp</code>，可以看到sshd监听了8022端口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--numeric , -n     显示数字IP地址(禁用域名解析功能).</span><br><span class="line">[--tcp|-t]         列出 TCP 协议的连接.</span><br><span class="line">-l, --listening    列出正在监听的套接字.</span><br><span class="line">-p, --program      查看PID和进程名.</span><br><span class="line">-a, --all          显示所有socket.</span><br></pre></td></tr></table></figure></p>
+<p>备注：用netstat排查问题时，经常使用的命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Windows: netstat -ano</span><br><span class="line">  Linux: netstat -anp</span><br></pre></td></tr></table></figure></p>
+<h2 id="查看手机的IP地址"><a href="#查看手机的IP地址" class="headerlink" title="查看手机的IP地址"></a>查看手机的IP地址</h2><p>执行<code>ifconfig</code>命令。  </p>
+<h2 id="查看当前登录终端的用户名"><a href="#查看当前登录终端的用户名" class="headerlink" title="查看当前登录终端的用户名"></a>查看当前登录终端的用户名</h2><p>执行<code>whoami</code>命令。  </p>
+<h2 id="生成一对公钥和私钥"><a href="#生成一对公钥和私钥" class="headerlink" title="生成一对公钥和私钥"></a>生成一对公钥和私钥</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh/    # 切到该目录</span><br><span class="line">ls -alh       # 发现该目录是空的,或者仅有authorized_keys文件,但该文件的大小为0.</span><br><span class="line">ssh-keygen    # 生成公私钥</span><br><span class="line">ls -alh       # 发现生成了id_rsa和id_rsa.pub文件</span><br></pre></td></tr></table></figure>
+<p>说明：在手机上执行<code>ssh-keygen</code>命令，接下来的问题一律回车默认(包括Enter passphrase)，最后在”~/.ssh/“下会多出id_rsa和id_rsa.pub文件。  </p>
+<h2 id="将公钥导入信任主机列表"><a href="#将公钥导入信任主机列表" class="headerlink" title="将公钥导入信任主机列表"></a>将公钥导入信任主机列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh/</span><br><span class="line">cat id_rsa.pub &gt;&gt;　authorized_keys</span><br><span class="line">chmod 644 authorized_keys  # 如果authorized_keys的权限不合理,用密钥登录时会失败.</span><br></pre></td></tr></table></figure>
+<p>备注：<code>man ssh</code>然后搜索”authorized_keys”可以知道，”authorized_keys”是用来存储公钥的，一个公钥一行。<br>一个添加密钥的例子：<br>用户A有一台机器(我们称之为Local)和一台Linux的远程机器(我们称之为Remote)，在Remote机器上有一个名为RA的用户供A使用。用户A在Local机器上生成了一对公钥(id_rsa.pub)和私钥(id_rsa)，然后将id_rsa.pub添加到Remote的RA用户的authorized_keys文件里。至此，密钥添加完毕。用户A可以使用id_rsa登录Remote机器了。  </p>
+<h2 id="取出来生成的私钥"><a href="#取出来生成的私钥" class="headerlink" title="取出来生成的私钥"></a>取出来生成的私钥</h2><p>有各种方式取出来它。  </p>
+<h3 id="方法1-用scp将文件发送到某Linux主机上"><a href="#方法1-用scp将文件发送到某Linux主机上" class="headerlink" title="方法1:用scp将文件发送到某Linux主机上"></a>方法1:用scp将文件发送到某Linux主机上</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P 端口号 -r  ~/.ssh/id_rsa  用户名@IP地址:~/目录</span><br></pre></td></tr></table></figure>
+<h3 id="方法2-用ftp将文件发送到某FTP服务器"><a href="#方法2-用ftp将文件发送到某FTP服务器" class="headerlink" title="方法2:用ftp将文件发送到某FTP服务器"></a>方法2:用ftp将文件发送到某FTP服务器</h3><ol>
+<li>搭建一个迷你FTP服务器。可以搜索”20CN Mini Ftp 服务器”并下载这个绿色单文件FTP服务器软件，然后搭建FTP服务器。  </li>
+<li><p>书写一个shell脚本(script.sh)，放到FTP服务器的根目录。执行脚本会将本地的id_rsa文件上传到服务器上。一个示例如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 记得修改&quot;IP地址+端口+用户名+密码&quot;的值哈.</span><br><span class="line"># shell 脚本需要以 UTF-8 无 BOM 格式编码, LF 作为换行符, 切勿以 CRLF 作为换行符.</span><br><span class="line">ftp -n &lt;&lt;EOF</span><br><span class="line">open 192.168.1.101 21</span><br><span class="line">user anonymous password</span><br><span class="line">binary</span><br><span class="line">lcd ~/.ssh</span><br><span class="line">cd  /</span><br><span class="line">put id_rsa</span><br><span class="line">close</span><br><span class="line">quit</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用wget从FTP服务器上下载script.sh到本地。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget ftp://IP地址:端口/文件的路径</span><br><span class="line">wget ftp://用户名:密码@IP地址:端口/文件的路径</span><br><span class="line">wget ftp://ftp_user:ftp_pwd@127.0.0.1:21/dir1/dir2/filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>ftp</code>命令，不出意外的话，Termux会提示你执行<code>pkg install inetutils</code>命令以安装该软件。根据提示安装它。  </p>
+</li>
+<li>以<code>bash script.sh</code>命令执行script.sh脚本，不出意外的话，会成功上传id_rsa文件到FTP服务器。  </li>
+<li>进入FTP服务器的根目录，成功得到私钥文件。  </li>
+</ol>
+<h2 id="将私钥配置到Xshell里或putty里"><a href="#将私钥配置到Xshell里或putty里" class="headerlink" title="将私钥配置到Xshell里或putty里"></a>将私钥配置到Xshell里或putty里</h2><h2 id="在手机上安装Termius软件以方便的敲命令"><a href="#在手机上安装Termius软件以方便的敲命令" class="headerlink" title="在手机上安装Termius软件以方便的敲命令"></a>在手机上安装Termius软件以方便的敲命令</h2><p>备注：Termius的旧名字是Server Auditor。  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zx9229.github.io/2017/09/28/手机安装Termux和开启SSH/" data-id="cjioord9t00106cprygjljzsf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/25/MySQL弱智记录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MySQL弱智记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/31/Oracle重置SYS和SYSTEM用户的密码/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Oracle重置SYS和SYSTEM用户的密码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/21/为Hexo博客添加目录/">为Hexo博客添加目录</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/21/Hexo相关/">Hexo相关</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/19/安装Go并用VSCode配置Go开发环境/">安装Go并用VSCode配置Go开发环境</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/16/拿到-Windows-Server-2012-后需要做什么/">拿到 Windows Server 2012 后需要做什么</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/28/Ansible弱智记录/">Ansible弱智记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 zx9229<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
