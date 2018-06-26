@@ -72,3 +72,4 @@ Set-Item WSMan:\localhost\client\TrustedHosts -Value <ComputerName>[,<ComputerNa
 PowerShell远程管理使用5985(http)和5986(https)端口。  
 判断一个变量为bool的真/假值`($var -eq $true)`和`($var -eq $false)`。  
 判断一个变量为空值`($var -eq $null)`。  
+`powershell`是`$?`而`cmd`是`%errorlevel%`，如果`plink.exe`的程序返回值为`0`，那么`powershell`的`$?`是`$true`。  

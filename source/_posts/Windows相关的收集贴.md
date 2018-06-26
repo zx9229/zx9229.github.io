@@ -18,5 +18,10 @@ tags:
 ### 设置Windows让程序崩溃时不弹窗就直接退出  
 修改下面的注册表项，将其由0修改成1：
 ```
-HKEY_CURRENT_USER\Software\ Microsoft\Windows\Windows Error Reporting\DontShowUI
+HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting\DontShowUI
+```
+也可以执行如下命令查询和修改
+```
+REG QUERY "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting" /v DontShowUI
+REG ADD   "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting" /v DontShowUI /t REG_DWORD /d 1
 ```
