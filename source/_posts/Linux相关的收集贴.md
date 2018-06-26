@@ -6,7 +6,7 @@ toc: false
 date: 2018-06-22 21:11:52
 tags:
 ---
-Linux相关。
+摘要暂略。
 <!-- more -->
 
 ### linux日志相关  
@@ -25,3 +25,5 @@ linux日志文件说明
 ### 查看用户登录信息  
 [Linux用户登录记录日志和相关查看命令汇总](https://blog.csdn.net/jsd2honey/article/details/78404337)。
 
+### 反向搜索执行过的命令
+`Ctrl+r`: Linux的`reverse-i-search`。  
