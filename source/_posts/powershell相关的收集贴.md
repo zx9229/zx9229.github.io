@@ -1,6 +1,7 @@
 ---
 title: powershell相关的收集贴
 categories:
+  - Windows
   - powershell
 toc: false
 date: 2018-06-22 19:55:20

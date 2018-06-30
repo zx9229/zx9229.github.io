@@ -88,7 +88,8 @@ PS C:\> $PSVersionTable.CLRVersion  # .NET Framework
 
 #### 设置WinRM服务
 
-下面是设置的步骤。如果已经创建了监听器，你可以直接下一步；或者删除它并重新创建，然后下一步。
+下面是设置的步骤，请以管理员身份运行powershell并执行它们。  
+如果已经创建了监听器，你可以直接下一步；或者删除它并重新创建，然后下一步。  
 ```
 # 查看WinRM的监听器
 winrm enumerate winrm/config/Listener
