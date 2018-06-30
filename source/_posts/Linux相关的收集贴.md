@@ -27,3 +27,8 @@ linux日志文件说明
 
 ### 反向搜索执行过的命令
 `Ctrl+r`: Linux的`reverse-i-search`。  
+
+### 得到一个Linux后首先要装的几个软件  
+```
+yum install expect ncdu sshpass
+```
