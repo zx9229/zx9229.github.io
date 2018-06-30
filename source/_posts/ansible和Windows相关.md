@@ -1,7 +1,7 @@
 ---
 title: ansible和Windows相关
 categories:
-  - MyDefaultCategory
+  - Ansible
 toc: true
 date: 2018-06-29 00:14:25
 tags:
