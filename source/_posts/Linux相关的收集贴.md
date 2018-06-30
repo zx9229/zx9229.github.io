@@ -32,3 +32,14 @@ linux日志文件说明
 ```
 yum install expect ncdu sshpass
 ```
+
+### 查看Linux的磁盘占用
+方法1：`ncdu`。
+方法2：用`du`命令。也可以结合其他命令进行排序。
+```
+du -sh ./*
+du -sh ./* | awk '{{X=0}if($1~".+K"){X=$1*1024}if($1~".+M"){X=$1*1048576}if($1~".+G"){X=$1*1073741824}{print X,$0}}' | sort -gk1
+du -sh ./* | awk '{{X=0}if($1~".+K"){X=$1*1}if($1~".+M"){X=$1*1024}if($1~".+G"){X=$1*1048576}{print X,$0}}' | sort -gk1
+du -s  ./* | sort -nk1
+du -ah --max-depth=1
+```
