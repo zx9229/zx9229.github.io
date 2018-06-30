@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="powershell相关。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T01:41:58.018Z">
+<meta property="og:updated_time" content="2018-06-28T16:38:02.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="powershell相关的收集贴">
 <meta name="twitter:description" content="powershell相关。">
@@ -119,13 +119,13 @@
 </ol>
 <p>可能需要为本机的TrustedHosts添加远程机器的IP地址，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-Item WSMan:\localhost\client\TrustedHosts -Value *</span><br><span class="line">Set-Item WSMan:\localhost\client\TrustedHosts -Value &lt;ComputerName&gt;[,&lt;ComputerName&gt;]</span><br></pre></td></tr></table></figure></p>
 <ol start="7">
-<li>待定。<br>可以用<code>Write-Error</code>或<code>Write-Warning</code>在屏幕上输出提示。<br>PowerShell远程管理使用5985(http)和5986(https)端口。<br>判断一个变量为bool的真/假值<code>($var -eq $true)</code>和<code>($var -eq $false)</code>。<br>判断一个变量为空值<code>($var -eq $null)</code>。<br><code>powershell</code>是<code>$?</code>而<code>cmd</code>是<code>%errorlevel%</code>，如果<code>plink.exe</code>的程序返回值为<code>0</code>，那么<code>powershell</code>的<code>$?</code>是<code>$true</code>。  </li>
+<li>待定。<br>可以用<code>Write-Error</code>或<code>Write-Warning</code>在屏幕上输出提示。<br>PowerShell远程管理使用5985(http)和5986(https)端口。<br>判断一个变量为bool的真/假值<code>($var -eq $true)</code>和<code>($var -eq $false)</code>。<br>判断一个变量为空值<code>($var -eq $null)</code>。<br><code>powershell</code>是<code>$?</code>而<code>cmd</code>是<code>%errorlevel%</code>，如果<code>plink.exe</code>的程序返回值为<code>0</code>，那么<code>powershell</code>的<code>$?</code>是<code>$true</code>。<br>在<code>PowerShell3.0</code>之前，获取当前路径，之前一直通过内置的$MyInvocation变量<code>$CurrentyDir = Split-Path -Parent $MyInvocation.MyCommand.Definition;</code>，PowerShell3.0之后，直接一个$PSScriptRoot解决问题。  </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/powershell相关的收集贴/" data-id="cjiy9falc0018ukprqgz4nj8c" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/powershell相关的收集贴/" data-id="cjj1bvfmo001d2gprlgbpns75" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +162,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/powershell/">powershell</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/powershell/">powershell</a></li></ul>
     </div>
   </div>
 
@@ -190,6 +190,14 @@
       <ul>
         
           <li>
+            <a href="/2018/06/29/shell中嵌入二进制文件/">shell中嵌入二进制文件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/29/ansible和Windows相关/">ansible和Windows相关</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/26/一些未知来源的东西/">一些未知来源的东西</a>
           </li>
         
@@ -199,14 +207,6 @@
         
           <li>
             <a href="/2018/06/25/Windows相关的收集贴/">Windows相关的收集贴</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/22/Linux相关的收集贴/">Linux相关的收集贴</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/22/powershell相关的收集贴/">powershell相关的收集贴</a>
           </li>
         
       </ul>
