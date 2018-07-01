@@ -13,6 +13,7 @@ toc: true
 Go的官网：[The Go Programming Language](https://golang.org/)  
 在Windows下，我们可以下载最新版的安装包(2018-07-01是"go1.10.3.windows-amd64.msi")并安装它。  
 它一般会默认安装到`C:\Go\`下。同时会自动创建系统变量`GOROOT`，并将其指向`C:\Go\`。  
+然后我们可以`mkdir %USERPROFILE%\go\src\my_code`然后在`my_code`里面写代码并测试等。  
 
 ### 安装git/svn/hg/bzr等
 建议至少安装Git(`Git for Windows`，名字类似`Git-2.18.0-64-bit.exe`的安装包)。  
@@ -21,7 +22,7 @@ Go的官网：[The Go Programming Language](https://golang.org/)
 ### 关于GOPATH系统变量
 我以最新的安装包(go1.10.3.windows-amd64.msi)为例，创建Win7的虚机进行了测试，发现`GOPATH`好像没用了。  
 我在"命令行提示"(`command-line prompt(cmd.exe)`)里执行`go get -u -v github.com/cw1997/NATBypass`之后，发现它们出现在`%USERPROFILE%\go\`路径下面。  
-不过这样也好，不用关心`GOPATH`到底有什么用途了。
+不过这样也好，不用关心`GOPATH`到底有什么用途了。  
 
 ## 为VSCode配置Go开发环境  
 思路：用VSCode打开一个后缀为go的文件，然后使用VSCode推荐的配置。  
