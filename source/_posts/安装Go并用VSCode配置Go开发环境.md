@@ -2,35 +2,39 @@
 title: 安装Go并用VSCode配置Go开发环境
 date: 2017-11-19 20:58:18
 categories:
-- MyDefaultCategory
+- Go
 tags:
 toc: true
 ---
-
 安装Go。配置GOPATH。使用代理安装Go的插件。  
-
 <!-- more -->
 
-## 安装Go  
+## 安装Go和常用依赖
 Go的官网：[The Go Programming Language](https://golang.org/)  
-在Windows下，我们可以下载最新版的安装包(此时是"go1.9.2.windows-amd64.msi")并安装它。  
-它一般会默认安装到"C:\Go\"下。同时会自动创建系统变量"GOROOT"，并将其指向"C:\Go\"。  
+在Windows下，我们可以下载最新版的安装包(2018-07-01是"go1.10.3.windows-amd64.msi")并安装它。  
+它一般会默认安装到`C:\Go\`下。同时会自动创建系统变量`GOROOT`，并将其指向`C:\Go\`。  
 
-## 创建GOPATH系统变量  
-手动创建GOPATH系统变量，并指定一个目录，比如"C:\Go_myGOPATH\"之类的。GOPATH可以配置多个目录。  
-
-## 安装git/svn/hg/bzr等  
-建议至少安装Git(Git for Windows).  
+### 安装git/svn/hg/bzr等
+建议至少安装Git(`Git for Windows`，名字类似`Git-2.18.0-64-bit.exe`的安装包)。  
 [Installing Version Control Tools for `go get`](https://golang.org/s/gogetcmd)  
+
+### 关于GOPATH系统变量
+我以最新的安装包(go1.10.3.windows-amd64.msi)为例，创建Win7的虚机进行了测试，发现`GOPATH`好像没用了。  
+我在"命令行提示"(`command-line prompt(cmd.exe)`)里执行`go get -u -v github.com/cw1997/NATBypass`之后，发现它们出现在`%USERPROFILE%\go\`路径下面。  
+不过这样也好，不用关心`GOPATH`到底有什么用途了。
 
 ## 为VSCode配置Go开发环境  
 思路：用VSCode打开一个后缀为go的文件，然后使用VSCode推荐的配置。  
+
+### 安装VSCode
+最新(2018-07-01)的Windows安装包是`VSCodeSetup-x64-1.24.1.exe`。我们可以安装它。  
 
 ### 安装Go插件  
 创建一个后缀为go的文件(比如test.go)并用VSCode打开。此时它会自动推荐一些插件。  
 如无意外，它会推荐一个插件。该插件的名字是"Go"，发布者(publisher)是"lukehoban"，简介(shortDesc)是"Rich Go language support for Visual Studio Code"。  
 这个插件我用着不错，也推荐你安装它。  
-你可以进入这个插件的网页[Go - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=lukehoban.Go)，在"Overview"可以看到这个插件依赖了哪些工具做了哪些事。我在这里摘取了它的内容：  
+你可以进入这个插件的网页[Go - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=lukehoban.Go)，在"Overview"可以看到这个插件依赖了哪些工具做了哪些事。  
+(2018-07-01)插件的网页变为[Go - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go)，"Overview"的内容如下：
 ```
 Completion Lists (using gocode)
 Signature Help (using gogetdoc or godef+godoc)
@@ -44,7 +48,7 @@ File outline (using go-outline)
 Workspace symbol search (using go-symbols)
 Rename (using gorename. Note: For Undo after rename to work in Windows you need to have diff tool in your path)
 Build-on-save (using go build and go test)
-Lint-on-save (using golint or gometalinter)
+Lint-on-save (using golint, gometalinter, megacheck,golangci-lint or revive)
 Format on save as well as format manually (using goreturns or goimports or gofmt)
 Generate unit tests skeleton (using gotests)
 Add Imports (using gopkgs)
@@ -53,12 +57,14 @@ Semantic/Syntactic error reporting as you type (using gotype-live)
 Run Tests under the cursor, in current file, in current package, in the whole workspace (using go test)
 Show code coverage
 Generate method stubs for interfaces (using impl)
+Fill struct literals with default values (using fillstruct)
 [partially implemented] Debugging (using delve)
+Upload to the Go Playground (using goplay)
 ```
 也就是说，在安装了这个插件之后，你还需要安装括号中的那些个程序，才能完整的使用这个插件。  
 
-### 安装插件的依赖程序(用VSCode自动安装)  
-VSCode会在顶部提示一些信息，你可以"Install All"解决。  
+### 安装插件的依赖程序(用VSCode自动安装)
+在"test.go"里面随便敲几个字，你应该会看到弹窗提示，提示里应该有"Install All"，你可以"Install All"解决。
 
 ### 安装插件的依赖程序(手动安装)  
 预备知识：  
