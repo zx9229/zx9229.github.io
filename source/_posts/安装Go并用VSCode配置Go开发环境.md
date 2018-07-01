@@ -65,7 +65,10 @@ Upload to the Go Playground (using goplay)
 也就是说，在安装了这个插件之后，你还需要安装括号中的那些个程序，才能完整的使用这个插件。  
 
 ### 安装插件的依赖程序(用VSCode自动安装)
-在"test.go"里面随便敲几个字，你应该会看到弹窗提示，提示里应该有"Install All"，你可以"Install All"解决。
+在"test.go"里面随便敲几个字，你应该会看到弹窗提示，提示里应该有"Install All"，你可以"Install All"解决。  
+因为有的依赖程序需要设置代理才能正常安装，所以我们可能需要给VSCode设置代理：  
+`VSCode`=>`文件`=>`首选项`=>`设置`=>`搜索"http.proxy"`=>`填写代理设置`。  
+如果你想让VSCode重新弹出"Install All"的提示，你可以删除`%USERPROFILE%\go\bin`文件夹(当然也可以重名它)，然后你应当能达到目的。  
 
 ### 安装插件的依赖程序(手动安装)  
 预备知识：  
@@ -73,43 +76,18 @@ Upload to the Go Playground (using goplay)
 -u表示强制使用网络去更新包和它的依赖包。  
 -v表示启用详细的进度和调试输出。  
 
-#### 安装gopkgs.exe  
-用VSCode打开.go文件时，会提示：  
-The "gopkgs" command is not available. Use "go get -v github.com/uudashr/gopkgs/cmd/gopkgs" to install.  
-使用命令`go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs`以安装它。  
-
 #### 安装dlv.exe  
 在VSCode下按F5启动调试时，会提示：  
-Failed to continue: "Cannot find Delve debugger. Install from https://github.com/derekparker/delve & ensure it is in your "GOPATH/bin" or "PATH"."  
+`Failed to continue: "Cannot find Delve debugger. Install from https://github.com/derekparker/delve & ensure it is in your "GOPATH/bin" or "PATH"."`  
 查看它在github上面的"README.md"文件，可以知道，使用命令`go get -u -v github.com/derekparker/delve/cmd/dlv`以安装它。  
 
 #### 安装goreturns.exe  
 在VSCode中按"Alt+Shift+F"(自动格式化代码)时，会提示：  
-The "goreturns" command is not available. Use "go get -v sourcegraph.com/sqs/goreturns" to install.  
-使用命令`go get -u -v sourcegraph.com/sqs/goreturns`以安装它。  
+`The "goreturns" command is not available. Use "go get -v github.com/sqs/goreturns" to install.`  
+使用命令`go get -u -v github.com/sqs/goreturns`以安装它(可能需要翻墙)。  
 
-#### 安装godef.exe  
-在VSCode中按"F12"(转到定义)时，会提示：  
-The "godef" command is not available. Use "go get -v github.com/rogpeppe/godef" to install.  
-执行命令`go get -u -v github.com/rogpeppe/godef`以安装它。  
-
-#### 安装guru.exe  
-在VSCode中按"Shift+F12"(查找所有引用)时，会提示：  
-The "guru" command is not available. Use "go get -v golang.org/x/tools/cmd/guru" to install.  
-执行命令`go get -u -v golang.org/x/tools/cmd/guru`以安装它。  
-
-#### gorename.exe  
-在VSCode中用"F2"(重命名符号)时，会提示：  
-The "gorename" command is not available. Use "go get -v golang.org/x/tools/cmd/gorename" to install.  
-执行命令`go get -u -v golang.org/x/tools/cmd/gorename`以安装它。  
-
-#### 安装gocode.exe  
-The "gocode" command is not available. Use "go get -v github.com/nsf/gocode" to install.  
-执行命令`go get -u -v github.com/nsf/gocode`以安装它。  
-
-#### 安装go-outline.exe  
-The "go-outline" command is not available. Use "go get -v github.com/ramya-rao-a/go-outline" to install.
-执行命令`go get -u -v github.com/ramya-rao-a/go-outline`以安装它。  
+#### 安装其他依赖程序
+过程与上面类似，不再赘述。  
 
 ## 用代理方法安装软件  
 有些软件需要使用代理，才能安装成功，下面是一种代理的方式。  
