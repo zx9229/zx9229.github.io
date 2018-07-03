@@ -5,18 +5,18 @@
   
 
   
-  <title>VisualStudio自动创建UTF-8格式编码的文件 | zx9229.github.io</title>
+  <title>python安装cx_Oracle | zx9229.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="摘要暂略。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VisualStudio自动创建UTF-8格式编码的文件">
-<meta property="og:url" content="http://zx9229.github.io/2018/02/01/VisualStudio自动创建UTF-8格式编码的文件/index.html">
+<meta property="og:title" content="python安装cx_Oracle">
+<meta property="og:url" content="http://zx9229.github.io/2018/07/03/python安装cx-Oracle/index.html">
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T12:01:52.723Z">
+<meta property="og:updated_time" content="2018-07-03T14:03:50.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VisualStudio自动创建UTF-8格式编码的文件">
+<meta name="twitter:title" content="python安装cx_Oracle">
 <meta name="twitter:description" content="摘要暂略。">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
@@ -64,14 +64,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-VisualStudio自动创建UTF-8格式编码的文件" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-python安装cx-Oracle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/02/01/VisualStudio自动创建UTF-8格式编码的文件/" class="article-date">
-  <time datetime="2018-02-01T10:40:31.000Z" itemprop="datePublished">2018-02-01</time>
+    <a href="/2018/07/03/python安装cx-Oracle/" class="article-date">
+  <time datetime="2018-07-03T13:21:09.000Z" itemprop="datePublished">2018-07-03</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a>
+    <a class="article-category-link" href="/categories/python/">python</a>
   </div>
 
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      VisualStudio自动创建UTF-8格式编码的文件
+      python安装cx_Oracle
     </h1>
   
 
@@ -92,16 +92,25 @@
       
         <!-- Table of Contents -->
         
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目录</strong>
+            
+          </div>
+        
         <p>摘要暂略。<br><a id="more"></a></p>
-<p>进入VS安装目录的<code>VC\vcprojectitems</code>下。<br>比如<code>C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcprojectitems</code>。<br>修改<code>hfile.h</code>呈如下格式<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> execution_character_set(<span class="meta-string">"utf-8"</span>)</span></span><br><span class="line"><span class="comment">// 本文件以 UTF-8 无 BOM 格式编码</span></span><br></pre></td></tr></table></figure></p>
-<p>修改<code>newc++file.cpp</code>到如下内容<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> execution_character_set(<span class="meta-string">"utf-8"</span>)</span></span><br><span class="line"><span class="comment">// 本文件以 UTF-8 无 BOM 格式编码</span></span><br></pre></td></tr></table></figure></p>
-<p>并将这两个文件修改成<code>以 UTF-8 无 BOM 格式编码</code>的格式。</p>
-<p>另外，用VS直接修改编码的方式：<br><code>File</code>=&gt;<code>Advanced Save Options...</code>=&gt;将Encoding修改成<code>Unicode (UTF-8 without signature) - Codepage 65001</code>将Line endings默认成<code>Current Setting</code>。  </p>
+<p>现在(2018-07)cx_Oracle不论在Windows还是Linux下，都可以<code>pip install cx_Oracle</code>了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">安装python3</span><br><span class="line">pip install cx_Oracle</span><br><span class="line">pip list | grep Oracle  # 查看(cx-Oracle)(cx_Oracle)的版本号</span><br></pre></td></tr></table></figure></p>
+<p>然后可以使用如下代码进行测试：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cx_Oracle</span><br><span class="line">host = <span class="string">'192.168.1.101'</span></span><br><span class="line">port = <span class="number">1521</span></span><br><span class="line">SID = <span class="string">'SID_NAME'</span></span><br><span class="line">dsn_tns = cx_Oracle.makedsn(host, port, SID)</span><br><span class="line">connection = cx_Oracle.connect(<span class="string">'用户名'</span>, <span class="string">'密码'</span>, dsn_tns)</span><br><span class="line">connection.close()</span><br><span class="line">print(<span class="string">"DONE."</span>)</span><br><span class="line">exit(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>首先，你会看到如下错误提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cx_Oracle.DatabaseError: DPI-1047: 64-bit Oracle Client library cannot be loaded: &quot;libclntsh.so: cannot open shared object file: No such file or directory&quot;. See https://oracle.github.io/odpi/doc/installation.html#linux for help</span><br></pre></td></tr></table></figure></p>
+<p>很显然需要去<code>https://oracle.github.io/odpi/doc/installation.html#linux</code>寻求帮助。<br>我本着“能不yum就不yum”的个人喜好，倾向于选择<code>Oracle Instant Client Zip</code>。<br>我倾向于下载<code>Oracle 11</code>的压缩包<code>instantclient-basic-linux.x64-11.2.0.4.0.zip</code>，因为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Version 12.2 client libraries can connect to Oracle Database 11.2 or greater. Version 12.1 client libraries can connect to Oracle Database 10.2 or greater. Version 11.2 client libraries can connect to Oracle Database 9.2 or greater.</span><br></pre></td></tr></table></figure></p>
+<p>所以，全部过程就是<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/oracle_instantclient</span><br><span class="line">mv  ./instantclient-basic-linux.x64-11.2.0.4.0.zip /opt/oracle_instantclient/.</span><br><span class="line">unzip instantclient-basic-linux.x64-11.2.0.4.0.zip</span><br><span class="line">yum install libaio libaio1</span><br><span class="line">LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/oracle_instantclient/instantclient_11_2</span><br></pre></td></tr></table></figure></p>
+<p>然后执行测试代码，会发现错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cx_Oracle.DatabaseError: ORA-21561: OID generation failed</span><br></pre></td></tr></table></figure></p>
+<p>经搜索，原因是“<code>hostname</code>显示的主机名和<code>/etc/hosts</code>配置文件里的主机名不一致”。你可以<code>man hostname</code>和<code>man hosts</code>查看帮助文档。<br>所以我们可以任改其一。我选择了修改配置文件。备份配置文件并修改后，测试代码正常运行。</p>
+<p>最后，cx_Oracle的帮助文档在<a href="http://cx-oracle.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">Welcome to cx_Oracle’s documentation!</a>。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/02/01/VisualStudio自动创建UTF-8格式编码的文件/" data-id="cjj5rlf02000gq0prqx2uwp8a" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/07/03/python安装cx-Oracle/" data-id="cjj5rlf100019q0prjk1ffclo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -110,19 +119,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/02/28/DokuWiki相关/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          DokuWiki相关
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/02/01/git的AutoCrLf和SafeCrLf/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/06/29/shell中嵌入二进制文件/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git的AutoCrLf和SafeCrLf</div>
+      <div class="article-nav-title">shell中嵌入二进制文件</div>
     </a>
   
 </nav>
