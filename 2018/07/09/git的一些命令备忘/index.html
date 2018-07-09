@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2018/6 | zx9229.github.io</title>
+  <title>git的一些命令备忘 | zx9229.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zx9229.github.io">
-<meta property="og:url" content="http://zx9229.github.io/archives/2018/06/page/2/index.html">
+  <meta name="description" content="摘要暂略。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git的一些命令备忘">
+<meta property="og:url" content="http://zx9229.github.io/2018/07/09/git的一些命令备忘/index.html">
 <meta property="og:site_name" content="zx9229.github.io">
+<meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-09T15:50:55.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zx9229.github.io">
+<meta name="twitter:title" content="git的一些命令备忘">
+<meta name="twitter:description" content="摘要暂略。">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -60,45 +64,81 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/21/Hexo相关/" class="archive-article-date">
-  <time datetime="2018-06-21T11:04:32.000Z" itemprop="datePublished">Jun 21</time>
+        <section id="main"><article id="post-git的一些命令备忘" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/09/git的一些命令备忘/" class="article-date">
+  <time datetime="2018-07-09T15:04:13.000Z" itemprop="datePublished">2018-07-09</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/21/Hexo相关/">Hexo相关</a>
+    <h1 class="article-title" itemprop="name">
+      git的一些命令备忘
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
+      </header>
     
-    <a class="extend prev" rel="prev" href="/archives/2018/06/">&laquo; Prev</a><a class="page-number" href="/archives/2018/06/">1</a><span class="page-number current">2</span>
-  </nav>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>摘要暂略。<br><a id="more"></a></p>
+<ul>
+<li><p>查看帮助  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git --help</span><br><span class="line">git commit --help</span><br><span class="line">git checkout --help</span><br><span class="line">git &lt;command&gt; --help</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前状态<br><code>git status</code></p>
+</li>
+<li><p>查看版本库上的文件<br><code>git ls-files</code></p>
+</li>
+<li><p>查看版本库上(某目录下)的文件<br><code>git ls-files 某目录</code></p>
+</li>
+<li><p>查看提交信息<br><code>git log</code></p>
+</li>
+<li><p>查看(某目录/某文件的)提交信息<br><code>git log 某目录</code><br><code>git log 某文件</code></p>
+</li>
+<li><p>查看某版本号时某文件的全部内容<br><code>git show REVISION:./path/to/file</code><br>举例：<br>假设某文件为<code>test_file</code>，其路径为<code>./dir/test_file</code>，很早就把它提交到git上，很久没有改动过它了。我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，我想查看这一版本时候的<code>test_file</code>的全部内容：<code>git show db22a3:./dir/test_file</code></p>
+</li>
+<li><p>查看某版本号对某文件做了哪些修改<br><code>git show REVISION ./path/to/file</code><br>举例：<br>假设某文件为<code>test_file</code>，其路径为<code>./dir/test_file</code>，我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，这次提交对<code>test_file</code>和一些其他文件一并进行了修改，我想看一下这次提交对<code>test_file</code>做了哪些修改<code>git show db22a3 ./dir/test_file</code></p>
+</li>
+<li><p>对某文件执行Revert操作<br><code>git checkout 文件名</code><br>备注：个人感觉，它相当于用鼠标执行[Revert]操作。以下随手摘录同时未经确认：<br>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>总之，就是让这个文件回到最近一次git commit或git add时的状态。</p>
+</li>
+<li><p>查看所有分支<br><code>git branch -a</code><br><code>git branch --all</code></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zx9229.github.io/2018/07/09/git的一些命令备忘/" data-id="cjjeg644i000zp8prcvuvzjsj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/03/python安装cx-Oracle/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python安装cx_Oracle</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
