@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-09T15:50:55.342Z">
+<meta property="og:updated_time" content="2018-07-10T14:55:58.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的一些命令备忘">
 <meta name="twitter:description" content="摘要暂略。">
@@ -111,16 +111,20 @@
 </li>
 <li><p>查看某版本号对某文件做了哪些修改<br><code>git show REVISION ./path/to/file</code><br>举例：<br>假设某文件为<code>test_file</code>，其路径为<code>./dir/test_file</code>，我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，这次提交对<code>test_file</code>和一些其他文件一并进行了修改，我想看一下这次提交对<code>test_file</code>做了哪些修改<code>git show db22a3 ./dir/test_file</code></p>
 </li>
-<li><p>对某文件执行Revert操作<br><code>git checkout 文件名</code><br>备注：个人感觉，它相当于用鼠标执行[Revert]操作。以下随手摘录同时未经确认：<br>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>总之，就是让这个文件回到最近一次git commit或git add时的状态。</p>
+<li><p>对某文件执行Revert操作<br><code>git checkout 文件名</code><br>以下随手摘录同时未经确认：<br>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>总之，就是让这个文件回到最近一次git commit或git add时的状态。</p>
 </li>
-<li><p>查看所有分支<br><code>git branch -a</code><br><code>git branch --all</code></p>
+<li><p>鼠标操作TortoiseGit对某文件执行Revert操作<br><code>git checkout HEAD &lt;/path/to/your/file&gt;</code></p>
+</li>
+<li><p>恢复单个文件到指定版本<br><code>git checkout &lt;sha1-of-a-commit&gt; &lt;/path/to/your/file&gt;</code><br>备注：它好像对应的是帮助文档中的<code>git checkout [-p|--patch] [&lt;tree-ish&gt;] [--] &lt;pathspec&gt;…</code>。</p>
+</li>
+<li><p>查看所有分支<br><code>git branch  -a</code><br><code>git branch --all</code></p>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/07/09/git的一些命令备忘/" data-id="cjjeg644i000zp8prcvuvzjsj" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/07/09/git的一些命令备忘/" data-id="cjjftjxax0015hcprqx6jl5v9" class="article-share-link">Share</a>
       
       
     </footer>
