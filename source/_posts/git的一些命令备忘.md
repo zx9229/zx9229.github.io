@@ -44,12 +44,19 @@ git <command> --help
 
 * 对某文件执行Revert操作  
 `git checkout 文件名`  
-备注：个人感觉，它相当于用鼠标执行[Revert]操作。以下随手摘录同时未经确认：  
+以下随手摘录同时未经确认：  
 一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
 一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
 总之，就是让这个文件回到最近一次git commit或git add时的状态。
 
+* 鼠标操作TortoiseGit对某文件执行Revert操作  
+`git checkout HEAD </path/to/your/file>`
+
+* 恢复单个文件到指定版本  
+`git checkout <sha1-of-a-commit> </path/to/your/file>`  
+备注：它好像对应的是帮助文档中的`git checkout [-p|--patch] [<tree-ish>] [--] <pathspec>…`。
+
 * 查看所有分支  
-`git branch -a`  
+`git branch  -a`  
 `git branch --all`
 
