@@ -33,13 +33,29 @@ linux日志文件说明
 yum install expect ncdu sshpass
 ```
 
+### ulimit相关
+```
+ulimit -a
+ulimit -c unlimited  # 生成core文件, 可以 ulimit -c 查看当前值, 重启后失效.
+```
+修改`/etc/security/limits.conf`文件，添加如下行，相当于所有用户都`ulimit -c unlimited`了。无需重启，重新登录即可生效。
+```
+*               soft    core            unlimited
+```
+
 ### 查看Linux的磁盘占用
 方法1：`ncdu`。
 方法2：用`du`命令。也可以结合其他命令进行排序。
 ```
-du -sh ./*
+du -sh ./*    # 占用空间,占用者
 du -sh ./* | awk '{{X=0}if($1~".+K"){X=$1*1024}if($1~".+M"){X=$1*1048576}if($1~".+G"){X=$1*1073741824}{print X,$0}}' | sort -gk1
 du -sh ./* | awk '{{X=0}if($1~".+K"){X=$1*1}if($1~".+M"){X=$1*1024}if($1~".+G"){X=$1*1048576}{print X,$0}}' | sort -gk1
 du -s  ./* | sort -nk1
 du -ah --max-depth=1
+```
+
+### ntpdate授时  
+![全球可用的NTP服务器列表与解析服务 - ntp.org.cn & ntpdate.net](http://www.ntp.org.cn/)  
+```
+ntpdate -q cn.ntp.org.cn
 ```
