@@ -1,6 +1,7 @@
 ---
 title: Python相关收集
 categories:
+  - Linux
   - Python
 toc: false
 date: 2018-07-13 14:59:25

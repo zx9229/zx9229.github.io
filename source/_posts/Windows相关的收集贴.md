@@ -32,3 +32,12 @@ REG ADD   "HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting"
 REG QUERY "HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Default%20Settings" /v FontHeight
 REG ADD   "HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Default%20Settings" /v FontHeight /t REG_DWORD /d 12
 ```
+
+### openssh-portable 或 Win32-OpenSSH
+[Installing SFTP/SSH Server on Windows using OpenSSH :: WinSCP](https://winscp.net/eng/docs/guide_windows_openssh_server#configuring_ssh_server)。  
+[PowerShell/Win32-OpenSSH: Win32 port of OpenSSH](https://github.com/PowerShell/Win32-OpenSSH)。  
+[PowerShell/openssh-portable: Portable OpenSSH](https://github.com/PowerShell/openssh-portable)。
+
+### freeSSHd
+[freeSSHd and freeFTPd - open source SSH and SFTP servers for Windows](http://www.freesshd.com/)。  
+可以创建用户，让用户仅有sftp权限。非常好用。  

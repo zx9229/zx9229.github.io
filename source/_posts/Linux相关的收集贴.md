@@ -59,3 +59,14 @@ du -ah --max-depth=1
 ```
 ntpdate -q cn.ntp.org.cn
 ```
+
+### 查看网络流量相关数据
+别人推荐了`iftop`和`NetHogs`，我还没有尝试。
+
+### yum相关  
+```shell
+# 列出所有已安装的软件包
+yum list installed
+# 卸载
+yum remove 包名
+```

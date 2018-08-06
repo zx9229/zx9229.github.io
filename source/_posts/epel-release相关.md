@@ -2,7 +2,7 @@
 title: epel-release相关
 date: 2018-01-20 14:09:46
 categories:
-- MyDefaultCategory
+- Linux
 tags:
 toc: false
 ---
@@ -31,8 +31,9 @@ yum remove  epel-release
 yum install epel-release
 ```
 然后就可以使用它正常安装一些软件了  
-```
+```shell
 yum install python34
+yum install python34-devel
 yum install python34-setuptools
 easy_install-3.4 pip
 pip  --version

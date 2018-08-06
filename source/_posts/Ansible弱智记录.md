@@ -2,6 +2,7 @@
 title: Ansible弱智记录
 date: 2017-10-28 19:44:41
 categories:
+- python
 - Ansible
 tags:
 toc: true

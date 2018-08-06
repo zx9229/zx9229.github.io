@@ -1,8 +1,9 @@
 ---
 title: python安装cx_Oracle
 categories:
-  - python
-toc: true
+  - Linux
+  - Python
+toc: false
 date: 2018-07-03 21:21:09
 tags:
 ---
@@ -10,10 +11,15 @@ tags:
 <!-- more -->
 
 现在(2018-07)cx_Oracle不论在Windows还是Linux下，都可以`pip install cx_Oracle`了。  
-```
-安装python3
+```shell
+# 安装python3
+# yum install epel-release
+# yum install python34
+# yum install python34-devel
+# yum install python34-setuptools
+# easy_install-3.4 pip
 pip install cx_Oracle
-pip list | grep Oracle  # 查看(cx-Oracle)(cx_Oracle)的版本号
+pip list | grep -i oracle  # 查看(cx-Oracle)(cx_Oracle)的版本号
 ```
 然后可以使用如下代码进行测试：
 ```python
@@ -32,12 +38,12 @@ exit(0)
 cx_Oracle.DatabaseError: DPI-1047: 64-bit Oracle Client library cannot be loaded: "libclntsh.so: cannot open shared object file: No such file or directory". See https://oracle.github.io/odpi/doc/installation.html#linux for help
 ```
 很显然需要去`https://oracle.github.io/odpi/doc/installation.html#linux`寻求帮助。  
-我本着“能不yum就不yum”的个人喜好，倾向于选择`Oracle Instant Client Zip`。  
+我本着“能不yum就不yum”的个人偏好，倾向于选择`Oracle Instant Client Zip`。  
 我倾向于下载`Oracle 11`的压缩包`instantclient-basic-linux.x64-11.2.0.4.0.zip`，因为
 ```
 Version 12.2 client libraries can connect to Oracle Database 11.2 or greater. Version 12.1 client libraries can connect to Oracle Database 10.2 or greater. Version 11.2 client libraries can connect to Oracle Database 9.2 or greater.
 ```
-所以，全部过程就是
+所以，(解决这个错误的)全部过程就是
 ```shell
 mkdir -p /opt/oracle_instantclient
 mv  ./instantclient-basic-linux.x64-11.2.0.4.0.zip /opt/oracle_instantclient/.
