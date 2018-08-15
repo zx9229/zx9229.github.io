@@ -6,6 +6,8 @@ toc: false
 date: 2018-08-06 23:47:12
 tags:
 ---
+略。
+<!-- more -->
 
 [Google Protocol Buffer 的使用和原理](https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html)。  
 下面是`mytest.proto`内容
