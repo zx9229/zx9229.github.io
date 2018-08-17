@@ -89,4 +89,34 @@ mkdir -p /tmp/tsd
 ./build/tsdb tsd --port=4242 --staticroot=./build/staticroot --cachedir=/tmp/tsd --zkquorum=localhost:2181
 #浏览器打开 http://127.0.0.1:4242
 ```
+
+### 使用
+[User Guide — OpenTSDB 2.3 documentation](http://opentsdb.net/docs/build/html/user_guide/index.html)。  
+[Quick Start — OpenTSDB 2.3 documentation](http://opentsdb.net/docs/build/html/user_guide/quickstart.html)。  
+[/api/put — OpenTSDB 2.3 documentation](http://opentsdb.net/docs/build/html/api_http/put.html)。  
+
+#### 创建 metric
+格式: `./tsdb mkmetric metric_name_1 metric_name_2 metric_name_n`。  
+示例: `./tsdb mkmetric mydata.cpu.1s mydata.cpu.5s mydata.cpu.1m`。  
+解释: `mydata.cpu.1s`和`mydata.cpu.5s`和`mydata.cpu.1m`的metric。
+
+#### 用 telnet 上报数据
+格式: `put metric_name_1 Unix时间戳 value tagK1=tagV1 tagK2=tagV2 tagKn=tagVn`。  
+示例: `put mydata.cpu.1s 1514779200 0.6 host=machine1 collector=test_exe`。  
+解释: 上报的`metric`=`mydata.cpu.1s`，时间=`20180101-120000`，主机`host`=`machine1`，采集程序`collector`=`test_exe`。
+
+#### 用 HTTP 的 API 上报数据
+[/api/put — OpenTSDB 2.3 documentation](http://opentsdb.net/docs/build/html/api_http/put.html)。  
+```
+curl -d '
+{"metric":"mydata.cpu.1s",
+  "timestamp":1514779200,
+  "value":0.6,
+  "tags":{
+    "host":"machine1",
+    "collector":"test_exe"
+  }
+}' "http://127.0.0.1:4242/api/put"
+```
+
 完。
