@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="使用sed的过程中随便记录一些东西。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-27T01:42:16.923Z">
+<meta property="og:updated_time" content="2018-08-22T15:00:31.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sed相关">
 <meta name="twitter:description" content="使用sed的过程中随便记录一些东西。">
@@ -110,12 +110,15 @@
 <p>脚本展开之后如上所示。它利用保持空间的数据作为标志。<br>当读取到${src}的行时，先看看保持空间里是不是已经有数据了(先执行x和保持空间互换数据, 再比较字符串)。<br>如果(原来的保持空间,现在的模式空间里的)是空字符串，表示是第一次遇见它。就在此行下面插入${dst}字符串。<br>不管是不是第一次遇见的，都执行d删除模式空间里的数据。<br>它相当于：只要读到${src}的行，都删除它；同时在第一次读到它时，插入${dst}字符串。  </p>
 <h3 id="例子收集"><a href="#例子收集" class="headerlink" title="例子收集"></a>例子收集</h3><ul>
 <li>删除文件中包含某个关键字的所有行<br><code>sed -i &#39;/QWQ/d&#39; &lt;file&gt;</code></li>
+<li>插入数据到文件的第一行<br><code>sed -i &#39;1i line_content&#39; filename</code></li>
+<li>删除文件的第二行<br><code>sed -i &#39;2d&#39; filename</code></li>
+<li>替换第2行中的原字符(.<em>)到目标字符(new_content)<br>`sed -i ‘2s/.</em>/new_content/‘ filename`</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/01/09/sed相关/" data-id="cjkxg3oox002050prhotllt99" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/01/09/sed相关/" data-id="cjl5andy90023swprvd6jzwo5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,6 +183,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/22/Windows的netsh-interface-portproxy的一个例子/">Windows的netsh-interface-portproxy的一个例子</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/17/OpenTSDB试玩环境搭建步骤/">OpenTSDB试玩环境搭建步骤</a>
           </li>
         
@@ -193,10 +200,6 @@
         
           <li>
             <a href="/2018/07/19/SSH端口转发/">SSH端口转发</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/13/Python相关收集/">Python相关收集</a>
           </li>
         
       </ul>

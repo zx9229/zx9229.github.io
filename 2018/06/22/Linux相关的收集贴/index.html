@@ -15,7 +15,7 @@
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.ntp.org.cn/">
-<meta property="og:updated_time" content="2018-08-03T10:31:18.536Z">
+<meta property="og:updated_time" content="2018-08-22T15:15:57.504Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -106,11 +106,13 @@
 <h3 id="ntpdate授时"><a href="#ntpdate授时" class="headerlink" title="ntpdate授时"></a>ntpdate授时</h3><p><img src="http://www.ntp.org.cn/" alt="全球可用的NTP服务器列表与解析服务 - ntp.org.cn &amp; ntpdate.net"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntpdate -q cn.ntp.org.cn</span><br></pre></td></tr></table></figure></p>
 <h3 id="查看网络流量相关数据"><a href="#查看网络流量相关数据" class="headerlink" title="查看网络流量相关数据"></a>查看网络流量相关数据</h3><p>别人推荐了<code>iftop</code>和<code>NetHogs</code>，我还没有尝试。</p>
 <h3 id="yum相关"><a href="#yum相关" class="headerlink" title="yum相关"></a>yum相关</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 列出所有已安装的软件包</span><br><span class="line">yum list installed</span><br><span class="line"><span class="meta">#</span> 卸载</span><br><span class="line">yum remove 包名</span><br></pre></td></tr></table></figure>
+<h3 id="文件被哪些程序使用"><a href="#文件被哪些程序使用" class="headerlink" title="文件被哪些程序使用"></a>文件被哪些程序使用</h3><p><code>fuser -v 文件名</code></p>
+<h3 id="压缩解压预览命令"><a href="#压缩解压预览命令" class="headerlink" title="压缩解压预览命令"></a>压缩解压预览命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">压缩: tar -caf 压缩包名.tar.xz  路径</span><br><span class="line">解压: tar -xaf 压缩包名.tar.xz</span><br><span class="line">测试: tar -tvf 压缩包名.tar.xz</span><br><span class="line">关于压缩和解压:</span><br><span class="line">-c, --create               create a new archive</span><br><span class="line">-x, --extract, --get       extract files from an archive</span><br><span class="line">-a, --auto-compress        use archive suffix to determine the compression</span><br><span class="line">其中 a 表示自动检测，这个 a 也可以省略，然而个人还是习惯输入——因为如果万一某个地方的 tar 版本不支持自动检测，你至少还能得到一个警告</span><br><span class="line">-t, --list                 list the contents of an archive</span><br><span class="line">-v, --verbose              verbosely list files processed</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjkxg3onf000g50prjhrenx07" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjl5andwe000bswprjmeewgm0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,6 +177,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/22/Windows的netsh-interface-portproxy的一个例子/">Windows的netsh-interface-portproxy的一个例子</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/17/OpenTSDB试玩环境搭建步骤/">OpenTSDB试玩环境搭建步骤</a>
           </li>
         
@@ -188,10 +194,6 @@
         
           <li>
             <a href="/2018/07/19/SSH端口转发/">SSH端口转发</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/13/Python相关收集/">Python相关收集</a>
           </li>
         
       </ul>

@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-24T15:44:13.089Z">
+<meta property="og:updated_time" content="2018-08-22T12:02:54.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -99,11 +99,13 @@
 <h3 id="putty修改默认字体大小"><a href="#putty修改默认字体大小" class="headerlink" title="putty修改默认字体大小"></a>putty修改默认字体大小</h3><p><code>putty</code>的默认设置(<code>Default Settings</code>)字体是<code>Courier New</code>，还是不错的，不过大小默认是10，太小了，我们把它改成12应该就舒服了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">REG QUERY &quot;HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Default%20Settings&quot; /v FontHeight</span><br><span class="line">REG ADD   &quot;HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Default%20Settings&quot; /v FontHeight /t REG_DWORD /d 12</span><br></pre></td></tr></table></figure></p>
 <h3 id="openssh-portable-或-Win32-OpenSSH"><a href="#openssh-portable-或-Win32-OpenSSH" class="headerlink" title="openssh-portable 或 Win32-OpenSSH"></a>openssh-portable 或 Win32-OpenSSH</h3><p><a href="https://winscp.net/eng/docs/guide_windows_openssh_server#configuring_ssh_server" target="_blank" rel="noopener">Installing SFTP/SSH Server on Windows using OpenSSH :: WinSCP</a>。<br><a href="https://github.com/PowerShell/Win32-OpenSSH" target="_blank" rel="noopener">PowerShell/Win32-OpenSSH: Win32 port of OpenSSH</a>。<br><a href="https://github.com/PowerShell/openssh-portable" target="_blank" rel="noopener">PowerShell/openssh-portable: Portable OpenSSH</a>。</p>
 <h3 id="freeSSHd"><a href="#freeSSHd" class="headerlink" title="freeSSHd"></a>freeSSHd</h3><p><a href="http://www.freesshd.com/" target="_blank" rel="noopener">freeSSHd and freeFTPd - open source SSH and SFTP servers for Windows</a>。<br>可以创建用户，让用户仅有sftp权限。非常好用。  </p>
+<h3 id="查看文件的MD5"><a href="#查看文件的MD5" class="headerlink" title="查看文件的MD5"></a>查看文件的MD5</h3><p><code>certutil -hashfile 文件名 MD5</code></p>
+<h3 id="命令行查看程序打开的文件"><a href="#命令行查看程序打开的文件" class="headerlink" title="命令行查看程序打开的文件"></a>命令行查看程序打开的文件</h3><p>它貌似不能搜索单个文件，只能显示所有文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">OPENFILES /Local ON</span><br><span class="line">OPENFILES /Query /FO LIST /V</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/25/Windows相关的收集贴/" data-id="cjkxg3ony001050pr4b3c1i7v" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/25/Windows相关的收集贴/" data-id="cjl5andxo001jswprohhekvid" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,6 +170,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/22/Windows的netsh-interface-portproxy的一个例子/">Windows的netsh-interface-portproxy的一个例子</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/17/OpenTSDB试玩环境搭建步骤/">OpenTSDB试玩环境搭建步骤</a>
           </li>
         
@@ -181,10 +187,6 @@
         
           <li>
             <a href="/2018/07/19/SSH端口转发/">SSH端口转发</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/13/Python相关收集/">Python相关收集</a>
           </li>
         
       </ul>
