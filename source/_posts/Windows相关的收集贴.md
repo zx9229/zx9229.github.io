@@ -41,3 +41,14 @@ REG ADD   "HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Default%20Setti
 ### freeSSHd
 [freeSSHd and freeFTPd - open source SSH and SFTP servers for Windows](http://www.freesshd.com/)。  
 可以创建用户，让用户仅有sftp权限。非常好用。  
+
+### 查看文件的MD5
+`certutil -hashfile 文件名 MD5`
+
+### 命令行查看程序打开的文件
+它貌似不能搜索单个文件，只能显示所有文件。
+```
+OPENFILES /Local ON
+OPENFILES /Query /FO LIST /V
+```
+

@@ -70,3 +70,20 @@ yum list installed
 # 卸载
 yum remove 包名
 ```
+
+### 文件被哪些程序使用
+`fuser -v 文件名`
+
+### 压缩解压预览命令
+```
+压缩: tar -caf 压缩包名.tar.xz  路径
+解压: tar -xaf 压缩包名.tar.xz
+测试: tar -tvf 压缩包名.tar.xz
+关于压缩和解压:
+-c, --create               create a new archive
+-x, --extract, --get       extract files from an archive
+-a, --auto-compress        use archive suffix to determine the compression
+其中 a 表示自动检测，这个 a 也可以省略，然而个人还是习惯输入——因为如果万一某个地方的 tar 版本不支持自动检测，你至少还能得到一个警告
+-t, --list                 list the contents of an archive
+-v, --verbose              verbosely list files processed
+```

@@ -133,3 +133,13 @@ Ansible有哪些可用的Windows模块：
 从[Get Certificate thumbprint using PowerShell](https://blogs.technet.microsoft.com/tune_in_to_windows_intune/2013/12/10/get-certificate-thumbprint-using-powershell/)中，我们可以发现，`Get-ChildItem -path cert:\LocalMachine\My`的值和`HTTPS`中的`CertificateThumbprint`有点像。它可能对设置`HTTPS`有帮助。  
 CredSSP身份验证在Windows主机上未默认启用，但可以通过在PowerShell中运行以下命令来启用：`Enable-WSManCredSSP -Role Server -Force`。  
 从[Windows Remote Management — Ansible Documentation](https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html#non-administrator-accounts)中，可以看到`winrm configSDDL default`命令，而官网也提到了它。它可能对设置域用户(domain account)有些帮助。  
+
+#### linux和windows的包的对应
+```
+https://docs.ansible.com/ansible/latest/modules/win_file_module.html
+https://docs.ansible.com/ansible/latest/modules/file_module.html
+https://docs.ansible.com/ansible/latest/modules/win_copy_module.html
+https://docs.ansible.com/ansible/latest/modules/copy_module.html
+ansible "192.168.1.3:22222" --module-name=file --args="path=/tmp/myDir1/myDir2/ state=directory"
+ansible 192.168.1.4          -m win_file        -a "path=F:\file\passwd state=absent"
+```
