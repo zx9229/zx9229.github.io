@@ -87,3 +87,9 @@ yum remove 包名
 -t, --list                 list the contents of an archive
 -v, --verbose              verbosely list files processed
 ```
+
+### 过滤掉配置文件的注释项
+```
+grep -Ev "(^[[:space:]]*$)|(^[[:space:]]*[;#])" smb.conf  # man POSIX
+grep -Pv "(^[ \t]*$)|(^[ \t]*[;#])" smb.conf
+```

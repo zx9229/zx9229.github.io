@@ -1,0 +1,35 @@
+---
+title: InternetDownloadManager相关
+categories:
+  - MyDefaultCategory
+toc: true
+date: 2018-08-25 19:33:53
+tags:
+---
+
+#### 利用系统防火墙阻断IDM连接自家的网站去验证序列号
+源自[为了治疗不用破解补丁的强迫症们、你懂的【idm吧】_百度贴吧](http://tieba.baidu.com/p/3878377959)。  
+总结：阻断idm连接自家的网站去验证序列号。  
+【一定要打开Windows防火墙】我参考该教程，写了一个命令，假如
+```
+IDM的一个序列号是【OS5HG-K90NH-SXOGT-7JYEZ】
+IMD的程序的路径是【C:\Program Files (x86)\Internet Download Manager\IDMan.exe】
+IDM的IP地址列表是【50.22.78.28,169.55.0.224,169.55.0.227,169.55.40.5】
+那么，命令是：
+netsh advfirewall firewall add rule name="IDM_OUT_BLOCK" dir=out action=block program="C:\Program Files (x86)\Internet Download Manager\IDMan.exe" remoteip="50.22.78.28,169.55.0.224,169.55.0.227,169.55.40.5"
+netsh advfirewall firewall add rule /?
+```
+然后就可以注册了。如果你的机器安装了代理程序，我不知道会不会受到影响。
+
+#### 一个可用的IDM
+我从一个帖子找到了`Yanu`的一个作品并将其保留了下来。  
+[恕我直言，只有yanu大神的IDM破解安装包好用](http://tieba.baidu.com/p/4942180901)。  
+[Yanu - 分享优秀、纯净、绿色、实用的精品软件](www.ccav1.com)。  
+[IDM 6.28 Build5 最新破解版](http://www.ccav1.com/idm.html)。  
+[原始下载地址](http://www.ccav1.com/idm.html)。  
+[我的下载地址](IDMan628Build5-Yanu.ex)。  
+```
+MD5: 9FABA635ECFF34BA5634DE41262487B6
+SHA1: F6C862F417028C8E6B978CF848FF417D441C69E8
+CRC32: 9007B8AC
+```
