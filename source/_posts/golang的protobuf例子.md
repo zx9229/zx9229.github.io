@@ -32,7 +32,9 @@ tags:
 4. 下载`protoc.exe`可执行文件
 `Install Protocol Buffers v3`。  
 `Install the protoc compiler that is used to generate gRPC service code.`。  
-例如可以下载`protoc-3.6.1-win32.zip`。然后加入`protoc.exe`到环境变量`PATH`中。
+例如可以下载`protoc-3.6.1-win32.zip`。  
+然后把`protoc.exe`加入到环境变量`PATH`中。  
+或者把`protoc.exe`放到`C:\Users\%USERNAME%\go\bin\`目录下。
 
 5. 安装Go的protoc插件
 `install the protoc plugin for Go`。  
