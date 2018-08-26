@@ -6,11 +6,58 @@ toc: false
 date: 2018-08-06 23:47:12
 tags:
 ---
-略。
+摘要暂略。
 <!-- more -->
 
+### 一些参考网页
 [Google Protocol Buffer 的使用和原理](https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html)。  
-下面是`mytest.proto`内容
+[grpc / grpc.io](https://grpc.io/)。  
+[Go Quick Start](https://grpc.io/docs/quickstart/go.html)。  
+
+
+### 在Windows下配置Go的gRPC环境
+
+1. 安装golang
+`Go version`。  
+例如可以安装`go1.10.3.windows-amd64.msi`。
+
+2. 安装git
+例如可以安装`Git-2.18.0-64-bit.exe`。
+
+3. 安装gRPC
+`Install gRPC`。  
+例如可以执行`go get -u -v google.golang.org/grpc`。  
+然后执行命令`cd /d C:\Users\%USERNAME%\go\src\google.golang.org\grpc`应当可以切换到对应目录下。
+
+4. 下载`protoc.exe`可执行文件
+`Install Protocol Buffers v3`。  
+`Install the protoc compiler that is used to generate gRPC service code.`。  
+例如可以下载`protoc-3.6.1-win32.zip`。然后加入`protoc.exe`到环境变量`PATH`中。
+
+5. 安装Go的protoc插件
+`install the protoc plugin for Go`。  
+例如可以执行`go get -u -v github.com/golang/protobuf/protoc-gen-go`。  
+然后执行命令`cd /d C:\Users\%USERNAME%\go\src\github.com\golang\protobuf\proto`应当可以切换到对应目录下。
+
+
+### 一个例子
+
+1. 创建`testProtocolBuffer`和`mytest`和`mytest.proto`和`test.go`。
+```cmd
+mkdir      C:\Users\%USERNAME%\go\src\my_code\testProtocolBuffer\mytest\
+type NUL > C:\Users\%USERNAME%\go\src\my_code\testProtocolBuffer\mytest\mytest.proto
+type NUL > C:\Users\%USERNAME%\go\src\my_code\testProtocolBuffer\test.go
+```
+然后目录树应当如下所示：
+```
+└─testProtocolBuffer    ( cd /d C:\Users\%USERNAME%\go\src\my_code\testProtocolBuffer )
+   │  test.go
+   │
+   └─mytest
+           mytest.proto
+```
+
+2. 令文件`mytest.proto`的内容如下所示：
 ```
 syntax = "proto3";
 
@@ -40,14 +87,19 @@ message Person {
     repeated PhoneNumber phone = 4;
 }
 ```
-对于`protoc`程序的使用：  
-`protoc --help`可知：  
+
+3. 生成gRPC代码
+参照官网的命令，我们可以仿写出来自己的命令：
+```
+官网: protoc -I           helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:helloworld
+自己: protoc --proto_path=./mytest/       mytest/mytest.proto     --go_out=plugins=grpc:./mytest/   (在testProtocolBuffer下)
+自己: protoc --proto_path=./                     mytest.proto     --go_out=plugins=grpc:./          (在mytest下)
+```
+对于`protoc.exe`程序，我们可以`protoc --help`获取帮助：  
 `Usage: protoc [OPTION] PROTO_FILES`  
-`protoc  --proto_path=PATH  --go_out=OUT_DIR  PROTO_FILES`  
-如果当前目录下有一个test.proto文件,那么  
-`protoc  --proto_path=./  --go_out=./  ./mytest.proto`  
-即可在当前目录生成`mytest.pb.go`文件。  
-然后可以如下编写代码测试
+`protoc  --proto_path=PATH  --go_out=OUT_DIR  PROTO_FILES`
+
+4. 令文件`test.go`的内容如下所示：
 ```golang
 package main
 
@@ -83,3 +135,4 @@ func main() {
 	}
 }
 ```
+然后在文件所在目录下`go build`应当可以通过。
