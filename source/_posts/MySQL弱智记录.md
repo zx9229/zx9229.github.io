@@ -53,6 +53,17 @@ CREATE TABLE schemas_name.table_B AS SELECT * FROM schemas_name.table_A;
 SELECT * FROM mysql.event;
 SELECT * FROM information_schema.events;
 ```
+#### 开启外部访问权限
+```
+SELECT *          FROM mysql.user;
+SELECT host, user FROM mysql.user;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '某用户的(新)密码' WITH GRANT OPTION;
+```
+然后你可能会看到如下警告，大意是不赞成这样做，未来会把这个操作移除：
+```
+1 warning(s): 1287 Using GRANT for creating new user is deprecated and will be removed in future release. Create new user with CREATE USER statement.
+1 warning(s): 1287 Using GRANT statement to modify existing user's properties other than privileges is deprecated and will be removed in future release. Use ALTER USER statement for this operation.
+```
 
 ## MySQL Workbench  
 ```

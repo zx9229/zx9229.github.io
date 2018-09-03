@@ -4,7 +4,7 @@ date: 2017-07-08 20:31:53
 categories:
 - MyDefaultCategory
 tags:
-toc: true
+toc: false
 ---
 在使用gdb调试程序的过程中，有些命令是会被频繁使用的。  
 对于我频繁用到的一些命令，在下面进行了举例说明。  
