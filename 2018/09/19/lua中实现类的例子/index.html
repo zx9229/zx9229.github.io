@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2018/7 | zx9229.github.io</title>
+  <title>lua中实现类的例子 | zx9229.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zx9229.github.io">
-<meta property="og:url" content="http://zx9229.github.io/archives/2018/07/index.html">
+  <meta name="description" content="摘要暂略。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lua中实现类的例子">
+<meta property="og:url" content="http://zx9229.github.io/2018/09/19/lua中实现类的例子/index.html">
 <meta property="og:site_name" content="zx9229.github.io">
+<meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-19T09:18:40.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zx9229.github.io">
+<meta name="twitter:title" content="lua中实现类的例子">
+<meta name="twitter:description" content="摘要暂略。">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -60,154 +64,59 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/23/golang相关的收集贴/" class="archive-article-date">
-  <time datetime="2018-07-23T12:26:45.000Z" itemprop="datePublished">Jul 23</time>
+        <section id="main"><article id="post-lua中实现类的例子" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/19/lua中实现类的例子/" class="article-date">
+  <time datetime="2018-09-19T09:12:32.000Z" itemprop="datePublished">2018-09-19</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/lua/">lua</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/23/golang相关的收集贴/">golang相关的收集贴</a>
+    <h1 class="article-title" itemprop="name">
+      lua中实现类的例子
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/19/SSH端口转发/" class="archive-article-date">
-  <time datetime="2018-07-19T13:05:52.000Z" itemprop="datePublished">Jul 19</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/19/SSH端口转发/">SSH端口转发</a>
-    </h1>
-  
+        <!-- Table of Contents -->
+        
+        <p>摘要暂略。<br><a id="more"></a></p>
+<p>文章<a href="https://wuzhiwei.net/lua_make_class/" target="_blank" rel="noopener">Lua中实现类的原理</a>讲的非常好。我在此保存这个链接，同时写下了这篇文章的例子。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Person = &#123;name=<span class="string">"NO_NAME"</span>&#125;</span><br><span class="line"></span><br><span class="line">Person.<span class="built_in">__index</span> = Person  <span class="comment">-- 请查看[如何查找表中的元素？]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person:talk</span><span class="params">(words)</span></span></span><br><span class="line">    <span class="built_in">print</span>(self.name .. <span class="string">" talk: "</span> .. words)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person:create</span><span class="params">(name)</span></span></span><br><span class="line">    <span class="keyword">local</span> p = &#123;&#125;</span><br><span class="line">    <span class="built_in">setmetatable</span>(p, Person)</span><br><span class="line">    p.name = name</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Person.talk(Person, <span class="string">"test_1"</span>)</span><br><span class="line">Person:talk(        <span class="string">"test_2"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> pa = Person:<span class="built_in">create</span>(<span class="string">"PA"</span>)</span><br><span class="line">pa:talk(<span class="string">"I'm personA"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> pb = Person:<span class="built_in">create</span>(<span class="string">"PB"</span>)</span><br><span class="line">pb:talk(<span class="string">"I'm personB"</span>)</span><br></pre></td></tr></table></figure></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/13/Python相关收集/" class="archive-article-date">
-  <time datetime="2018-07-13T06:59:25.000Z" itemprop="datePublished">Jul 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/13/Python相关收集/">Python相关收集</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/12/Linux的man相关备忘/" class="archive-article-date">
-  <time datetime="2018-07-12T06:49:22.000Z" itemprop="datePublished">Jul 12</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zx9229.github.io/2018/09/19/lua中实现类的例子/" data-id="cjm8xsi7z002clkprce2hz5n3" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/12/Linux的man相关备忘/">Linux的man相关备忘</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/11/Visio画图/" class="archive-article-date">
-  <time datetime="2018-07-11T12:37:08.000Z" itemprop="datePublished">Jul 11</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/11/Visio画图/">Visio画图</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/09/git的一些命令备忘/" class="archive-article-date">
-  <time datetime="2018-07-09T15:04:13.000Z" itemprop="datePublished">Jul 9</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/09/git的一些命令备忘/">git的一些命令备忘</a>
-    </h1>
   
+    <a href="/2018/09/12/VC构建命令和属性的宏-Macros-for-Build-Commands-and-Properties/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">VC构建命令和属性的宏-Macros-for-Build-Commands-and-Properties</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/03/python安装cx-Oracle/" class="archive-article-date">
-  <time datetime="2018-07-03T13:21:09.000Z" itemprop="datePublished">Jul 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/03/python安装cx-Oracle/">python安装cx_Oracle</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
 
 </section>
         
