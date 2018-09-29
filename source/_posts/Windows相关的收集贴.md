@@ -52,3 +52,7 @@ OPENFILES /Local ON
 OPENFILES /Query /FO LIST /V
 ```
 
+### 限制远程桌面服务用户只能进行一个远程会话
+[限制用户只能进行一个会话](https://technet.microsoft.com/zh-cn/library/cc754762.aspx)。  
+[Restrict Users to a Single Session](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754762(v=ws.11))。  
+
