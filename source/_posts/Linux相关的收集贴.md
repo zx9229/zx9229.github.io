@@ -55,7 +55,7 @@ du -ah --max-depth=1
 ```
 
 ### ntpdate授时  
-![全球可用的NTP服务器列表与解析服务 - ntp.org.cn & ntpdate.net](http://www.ntp.org.cn/)  
+[全球可用的NTP服务器列表与解析服务 - ntp.org.cn & ntpdate.net](http://www.ntp.org.cn/)  
 ```
 ntpdate -q cn.ntp.org.cn
 ```
