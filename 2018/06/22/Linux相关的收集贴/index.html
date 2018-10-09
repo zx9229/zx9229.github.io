@@ -14,12 +14,10 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://www.ntp.org.cn/">
-<meta property="og:updated_time" content="2018-08-23T01:41:09.910Z">
+<meta property="og:updated_time" content="2018-10-09T11:10:43.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
-<meta name="twitter:image" content="http://www.ntp.org.cn/">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -103,7 +101,7 @@
 <h3 id="ulimit相关"><a href="#ulimit相关" class="headerlink" title="ulimit相关"></a>ulimit相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ulimit -a</span><br><span class="line">ulimit -c unlimited  # 生成core文件, 可以 ulimit -c 查看当前值, 重启后失效.</span><br></pre></td></tr></table></figure>
 <p>修改<code>/etc/security/limits.conf</code>文件，添加如下行，相当于所有用户都<code>ulimit -c unlimited</code>了。无需重启，重新登录即可生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*               soft    core            unlimited</span><br></pre></td></tr></table></figure></p>
 <h3 id="查看Linux的磁盘占用"><a href="#查看Linux的磁盘占用" class="headerlink" title="查看Linux的磁盘占用"></a>查看Linux的磁盘占用</h3><p>方法1：<code>ncdu</code>。<br>方法2：用<code>du</code>命令。也可以结合其他命令进行排序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">du -sh ./*    # 占用空间,占用者</span><br><span class="line">du -sh ./* | awk &apos;&#123;&#123;X=0&#125;if($1~&quot;.+K&quot;)&#123;X=$1*1024&#125;if($1~&quot;.+M&quot;)&#123;X=$1*1048576&#125;if($1~&quot;.+G&quot;)&#123;X=$1*1073741824&#125;&#123;print X,$0&#125;&#125;&apos; | sort -gk1</span><br><span class="line">du -sh ./* | awk &apos;&#123;&#123;X=0&#125;if($1~&quot;.+K&quot;)&#123;X=$1*1&#125;if($1~&quot;.+M&quot;)&#123;X=$1*1024&#125;if($1~&quot;.+G&quot;)&#123;X=$1*1048576&#125;&#123;print X,$0&#125;&#125;&apos; | sort -gk1</span><br><span class="line">du -s  ./* | sort -nk1</span><br><span class="line">du -ah --max-depth=1</span><br></pre></td></tr></table></figure></p>
-<h3 id="ntpdate授时"><a href="#ntpdate授时" class="headerlink" title="ntpdate授时"></a>ntpdate授时</h3><p><img src="http://www.ntp.org.cn/" alt="全球可用的NTP服务器列表与解析服务 - ntp.org.cn &amp; ntpdate.net"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntpdate -q cn.ntp.org.cn</span><br></pre></td></tr></table></figure></p>
+<h3 id="ntpdate授时"><a href="#ntpdate授时" class="headerlink" title="ntpdate授时"></a>ntpdate授时</h3><p><a href="http://www.ntp.org.cn/" target="_blank" rel="noopener">全球可用的NTP服务器列表与解析服务 - ntp.org.cn &amp; ntpdate.net</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntpdate -q cn.ntp.org.cn</span><br></pre></td></tr></table></figure></p>
 <h3 id="查看网络流量相关数据"><a href="#查看网络流量相关数据" class="headerlink" title="查看网络流量相关数据"></a>查看网络流量相关数据</h3><p>别人推荐了<code>iftop</code>和<code>NetHogs</code>，我还没有尝试。</p>
 <h3 id="yum相关"><a href="#yum相关" class="headerlink" title="yum相关"></a>yum相关</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 列出所有已安装的软件包</span><br><span class="line">yum list installed</span><br><span class="line"><span class="meta">#</span> 卸载</span><br><span class="line">yum remove 包名</span><br></pre></td></tr></table></figure>
 <h3 id="文件被哪些程序使用"><a href="#文件被哪些程序使用" class="headerlink" title="文件被哪些程序使用"></a>文件被哪些程序使用</h3><p><code>fuser -v 文件名</code></p>
@@ -113,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjn0gptmb000a7gprep1oqh56" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjn1ml4ru000ib4pral4hq5kw" class="article-share-link">Share</a>
       
       
     </footer>
