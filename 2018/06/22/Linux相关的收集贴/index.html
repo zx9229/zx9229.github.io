@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-09T11:10:43.657Z">
+<meta property="og:updated_time" content="2018-10-11T11:33:30.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -95,6 +95,7 @@
         <p>摘要暂略。<br><a id="more"></a></p>
 <h3 id="linux日志相关"><a href="#linux日志相关" class="headerlink" title="linux日志相关"></a>linux日志相关</h3><p>linux日志文件说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/var/log/message 系统启动后的信息和错误日志，是Red Hat Linux中最常用的日志之一</span><br><span class="line">/var/log/secure 与安全相关的日志信息</span><br><span class="line">/var/log/maillog 与邮件相关的日志信息</span><br><span class="line">/var/log/cron 与定时任务相关的日志信息</span><br><span class="line">/var/log/spooler 与UUCP和news设备相关的日志信息</span><br><span class="line">/var/log/boot.log 守护进程启动和停止相关的日志消息</span><br><span class="line">/var/log/wtmp 该日志文件永久记录每个用户登录、注销及系统的启动、停机的事件</span><br></pre></td></tr></table></figure></p>
 <p>参见<a href="https://www.cnblogs.com/lcword/p/5917398.html" target="_blank" rel="noopener">linux查看系统的日志的一些实用操作 - lclc - 博客园</a>。  </p>
+<h3 id="dmesg"><a href="#dmesg" class="headerlink" title="dmesg"></a>dmesg</h3><p>查看系统日志的一个命令：<code>dmesg</code>。程序崩溃之类的事情发生时，可以从里面找到痕迹。</p>
 <h3 id="查看用户登录信息"><a href="#查看用户登录信息" class="headerlink" title="查看用户登录信息"></a>查看用户登录信息</h3><p><a href="https://blog.csdn.net/jsd2honey/article/details/78404337" target="_blank" rel="noopener">Linux用户登录记录日志和相关查看命令汇总</a>。</p>
 <h3 id="反向搜索执行过的命令"><a href="#反向搜索执行过的命令" class="headerlink" title="反向搜索执行过的命令"></a>反向搜索执行过的命令</h3><p><code>Ctrl+r</code>: Linux的<code>reverse-i-search</code>。  </p>
 <h3 id="得到一个Linux后首先要装的几个软件"><a href="#得到一个Linux后首先要装的几个软件" class="headerlink" title="得到一个Linux后首先要装的几个软件"></a>得到一个Linux后首先要装的几个软件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install expect ncdu sshpass</span><br></pre></td></tr></table></figure>
@@ -107,11 +108,12 @@
 <h3 id="文件被哪些程序使用"><a href="#文件被哪些程序使用" class="headerlink" title="文件被哪些程序使用"></a>文件被哪些程序使用</h3><p><code>fuser -v 文件名</code></p>
 <h3 id="压缩解压预览命令"><a href="#压缩解压预览命令" class="headerlink" title="压缩解压预览命令"></a>压缩解压预览命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">压缩: tar -caf 压缩包名.tar.xz  路径</span><br><span class="line">解压: tar -xaf 压缩包名.tar.xz</span><br><span class="line">测试: tar -tvf 压缩包名.tar.xz</span><br><span class="line">关于压缩和解压:</span><br><span class="line">-c, --create               create a new archive</span><br><span class="line">-x, --extract, --get       extract files from an archive</span><br><span class="line">-a, --auto-compress        use archive suffix to determine the compression</span><br><span class="line">其中 a 表示自动检测，这个 a 也可以省略，然而个人还是习惯输入——因为如果万一某个地方的 tar 版本不支持自动检测，你至少还能得到一个警告</span><br><span class="line">-t, --list                 list the contents of an archive</span><br><span class="line">-v, --verbose              verbosely list files processed</span><br></pre></td></tr></table></figure>
 <h3 id="过滤掉配置文件的注释项"><a href="#过滤掉配置文件的注释项" class="headerlink" title="过滤掉配置文件的注释项"></a>过滤掉配置文件的注释项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep -Ev &quot;(^[[:space:]]*$)|(^[[:space:]]*[;#])&quot; smb.conf  # man POSIX</span><br><span class="line">grep -Pv &quot;(^[ \t]*$)|(^[ \t]*[;#])&quot; smb.conf</span><br></pre></td></tr></table></figure>
+<h3 id="往shell中的stderr输出内容"><a href="#往shell中的stderr输出内容" class="headerlink" title="往shell中的stderr输出内容"></a>往shell中的stderr输出内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;echo_message_to_stderr&quot; &gt;&amp;2</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjn1ml4ru000ib4pral4hq5kw" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjn4j3ex2000a0kprsavdr95m" class="article-share-link">Share</a>
       
       
     </footer>
