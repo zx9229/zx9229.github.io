@@ -22,6 +22,9 @@ linux日志文件说明
 ```
 参见[linux查看系统的日志的一些实用操作 - lclc - 博客园](https://www.cnblogs.com/lcword/p/5917398.html)。  
 
+### dmesg  
+查看系统日志的一个命令：`dmesg`。程序崩溃之类的事情发生时，可以从里面找到痕迹。
+
 ### 查看用户登录信息  
 [Linux用户登录记录日志和相关查看命令汇总](https://blog.csdn.net/jsd2honey/article/details/78404337)。
 
@@ -92,4 +95,9 @@ yum remove 包名
 ```
 grep -Ev "(^[[:space:]]*$)|(^[[:space:]]*[;#])" smb.conf  # man POSIX
 grep -Pv "(^[ \t]*$)|(^[ \t]*[;#])" smb.conf
+```
+
+### 往shell中的stderr输出内容  
+```
+echo "echo_message_to_stderr" >&2
 ```
