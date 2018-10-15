@@ -58,3 +58,7 @@ Vim单独维护了一些参数。修改Linux的操作系统编码，一般来说
 :e    ++enc     =cp936
 ```
 你可以输入`:help :edit`查看相关帮助。
+
+#### 在Vim中执行shell命令
+正常模式(按Esc返回正常模式)下执行`:!cmd`比如`:!date`。你可以`:help !cmd`查看对应的帮助。  
+备注：你也可以`:!bash`进入一个shell，然后执行一些命令，然后`CTRL-D`或`exit`离开shell。
