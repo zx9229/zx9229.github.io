@@ -2,7 +2,7 @@
 title: vim相关
 date: 2018-01-09 23:17:01
 categories:
-- MyDefaultCategory
+- vim
 tags:
 toc: false
 ---
@@ -59,6 +59,9 @@ Vim单独维护了一些参数。修改Linux的操作系统编码，一般来说
 ```
 你可以输入`:help :edit`查看相关帮助。
 
-#### 在Vim中执行shell命令
+#### 在vim中执行shell命令
 正常模式(按Esc返回正常模式)下执行`:!cmd`比如`:!date`。你可以`:help !cmd`查看对应的帮助。  
 备注：你也可以`:!bash`进入一个shell，然后执行一些命令，然后`CTRL-D`或`exit`离开shell。
+
+#### 在vim中删除^M
+在vim中执行`:%s/^M//g`（输入`^M`的方法：先`CTRL-V`再`CTRL-M`）。
