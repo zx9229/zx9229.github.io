@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="powershell相关。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-30T13:34:13.035Z">
+<meta property="og:updated_time" content="2018-10-16T01:52:07.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="powershell相关的收集贴">
 <meta name="twitter:description" content="powershell相关。">
@@ -95,37 +95,37 @@
         <p>powershell相关。<br><a id="more"></a></p>
 <p>一些连接：<br><a href="https://docs.microsoft.com/zh-cn/powershell/" target="_blank" rel="noopener">PowerShell Documentation | Microsoft Docs</a>。<br><a href="https://docs.microsoft.com/zh-cn/powershell/scripting/powershell-scripting?view=powershell-6" target="_blank" rel="noopener">PowerShell 脚本 | Microsoft Docs</a>。<br><a href="https://www.pstips.net/powershell-online-tutorials" target="_blank" rel="noopener">PowerShell 在线教程 - PowerShell 中文博客</a>。<br><a href="https://www.jb51.net/article/131532.htm" target="_blank" rel="noopener">PowerShell 远程执行任务的方法步骤</a>。<br><a href="http://www.pstips.net/auto-login-and-invoke-remoting-command.html" target="_blank" rel="noopener">通过powershell remoting自动登录服务器并运行命令</a>。  </p>
 <ol>
-<li><p>查看本机的powershell的版本号，有个直观的了解：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$PSVersionTable.PSVersion</span><br></pre></td></tr></table></figure>
+<li><p>查看本机的powershell的版本号，有个直观的了解</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$PSVersionTable</span>.PSVersion</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查看远程机器 WinRM 服务的状态：<br>登录远程机器并执行如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-Service WinRM</span><br></pre></td></tr></table></figure>
+<li><p>查看远程机器 WinRM 服务的状态<br>登录远程机器并执行如下命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-Service</span> WinRM</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>开启远程机器的服务：<br>登录远程机器并执行如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enable-PSRemoting –Force</span><br></pre></td></tr></table></figure>
+<li><p>查看 WinRM 的监听器<br>登录远程机器并执行如下命令：<br>如果你需要操作远程机器，同时它没有监听端口，则需要开启WinRM服务。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PS C:\&gt; winrm enumerate winrm/config/Listener</span><br><span class="line">Listener</span><br><span class="line">    Address = *</span><br><span class="line">    Transport = HTTP</span><br><span class="line">    Port = <span class="number">5985</span></span><br><span class="line">    Hostname</span><br><span class="line">    Enabled = true</span><br><span class="line">    URLPrefix = wsman</span><br><span class="line">    CertificateThumbprint</span><br><span class="line">    ListeningOn = <span class="number">127.0</span>.<span class="number">0.1</span>, ::<span class="number">1</span>, 等</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>关闭WinRM服务的命令是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Disable-PSRemoting –Force</span><br></pre></td></tr></table></figure></p>
-<ol start="4">
-<li><p>测试WinRM服务是否在本地或远程计算机上运行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test-WSMan -ComputerName localhost -Port 5985</span><br></pre></td></tr></table></figure>
+<li><p>开启远程机器的服务<br>登录远程机器并执行如下命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启 WinRM 服务</span></span><br><span class="line"><span class="built_in">Enable-PSRemoting</span>  –Force</span><br><span class="line"><span class="comment"># 关闭 WinRM 服务</span></span><br><span class="line"><span class="built_in">Disable-PSRemoting</span> –Force</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试WinRM服务是否在本地或远程计算机上运行</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test-WSMan -ComputerName localhost -Port <span class="number">5985</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建远程连接 Session</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter-PSSession -ComputerName 192.168.1.101 -Port 5985 -Credential Administrator</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Enter-PSSession</span> -ComputerName <span class="number">192.168</span>.<span class="number">1.101</span> -Port <span class="number">5985</span> -Credential Administrator</span><br><span class="line"><span class="built_in">Enter-PSSession</span> -ComputerName <span class="number">192.168</span>.<span class="number">1.101</span> -Port <span class="number">5985</span> -Credential domain\myName</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PS D:\&gt; Enter-PSSession -ComputerName 192.168.2.56 -Port 5985 -Credential Administrator</span><br><span class="line">Enter-PSSession : 连接到远程服务器失败，错误消息如下: WinRM 客户端无法处理该请求。 可以在下列条件下将默认身份验证与 IP 地址结合使用: 传输为</span><br><span class="line"> HTTPS 或目标位于 TrustedHosts 列表中，并且提供了显式凭据。 使用 winrm.cmd 配置 TrustedHosts。请注意，TrustedHosts 列表中的计算机可能未经过</span><br><span class="line">身份验证。 有关如何设置 TrustedHosts 的详细信息，请运行以下命令: winrm help config。 有关详细信息，请参阅 about_Remote_Troubleshooting 帮助</span><br><span class="line">主题。</span><br><span class="line">所在位置 行:1 字符: 16</span><br><span class="line">+ Enter-PSSession &lt;&lt;&lt;&lt;  -ComputerName 192.168.1.101 -Port 5985 -Credential Administrator</span><br><span class="line">    + CategoryInfo          : InvalidArgument: (192.168.1.101:String) [Enter-PSSession], PSRemotingTransportException</span><br><span class="line">    + FullyQualifiedErrorId : CreateRemoteRunspaceFailed</span><br><span class="line"></span><br><span class="line">PS D:\&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PS D:\&gt; <span class="built_in">Enter-PSSession</span> -ComputerName <span class="number">192.168</span>.<span class="number">2.56</span> -Port <span class="number">5985</span> -Credential Administrator</span><br><span class="line"><span class="built_in">Enter-PSSession</span> : 连接到远程服务器失败，错误消息如下: WinRM 客户端无法处理该请求。 可以在下列条件下将默认身份验证与 IP 地址结合使用: 传输为</span><br><span class="line"> HTTPS 或目标位于 TrustedHosts 列表中，并且提供了显式凭据。 使用 winrm.cmd 配置 TrustedHosts。请注意，TrustedHosts 列表中的计算机可能未经过</span><br><span class="line">身份验证。 有关如何设置 TrustedHosts 的详细信息，请运行以下命令: winrm help config。 有关详细信息，请参阅 about_Remote_Troubleshooting 帮助</span><br><span class="line">主题。</span><br><span class="line">所在位置 行:<span class="number">1</span> 字符: <span class="number">16</span></span><br><span class="line">+ <span class="built_in">Enter-PSSession</span> &lt;&lt;&lt;&lt;  -ComputerName <span class="number">192.168</span>.<span class="number">1.101</span> -Port <span class="number">5985</span> -Credential Administrator</span><br><span class="line">    + CategoryInfo          : InvalidArgument: (<span class="number">192.168</span>.<span class="number">1.101</span>:String) [Enter-PSSession], PSRemotingTransportException</span><br><span class="line">    + FullyQualifiedErrorId : CreateRemoteRunspaceFailed</span><br><span class="line"></span><br><span class="line">PS D:\&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>可能需要为本机的TrustedHosts添加远程机器的IP地址，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-Item WSMan:\localhost\client\TrustedHosts -Value *</span><br><span class="line">Set-Item WSMan:\localhost\client\TrustedHosts -Value &lt;ComputerName&gt;[,&lt;ComputerName&gt;]</span><br></pre></td></tr></table></figure></p>
-<ol start="7">
+<p>可能需要为本机的TrustedHosts添加远程机器的IP地址，命令如下：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-Item</span> WSMan:\localhost\client\TrustedHosts -Value *</span><br><span class="line"><span class="built_in">Set-Item</span> WSMan:\localhost\client\TrustedHosts -Value &lt;ComputerName&gt;[,&lt;ComputerName&gt;]</span><br></pre></td></tr></table></figure></p>
+<ol start="8">
 <li>待定。<br>可以用<code>Write-Error</code>或<code>Write-Warning</code>在屏幕上输出提示。<br>PowerShell远程管理使用5985(http)和5986(https)端口。<br>判断一个变量为bool的真/假值<code>($var -eq $true)</code>和<code>($var -eq $false)</code>。<br>判断一个变量为空值<code>($var -eq $null)</code>。<br><code>powershell</code>是<code>$?</code>而<code>cmd</code>是<code>%errorlevel%</code>，如果<code>plink.exe</code>的程序返回值为<code>0</code>，那么<code>powershell</code>的<code>$?</code>是<code>$true</code>。<br>在<code>PowerShell3.0</code>之前，获取当前路径，之前一直通过内置的$MyInvocation变量<code>$CurrentyDir = Split-Path -Parent $MyInvocation.MyCommand.Definition;</code>，PowerShell3.0之后，直接一个$PSScriptRoot解决问题。  </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/powershell相关的收集贴/" data-id="cjna34ket0026iwprrpwmf102" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/powershell相关的收集贴/" data-id="cjnb2vtc8002ds4prwnhq5btk" class="article-share-link">Share</a>
       
       
     </footer>
