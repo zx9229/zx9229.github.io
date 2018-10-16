@@ -17,39 +17,55 @@ powershell相关。
 [PowerShell 远程执行任务的方法步骤](https://www.jb51.net/article/131532.htm)。  
 [通过powershell remoting自动登录服务器并运行命令](http://www.pstips.net/auto-login-and-invoke-remoting-command.html)。  
 
-1. 查看本机的powershell的版本号，有个直观的了解：
-```
+1. 查看本机的powershell的版本号，有个直观的了解
+```powershell
 $PSVersionTable.PSVersion
 ```
 
-2. 查看远程机器 WinRM 服务的状态：
+2. 查看远程机器 WinRM 服务的状态
 登录远程机器并执行如下命令：
-```
+```powershell
 Get-Service WinRM
 ```
 
-3. 开启远程机器的服务：
+3. 查看 WinRM 的监听器
+登录远程机器并执行如下命令：  
+如果你需要操作远程机器，同时它没有监听端口，则需要开启WinRM服务。
+```powershell
+PS C:\> winrm enumerate winrm/config/Listener
+Listener
+    Address = *
+    Transport = HTTP
+    Port = 5985
+    Hostname
+    Enabled = true
+    URLPrefix = wsman
+    CertificateThumbprint
+    ListeningOn = 127.0.0.1, ::1, 等
+```
+
+4. 开启远程机器的服务
 登录远程机器并执行如下命令：
-```
-Enable-PSRemoting –Force
-```
-关闭WinRM服务的命令是
-```
+```powershell
+# 开启 WinRM 服务
+Enable-PSRemoting  –Force
+# 关闭 WinRM 服务
 Disable-PSRemoting –Force
 ```
 
-4. 测试WinRM服务是否在本地或远程计算机上运行。
-```
+5. 测试WinRM服务是否在本地或远程计算机上运行
+```powershell
 Test-WSMan -ComputerName localhost -Port 5985
 ```
 
-5. 创建远程连接 Session
-```
+6. 创建远程连接 Session
+```powershell
 Enter-PSSession -ComputerName 192.168.1.101 -Port 5985 -Credential Administrator
+Enter-PSSession -ComputerName 192.168.1.101 -Port 5985 -Credential domain\myName
 ```
 
-6. 如果报错
-```
+7. 如果报错
+```powershell
 PS D:\> Enter-PSSession -ComputerName 192.168.2.56 -Port 5985 -Credential Administrator
 Enter-PSSession : 连接到远程服务器失败，错误消息如下: WinRM 客户端无法处理该请求。 可以在下列条件下将默认身份验证与 IP 地址结合使用: 传输为
  HTTPS 或目标位于 TrustedHosts 列表中，并且提供了显式凭据。 使用 winrm.cmd 配置 TrustedHosts。请注意，TrustedHosts 列表中的计算机可能未经过
@@ -63,12 +79,12 @@ Enter-PSSession : 连接到远程服务器失败，错误消息如下: WinRM 客
 PS D:\>
 ```
 可能需要为本机的TrustedHosts添加远程机器的IP地址，命令如下：
-```
+```powershell
 Set-Item WSMan:\localhost\client\TrustedHosts -Value *
 Set-Item WSMan:\localhost\client\TrustedHosts -Value <ComputerName>[,<ComputerName>]
 ```
 
-7. 待定。
+8. 待定。
 可以用`Write-Error`或`Write-Warning`在屏幕上输出提示。  
 PowerShell远程管理使用5985(http)和5986(https)端口。  
 判断一个变量为bool的真/假值`($var -eq $true)`和`($var -eq $false)`。  
