@@ -106,3 +106,16 @@ echo "echo_message_to_stderr" >&2
 假设root用户的`crontab -l`有配置。那么：  
 `/var/log/cron`文件有简要记录。  
 `/var/spool/mail/root`文件有详细记录。
+
+### yum使用代理服务器
+[有代理服务器时使用 yum](https://docs.huihoo.com/yum/managing-software-with-yum-zh_cn/sn-yum-proxy-server.html)。  
+```
+如果只是暂时使用代理,在命令行输入下面一条命令:
+export http_proxy="http://127.0.0.1:8080"
+长久使用代理: 修改/etc/yum.conf文件。
+```
+
+### wget使用代理服务器
+```
+echo "http-proxy = 127.0.0.1:8080" >> ${HOME}/.wgetrc
+```
