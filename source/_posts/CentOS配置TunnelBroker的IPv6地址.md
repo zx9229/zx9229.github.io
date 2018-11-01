@@ -7,6 +7,7 @@ tags:
 toc: false
 ---
 摘要暂略。
+
 <!-- more -->  
 
 #### 搬运  
@@ -94,3 +95,19 @@ DNS2=74.82.42.42
   [IPv6 Global Unicast Address Assignments](https://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xhtml)  
   [ipv6_reference_card.pdf](https://www.ripe.net/participate/member-support/lir-basics/ipv6_reference_card.pdf)  
   [List of IPv6 tunnel brokers](https://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers)  
+
+#### KVM的简单方案
+点击`Example Configurations`并选择`Linux-net-tools`，然后`yum install net-tools`并执行对应的命令，即可。
+
+#### OpenVZ的简单方案
+[IPv6 tunnel on OpenVZ](https://www.cybermilitia.net/2013/07/22/ipv6-tunnel-on-openvz/)。  
+```
+wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/tb-tun/tb-tun_r18.tar.gz
+```
+[利用TunnelBroker提供的IPv6隧道给OpenVZ架构的VPS配置IPv6](http://blog.xosadmin.com/post-344.xpost)。  
+
+#### Windows通过Teredo配置IPv6
+[Windows: 如何配置IPv6隧道](https://lesca.me/archives/how-to-build-ipv6-tunnel-on-windows.html)。  
+[普通人也能使用IPV6](http://blog.sina.com.cn/s/blog_70eec2bf010198hn.html)。  
+[基于隧道使用IPv6](http://blog.sina.com.cn/s/blog_715e0d5a01016709.html)。  
+[自建 6in4 Tunnel Server (iproute2)](https://sskaje.me/2016/01/create-your-own-tunnelbroker-net-iproute2/)。  

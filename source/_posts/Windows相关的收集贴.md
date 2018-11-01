@@ -56,3 +56,8 @@ OPENFILES /Query /FO LIST /V
 [限制用户只能进行一个会话](https://technet.microsoft.com/zh-cn/library/cc754762.aspx)。  
 [Restrict Users to a Single Session](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754762(v=ws.11))。  
 
+### Beyond Compare 4 重置试用时间
+```
+REG QUERY  "HKEY_CURRENT_USER\Software\Scooter Software\Beyond Compare 4" /v CacheId
+REG DELETE "HKEY_CURRENT_USER\Software\Scooter Software\Beyond Compare 4" /v CacheId
+```

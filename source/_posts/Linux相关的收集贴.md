@@ -113,6 +113,7 @@ echo "echo_message_to_stderr" >&2
 如果只是暂时使用代理,在命令行输入下面一条命令:
 export http_proxy="http://127.0.0.1:8080"
 长久使用代理: 修改/etc/yum.conf文件。
+备注：版本库连接都在【/etc/yum.repos.d/*.repo】目录。
 ```
 
 ### wget使用代理服务器
