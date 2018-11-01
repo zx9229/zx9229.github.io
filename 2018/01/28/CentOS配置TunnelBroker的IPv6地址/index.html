@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T12:01:17.727Z">
+<meta property="og:updated_time" content="2018-11-01T15:23:00.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS配置TunnelBroker的IPv6地址">
 <meta name="twitter:description" content="摘要暂略。">
@@ -92,7 +92,8 @@
       
         <!-- Table of Contents -->
         
-        <p>摘要暂略。<br><a id="more"></a>  </p>
+        <p>摘要暂略。</p>
+<a id="more"></a>  
 <h4 id="搬运"><a href="#搬运" class="headerlink" title="搬运"></a>搬运</h4><p><a href="https://eqblog.com/fedora-centos-set-tunnelbroker-ipv6.html" target="_blank" rel="noopener">Fedora/CentOS配置Tunnelbroker IPV6</a>  </p>
 <h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>我买了一个KVM的VPS，它有公网IPv4地址，但没有IPv6地址，我想倒腾一下IPv6玩玩，就有了这个事情。  </p>
 <h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>在<code>https://tunnelbroker.net/</code>注册一个账号。然后为IPv4创建常规隧道：<br>点击<code>Create Regular Tunnel</code>-&gt;在<code>IPv4 Endpoint (Your side)</code>里面输入VPS的公网IPv4地址-&gt;在<code>Available Tunnel Servers</code>里面选择一个(你认为)距离VPS最近的地方-&gt;<code>Create Tunnel</code>。那么你应当会得到类似下面的数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">* IPv6 Tunnel Endpoints</span><br><span class="line">Server IPv4 Address: 72.52.104.74</span><br><span class="line">Server IPv6 Address: 2001:470:1f04:329::1/64</span><br><span class="line">Client IPv4 Address: 172.82.152.3               你的公网IPv4地址</span><br><span class="line">Client IPv6 Address: 2001:470:1f04:329::2/64    分给你的IPv6地址</span><br><span class="line">* Routed IPv6 Prefixes</span><br><span class="line">Routed /64: 2001:470:1f05:329::/64</span><br><span class="line">Routed /48: Assign /48</span><br><span class="line">* DNS Resolvers</span><br><span class="line">Anycast IPv6 Caching Nameserver: 2001:470:20::2</span><br><span class="line">Anycast IPv4 Caching Nameserver: 74.82.42.42</span><br><span class="line">* rDNS Delegations</span><br><span class="line">rDNS Delegated NS1:</span><br><span class="line">rDNS Delegated NS2:</span><br><span class="line">rDNS Delegated NS3:</span><br><span class="line">rDNS Delegated NS4:</span><br><span class="line">rDNS Delegated NS5:</span><br></pre></td></tr></table></figure></p>
@@ -111,11 +112,15 @@
 <li><p>几个链接<br><a href="https://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xhtml" target="_blank" rel="noopener">IPv6 Global Unicast Address Assignments</a><br><a href="https://www.ripe.net/participate/member-support/lir-basics/ipv6_reference_card.pdf" target="_blank" rel="noopener">ipv6_reference_card.pdf</a><br><a href="https://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers" target="_blank" rel="noopener">List of IPv6 tunnel brokers</a>  </p>
 </li>
 </ul>
+<h4 id="KVM的简单方案"><a href="#KVM的简单方案" class="headerlink" title="KVM的简单方案"></a>KVM的简单方案</h4><p>点击<code>Example Configurations</code>并选择<code>Linux-net-tools</code>，然后<code>yum install net-tools</code>并执行对应的命令，即可。</p>
+<h4 id="OpenVZ的简单方案"><a href="#OpenVZ的简单方案" class="headerlink" title="OpenVZ的简单方案"></a>OpenVZ的简单方案</h4><p><a href="https://www.cybermilitia.net/2013/07/22/ipv6-tunnel-on-openvz/" target="_blank" rel="noopener">IPv6 tunnel on OpenVZ</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/tb-tun/tb-tun_r18.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://blog.xosadmin.com/post-344.xpost" target="_blank" rel="noopener">利用TunnelBroker提供的IPv6隧道给OpenVZ架构的VPS配置IPv6</a>。  </p>
+<h4 id="Windows通过Teredo配置IPv6"><a href="#Windows通过Teredo配置IPv6" class="headerlink" title="Windows通过Teredo配置IPv6"></a>Windows通过Teredo配置IPv6</h4><p><a href="https://lesca.me/archives/how-to-build-ipv6-tunnel-on-windows.html" target="_blank" rel="noopener">Windows: 如何配置IPv6隧道</a>。<br><a href="http://blog.sina.com.cn/s/blog_70eec2bf010198hn.html" target="_blank" rel="noopener">普通人也能使用IPV6</a>。<br><a href="http://blog.sina.com.cn/s/blog_715e0d5a01016709.html" target="_blank" rel="noopener">基于隧道使用IPv6</a>。<br><a href="https://sskaje.me/2016/01/create-your-own-tunnelbroker-net-iproute2/" target="_blank" rel="noopener">自建 6in4 Tunnel Server (iproute2)</a>。  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/01/28/CentOS配置TunnelBroker的IPv6地址/" data-id="cjnb2vt9x0003s4prs3hmkfgs" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/01/28/CentOS配置TunnelBroker的IPv6地址/" data-id="cjnyx8eyj0003g0prl30k6fs2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +172,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -180,23 +185,23 @@
       <ul>
         
           <li>
-            <a href="/2018/09/27/Excel相关收集/">Excel相关收集</a>
+            <a href="/2018/11/01/7z的使用相关/">7z的使用相关</a>
           </li>
         
           <li>
-            <a href="/2018/09/25/路由表和子网/">路由表和子网</a>
+            <a href="/2018/11/01/IPv6被Windows和Linux支持和使用/">IPv6被Windows和Linux支持和使用</a>
           </li>
         
           <li>
-            <a href="/2018/09/19/lua中实现类的例子/">lua中实现类的例子</a>
+            <a href="/2018/10/31/svn相关/">svn相关</a>
           </li>
         
           <li>
-            <a href="/2018/09/12/VC构建命令和属性的宏-Macros-for-Build-Commands-and-Properties/">VC构建命令和属性的宏-Macros-for-Build-Commands-and-Properties</a>
+            <a href="/2018/10/27/lftp相关/">lftp相关</a>
           </li>
         
           <li>
-            <a href="/2018/08/25/InternetDownloadManager相关/">InternetDownloadManager相关</a>
+            <a href="/2018/10/26/sftp相关/">sftp相关</a>
           </li>
         
       </ul>
