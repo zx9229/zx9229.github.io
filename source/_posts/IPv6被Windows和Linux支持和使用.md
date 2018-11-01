@@ -18,6 +18,8 @@ netsh interface ipv6 6to4 set state disable
 netsh interface ipv6 isatap set state disable
 REM 设置
 netsh interface ipv6 set teredo enterpriseclient teredo.ipv6.microsoft.com 60 clientport=default
+REM 查看状态
+netsh interface ipv6 show teredo
 ```
 
 #### Windows使用tunnelbroker
@@ -49,6 +51,7 @@ netsh interface ipv6 add route ::/0 IP6Tunnel 2001:470:1f06:6b8::1
 假定我是NAT，我的主机的内网地址是`192.168.1.101`，那么我需要将第二行命令中的`172.82.152.3`替换为`192.168.1.101`。然后执行命令即可。
 
 #### KVM使用tunnelbroker
+[给搬瓦工 KVM 版 VPS 配置 IPv6 支持（基于 Linux CentOS 7）](https://www.bandwagonhost.net/2144.html)。  
 登录`www.tunnelbroker.net`->`Create Regular Tunnel`->将KVM的VPS的公网地址填入`IPv4 Endpoint (Your side)`中->选择`Available Tunnel Servers`->`Create Tunnel`->`Example Configurations`->在`Select Your OS`中选择对应的Linux版本以查看相关命令。  
 假定我的KVM的VPS的公网地址是`172.82.152.3`并选择`Select Your OS`为`Linux-net-tools`，那么我可能得到如下信息：
 ```shell
