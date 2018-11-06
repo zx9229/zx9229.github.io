@@ -120,3 +120,15 @@ export http_proxy="http://127.0.0.1:8080"
 ```
 echo "http-proxy = 127.0.0.1:8080" >> ${HOME}/.wgetrc
 ```
+
+### 使用ntpd校准时间
+```shell
+# 安装ntp
+yum install ntp
+# 修改配置文件
+vi /etc/ntp.conf
+# 启动服务
+systemctl start  ntpd.service
+# 设置开机自启动
+systemctl enable ntpd.service
+```
