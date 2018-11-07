@@ -136,9 +136,11 @@ systemctl enable ntpd.service
 ### 删除空文件夹的命令
 ```shell
 # 函数rme(rm empty dir)
-rme(){ [ `ls -A "$1" 2>&1|wc -c` = 0 ] && rm -r "$1";}               # 无提示的版本
-rme(){ [ `ls -A "$1" 2>&1|wc -c` = 0 ] && rm -r "$1" || echo FAIL;}  # 提示FAIL
-rme(){ [ `ls -A "$1" 2>&1|wc -c` = 0 ] && echo empty || echo FAIL;}  # 测试函数
+rme(){ [ `ls -A "$1" 2>&1|wc -c` = 0 ] && rm -r "$1";}
+rme(){ [ `ls -A "$1" 2>&1|wc -c` = 0 ] && rm -r "$1" || echo FAIL;}
+rme(){ [ `ls -A "$1" 2>&1|wc -c` = 0 ] && rm -r "$1" || echo FAIL && return 1;}
+rme(){ [ `ls -A "$1" 2>&1|wc -c` = 0 ] && echo empty || echo FAIL && return 1;}  # 测试函数
 # 例
 rme 某文件夹
 ```
+备注：`find . -type d -empty -exec rm -r {} \;`。
