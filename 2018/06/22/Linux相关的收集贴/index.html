@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-06T09:25:38.197Z">
+<meta property="og:updated_time" content="2018-11-07T13:09:34.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -113,11 +113,13 @@
 <h3 id="yum使用代理服务器"><a href="#yum使用代理服务器" class="headerlink" title="yum使用代理服务器"></a>yum使用代理服务器</h3><p><a href="https://docs.huihoo.com/yum/managing-software-with-yum-zh_cn/sn-yum-proxy-server.html" target="_blank" rel="noopener">有代理服务器时使用 yum</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果只是暂时使用代理,在命令行输入下面一条命令:</span><br><span class="line">export http_proxy=&quot;http://127.0.0.1:8080&quot;</span><br><span class="line">长久使用代理: 修改/etc/yum.conf文件。</span><br><span class="line">备注：版本库连接都在【/etc/yum.repos.d/*.repo】目录。</span><br></pre></td></tr></table></figure></p>
 <h3 id="wget使用代理服务器"><a href="#wget使用代理服务器" class="headerlink" title="wget使用代理服务器"></a>wget使用代理服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;http-proxy = 127.0.0.1:8080&quot; &gt;&gt; $&#123;HOME&#125;/.wgetrc</span><br></pre></td></tr></table></figure>
 <h3 id="使用ntpd校准时间"><a href="#使用ntpd校准时间" class="headerlink" title="使用ntpd校准时间"></a>使用ntpd校准时间</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装ntp</span><br><span class="line">yum install ntp</span><br><span class="line"><span class="meta">#</span> 修改配置文件</span><br><span class="line">vi /etc/ntp.conf</span><br><span class="line"><span class="meta">#</span> 启动服务</span><br><span class="line">systemctl start  ntpd.service</span><br><span class="line"><span class="meta">#</span> 设置开机自启动</span><br><span class="line">systemctl enable ntpd.service</span><br></pre></td></tr></table></figure>
+<h3 id="删除空文件夹的命令"><a href="#删除空文件夹的命令" class="headerlink" title="删除空文件夹的命令"></a>删除空文件夹的命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 函数rme(rm empty dir)</span><br><span class="line">rme()&#123; [ `ls -A "$1" 2&gt;&amp;1|wc -c` = 0 ] &amp;&amp; rm -r "$1";&#125;</span><br><span class="line">rme()&#123; [ `ls -A "$1" 2&gt;&amp;1|wc -c` = 0 ] &amp;&amp; rm -r "$1" || echo FAIL;&#125;</span><br><span class="line">rme()&#123; [ `ls -A "$1" 2&gt;&amp;1|wc -c` = 0 ] &amp;&amp; rm -r "$1" || echo FAIL &amp;&amp; return 1;&#125;</span><br><span class="line">rme()&#123; [ `ls -A "$1" 2&gt;&amp;1|wc -c` = 0 ] &amp;&amp; echo empty || echo FAIL &amp;&amp; return 1;&#125;  # 测试函数</span><br><span class="line"><span class="meta">#</span> 例</span><br><span class="line">rme 某文件夹</span><br></pre></td></tr></table></figure>
+<p>备注：<code>find . -type d -empty -exec rm -r {} \;</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type d -empty -delete  # 删除空文件夹</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjo6hcxzt000wsgpruvp3pea1" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjo78wgqq000i6cprr68ruwnp" class="article-share-link">Share</a>
       
       
     </footer>
