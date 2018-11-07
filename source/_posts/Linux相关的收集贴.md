@@ -144,3 +144,6 @@ rme(){ [ `ls -A "$1" 2>&1|wc -c` = 0 ] && echo empty || echo FAIL && return 1;} 
 rme 某文件夹
 ```
 备注：`find . -type d -empty -exec rm -r {} \;`。
+```
+find . -type d -empty -delete  # 删除空文件夹
+```
