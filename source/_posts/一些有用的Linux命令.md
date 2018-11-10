@@ -2,7 +2,7 @@
 title: 一些有用的Linux命令
 date: 2017-07-13 21:21:29
 categories:
-- MyDefaultCategory
+- Linux
 tags:
 ---
 有些Linux命令，虽然不太常用，但是值得记录下来备用。  

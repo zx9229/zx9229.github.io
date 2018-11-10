@@ -2,9 +2,9 @@
 title: find相关
 date: 2017-07-25 09:37:09
 categories:
-- MyDefaultCategory
+- Linux
 tags:
-toc: true
+toc: false
 ---
 一些有用的find示例。
 

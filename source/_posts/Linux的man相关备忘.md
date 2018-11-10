@@ -1,7 +1,7 @@
 ---
 title: Linux的man相关备忘
 categories:
-  - MyDefaultCategory
+  - Linux
 toc: false
 date: 2018-07-12 14:49:22
 tags:

@@ -2,7 +2,7 @@
 title: sed相关
 date: 2018-01-09 01:08:00
 categories:
-- MyDefaultCategory
+- Linux
 tags:
 toc: false
 ---

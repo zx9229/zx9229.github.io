@@ -2,7 +2,7 @@
 title: awk相关
 date: 2018-01-09 23:53:34
 categories:
-- MyDefaultCategory
+- Linux
 tags:
 toc: false
 ---

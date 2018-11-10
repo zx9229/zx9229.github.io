@@ -2,7 +2,7 @@
 title: gdb的一些常用命令
 date: 2017-07-08 20:31:53
 categories:
-- MyDefaultCategory
+- Linux
 tags:
 toc: false
 ---
