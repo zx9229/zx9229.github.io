@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="一些有用的find示例。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-21T15:07:48.488Z">
+<meta property="og:updated_time" content="2018-11-10T13:28:51.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="find相关">
 <meta name="twitter:description" content="一些有用的find示例。">
@@ -71,7 +71,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
   </div>
 
   </div>
@@ -92,11 +92,6 @@
       
         <!-- Table of Contents -->
         
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#查找，同时忽略掉无权限的目录-其实是不显示无权限的错误消息"><span class="toc-number">1.</span> <span class="toc-text">查找，同时忽略掉无权限的目录(其实是不显示无权限的错误消息)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找在某个时间段之内被修改的文件"><span class="toc-number">2.</span> <span class="toc-text">查找在某个时间段之内被修改的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#find的几个选项"><span class="toc-number">2.1.</span> <span class="toc-text">find的几个选项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看mtime-atime-ctime的几种方式"><span class="toc-number">3.</span> <span class="toc-text">查看mtime,atime,ctime的几种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用ls查看"><span class="toc-number">3.1.</span> <span class="toc-text">用ls查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用stat查看"><span class="toc-number">3.2.</span> <span class="toc-text">用stat查看</span></a></li></ol></li></ol>
-          </div>
-        
         <p>一些有用的find示例。</p>
 <a id="more"></a>
 <h2 id="查找，同时忽略掉无权限的目录-其实是不显示无权限的错误消息"><a href="#查找，同时忽略掉无权限的目录-其实是不显示无权限的错误消息" class="headerlink" title="查找，同时忽略掉无权限的目录(其实是不显示无权限的错误消息)"></a>查找，同时忽略掉无权限的目录(其实是不显示无权限的错误消息)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -iname &quot;*redis*&quot; 2&gt;&amp;1 | grep -v &quot;Permission denied&quot;</span><br><span class="line">find / -iname &quot;*redis*&quot; 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
@@ -110,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2017/07/25/find相关/" data-id="cjo78wgsl001s6cprp9j1vhu3" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2017/07/25/find相关/" data-id="cjobhq83m001wg0pr3wxazi0h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,7 +142,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/golang/">golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/golang/">golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li></ul>
     </div>
   </div>
 
@@ -175,6 +170,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/10/RaspberryPi3B-安装KaliLinux相关/">RaspberryPi3B+安装KaliLinux相关</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/07/Kali-Linux破解WIFI/">Kali-Linux破解WIFI</a>
           </li>
         
@@ -188,10 +187,6 @@
         
           <li>
             <a href="/2018/10/31/svn相关/">svn相关</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/27/lftp相关/">lftp相关</a>
           </li>
         
       </ul>
