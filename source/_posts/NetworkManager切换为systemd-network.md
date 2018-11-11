@@ -132,6 +132,15 @@ systemctl restart wpa_supplicant@wlan0  # 重启程序,重新加载配置文件,
 命令`reboot`或`shutdown -r -t 60`(参数`-t`仅在Windows下有效)以重启机器，让设置生效。  
 重启后，机器应当可以正常连接WIFI，插入网线后应当能正常获取IP地址，表明LAN和WLAN均正常运行。  
 
+#### 手工启动某无线网络接口
+如果我们临时插入了一个无线网络接口，请创建`/wpa_supplicant_manual.sh`脚本：
+```shell
+if [ $# -ne 1 ]; then echo "must input one interface." >&2; exit 1; fi
+/sbin/wpa_supplicant -B -c/etc/wpa_supplicant/wpa_supplicant-$1.conf -Dnl80211,wext -i$1
+```
+然后为该接口创建对应的配置文件。  
+假定该接口名为`wlan1`，那么可以`/wpa_supplicant_manual.sh wlan1`手工启动该接口。
+
 #### wpa_cli 的一些命令
 ```shell
 wpa_cli          scan         # request new BSS scan
