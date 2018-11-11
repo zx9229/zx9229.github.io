@@ -30,7 +30,7 @@ Kali NetHunter is an Android penetration testing platform for Nexus and OnePlus 
 ```
 
 #### 制作镜像
-重置SD卡，可以用`SD Memory Card Formatter`。  
+重置SD卡，可以用`SD Memory Card Formatter - SD Association`。可能`USBOOT_1.70`(选择“用0重置参数”，然后点击“开始”让软件工作)也行。  
 烧录img的软件[Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/)。  
 
 #### 启动系统
@@ -88,6 +88,34 @@ Kali Linux 默认使用 NetworkManager 而不是 wpa_supplicant 管理无线网�
 nmtui 是一个基于 curses 的图形化前端，控制 NetworkManager 之用。  
 你可以搜索`NetworkManager 用户连接 系统连接`查看更多相关信息。  
 
+#### nmcli的一些用法
+```
+nmcli device     status
+nmcli connection show
+nmcli connection up   <NAME>
+nmcli connection down <NAME>
+nmcli connection del  <NAME>
+```
+例子
+```
+root@kali:~# nmcli dev status
+DEVICE  TYPE      STATE      CONNECTION 
+wlan0   wifi      connected  wifi_12345  
+eth0    ethernet  unmanaged  --         
+lo      loopback  unmanaged  --         
+root@kali:~# nmcli connection show
+NAME        UUID                                  TYPE  DEVICE 
+wifi_12345  ebf017b0-c25c-46be-8aaf-d26296337f3d  wifi  wlan0    
+wifi_30123  7129e93e-ce02-4170-8a68-9e17d46538c6  wifi  --     
+honor_test  7b04411c-910d-4f19-9685-53f5f7934735  wifi  --     
+root@kali:~# nmcli connection del "wifi_30123"
+Connection 'wifi_30123' (7129e93e-ce02-4170-8a68-9e17d46538c6) successfully deleted.
+root@kali:~# nmcli connection show
+NAME        UUID                                  TYPE  DEVICE 
+wifi_12345  ebf017b0-c25c-46be-8aaf-d26296337f3d  wifi  wlan0  
+honor_test  7b04411c-910d-4f19-9685-53f5f7934735  wifi  --     
+root@kali:~#
+```
 
 #### 已经废弃同时可能有用的东西
 [启用wpa_supplicant而不需要NetworkManager](http://www.linuxeye.com/Linux/2237.html)。  
