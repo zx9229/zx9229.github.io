@@ -102,7 +102,8 @@ Alias=multi-user.target.wants/wpa_supplicant@%i.service
 root@kali:~#
 ```
 可知，对于每个无线网络接口，需要一个类似`/etc/wpa_supplicant/wpa_supplicant-%I.conf`名字的配置文件。  
-所以，我们需要配置一下`/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`文件的内容：
+所以，我们需要配置一下`/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`文件的内容：  
+(字段`priority`尽量都用个位数字,我一个99一个9的时候,经常出现无法自动连接的情况)。  
 ```
 # 没有这句话,就不能使用wpa_cli.
 ctrl_interface=/var/run/wpa_supplicant
@@ -145,6 +146,7 @@ if [ $# -ne 1 ]; then echo "must input one interface." >&2; exit 1; fi
 ```shell
 wpa_cli          scan         # request new BSS scan
 wpa_cli          scan_result  # 获取最新的scan结果
+wpa_cli -i wlan0 ping         # pings wpa_supplicant
 wpa_cli -i wlan0 reconfigure  # 强制wpa_supplicant重新读取它的配置文件
 wpa_cli -i wlan0 scan         # request new BSS scan
 wpa_cli -i wlan0 scan_result  # 获取最新的scan结果
@@ -152,6 +154,7 @@ wpa_cli -i wlan0 status       # 得到当前的WPA/EAPOL/EAP状态
 wpa_cli -i wlan0    list_network    # 列出配置的网络
 wpa_cli -i wlan0 disable_network 0  # 关闭指定序号的网络(数字是list_network显示的序号)
 wpa_cli -i wlan0  enable_network 1  # 开启指定序号的网络(数字是list_network显示的序号)
+wpa_cli -i wlan0  select_network 1  # select a network (disable others)
 ```
 用`wpa_cli`添加/修改/删除 network
 ```
