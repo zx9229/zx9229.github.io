@@ -5,15 +5,21 @@
   
 
   
-  <title>Archives: 2018 | zx9229.github.io</title>
+  <title>WBEMTest.exe使用 | zx9229.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zx9229.github.io">
-<meta property="og:url" content="http://zx9229.github.io/archives/2018/page/3/index.html">
+  <meta name="description" content="WMI相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WBEMTest.exe使用">
+<meta property="og:url" content="http://zx9229.github.io/2018/11/13/WBEMTest-exe使用/index.html">
 <meta property="og:site_name" content="zx9229.github.io">
+<meta property="og:description" content="WMI相关">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://zx9229.github.io/2018/11/13/WBEMTest-exe使用/WBEMTest.exe.查询.png">
+<meta property="og:updated_time" content="2018-11-13T10:39:14.985Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zx9229.github.io">
+<meta name="twitter:title" content="WBEMTest.exe使用">
+<meta name="twitter:description" content="WMI相关">
+<meta name="twitter:image" content="http://zx9229.github.io/2018/11/13/WBEMTest-exe使用/WBEMTest.exe.查询.png">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -60,216 +66,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/12/Linux的man相关备忘/" class="archive-article-date">
-  <time datetime="2018-07-12T06:49:22.000Z" itemprop="datePublished">Jul 12</time>
+        <section id="main"><article id="post-WBEMTest-exe使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/13/WBEMTest-exe使用/" class="article-date">
+  <time datetime="2018-11-13T09:42:09.000Z" itemprop="datePublished">2018-11-13</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Windows/">Windows</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/12/Linux的man相关备忘/">Linux的man相关备忘</a>
+    <h1 class="article-title" itemprop="name">
+      WBEMTest.exe使用
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/11/Visio画图/" class="archive-article-date">
-  <time datetime="2018-07-11T12:37:08.000Z" itemprop="datePublished">Jul 11</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/11/Visio画图/">Visio画图</a>
-    </h1>
-  
+        <!-- Table of Contents -->
+        
+        <p>WMI相关<br><a id="more"></a></p>
+<h4 id="WBEMTest-exe"><a href="#WBEMTest-exe" class="headerlink" title="WBEMTest.exe"></a>WBEMTest.exe</h4><p><a href="https://docs.microsoft.com/en-us/previous-versions/system-center/configuration-manager-2003/cc181099(v=technet.10" target="_blank" rel="noopener">WMI Browsing Tools | Microsoft Docs</a>)。<br><code>WBEMTest.exe</code>要不然就按照<code>WMI Browse Engine Manager Test</code>进行记忆吧。<br><code>WBEMTest.exe</code>要不然还可以<code>WMI Browse Every Machine Test</code>进行记忆(浏览每个机器)。  </p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>查询得到系统盘所在硬盘的ID：<br><code>SELECT DiskIndex FROM Win32_DiskPartition WHERE Bootable = TRUE</code>。<br>假定我们得到的结果是<code>DiskIndex=0</code>，查询系统盘所在硬盘的硬盘序列号：<br><code>SELECT SerialNumber FROM Win32_DiskDrive WHERE Index = 0</code>。<br>然后得到的结果就是硬盘序列号。<br><img src="WBEMTest.exe.查询.png" alt="">  </p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/09/git的一些命令备忘/" class="archive-article-date">
-  <time datetime="2018-07-09T15:04:13.000Z" itemprop="datePublished">Jul 9</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/09/git的一些命令备忘/">git的一些命令备忘</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/03/python安装cx-Oracle/" class="archive-article-date">
-  <time datetime="2018-07-03T13:21:09.000Z" itemprop="datePublished">Jul 3</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zx9229.github.io/2018/11/13/WBEMTest-exe使用/" data-id="cjofnbo0h001hssprfctjdaei" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/03/python安装cx-Oracle/">python安装cx_Oracle</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/29/shell中嵌入二进制文件/" class="archive-article-date">
-  <time datetime="2018-06-29T08:55:01.000Z" itemprop="datePublished">Jun 29</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/29/shell中嵌入二进制文件/">shell中嵌入二进制文件</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/11/NetworkManager切换为systemd-network/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">NetworkManager切换为systemd-network</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/29/ansible和Windows相关/" class="archive-article-date">
-  <time datetime="2018-06-28T16:14:25.000Z" itemprop="datePublished">Jun 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/29/ansible和Windows相关/">ansible和Windows相关</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/26/一些未知来源的东西/" class="archive-article-date">
-  <time datetime="2018-06-26T12:29:14.000Z" itemprop="datePublished">Jun 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/26/一些未知来源的东西/">一些未知来源的东西</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/26/git的Credential相关/" class="archive-article-date">
-  <time datetime="2018-06-26T11:58:16.000Z" itemprop="datePublished">Jun 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/26/git的Credential相关/">git的Credential相关</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/25/Windows相关的收集贴/" class="archive-article-date">
-  <time datetime="2018-06-25T12:19:29.000Z" itemprop="datePublished">Jun 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/Windows相关的收集贴/">Windows相关的收集贴</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/22/Linux相关的收集贴/" class="archive-article-date">
-  <time datetime="2018-06-22T13:11:52.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/22/Linux相关的收集贴/">Linux相关的收集贴</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/archives/2018/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2018/page/4/">4</a><a class="page-number" href="/archives/2018/page/5/">5</a><a class="extend next" rel="next" href="/archives/2018/page/4/">Next &raquo;</a>
-  </nav>
 
 </section>
         

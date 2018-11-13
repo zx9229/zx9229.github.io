@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="将 Raspberry Pi 上的 Kali Linux 的 NetworkManager 切换为 systemd-network 和 wpa_supplicant">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-12T13:31:00.855Z">
+<meta property="og:updated_time" content="2018-11-13T10:54:32.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NetworkManager切换为systemd-network">
 <meta name="twitter:description" content="将 Raspberry Pi 上的 Kali Linux 的 NetworkManager 切换为 systemd-network 和 wpa_supplicant">
@@ -106,13 +106,14 @@
 <h4 id="重启以生效设置"><a href="#重启以生效设置" class="headerlink" title="重启以生效设置"></a>重启以生效设置</h4><p>命令<code>reboot</code>或<code>shutdown -r -t 60</code>(参数<code>-t</code>仅在Windows下有效)以重启机器，让设置生效。<br>重启后，机器应当可以正常连接WIFI，插入网线后应当能正常获取IP地址，表明LAN和WLAN均正常运行。  </p>
 <h4 id="手工启动某无线网络接口"><a href="#手工启动某无线网络接口" class="headerlink" title="手工启动某无线网络接口"></a>手工启动某无线网络接口</h4><p>如果我们临时插入了一个无线网络接口，请创建<code>/wpa_supplicant_manual.sh</code>脚本：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if [ $# -ne 1 ]; then echo "must input one interface." &gt;&amp;2; exit 1; fi</span><br><span class="line">/sbin/wpa_supplicant -B -c/etc/wpa_supplicant/wpa_supplicant-$1.conf -Dnl80211,wext -i$1</span><br></pre></td></tr></table></figure></p>
 <p>然后为该接口创建对应的配置文件。<br>假定该接口名为<code>wlan1</code>，那么可以<code>/wpa_supplicant_manual.sh wlan1</code>手工启动该接口。</p>
+<h4 id="wpa-passphrase-一些用法"><a href="#wpa-passphrase-一些用法" class="headerlink" title="wpa_passphrase 一些用法"></a>wpa_passphrase 一些用法</h4><p><code>wpa_passphrase [ ssid ] [ passphrase ]</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# wpa_passphrase wifiName wifiPswd</span><br><span class="line">network=&#123;</span><br><span class="line">	ssid=&quot;wifiName&quot;</span><br><span class="line">	#psk=&quot;wifiPswd&quot;</span><br><span class="line">	psk=6cb2d28425ad7340ceff035eb97fc7c0b34d401214003284c702c49a69b6f1ca</span><br><span class="line">&#125;</span><br><span class="line">root@kali:~# wpa_passphrase wifiName wifiPswd &gt;&gt; /etc/wpa_supplicant/wpa_supplicant-wlan0.conf</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 list_network</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 reconfigure</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 list_network</span><br></pre></td></tr></table></figure></p>
 <h4 id="wpa-cli-的一些命令"><a href="#wpa-cli-的一些命令" class="headerlink" title="wpa_cli 的一些命令"></a>wpa_cli 的一些命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wpa_cli          scan         # request new BSS scan</span><br><span class="line">wpa_cli          scan_result  # 获取最新的scan结果</span><br><span class="line">wpa_cli -i wlan0 ping         # pings wpa_supplicant</span><br><span class="line">wpa_cli -i wlan0 reconfigure  # 强制wpa_supplicant重新读取它的配置文件</span><br><span class="line">wpa_cli -i wlan0 scan         # request new BSS scan</span><br><span class="line">wpa_cli -i wlan0 scan_result  # 获取最新的scan结果</span><br><span class="line">wpa_cli -i wlan0 status       # 得到当前的WPA/EAPOL/EAP状态</span><br><span class="line">wpa_cli -i wlan0    list_network    # 列出配置的网络</span><br><span class="line">wpa_cli -i wlan0 disable_network 0  # 关闭指定序号的网络(数字是list_network显示的序号)</span><br><span class="line">wpa_cli -i wlan0  enable_network 1  # 开启指定序号的网络(数字是list_network显示的序号)</span><br><span class="line">wpa_cli -i wlan0  select_network 1  # select a network (disable others)</span><br></pre></td></tr></table></figure>
 <p>用<code>wpa_cli</code>添加/修改/删除 network<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# wpa_cli -i wlan0 list_network</span><br><span class="line">network id / ssid / bssid / flags</span><br><span class="line">0  WIFI_A  any  [CURRENT]</span><br><span class="line">1  WIFI_B  any  [DISABLED]</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 add_network </span><br><span class="line">2</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 list_network</span><br><span class="line">network id / ssid / bssid / flags</span><br><span class="line">0  WIFI_A  any  [CURRENT]</span><br><span class="line">1  WIFI_B  any  [DISABLED]</span><br><span class="line">2          any  [DISABLED]</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 set_network 2 ssid &apos;&quot;AP_TEST&quot;&apos;</span><br><span class="line">OK</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 list_network</span><br><span class="line">network id / ssid / bssid / flags</span><br><span class="line">0  WIFI_A  any  [CURRENT]</span><br><span class="line">1  WIFI_B  any  [DISABLED]</span><br><span class="line">2  AP_TEST any  [DISABLED]</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 set_network 2 psk &apos;&quot;AP_password&quot;&apos;  # 切记,密码至少8位</span><br><span class="line">OK</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 list_network</span><br><span class="line">network id / ssid / bssid / flags</span><br><span class="line">0  WIFI_A  any  [CURRENT]</span><br><span class="line">1  WIFI_B  any  [DISABLED]</span><br><span class="line">2  AP_TEST any  [DISABLED]</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 remove_network 2</span><br><span class="line">OK</span><br><span class="line">root@kali:~# wpa_cli -i wlan0 list_network</span><br><span class="line">network id / ssid / bssid / flags</span><br><span class="line">0  WIFI_A  any  [CURRENT]</span><br><span class="line">1  WIFI_B  any  [DISABLED]</span><br><span class="line">root@kali:~#</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/11/11/NetworkManager切换为systemd-network/" data-id="cjoed77mk0012jopre6vxawd9" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/11/11/NetworkManager切换为systemd-network/" data-id="cjofnbnzx000yssprmypk7rue" class="article-share-link">Share</a>
       
       
     </footer>
@@ -120,6 +121,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/11/13/WBEMTest-exe使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          WBEMTest.exe使用
+        
+      </div>
+    </a>
   
   
     <a href="/2018/11/10/RaspberryPi3B-安装KaliLinux相关/" id="article-nav-older" class="article-nav-link-wrap">
@@ -168,6 +178,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/13/WBEMTest-exe使用/">WBEMTest.exe使用</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/11/NetworkManager切换为systemd-network/">NetworkManager切换为systemd-network</a>
           </li>
         
@@ -181,10 +195,6 @@
         
           <li>
             <a href="/2018/11/01/7z的使用相关/">7z的使用相关</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/01/IPv6被Windows和Linux支持和使用/">IPv6被Windows和Linux支持和使用</a>
           </li>
         
       </ul>
