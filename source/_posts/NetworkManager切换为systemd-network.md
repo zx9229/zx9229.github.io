@@ -142,6 +142,21 @@ if [ $# -ne 1 ]; then echo "must input one interface." >&2; exit 1; fi
 然后为该接口创建对应的配置文件。  
 假定该接口名为`wlan1`，那么可以`/wpa_supplicant_manual.sh wlan1`手工启动该接口。
 
+#### wpa_passphrase 一些用法
+`wpa_passphrase [ ssid ] [ passphrase ]`。
+```
+root@kali:~# wpa_passphrase wifiName wifiPswd
+network={
+	ssid="wifiName"
+	#psk="wifiPswd"
+	psk=6cb2d28425ad7340ceff035eb97fc7c0b34d401214003284c702c49a69b6f1ca
+}
+root@kali:~# wpa_passphrase wifiName wifiPswd >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+root@kali:~# wpa_cli -i wlan0 list_network
+root@kali:~# wpa_cli -i wlan0 reconfigure
+root@kali:~# wpa_cli -i wlan0 list_network
+```
+
 #### wpa_cli 的一些命令
 ```shell
 wpa_cli          scan         # request new BSS scan
