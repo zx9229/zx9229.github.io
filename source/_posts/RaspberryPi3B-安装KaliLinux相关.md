@@ -117,6 +117,16 @@ honor_test  7b04411c-910d-4f19-9685-53f5f7934735  wifi  --
 root@kali:~#
 ```
 
+#### 看门狗
+防止树莓派死机的监控`apt-get install watchdog`。
+
+#### screen
+在用SSH连接时，我们常常会遇到连接突然断开的问题。连 接一旦断开，原米我们进行的操作也就中断了，若再使用，就得从头再来了。  
+Screen来让树莓派永不失联的方法。此方法下，就算连接断开了，当我们重新连接后依旧进行原来的操作，而不需要从头再来。  
+`apt-get install screen`。  
+待增加`screen`的专门页。  
+[树莓派3B+ 软件源更改](https://blog.csdn.net/kxwinxp/article/details/78370980)。  
+
 #### 已经废弃同时可能有用的东西
 [启用wpa_supplicant而不需要NetworkManager](http://www.linuxeye.com/Linux/2237.html)。  
 文件`/etc/network/interfaces`的内容如下：

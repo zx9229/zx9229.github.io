@@ -147,3 +147,16 @@ rme 某文件夹
 ```
 find . -type d -empty -delete  # 删除空文件夹
 ```
+
+#### 获取shell脚本自身所在目录
+对于软链接也能正确得到其原始目录。
+```shell
+SRC="$0"
+while [ -L "$SRC" ]; do # resolve $SRC until the file is no longer a symlink
+    DIR="$( cd -P "$( dirname "$SRC" )" && pwd )"
+    SRC="$( readlink "$SRC" )"
+    # 判断$SRC是否以/开头,你测试[[ "/test" != /* ]]和[[ "./test" != /* ]]应该就明白了.
+    [[ "$SRC" != /* ]] && SRC="$DIR/$SRC" # if $SRC was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SRC" )" && pwd )"
+```

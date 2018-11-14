@@ -36,9 +36,10 @@ systemctl  start systemd-resolved
 然后我们应当会发现该目录下生成 resolv.conf 了。文件的路径一般为`/run/systemd/resolve/resolv.conf`。  
 但是，把 DNS 解析信息存放在 /etc/resolv.conf 是更普遍的做法，很多应用程序也会依赖于 /etc/resolv.conf。  
 因此为了兼容性，我们需要创建一个到 /etc/resolv.conf 的符号链接：
-```
+```shell
 rm /etc/resolv.conf
 ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
+ln -s /run/systemd/resolve/resolv.conf /etc/.            # 也可以这样写.
 ```
 
 #### 管理网络配置
@@ -206,3 +207,9 @@ network id / ssid / bssid / flags
 1  WIFI_B  any  [DISABLED]
 root@kali:~#
 ```
+
+#### 其它链接
+[Setting WiFi up via the command line - Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)。  
+
+#### 其他命令
+`iwlist`和`iwconfig`和`iw`。
