@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="RaspberryPi3B+ 安装 Kali Linux 的一些注意点。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-11T16:35:38.131Z">
+<meta property="og:updated_time" content="2018-11-14T14:41:57.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RaspberryPi3B+安装KaliLinux相关">
 <meta name="twitter:description" content="RaspberryPi3B+ 安装 Kali Linux 的一些注意点。">
@@ -105,6 +105,8 @@
 <h4 id="Kali-Linux-的网络"><a href="#Kali-Linux-的网络" class="headerlink" title="Kali Linux 的网络"></a>Kali Linux 的网络</h4><p>Kali Linux 默认使用 NetworkManager 而不是 wpa_supplicant 管理无线网络。<br>有用户Login的时候，才有网络连接，用户Logout之后网络会断开。<br>在图形界面下让root用户自动登录系统可以变相的自动接入WIFI网络。<br>nmtui 是一个基于 curses 的图形化前端，控制 NetworkManager 之用。<br>你可以搜索<code>NetworkManager 用户连接 系统连接</code>查看更多相关信息。  </p>
 <h4 id="nmcli的一些用法"><a href="#nmcli的一些用法" class="headerlink" title="nmcli的一些用法"></a>nmcli的一些用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nmcli device     status</span><br><span class="line">nmcli connection show</span><br><span class="line">nmcli connection up   &lt;NAME&gt;</span><br><span class="line">nmcli connection down &lt;NAME&gt;</span><br><span class="line">nmcli connection del  &lt;NAME&gt;</span><br></pre></td></tr></table></figure>
 <p>例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# nmcli dev status</span><br><span class="line">DEVICE  TYPE      STATE      CONNECTION </span><br><span class="line">wlan0   wifi      connected  wifi_12345  </span><br><span class="line">eth0    ethernet  unmanaged  --         </span><br><span class="line">lo      loopback  unmanaged  --         </span><br><span class="line">root@kali:~# nmcli connection show</span><br><span class="line">NAME        UUID                                  TYPE  DEVICE </span><br><span class="line">wifi_12345  ebf017b0-c25c-46be-8aaf-d26296337f3d  wifi  wlan0    </span><br><span class="line">wifi_30123  7129e93e-ce02-4170-8a68-9e17d46538c6  wifi  --     </span><br><span class="line">honor_test  7b04411c-910d-4f19-9685-53f5f7934735  wifi  --     </span><br><span class="line">root@kali:~# nmcli connection del &quot;wifi_30123&quot;</span><br><span class="line">Connection &apos;wifi_30123&apos; (7129e93e-ce02-4170-8a68-9e17d46538c6) successfully deleted.</span><br><span class="line">root@kali:~# nmcli connection show</span><br><span class="line">NAME        UUID                                  TYPE  DEVICE </span><br><span class="line">wifi_12345  ebf017b0-c25c-46be-8aaf-d26296337f3d  wifi  wlan0  </span><br><span class="line">honor_test  7b04411c-910d-4f19-9685-53f5f7934735  wifi  --     </span><br><span class="line">root@kali:~#</span><br></pre></td></tr></table></figure></p>
+<h4 id="看门狗"><a href="#看门狗" class="headerlink" title="看门狗"></a>看门狗</h4><p>防止树莓派死机的监控<code>apt-get install watchdog</code>。</p>
+<h4 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h4><p>在用SSH连接时，我们常常会遇到连接突然断开的问题。连 接一旦断开，原米我们进行的操作也就中断了，若再使用，就得从头再来了。<br>Screen来让树莓派永不失联的方法。此方法下，就算连接断开了，当我们重新连接后依旧进行原来的操作，而不需要从头再来。<br><code>apt-get install screen</code>。<br>待增加<code>screen</code>的专门页。<br><a href="https://blog.csdn.net/kxwinxp/article/details/78370980" target="_blank" rel="noopener">树莓派3B+ 软件源更改</a>。  </p>
 <h4 id="已经废弃同时可能有用的东西"><a href="#已经废弃同时可能有用的东西" class="headerlink" title="已经废弃同时可能有用的东西"></a>已经废弃同时可能有用的东西</h4><p><a href="http://www.linuxeye.com/Linux/2237.html" target="_blank" rel="noopener">启用wpa_supplicant而不需要NetworkManager</a>。<br>文件<code>/etc/network/interfaces</code>的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line"></span><br><span class="line">auto wlan0</span><br><span class="line">iface wlan0 inet dhcp</span><br><span class="line">wpa-conf /etc/wpa_supplicant/wpa.conf</span><br></pre></td></tr></table></figure></p>
 <p>文件<code>/etc/wpa_supplicant/wpa.conf</code>的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ap_scan=1</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=&quot;WIFI_name_1&quot;</span><br><span class="line">  psk=&quot;password&quot;</span><br><span class="line">  priority=2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=&quot;WIFI_name_2&quot;</span><br><span class="line">  psk=&quot;password&quot;</span><br><span class="line">  priority=1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>可以wpa_cli reconfigure可以重新加载配置文件(wpa_supplicant.conf)。<br>如果出现了<code>Failed to start Raise network interfaces.</code>需要<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line"><span class="meta">#</span> to evade [Failed to start Raise network interfaces.] problem.</span><br><span class="line"><span class="meta">#</span> run [crontab -e] and add the following sentence:</span><br><span class="line"><span class="meta">#</span> @reboot /root/evade_net.sh</span><br><span class="line"></span><br><span class="line">EXE_FILE="/tmp/net_patch.sh"</span><br><span class="line">LOG_FILE="/tmp/net_patch.log"</span><br><span class="line">cat &gt; $&#123;EXE_FILE&#125; &lt;&lt;-EOF</span><br><span class="line">cat /dev/null                       &gt; $&#123;LOG_FILE&#125;</span><br><span class="line">for IDX in \$(seq 4); do</span><br><span class="line">  /etc/init.d/networking restart &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">  result=\$?</span><br><span class="line">  echo \$(date) result=\$&#123;result&#125;  &gt;&gt; $&#123;LOG_FILE&#125;</span><br><span class="line">  if [ \$? -eq 0 ]; then</span><br><span class="line">    break</span><br><span class="line">  else</span><br><span class="line">    sleep 2</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">EOF</span><br><span class="line">chmod +x $&#123;EXE_FILE&#125;</span><br><span class="line"><span class="meta">$</span>&#123;EXE_FILE&#125; &amp;</span><br></pre></td></tr></table></figure></p>
@@ -112,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/11/10/RaspberryPi3B-安装KaliLinux相关/" data-id="cjofnbo010012sspr41an07hn" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/11/10/RaspberryPi3B-安装KaliLinux相关/" data-id="cjohfcolx0014o0pr3xr55y26" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,6 +179,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/15/Linux和USB无线网卡驱动/">Linux和USB无线网卡驱动</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/14/Linux的软件包管理器相关/">Linux的软件包管理器相关</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/13/WBEMTest-exe使用/">WBEMTest.exe使用</a>
           </li>
         
@@ -186,14 +196,6 @@
         
           <li>
             <a href="/2018/11/10/RaspberryPi3B-安装KaliLinux相关/">RaspberryPi3B+安装KaliLinux相关</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/07/Kali-Linux破解WIFI/">Kali-Linux破解WIFI</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/01/7z的使用相关/">7z的使用相关</a>
           </li>
         
       </ul>
