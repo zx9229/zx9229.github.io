@@ -160,3 +160,9 @@ while [ -L "$SRC" ]; do # resolve $SRC until the file is no longer a symlink
 done
 DIR="$( cd -P "$( dirname "$SRC" )" && pwd )"
 ```
+
+#### 设置别名
+查看当前设置：`alias`。  
+临时设置别名：`alias ll='ls -l'`。  
+永久设置别名：在`${HOME}/.bashrc`里添加`alias ll='ls -l'`。  
+删除某个别名：`unalias ll`。

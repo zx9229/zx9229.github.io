@@ -143,12 +143,12 @@ aircrack-ng [options] <.cap / .ivs file(s)>
              Here is a list of wordlists: 
              http://www.aircrack-ng.org/doku.php?id=faq#where_can_i_find_good_wordlists
 # 例
-aircrack-ng -b AP的MAC -w 字典文件  cap文件或ivs文件
+aircrack-ng -b AP的MAC -w 字典文件 -l 结果文件  cap文件或ivs文件
 ```
 在[Aircrack-ng](http://www.aircrack-ng.org/)的[Windows](https://download.aircrack-ng.org/aircrack-ng-1.4-win.zip)能下载到`aircrack-ng.exe`程序。然后我们就可以在Windows下进行破解了。Windows下可以如下执行：
 ```bat
 cd .\aircrack-ng-1.4-win\bin\32bit\
-aircrack-ng.exe -b 1A:2B:3C:4D:5E:6F -w C:\字典\dict.txt  D:/data/testData*.cap
+aircrack-ng.exe -b 1A:2B:3C:4D:5E:6F -w C:\字典\dict.txt  D:/data/testData*.cap  -l D:/data/testData_result.txt
 ```
 
 #### KaliLinux自带的字典
