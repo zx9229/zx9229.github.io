@@ -5,19 +5,15 @@
   
 
   
-  <title>svn相关 | zx9229.github.io</title>
+  <title>Archives: 2018 | zx9229.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要暂略。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="svn相关">
-<meta property="og:url" content="http://zx9229.github.io/2018/10/31/svn相关/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="zx9229.github.io">
+<meta property="og:url" content="http://zx9229.github.io/archives/2018/page/6/index.html">
 <meta property="og:site_name" content="zx9229.github.io">
-<meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-31T08:06:26.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="svn相关">
-<meta name="twitter:description" content="摘要暂略。">
+<meta name="twitter:title" content="zx9229.github.io">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -64,68 +60,45 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-svn相关" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/31/svn相关/" class="article-date">
-  <time datetime="2018-10-31T07:48:50.000Z" itemprop="datePublished">2018-10-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      svn相关
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/01/02/让VisualStudioDebugger显示UTF8字符串/" class="archive-article-date">
+  <time datetime="2018-01-02T08:53:10.000Z" itemprop="datePublished">Jan 2</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/01/02/让VisualStudioDebugger显示UTF8字符串/">让VisualStudioDebugger显示UTF8字符串</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>摘要暂略。<br><a id="more"></a></p>
-<h4 id="svn解决冲突"><a href="#svn解决冲突" class="headerlink" title="svn解决冲突"></a>svn解决冲突</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mycode]# svn update</span><br><span class="line">...(略)...</span><br><span class="line">Conflict discovered in &apos;somepath/Makefile&apos;.</span><br><span class="line">Select: (p) postpone, (df) diff-full, (e) edit,</span><br><span class="line">        (mc) mine-conflict, (tc) theirs-conflict,</span><br><span class="line">        (s) show all options: s</span><br><span class="line"></span><br><span class="line">  (e)  edit             - change merged file in an editor</span><br><span class="line">  (df) diff-full        - show all changes made to merged file</span><br><span class="line">  (r)  resolved         - accept merged version of file</span><br><span class="line"></span><br><span class="line">  (dc) display-conflict - show all conflicts (ignoring merged version)</span><br><span class="line">  (mc) mine-conflict    - accept my version for all conflicts (same)  # 合并内容,冲突的那一部分内容以本地为准.</span><br><span class="line">  (tc) theirs-conflict  - accept their version for all conflicts (same)  # 合并内容,冲突的那一部分内容以服务器为准.</span><br><span class="line"></span><br><span class="line">  (mf) mine-full        - accept my version of entire file (even non-conflicts)  # 完全以本地为准.</span><br><span class="line">  (tf) theirs-full      - accept their version of entire file (same)  # 完全以服务器为准.</span><br><span class="line"></span><br><span class="line">  (p)  postpone         - mark the conflict to be resolved later</span><br><span class="line">  (l)  launch           - launch external tool to resolve conflict</span><br><span class="line">  (s)  show all         - show this list</span><br><span class="line"></span><br><span class="line">Select: (p) postpone, (df) diff-full, (e) edit, (r) resolved,</span><br><span class="line">        (mc) mine-conflict, (tc) theirs-conflict,</span><br><span class="line">        (s) show all options: tf</span><br><span class="line">...(略)...</span><br><span class="line">G    somepath/Makefile</span><br><span class="line">...(略)...</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/10/31/svn相关/" data-id="cjomqanxv0036z0primg6jacg" class="article-share-link">Share</a>
-      
-      
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/11/01/IPv6被Windows和Linux支持和使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          IPv6被Windows和Linux支持和使用
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/10/27/lftp相关/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">lftp相关</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/archives/2018/page/5/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/4/">4</a><a class="page-number" href="/archives/2018/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
 
 </section>
         

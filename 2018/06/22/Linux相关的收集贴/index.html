@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-14T15:10:25.379Z">
+<meta property="og:updated_time" content="2018-11-17T13:09:09.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -116,11 +116,12 @@
 <h3 id="删除空文件夹的命令"><a href="#删除空文件夹的命令" class="headerlink" title="删除空文件夹的命令"></a>删除空文件夹的命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 函数rme(rm empty dir)</span><br><span class="line">rme()&#123; [ `ls -A "$1" 2&gt;&amp;1|wc -c` = 0 ] &amp;&amp; rm -r "$1";&#125;</span><br><span class="line">rme()&#123; [ `ls -A "$1" 2&gt;&amp;1|wc -c` = 0 ] &amp;&amp; rm -r "$1" || echo FAIL;&#125;</span><br><span class="line">rme()&#123; [ `ls -A "$1" 2&gt;&amp;1|wc -c` = 0 ] &amp;&amp; rm -r "$1" || echo FAIL &amp;&amp; return 1;&#125;</span><br><span class="line">rme()&#123; [ `ls -A "$1" 2&gt;&amp;1|wc -c` = 0 ] &amp;&amp; echo empty || echo FAIL &amp;&amp; return 1;&#125;  # 测试函数</span><br><span class="line"><span class="meta">#</span> 例</span><br><span class="line">rme 某文件夹</span><br></pre></td></tr></table></figure>
 <p>备注：<code>find . -type d -empty -exec rm -r {} \;</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type d -empty -delete  # 删除空文件夹</span><br></pre></td></tr></table></figure></p>
 <h4 id="获取shell脚本自身所在目录"><a href="#获取shell脚本自身所在目录" class="headerlink" title="获取shell脚本自身所在目录"></a>获取shell脚本自身所在目录</h4><p>对于软链接也能正确得到其原始目录。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SRC="$0"</span><br><span class="line">while [ -L "$SRC" ]; do # resolve $SRC until the file is no longer a symlink</span><br><span class="line">    DIR="$( cd -P "$( dirname "$SRC" )" &amp;&amp; pwd )"</span><br><span class="line">    SRC="$( readlink "$SRC" )"</span><br><span class="line">    # 判断$SRC是否以/开头,你测试[[ "/test" != /* ]]和[[ "./test" != /* ]]应该就明白了.</span><br><span class="line">    [[ "$SRC" != /* ]] &amp;&amp; SRC="$DIR/$SRC" # if $SRC was a relative symlink, we need to resolve it relative to the path where the symlink file was located</span><br><span class="line">done</span><br><span class="line">DIR="$( cd -P "$( dirname "$SRC" )" &amp;&amp; pwd )"</span><br></pre></td></tr></table></figure></p>
+<h4 id="设置别名"><a href="#设置别名" class="headerlink" title="设置别名"></a>设置别名</h4><p>查看当前设置：<code>alias</code>。<br>临时设置别名：<code>alias ll=&#39;ls -l&#39;</code>。<br>永久设置别名：在<code>${HOME}/.bashrc</code>里添加<code>alias ll=&#39;ls -l&#39;</code>。<br>删除某个别名：<code>unalias ll</code>。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjolc9gev001a6sprtahna9yv" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjomqanv6000nz0prpxt2k4qs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -185,6 +186,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/18/screen相关/">screen相关</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/17/RaspberryPi3B-使用串口终端控制/">RaspberryPi3B+使用串口终端控制</a>
           </li>
         
@@ -198,10 +203,6 @@
         
           <li>
             <a href="/2018/11/13/WBEMTest-exe使用/">WBEMTest.exe使用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/11/NetworkManager切换为systemd-network/">NetworkManager切换为systemd-network</a>
           </li>
         
       </ul>
