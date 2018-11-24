@@ -33,7 +33,7 @@ linux日志文件说明
 
 ### 得到一个Linux后首先要装的几个软件  
 ```
-yum install expect ncdu sshpass
+yum install expect ncdu sshpass tcpdump
 ```
 
 ### ulimit相关

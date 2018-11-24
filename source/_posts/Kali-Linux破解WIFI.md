@@ -45,9 +45,9 @@ macchanger --help
 macchanger --mac=XX:XX:XX:XX:XX:XX device
 macchanger --random device
 # 例
-ifconfig wlan0 down
+ifconfig wlan0 down  # ip link set wlan0 down
 macchanger --random wlan0
-ifconfig wlan0 up
+ifconfig wlan0 up    # ip link set wlan0 up
 ```
 
 #### 无线网卡启动监听模式
