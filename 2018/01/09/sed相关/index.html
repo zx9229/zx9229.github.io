@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="使用sed的过程中随便记录一些东西。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-24T05:32:07.105Z">
+<meta property="og:updated_time" content="2018-11-24T05:45:08.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sed相关">
 <meta name="twitter:description" content="使用sed的过程中随便记录一些东西。">
@@ -112,7 +112,7 @@
 <li>删除文件中包含某个关键字的所有行<br><code>sed -i &#39;/QWQ/d&#39; &lt;file&gt;</code></li>
 <li>插入数据到文件的第一行<br><code>sed -i &#39;1i line_content&#39; filename</code></li>
 <li>删除文件的第二行<br><code>sed -i &#39;2d&#39; filename</code></li>
-<li>替换第2行中的原字符(.<em>)到目标字符(new_content)<br>`sed -i ‘2s/.</em>/new_content/‘ filename`</li>
+<li>替换第2行中的原字符(.*)到目标字符(new_content)<br><code>sed -i &#39;2s/.*/new_content/&#39; filename</code></li>
 <li>删除最后一个字符<br><code>sed -i &#39;s/.$//&#39; filename</code></li>
 <li>替换逗号为换行符<br><code>sed &#39;s/,/\n/g&#39; filename</code></li>
 <li>删除换行符<br><code>sed &#39;:L;N;s/\n//;t L&#39; filename</code></li>
@@ -122,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/01/09/sed相关/" data-id="cjov0qdfa00340wprksqvglej" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/01/09/sed相关/" data-id="cjov17w2r0031vwprtx7hqjdh" class="article-share-link">Share</a>
       
       
     </footer>
