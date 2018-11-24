@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-17T13:09:09.436Z">
+<meta property="og:updated_time" content="2018-11-21T10:36:11.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -98,7 +98,7 @@
 <h3 id="dmesg"><a href="#dmesg" class="headerlink" title="dmesg"></a>dmesg</h3><p>查看系统日志的一个命令：<code>dmesg</code>。程序崩溃之类的事情发生时，可以从里面找到痕迹。</p>
 <h3 id="查看用户登录信息"><a href="#查看用户登录信息" class="headerlink" title="查看用户登录信息"></a>查看用户登录信息</h3><p><a href="https://blog.csdn.net/jsd2honey/article/details/78404337" target="_blank" rel="noopener">Linux用户登录记录日志和相关查看命令汇总</a>。</p>
 <h3 id="反向搜索执行过的命令"><a href="#反向搜索执行过的命令" class="headerlink" title="反向搜索执行过的命令"></a>反向搜索执行过的命令</h3><p><code>Ctrl+r</code>: Linux的<code>reverse-i-search</code>。  </p>
-<h3 id="得到一个Linux后首先要装的几个软件"><a href="#得到一个Linux后首先要装的几个软件" class="headerlink" title="得到一个Linux后首先要装的几个软件"></a>得到一个Linux后首先要装的几个软件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install expect ncdu sshpass</span><br></pre></td></tr></table></figure>
+<h3 id="得到一个Linux后首先要装的几个软件"><a href="#得到一个Linux后首先要装的几个软件" class="headerlink" title="得到一个Linux后首先要装的几个软件"></a>得到一个Linux后首先要装的几个软件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install expect ncdu sshpass tcpdump</span><br></pre></td></tr></table></figure>
 <h3 id="ulimit相关"><a href="#ulimit相关" class="headerlink" title="ulimit相关"></a>ulimit相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ulimit -a</span><br><span class="line">ulimit -c unlimited  # 生成core文件, 可以 ulimit -c 查看当前值, 重启后失效.</span><br></pre></td></tr></table></figure>
 <p>修改<code>/etc/security/limits.conf</code>文件，添加如下行，相当于所有用户都<code>ulimit -c unlimited</code>了。无需重启，重新登录即可生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*               soft    core            unlimited</span><br></pre></td></tr></table></figure></p>
 <h3 id="查看Linux的磁盘占用"><a href="#查看Linux的磁盘占用" class="headerlink" title="查看Linux的磁盘占用"></a>查看Linux的磁盘占用</h3><p>方法1：<code>ncdu</code>。<br>方法2：用<code>du</code>命令。也可以结合其他命令进行排序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">du -sh ./*    # 占用空间,占用者</span><br><span class="line">du -sh ./* | awk &apos;&#123;&#123;X=0&#125;if($1~&quot;.+K&quot;)&#123;X=$1*1024&#125;if($1~&quot;.+M&quot;)&#123;X=$1*1048576&#125;if($1~&quot;.+G&quot;)&#123;X=$1*1073741824&#125;&#123;print X,&quot;\t&quot;,$0&#125;&#125;&apos; | sort -gk1</span><br><span class="line">du -sh ./* | awk &apos;&#123;&#123;X=0&#125;if($1~&quot;.+K&quot;)&#123;X=$1*1&#125;if($1~&quot;.+M&quot;)&#123;X=$1*1024&#125;if($1~&quot;.+G&quot;)&#123;X=$1*1048576&#125;&#123;print X,&quot;\t&quot;,$0&#125;&#125;&apos; | sort -gk1</span><br><span class="line">du -s  ./* | sort -nk1</span><br><span class="line">du -ah --max-depth=1</span><br></pre></td></tr></table></figure></p>
@@ -121,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjomqanv6000nz0prpxt2k4qs" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjov0huo8000pjwprzn3dykgi" class="article-share-link">Share</a>
       
       
     </footer>
