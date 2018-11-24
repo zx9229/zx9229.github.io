@@ -86,6 +86,7 @@ sed在执行H时，会将模式空间的数据附加到保持空间。此时，s
 sed的`-r`是扩展的正则表达式，它不支持`\d`的写法，不过可以用`[0-9]`替代过去。  
 执行命令a/i/c时，如果命令不在末尾，你可能会遇见困难。此时你可以看《sed与awk》的"第五章 基本sed命令"的"5.5 追加,插入和更改"，可能对你有帮助。  
 脚本中的空正则表达式`//`表示和前面的正则表达式一样。  
+and the special escapes \1 through \9 to refer to the corresponding matching sub-expressions in the regexp.  
 
 ### 一个脚本分析  
 
