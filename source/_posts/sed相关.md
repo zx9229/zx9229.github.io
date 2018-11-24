@@ -149,7 +149,7 @@ ${dst}
 `sed -i '1i line_content' filename`
 * 删除文件的第二行  
 `sed -i '2d' filename`
-* 替换第2行中的原字符(.*)到目标字符(new_content)  
+* 替换第2行中的原字符(.\*)到目标字符(new_content)  
 `sed -i '2s/.*/new_content/' filename`
 * 删除最后一个字符  
 `sed -i 's/.$//' filename`
