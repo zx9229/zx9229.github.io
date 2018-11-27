@@ -65,6 +65,12 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '某用户的(新)密码
 1 warning(s): 1287 Using GRANT statement to modify existing user's properties other than privileges is deprecated and will be removed in future release. Use ALTER USER statement for this operation.
 ```
 
+#### 备份和恢复
+```
+mysqldump.exe --host=127.0.0.1 --port=3306 --user=root --password=toor --result-file=./sql.sql  --databases dbName
+mysql.exe     --host=127.0.0.1 --port=3306 --user=root --password=toor             < ./sql.sql
+```
+
 ## MySQL Workbench  
 ```
 执行当前行    : Ctrl+Enter
