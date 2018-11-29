@@ -25,6 +25,7 @@ Synopsis: iftop -h | [-npblNBP] [-i interface] [-f filter code]
                        hosts on the same network segment)
    -b                  don't display a bar graph of traffic
    -B                  Display bandwidth in bytes
+                    用"字节"而不是"比特"显示带宽
    -i interface        listen on named interface
    -f filter code      use filter code to select packets to count
                        (default: none, but only IP packets are counted)
