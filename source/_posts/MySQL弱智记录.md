@@ -66,10 +66,16 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '某用户的(新)密码
 ```
 
 #### 备份和恢复
+[MySQL导出数据库、数据库表结构、存储过程及函数【用】](https://www.cnblogs.com/qlqwjy/p/8325823.html)。
 ```
 mysqldump.exe --host=127.0.0.1 --port=3306 --user=root --password=toor --result-file=./sql.sql  --databases dbName
 mysql.exe     --host=127.0.0.1 --port=3306 --user=root --password=toor             < ./sql.sql
 ```
+①同时导出结构以及数据时可同时省略-d和-t
+②同时 不 导出结构和数据可使用-ntd
+③只导出存储过程和函数可使用-R -ntd
+④导出所有(结构&数据&存储过程&函数&事件&触发器)使用-R -E(相当于①，省略了-d -t;触发器默认导出)
+⑤只导出结构&函数&事件&触发器使用 -R -E -d
 
 ## MySQL Workbench  
 ```
