@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-10T14:55:58.611Z">
+<meta property="og:updated_time" content="2018-12-04T08:28:38.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的一些命令备忘">
 <meta name="twitter:description" content="摘要暂略。">
@@ -107,9 +107,11 @@
 </li>
 <li><p>查看(某目录/某文件的)提交信息<br><code>git log 某目录</code><br><code>git log 某文件</code></p>
 </li>
-<li><p>查看某版本号时某文件的全部内容<br><code>git show REVISION:./path/to/file</code><br>举例：<br>假设某文件为<code>test_file</code>，其路径为<code>./dir/test_file</code>，很早就把它提交到git上，很久没有改动过它了。我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，我想查看这一版本时候的<code>test_file</code>的全部内容：<code>git show db22a3:./dir/test_file</code></p>
+<li><p>查看两个版本之间变更了哪些文件<br><code>git diff HEAD     HEAD~1   --name-status</code> : 当前版本和上一版本之间变更了哪些文件。<br><code>git diff HEAD~1   HEAD~2   --stat</code>        : 上一版本和上二版本之间变更了哪些文件。<br><code>git diff commit_1 commit_2 --name-status</code> : 某一提交和某二提交之间变更了哪些文件。<br>举例：<br>我某次进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，一段时间之后，又进行了一次提交(SHA-1: 8844f9ecad53386cfd7b63e708242bb555b2163c)，我想查看这两个版本号之间变更了哪些文件，需执行命令：<code>git diff db22a3 8844f9 --name-status</code></p>
 </li>
-<li><p>查看某版本号对某文件做了哪些修改<br><code>git show REVISION ./path/to/file</code><br>举例：<br>假设某文件为<code>test_file</code>，其路径为<code>./dir/test_file</code>，我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，这次提交对<code>test_file</code>和一些其他文件一并进行了修改，我想看一下这次提交对<code>test_file</code>做了哪些修改<code>git show db22a3 ./dir/test_file</code></p>
+<li><p>查看某版本号时某文件的全部内容<br><code>git show REVISION:./path/to/file</code><br>举例：<br>假设某文件为<code>test_file</code>，其路径为<code>./dir/test_file</code>，很早就把它提交到git上，很久没有改动过它了。我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，我想查看这一版本时候的<code>test_file</code>的全部内容，需执行命令：<code>git show db22a3:./dir/test_file</code></p>
+</li>
+<li><p>查看某版本号对某文件做了哪些修改<br><code>git show REVISION ./path/to/file</code><br>举例：<br>假设某文件为<code>test_file</code>，其路径为<code>./dir/test_file</code>，我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，这次提交对<code>test_file</code>和一些其他文件一并进行了修改，我想看一下这次提交对<code>test_file</code>做了哪些修改，需执行命令：<code>git show db22a3 ./dir/test_file</code></p>
 </li>
 <li><p>对某文件执行Revert操作<br><code>git checkout 文件名</code><br>以下随手摘录同时未经确认：<br>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>总之，就是让这个文件回到最近一次git commit或git add时的状态。</p>
 </li>
@@ -124,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/07/09/git的一些命令备忘/" data-id="cjov17w27002cvwpr8phq8dq9" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/07/09/git的一些命令备忘/" data-id="cjp9hfpix002c04prcad4uevf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,6 +191,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/29/iftop相关/">iftop相关</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/18/screen相关/">screen相关</a>
           </li>
         
@@ -202,10 +208,6 @@
         
           <li>
             <a href="/2018/11/14/Linux的软件包管理器相关/">Linux的软件包管理器相关</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/13/WBEMTest-exe使用/">WBEMTest.exe使用</a>
           </li>
         
       </ul>
