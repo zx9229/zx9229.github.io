@@ -32,15 +32,22 @@ git <command> --help
 `git log 某目录`  
 `git log 某文件`
 
+* 查看两个版本之间变更了哪些文件  
+`git diff HEAD     HEAD~1   --name-status` : 当前版本和上一版本之间变更了哪些文件。  
+`git diff HEAD~1   HEAD~2   --stat`        : 上一版本和上二版本之间变更了哪些文件。  
+`git diff commit_1 commit_2 --name-status` : 某一提交和某二提交之间变更了哪些文件。  
+举例：  
+我某次进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，一段时间之后，又进行了一次提交(SHA-1: 8844f9ecad53386cfd7b63e708242bb555b2163c)，我想查看这两个版本号之间变更了哪些文件，需执行命令：`git diff db22a3 8844f9 --name-status`
+
 * 查看某版本号时某文件的全部内容  
 `git show REVISION:./path/to/file`  
 举例：  
-假设某文件为`test_file`，其路径为`./dir/test_file`，很早就把它提交到git上，很久没有改动过它了。我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，我想查看这一版本时候的`test_file`的全部内容：`git show db22a3:./dir/test_file`
+假设某文件为`test_file`，其路径为`./dir/test_file`，很早就把它提交到git上，很久没有改动过它了。我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，我想查看这一版本时候的`test_file`的全部内容，需执行命令：`git show db22a3:./dir/test_file`
 
 * 查看某版本号对某文件做了哪些修改  
 `git show REVISION ./path/to/file`  
 举例：  
-假设某文件为`test_file`，其路径为`./dir/test_file`，我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，这次提交对`test_file`和一些其他文件一并进行了修改，我想看一下这次提交对`test_file`做了哪些修改`git show db22a3 ./dir/test_file`
+假设某文件为`test_file`，其路径为`./dir/test_file`，我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，这次提交对`test_file`和一些其他文件一并进行了修改，我想看一下这次提交对`test_file`做了哪些修改，需执行命令：`git show db22a3 ./dir/test_file`
 
 * 对某文件执行Revert操作  
 `git checkout 文件名`  
