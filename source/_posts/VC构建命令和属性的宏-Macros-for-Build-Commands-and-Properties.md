@@ -1,7 +1,7 @@
 ---
 title: VC构建命令和属性的宏-Macros-for-Build-Commands-and-Properties
 categories:
-  - MyDefaultCategory
+  - Windows
 toc: false
 date: 2018-09-12 15:40:49
 tags:
