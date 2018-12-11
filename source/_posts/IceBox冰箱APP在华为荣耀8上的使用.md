@@ -10,6 +10,9 @@ tags:
 
 <!-- more -->
 
+* Shizuku Manager
+`https://play.google.com/store/apps/details?id=moe.shizuku.privileged.api`
+
 * GooglePlay里面的下载链接
 `https://play.google.com/store/apps/details?id=com.catchingnow.icebox`
 
