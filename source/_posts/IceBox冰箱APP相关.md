@@ -73,3 +73,12 @@ java.lang.IllegalStateException: Not allowed to set the device owner because the
         at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
         at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:315)
 ```
+
+* 华为荣耀8查看某程序的服务
+`设置`>`应用和通知`>`应用管理`>`微信`>`内存`, 然后可以查看`详细信息`。
+
+* 华为荣耀8查看所有(?)进程
+`设置`>`电池`>`耗电排行`>`软件排行`。
+
+* 华为荣耀8查看各程序的内存使用量
+`设置`>`存储`>`内存`>`各应用使用的内存`, 可查看`应用的内存使用量`的统计。然后点击`微信`可查看`内存使用量`的`详细信息`。
