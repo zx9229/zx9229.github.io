@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-12T12:32:00.551Z">
+<meta property="og:updated_time" content="2018-12-14T03:43:19.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IceBox冰箱APP相关">
 <meta name="twitter:description" content="摘要暂略。">
@@ -129,12 +129,18 @@
 <li><p>手机登录华为账号时可能会如下报错</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">D:\platform-tools&gt; adb shell dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver</span><br><span class="line">java.lang.IllegalStateException: Not allowed to set the device owner because there are already some accounts on the device</span><br><span class="line">        at android.os.Parcel.readException(Parcel.java:1954)</span><br><span class="line">        at android.os.Parcel.readException(Parcel.java:1892)</span><br><span class="line">        at android.app.admin.IDevicePolicyManager$Stub$Proxy.setDeviceOwner(IDevicePolicyManager.java:5176)</span><br><span class="line">        at com.android.commands.dpm.Dpm.runSetDeviceOwner(Dpm.java:148)</span><br><span class="line">        at com.android.commands.dpm.Dpm.onRun(Dpm.java:96)</span><br><span class="line">        at com.android.internal.os.BaseCommand.run(BaseCommand.java:54)</span><br><span class="line">        at com.android.commands.dpm.Dpm.main(Dpm.java:41)</span><br><span class="line">        at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)</span><br><span class="line">        at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:315)</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>华为荣耀8查看某程序的服务<br><code>设置</code>&gt;<code>应用和通知</code>&gt;<code>应用管理</code>&gt;<code>微信</code>&gt;<code>内存</code>, 然后可以查看<code>详细信息</code>。</p>
+</li>
+<li><p>华为荣耀8查看所有(?)进程<br><code>设置</code>&gt;<code>电池</code>&gt;<code>耗电排行</code>&gt;<code>软件排行</code>。</p>
+</li>
+<li><p>华为荣耀8查看各程序的内存使用量<br><code>设置</code>&gt;<code>存储</code>&gt;<code>内存</code>&gt;<code>各应用使用的内存</code>, 可查看<code>应用的内存使用量</code>的统计。然后点击<code>微信</code>可查看<code>内存使用量</code>的<code>详细信息</code>。</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/12/12/IceBox冰箱APP相关/" data-id="cjpl5p7mq000dg4prmero7fo1" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/12/12/IceBox冰箱APP相关/" data-id="cjpnhovyh000gsspr6nbgvkun" class="article-share-link">Share</a>
       
       
     </footer>
