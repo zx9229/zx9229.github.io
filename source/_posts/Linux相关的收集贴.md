@@ -166,3 +166,11 @@ DIR="$( cd -P "$( dirname "$SRC" )" && pwd )"
 临时设置别名：`alias ll='ls -l'`。  
 永久设置别名：在`${HOME}/.bashrc`里添加`alias ll='ls -l'`。  
 删除某个别名：`unalias ll`。
+
+#### grep和awk配合时可能出现的问题
+```shell
+# 先grep后awk无任何显示
+tail -f 文件名 | grep "匹配条件" | awk '操作'
+# 先awk后grep会正常显示
+tail -f 文件名 | awk '操作' | grep "匹配条件"
+```
