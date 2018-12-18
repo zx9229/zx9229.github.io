@@ -151,6 +151,8 @@ ${dst}
 `sed -i '2d' filename`
 * 替换第2行中的原字符(.\*)到目标字符(new_content)  
 `sed -i '2s/.*/new_content/' filename`
+* 逐行替换第三次匹配到的原字符(aaa)到目标字符(bbb)  
+`sed -i 's/aaa/bbb/3' filename`
 * 删除最后一个字符  
 `sed -i 's/.$//' filename`
 * 替换逗号为换行符  
