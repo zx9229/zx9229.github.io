@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-21T10:36:11.604Z">
+<meta property="og:updated_time" content="2018-12-15T06:21:38.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -117,11 +117,12 @@
 <p>备注：<code>find . -type d -empty -exec rm -r {} \;</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type d -empty -delete  # 删除空文件夹</span><br></pre></td></tr></table></figure></p>
 <h4 id="获取shell脚本自身所在目录"><a href="#获取shell脚本自身所在目录" class="headerlink" title="获取shell脚本自身所在目录"></a>获取shell脚本自身所在目录</h4><p>对于软链接也能正确得到其原始目录。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SRC="$0"</span><br><span class="line">while [ -L "$SRC" ]; do # resolve $SRC until the file is no longer a symlink</span><br><span class="line">    DIR="$( cd -P "$( dirname "$SRC" )" &amp;&amp; pwd )"</span><br><span class="line">    SRC="$( readlink "$SRC" )"</span><br><span class="line">    # 判断$SRC是否以/开头,你测试[[ "/test" != /* ]]和[[ "./test" != /* ]]应该就明白了.</span><br><span class="line">    [[ "$SRC" != /* ]] &amp;&amp; SRC="$DIR/$SRC" # if $SRC was a relative symlink, we need to resolve it relative to the path where the symlink file was located</span><br><span class="line">done</span><br><span class="line">DIR="$( cd -P "$( dirname "$SRC" )" &amp;&amp; pwd )"</span><br></pre></td></tr></table></figure></p>
 <h4 id="设置别名"><a href="#设置别名" class="headerlink" title="设置别名"></a>设置别名</h4><p>查看当前设置：<code>alias</code>。<br>临时设置别名：<code>alias ll=&#39;ls -l&#39;</code>。<br>永久设置别名：在<code>${HOME}/.bashrc</code>里添加<code>alias ll=&#39;ls -l&#39;</code>。<br>删除某个别名：<code>unalias ll</code>。</p>
+<h4 id="grep和awk配合时可能出现的问题"><a href="#grep和awk配合时可能出现的问题" class="headerlink" title="grep和awk配合时可能出现的问题"></a>grep和awk配合时可能出现的问题</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 先grep后awk无任何显示</span><br><span class="line">tail -f 文件名 | grep "匹配条件" | awk '操作'</span><br><span class="line"><span class="meta">#</span> 先awk后grep会正常显示</span><br><span class="line">tail -f 文件名 | awk '操作' | grep "匹配条件"</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjpnss5qd000uccprokulru1p" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjpto5xvw000mr8prcudh2ctv" class="article-share-link">Share</a>
       
       
     </footer>

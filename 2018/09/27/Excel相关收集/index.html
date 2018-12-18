@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-14T08:22:08.488Z">
+<meta property="og:updated_time" content="2018-12-18T11:25:52.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Excel相关收集">
 <meta name="twitter:description" content="摘要暂略。">
@@ -97,24 +97,40 @@
 <h4 id="Excel的几个快捷键"><a href="#Excel的几个快捷键" class="headerlink" title="Excel的几个快捷键"></a>Excel的几个快捷键</h4><table>
 <thead>
 <tr>
-<th style="text-align:center">名字</th>
 <th style="text-align:center">快捷键</th>
+<th style="text-align:center">名字</th>
 <th style="text-align:center">备注</th>
+<th style="text-align:center">备注2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">分列</td>
 <td style="text-align:center">Alt+A+E</td>
+<td style="text-align:center">分列</td>
 <td style="text-align:center">数据-&gt;分列</td>
+<td style="text-align:center">略</td>
 </tr>
 <tr>
-<td style="text-align:center">设置单元格格式</td>
 <td style="text-align:center">Ctrl+1</td>
+<td style="text-align:center">设置单元格格式</td>
+<td style="text-align:center">略</td>
+<td style="text-align:center">略</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Shfit+End</td>
+<td style="text-align:center">略</td>
+<td style="text-align:center">略</td>
+<td style="text-align:center">从当前单元格一直选定到表格的最后一个有效单元格</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+D</td>
+<td style="text-align:center">向下填充</td>
+<td style="text-align:center">D和Down</td>
 <td style="text-align:center">略</td>
 </tr>
 </tbody>
 </table>
+<h4 id="向下填充"><a href="#向下填充" class="headerlink" title="向下填充"></a>向下填充</h4><p><code>开始</code>&gt;<code>编辑</code>&gt;<code>填充</code>&gt;<code>向下填充(Ctrl+D)</code>。</p>
 <h4 id="字符串转日期时间"><a href="#字符串转日期时间" class="headerlink" title="字符串转日期时间"></a>字符串转日期时间</h4><p>例1：<code>A1</code>内容<code>2006-01-02 15:04:05.999999999</code>。我想把它转换成日期时间，则可以输入函数：<br><code>= DATE(MID(A1,1,4),MID(A1,6,2),MID(A1,9,2)) + TIME(MID(A1,12,2),MID(A1,15,2),MID(A1,18,2))</code>。<br>例2：<code>A2</code>内容<code>030405999</code>。我想把它转换成时间，则可以输入函数：<br><code>=TEXT(A2,&quot;00\:00\:00\.000&quot;) * 1</code>(我也不知道<code>*1</code>表征了什么)。<br>(猜测”字符串*1”=&gt;”数字”。因为这样运算之后，内容变成右对齐了)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2006-01-02 15:04:05.999999999    &lt;= A1单元格的内容</span><br><span class="line">12345678901234567890123456789    &lt;= A1的内容的序号</span><br><span class="line">030405999                        &lt;= A2单元格的内容</span><br><span class="line">123456789                        &lt;= A2的内容的序号</span><br></pre></td></tr></table></figure></p>
 <h4 id="两个日期时间相差多少秒"><a href="#两个日期时间相差多少秒" class="headerlink" title="两个日期时间相差多少秒"></a>两个日期时间相差多少秒</h4><p>例如，<code>A1</code>内容<code>2006-01-02 15:04:05</code>，<code>A2</code>内容<code>2006-01-02 03:04:05</code>，我想计算<code>A1</code>和<code>A2</code>相差多少秒，则可以输入函数：<br><code>= (A1 - A2) * 24 * 60 * 60</code>。</p>
 <h4 id="怎么用Excel画图"><a href="#怎么用Excel画图" class="headerlink" title="怎么用Excel画图"></a>怎么用Excel画图</h4><p>Excel的<code>行号</code>用数字表示，<code>列号</code>用(A~Z)和(AA~ZZ)等表示。<br>选中第A列：鼠标左键点击列号A即可选中第A列的所有数据。<br>选择第A列和第C列：按着Ctrl的同时，选中第A列和第C列。<br>根据某列画图表：<code>用Excel打开某文件</code>&gt;<code>选中一列或多列</code>&gt;<code>插入</code>&gt;<code>图表</code>&gt;<code>所有图表</code>&gt;<code>折线图</code>&gt;<code>折线图</code>&gt;<code>确定</code>。<br>设置图表的横轴：<code>(右键)图表区</code>&gt;<code>选择数据</code>&gt;<code>水平(分类)轴标签</code>&gt;<code>编辑</code>&gt;<code>(左键)选中(要当做横轴的)某列</code>&gt;<code>确定</code>。</p>
@@ -122,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/09/27/Excel相关收集/" data-id="cjpnss5ps0008ccprbqo6rr11" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/09/27/Excel相关收集/" data-id="cjpto5xx7001tr8prtafsr4ic" class="article-share-link">Share</a>
       
       
     </footer>
