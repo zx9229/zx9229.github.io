@@ -67,3 +67,5 @@ git <command> --help
 `git branch  -a`  
 `git branch --all`
 
+* 删除REPO上的文件同时保留本地文件
+`git rm --cached 文件名`
