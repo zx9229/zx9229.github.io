@@ -44,7 +44,12 @@ copyright (c) 2002 Paul Warren <pdw@ex-parrot.com> and contributors
 [root@localhost ~]#
 ```
 例
-```
+```shell
 iftop -n -N -P
 iftop -nNP -F 192.168.1.0/24 -m 10M
+```
+安装
+```shell
+yum install epel-release  # 如果从默认的repo里面找不到iftop就从epel-release里面找.
+yum install iftop
 ```
