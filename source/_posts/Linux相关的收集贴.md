@@ -104,6 +104,7 @@ echo "echo_message_to_stderr" >&2
 
 ### crontab 定时任务日志  
 假设root用户的`crontab -l`有配置。那么：  
+`/var/spool/cron/root`有配置的内容。  
 `/var/log/cron`文件有简要记录。  
 `/var/spool/mail/root`文件有详细记录。
 

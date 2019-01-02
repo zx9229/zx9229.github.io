@@ -2,9 +2,9 @@
 title: MySQL弱智记录
 date: 2017-10-25 19:34:24
 categories:
-- MyDefaultCategory
+- SQL
 tags:
-toc: true
+toc: false
 ---
 
 MySQL的一些最基本的信息
@@ -76,6 +76,21 @@ mysql.exe     --host=127.0.0.1 --port=3306 --user=root --password=toor          
 ③只导出存储过程和函数可使用-R -ntd
 ④导出所有(结构&数据&存储过程&函数&事件&触发器)使用-R -E(相当于①，省略了-d -t;触发器默认导出)
 ⑤只导出结构&函数&事件&触发器使用 -R -E -d
+
+#### 导出某数据库的某个表的建表语句和相应数据
+`-d, --no-data       No row information.`
+```
+mysqldump.exe --host=127.0.0.1 --port=3306 --user=root --password=toor --result-file=./sql.sql  --databases dbName
+mysqldump.exe      -h127.0.0.1      -P3306      -uroot          -ptoor             -r./sql.sql  dbName 某表
+```
+#### 导入
+```
+mysql.exe --host=127.0.0.1 --port=3306 --user=root --password=toor           < ./sql.sql
+mysql.exe      -h127.0.0.1      -P3306      -uroot          -ptoor -DdbName  < ./sql.sql
+```
+
+#### 分析命令
+`Explain`。
 
 ## MySQL Workbench  
 ```
