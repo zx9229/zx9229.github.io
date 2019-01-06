@@ -9,6 +9,19 @@ tags:
 使用git的过程中，遇见了一些问题，然后收集到此。
 <!-- more -->
 
+### 在Windows下应当安装Git到哪个目录
+
+Git安装包(比如`Git-2.18.0-64-bit.exe`)会默认安装到`C:\Program Files\Git`或`C:\Program Files (x86)\Git`下。  
+此时路径包含了空格等特殊字符。如果用Git配合MinGW编译程序时，可能会遇到问题。  
+因此建议安装Git到`C:\Program_Files_x64\Git`或`C:\Program_Files_x86\Git`下。  
+总之路径不要有空格等特殊字符。下面是一个异常的例子：
+```
+$ make
+...(略)...
+C:/Program Files/Git/usr/bin/sh.exe  --tag=CXX  ...(略)...
+/usr/bin/sh: line 1: C:/Program: No such file or directory
+...(略)...
+```
 
 ### 获取更多提示信息  
 
