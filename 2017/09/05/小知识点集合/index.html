@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="小知识点的集合。临时保存在这里。以后可能把同一类别的知识点抽离出去。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T12:02:14.167Z">
+<meta property="og:updated_time" content="2019-01-25T07:37:29.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小知识点集合">
 <meta name="twitter:description" content="小知识点的集合。临时保存在这里。以后可能把同一类别的知识点抽离出去。">
@@ -107,7 +107,7 @@
 <li>假定执行日志文件是”D:\log.log”, 在第一行加上<code>SPOOL D:\log.log;</code>, 在最后一行加上<code>SPOOL OFF;</code>.  </li>
 <li>在cmd环境下执行sql脚本.<br>备注：编码相关的事情没有测试(比如文件是UTF8,操作系统是GBK,Oracle是Unicode).<br>猜测: 因为是命令行读取的文件,所以命令行是什么编码,就需要文件是什么编码,这样命令行才能正确读取数据.<br><a href="http://www.jb51.net/article/76786.htm" target="_blank" rel="noopener">Oracle数据库执行脚本常用命令小结</a>, 该网页还附了一些基本命令.  </li>
 </ol>
-<h3 id="怎么制作Win10的U盘安装盘-可以UEFI引导"><a href="#怎么制作Win10的U盘安装盘-可以UEFI引导" class="headerlink" title="怎么制作Win10的U盘安装盘(可以UEFI引导)"></a>怎么制作Win10的U盘安装盘(可以UEFI引导)</h3><p>下载Win10原版ISO镜像, 然后使用UltraISO软碟通进行制作, 写入方式选择默认的USB-HDD+即可.  </p>
+<h3 id="怎么制作Win10的U盘安装盘-可以UEFI引导"><a href="#怎么制作Win10的U盘安装盘-可以UEFI引导" class="headerlink" title="怎么制作Win10的U盘安装盘(可以UEFI引导)"></a>怎么制作Win10的U盘安装盘(可以UEFI引导)</h3><p>下载Win10原版ISO镜像, 然后使用UltraISO软碟通进行制作, 写入方式选择默认的USB-HDD+即可.<br>也可以用<code>Universal-USB-Installer</code>或<a href="http://rufus.ie/" target="_blank" rel="noopener">Rufus</a>制作U盘启动盘。<br>Win10专业版可以使用<code>W269N-WFGWX-YVC9B-4J6C9-T83GX</code>。  </p>
 <h3 id="查看Oracle数据库字符集"><a href="#查看Oracle数据库字符集" class="headerlink" title="查看Oracle数据库字符集"></a>查看Oracle数据库字符集</h3><p>用Oracle的exp工具导出的dmp文件中包含了字符集信息, dmp文件的第2和第3个字节记录了dmp文件的字符集. 以16进制方式查看第2第3个字节的内容, 如0354, 然后用以下SQL可以查出它对应的字符集:<br><code>SELECT nls_charset_name(to_number(&#39;0354&#39;,&#39;xxxx&#39;)) FROM dual;</code><br>在Linux下查看第2第3个字节的16进制内容的命令:<br><code>cat exp.dmp | od -x | head -1 | awk &#39;{print $2 $3}&#39; | cut -c 3-6</code><br><a href="http://www.linuxidc.com/Linux/2011-11/47383.htm" target="_blank" rel="noopener">Oracle字符集的查看查询和Oracle字符集的设置修改</a>  </p>
 <h3 id="在Windows下用taskkill强杀进程的命令是什么"><a href="#在Windows下用taskkill强杀进程的命令是什么" class="headerlink" title="在Windows下用taskkill强杀进程的命令是什么"></a>在Windows下用taskkill强杀进程的命令是什么</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">D:\&gt; TASKKILL /?</span><br><span class="line">参数列表:</span><br><span class="line">    /IM   imagename        指定要终止的进程的映像名称。通配符 &apos;*&apos;可用来</span><br><span class="line">                           指定所有任务或映像名称。</span><br><span class="line">    /F                     指定强制终止进程。</span><br><span class="line">D:\&gt; taskkill /im YourProcessName.exe /f</span><br></pre></td></tr></table></figure>
 <h3 id="完全安装man手册"><a href="#完全安装man手册" class="headerlink" title="完全安装man手册"></a>完全安装man手册</h3><ul>
@@ -124,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2017/09/05/小知识点集合/" data-id="cjql5mt4h00458spr2otzmskr" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2017/09/05/小知识点集合/" data-id="cjrc6jrm40050q8pry0fl38ox" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,6 +189,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/25/vlmcsd相关/">vlmcsd相关</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/05/protobuf在Windows下的编译/">protobuf在Windows下的编译</a>
           </li>
         
@@ -202,10 +206,6 @@
         
           <li>
             <a href="/2018/11/29/iftop相关/">iftop相关</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/18/screen相关/">screen相关</a>
           </li>
         
       </ul>

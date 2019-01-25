@@ -5,15 +5,19 @@
   
 
   
-  <title>Category: Python | zx9229.github.io</title>
+  <title>vlmcsd相关 | zx9229.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zx9229.github.io">
-<meta property="og:url" content="http://zx9229.github.io/categories/Linux/Python/index.html">
+  <meta name="description" content="KMS服务器模拟器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vlmcsd相关">
+<meta property="og:url" content="http://zx9229.github.io/2019/01/25/vlmcsd相关/index.html">
 <meta property="og:site_name" content="zx9229.github.io">
+<meta property="og:description" content="KMS服务器模拟器。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-25T07:12:22.256Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zx9229.github.io">
+<meta name="twitter:title" content="vlmcsd相关">
+<meta name="twitter:description" content="KMS服务器模拟器。">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -60,59 +64,70 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/13/Python相关收集/" class="archive-article-date">
-  <time datetime="2018-07-13T06:59:25.000Z" itemprop="datePublished">Jul 13</time>
+        <section id="main"><article id="post-vlmcsd相关" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/25/vlmcsd相关/" class="article-date">
+  <time datetime="2019-01-25T06:40:17.000Z" itemprop="datePublished">2019-01-25</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/13/Python相关收集/">Python相关收集</a>
+    <h1 class="article-title" itemprop="name">
+      vlmcsd相关
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/03/python安装cx-Oracle/" class="archive-article-date">
-  <time datetime="2018-07-03T13:21:09.000Z" itemprop="datePublished">Jul 3</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/03/python安装cx-Oracle/">python安装cx_Oracle</a>
-    </h1>
-  
+        <!-- Table of Contents -->
+        
+        <p>KMS服务器模拟器。<br><a id="more"></a></p>
+<ul>
+<li><p>几个链接<br><a href="https://github.com/Wind4/vlmcsd/releases" target="_blank" rel="noopener">Releases · Wind4/vlmcsd</a>。<br><a href="https://github.com/Wind4/vlmcsd/blob/master/man/vlmcs.1" target="_blank" rel="noopener">vlmcs - a client for testing and/or charging KMS servers</a>。<br><a href="https://github.com/Wind4/vlmcsd/blob/master/man/vlmcsd.8" target="_blank" rel="noopener">vlmcsd - a fully Microsoft compatible KMS server</a>。<br><a href="https://github.com/Wind4/vlmcsd/blob/master/man/vlmcsdmulti.1" target="_blank" rel="noopener">vlmcsdmulti - a multi-call binary containing vlmcs(1) and vlmcsd(8)</a>。  </p>
+</li>
+<li><p>几点说明<br>Github上有它的版本库，版本库里面有man文件夹，它里面有文档。<br>如果我们要在Windows下运行的话，可以直接运行<code>binaries\Windows\intel\vlmcsd-Windows-x64.exe</code>程序，此时它会默认监听<code>1688</code>端口。<br><code>vlmcsd.exe</code>可执行程序运行在本机上，并且为本机激活，很可能无法成功激活。<br><code>vlmcsd.exe --help</code>可以查看程序的帮助说明。  </p>
+</li>
+<li><p>使用步骤  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slmgr.vbs /skms localhost:1688</span><br><span class="line">slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</span><br><span class="line">slmgr.vbs /ato</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他说明<br><a href="https://03k.org/vlmcsd.html" target="_blank" rel="noopener">Vlmcsd源码（开源KMS激活服务端/客户端）</a>。<br>并没有复杂的参数，一般来说直接执行二进制文件vlmcsd就行了，默认端口是1688 ，你可以用-p参数来指定监听端口，<br>有三种版本，一个是服务端vlmcsd，客户端vlmcs，服务端+客户端muti，客户端是用来检测kms服务的，  </p>
+</li>
+</ul>
+<p><a href="https://www.hardie.me/打造自己的KMS服务器/" target="_blank" rel="noopener">打造自己的KMS服务器 | Hardie 在线博客</a>。  </p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zx9229.github.io/2019/01/25/vlmcsd相关/" data-id="cjrc6jrl30044q8pro344jvo6" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/01/05/protobuf在Windows下的编译/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">protobuf在Windows下的编译</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
