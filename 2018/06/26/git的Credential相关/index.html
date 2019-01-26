@@ -14,13 +14,13 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="Windows存储Github的凭证。删除凭证。设置git让其不存储凭证。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://zx9229.github.io/image/20171229_215013_凭据管理器.png">
-<meta property="og:image" content="http://zx9229.github.io/2018/06/26/git的Credential相关/20171229_230703_凭证助手.png">
-<meta property="og:updated_time" content="2018-06-26T11:59:53.375Z">
+<meta property="og:image" content="http://zx9229.github.io/2018/06/26/git的Credential相关/凭据管理器.png">
+<meta property="og:image" content="http://zx9229.github.io/2018/06/26/git的Credential相关/凭证助手.png">
+<meta property="og:updated_time" content="2019-01-26T12:14:18.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的Credential相关">
 <meta name="twitter:description" content="Windows存储Github的凭证。删除凭证。设置git让其不存储凭证。">
-<meta name="twitter:image" content="http://zx9229.github.io/image/20171229_215013_凭据管理器.png">
+<meta name="twitter:image" content="http://zx9229.github.io/2018/06/26/git的Credential相关/凭据管理器.png">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -95,26 +95,21 @@
       
         <!-- Table of Contents -->
         
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#git的密码存储在哪里"><span class="toc-number">1.</span> <span class="toc-text">git的密码存储在哪里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除git的凭据"><span class="toc-number">2.</span> <span class="toc-text">删除git的凭据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置TortoiseGit不存储凭据"><span class="toc-number">3.</span> <span class="toc-text">设置TortoiseGit不存储凭据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过html的img标签控制图片的大小"><span class="toc-number">4.</span> <span class="toc-text">通过html的img标签控制图片的大小</span></a></li></ol>
-          </div>
-        
         <p>Windows存储Github的凭证。删除凭证。设置git让其不存储凭证。  </p>
 <a id="more"></a>
 <p>参考了：<br><a href="http://blog.csdn.net/Lrici/article/details/76169327" target="_blank" rel="noopener">GitHub “remote: Permission to account/somefile.git denied to account”</a>  </p>
 <p>现在回忆一下，我们在使用git往GitHub上push代码时，好像没怎么输过密码。  </p>
-<h3 id="git的密码存储在哪里"><a href="#git的密码存储在哪里" class="headerlink" title="git的密码存储在哪里"></a>git的密码存储在哪里</h3><p>在”凭据管理器”的”Windows凭据”里。<br><img src="/image/20171229_215013_凭据管理器.png" alt="凭据管理器里存储的GitHub的普通凭据" width="60%">  </p>
+<h3 id="git的密码存储在哪里"><a href="#git的密码存储在哪里" class="headerlink" title="git的密码存储在哪里"></a>git的密码存储在哪里</h3><p>在”凭据管理器”的”Windows凭据”里。<br><img src="凭据管理器.png" alt="凭据管理器里存储的GitHub的普通凭据">  </p>
 <h3 id="删除git的凭据"><a href="#删除git的凭据" class="headerlink" title="删除git的凭据"></a>删除git的凭据</h3><p>一种方式是进入凭据管理器然后删除github的凭据。<br>另一种是在”命令行提示”<code>(command-line prompt(cmd.exe))</code>里操作cmdkey删除凭据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmdkey /?</span><br><span class="line">cmdkey /list</span><br><span class="line">cmdkey /delete:&quot;git:https://github.com&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="设置TortoiseGit不存储凭据"><a href="#设置TortoiseGit不存储凭据" class="headerlink" title="设置TortoiseGit不存储凭据"></a>设置TortoiseGit不存储凭据</h3><p><img src="20171229_230703_凭证助手.png" alt="在TortoiseGit的设置的凭据助手选项卡"><br>将凭据助手中的选项设为”None”即可。  </p>
-<h3 id="通过html的img标签控制图片的大小"><a href="#通过html的img标签控制图片的大小" class="headerlink" title="通过html的img标签控制图片的大小"></a>通过html的img标签控制图片的大小</h3><p>MarkDown文件插入图片的语法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![无法显示图像时浏览器将显示的替代文本](图片地址  &quot;鼠标悬置于图片上会出现的标题文字&quot;)</span><br><span class="line">![在TortoiseGit的设置的凭据助手选项卡](20171229_230703_凭证助手.png)</span><br></pre></td></tr></table></figure></p>
-<p>转换成网页后的代码如下所示（我们只需要添加width属性即可控制图片大小）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/image/20171229_230703_凭证助手.png&quot; alt=&quot;在TortoiseGit的设置的凭据助手选项卡&quot;&gt;</span><br><span class="line">&lt;img src=&quot;/image/20171229_230703_凭证助手.png&quot; alt=&quot;在TortoiseGit的设置的凭据助手选项卡&quot; width=&quot;60%&quot;&gt;</span><br><span class="line">&lt;img src=&quot;图片地址&quot; alt=&quot;无法显示图像时浏览器将显示的替代文本&quot; width=&quot;60%&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置TortoiseGit不存储凭据"><a href="#设置TortoiseGit不存储凭据" class="headerlink" title="设置TortoiseGit不存储凭据"></a>设置TortoiseGit不存储凭据</h3><p><img src="凭证助手.png" alt="在TortoiseGit的设置的凭据助手选项卡"><br>将凭据助手中的选项设为”None”即可。  </p>
+<h3 id="通过html的img标签控制图片的大小"><a href="#通过html的img标签控制图片的大小" class="headerlink" title="通过html的img标签控制图片的大小"></a>通过html的img标签控制图片的大小</h3><p>MarkDown文件插入图片的语法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![无法显示图像时浏览器将显示的替代文本](图片地址  &quot;鼠标悬置于图片上会出现的标题文字&quot;)</span><br><span class="line">![在TortoiseGit的设置的凭据助手选项卡](凭证助手.png)</span><br></pre></td></tr></table></figure></p>
+<p>转换成网页后的代码如下所示（我们只需要添加width属性即可控制图片大小）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/image/凭证助手.png&quot; alt=&quot;在TortoiseGit的设置的凭据助手选项卡&quot;&gt;</span><br><span class="line">&lt;img src=&quot;/image/凭证助手.png&quot; alt=&quot;在TortoiseGit的设置的凭据助手选项卡&quot; width=&quot;60%&quot;&gt;</span><br><span class="line">&lt;img src=&quot;图片地址&quot; alt=&quot;无法显示图像时浏览器将显示的替代文本&quot; width=&quot;60%&quot;&gt;</span><br></pre></td></tr></table></figure></p>
 <p>html的img标签的几个我能用到的属性：<br>  src:必须属性。图片的URL。<br>  alt:可以留空。用来描述图片的关键词。最初的本意是当图片因为某种原因不能被显示时而出现的替代文字，后来又被用于SEO(搜索引擎优化)，可以方便搜索引擎根据”Alt text”里面的关键词搜索到图片。<br>title:可选属性。鼠标悬置于图片上时出现的标题文字。<br>width:可选属性。设置图像的宽度。  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/26/git的Credential相关/" data-id="cjrc6jrj9002gq8prz1f1eobz" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/26/git的Credential相关/" data-id="cjrdpb7pd002i6wprkaojv7rk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -151,7 +146,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/golang/">golang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li></ul>
     </div>
   </div>
 
@@ -179,6 +174,14 @@
       <ul>
         
           <li>
+            <a href="/2019/01/26/go-sqlite3在Windows下的使用/">go-sqlite3在Windows下的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/26/Qt-For-Android配置/">Qt-For-Android配置</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/25/vlmcsd相关/">vlmcsd相关</a>
           </li>
         
@@ -188,14 +191,6 @@
         
           <li>
             <a href="/2019/01/03/VS因为宏定义和函数重名导致编译失败/">VS因为宏定义和函数重名导致编译失败</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/12/IceBox冰箱APP相关/">IceBox冰箱APP相关</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/29/iftop相关/">iftop相关</a>
           </li>
         
       </ul>
