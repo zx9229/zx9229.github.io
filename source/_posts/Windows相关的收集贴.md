@@ -66,6 +66,15 @@ REG QUERY  "HKEY_CURRENT_USER\Software\Scooter Software\Beyond Compare 4" /v Cac
 REG DELETE "HKEY_CURRENT_USER\Software\Scooter Software\Beyond Compare 4" /v CacheId
 ```
 
+### 为Win10添加"在此处打开命令窗口"
+在Win07下`Shift+鼠标右键`可以"在此处打开命令窗口"。  
+在Win10下`Shift+鼠标右键`可以"在此处打开Powershell窗口"。  
+成功执行下面的命令后，会为鼠标右键添加一个"open cmd here"选项。
+```
+REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx\command" /ve /t REG_SZ /d "cmd.exe /s /k pushd \"%V\""
+REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx"         /ve /t REG_SZ /d "open cmd here"
+```
+
 ### Win10V1809默认英文输入法
 `设置`>`时间和语言`>`语言`>`拼写、键入和键盘设置`>`输入`>`高级键盘设置`：  
 `替代默认输入法`：`英语(美国)-美式键盘`。  
