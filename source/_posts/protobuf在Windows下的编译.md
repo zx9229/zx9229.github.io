@@ -10,11 +10,14 @@ tags:
 <!-- more -->
 
 * Qt编译protobuf
-安装Git和Qt。安装后，Git的目录不允许有空格等特殊字符，路径尽量为`C:\Program_Files_x86\Git`而非`C:\Program Files (x86)\Git`。  
+其实是：使用Qt自带的MinGW编译器，为C++语言，编译出protobuf的链接库。  
+我们需要安装Qt和Git。在安装时，需要注意其安装路径（不要有空格等特殊字符）。  
+比如：Git的路径尽量为`C:\Program_Files_x86\Git`而非`C:\Program Files (x86)\Git`。  
 假定我安装了Git(相关路径为`C:\Program_Files_x86\Git\cmd`)和Qt(相关路径`C:\Qt\Qt5.9.4\Tools\mingw530_32\bin`)，将它们加入系统变量`Path`，  
-将它们放到Path的最前面，这样从Path目录寻找程序时，可以确保使用了该目录下的程序。  
+且将它们放到Path的最前面，这样从Path目录寻找程序时，可以确保使用了该目录下的程序。  
 并`xcopy C:\Qt\Qt5.9.4\Tools\mingw530_32\bin\mingw32-make.exe C:\Qt\Qt5.9.4\Tools\mingw530_32\bin\make.exe`。  
 然后可以按照`https://github.com/protocolbuffers/protobuf`的步骤进行编译。  
+实际上是按照`https://github.com/protocolbuffers/protobuf/blob/master/src/README.md`的步骤进行编译。  
 
 * MinGW编译protobuf
 同上。  
@@ -24,6 +27,14 @@ tags:
 
 * NDK编译protobuf给Android用
 [protobuf 交叉编译笔记](https://www.cnblogs.com/UniqPtr/p/7859758.html)。  
+我们需要安装NDK和CMake。  
+NDK(Native Development Kit)是Android的一个工具开发包。NDK是属于Android的，与Java并无直接关系。  
+NDK相关的几个链接：  
+`https://developer.android.com/`  
+`https://developer.android.com/ndk/downloads/`  
+`https://developer.android.google.cn/ndk/downloads/`  
+`https://dl.google.com/android/repository/android-ndk-r16b-windows-x86.zip`  
+`https://dl.google.com/android/repository/android-ndk-r16b-windows-x86_64.zip`  
 ```
 mkdir build && cd build
 cmake -G "MinGW Makefiles" ^
