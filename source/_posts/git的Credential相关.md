@@ -2,7 +2,7 @@
 title: git的Credential相关
 categories:
   - git
-toc: true
+toc: false
 date: 2018-06-26 19:58:16
 tags:
 ---
@@ -18,7 +18,7 @@ Windows存储Github的凭证。删除凭证。设置git让其不存储凭证。
 ### git的密码存储在哪里  
 
 在"凭据管理器"的"Windows凭据"里。  
-<img src="/image/20171229_215013_凭据管理器.png" alt="凭据管理器里存储的GitHub的普通凭据" width="60%">  
+![凭据管理器里存储的GitHub的普通凭据](凭据管理器.png)  
 
 ### 删除git的凭据  
 
@@ -32,7 +32,7 @@ cmdkey /delete:"git:https://github.com"
 
 ### 设置TortoiseGit不存储凭据  
 
-![在TortoiseGit的设置的凭据助手选项卡](20171229_230703_凭证助手.png)  
+![在TortoiseGit的设置的凭据助手选项卡](凭证助手.png)  
 将凭据助手中的选项设为"None"即可。  
 
 ### 通过html的img标签控制图片的大小  
@@ -40,12 +40,12 @@ cmdkey /delete:"git:https://github.com"
 MarkDown文件插入图片的语法为
 ```
 ![无法显示图像时浏览器将显示的替代文本](图片地址  "鼠标悬置于图片上会出现的标题文字")
-![在TortoiseGit的设置的凭据助手选项卡](20171229_230703_凭证助手.png)
+![在TortoiseGit的设置的凭据助手选项卡](凭证助手.png)
 ```
 转换成网页后的代码如下所示（我们只需要添加width属性即可控制图片大小）：  
 ```
-<img src="/image/20171229_230703_凭证助手.png" alt="在TortoiseGit的设置的凭据助手选项卡">
-<img src="/image/20171229_230703_凭证助手.png" alt="在TortoiseGit的设置的凭据助手选项卡" width="60%">
+<img src="/image/凭证助手.png" alt="在TortoiseGit的设置的凭据助手选项卡">
+<img src="/image/凭证助手.png" alt="在TortoiseGit的设置的凭据助手选项卡" width="60%">
 <img src="图片地址" alt="无法显示图像时浏览器将显示的替代文本" width="60%">
 ```
 html的img标签的几个我能用到的属性：  
