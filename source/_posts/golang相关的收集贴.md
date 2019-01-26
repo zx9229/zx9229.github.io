@@ -1,7 +1,7 @@
 ---
 title: golang相关的收集贴
 categories:
-  - golang
+  - Go
 toc: false
 date: 2018-07-23 20:26:45
 tags:

@@ -1,7 +1,7 @@
 ---
 title: golang的protobuf例子
 categories:
-  - golang
+  - Go
 toc: false
 date: 2018-08-06 23:47:12
 tags:

@@ -9,6 +9,31 @@ tags:
 使用git的过程中，遇见了一些问题，然后收集到此。
 <!-- more -->
 
+### 首次使用Git时的设置
+我们在首次commit时，可能会看到下面的提示：
+```
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'root@bwgkvm.(none)')
+```
+首次使用git时，建议如下设置：
+```
+git config --global user.email "zx@example.com"
+git config --global user.name  "zx"
+# 提交检出均不转换LF和CRLF
+git config --global core.autocrlf false
+# 允许提交包含混合换行符的文件
+git config --global core.safecrlf false
+```
+
 ### 在Windows下应当安装Git到哪个目录
 
 Git安装包(比如`Git-2.18.0-64-bit.exe`)会默认安装到`C:\Program Files\Git`或`C:\Program Files (x86)\Git`下。  

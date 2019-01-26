@@ -1,7 +1,7 @@
 ---
 title: go-sqlite3在Windows下的使用
 categories:
-  - go
+  - Go
 toc: false
 date: 2019-01-26 22:25:39
 tags:
