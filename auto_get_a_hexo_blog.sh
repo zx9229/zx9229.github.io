@@ -113,4 +113,9 @@ done
 
 echo "=========================================="
 echo "ALL DONE. SUCCESS."
+echo "=========================================="
+echo '请阅读文章"为Hexo博客添加目录"并手工合并下面的目录:'
+echo "目录1: ${RECYCLE_BIN}/themes/landscape"
+echo "目录2: ${HEXO_DIR}/themes/landscape"
+echo "=========================================="
 exit 0
