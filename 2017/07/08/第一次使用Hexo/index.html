@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="从一个什么都不知道的小白，到部署网站到GitHub，所需的全部操作。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-21T15:07:48.491Z">
+<meta property="og:updated_time" content="2019-01-28T00:42:26.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一次使用Hexo">
 <meta name="twitter:description" content="从一个什么都不知道的小白，到部署网站到GitHub，所需的全部操作。">
@@ -92,11 +92,6 @@
       
         <!-- Table of Contents -->
         
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在本地配置Hexo环境"><span class="toc-number">1.</span> <span class="toc-text">在本地配置Hexo环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一个使用Hexo的示例"><span class="toc-number">2.</span> <span class="toc-text">一个使用Hexo的示例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#选择一个目录作为本次示例的根文件夹"><span class="toc-number">2.1.</span> <span class="toc-text">选择一个目录作为本次示例的根文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写一篇文章"><span class="toc-number">2.2.</span> <span class="toc-text">写一篇文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署Hexo到GitHub上"><span class="toc-number">3.</span> <span class="toc-text">部署Hexo到GitHub上</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个repository"><span class="toc-number">3.1.</span> <span class="toc-text">创建一个repository</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#立即在这个repository上创建一个branch，随便起一个名字，比如my-blog"><span class="toc-number">3.2.</span> <span class="toc-text">立即在这个repository上创建一个branch，随便起一个名字，比如my_blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选定一个目录作为Hexo的根目录，并新建一个网站。"><span class="toc-number">3.3.</span> <span class="toc-text">选定一个目录作为Hexo的根目录，并新建一个网站。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-hexo-deployer-git"><span class="toc-number">3.4.</span> <span class="toc-text">安装 hexo-deployer-git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改-config-yml配置文件，使其能将网站部署到GitHub上。"><span class="toc-number">3.5.</span> <span class="toc-text">修改_config.yml配置文件，使其能将网站部署到GitHub上。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成静态文件并部署网站到GitHub上以查看效果。"><span class="toc-number">3.6.</span> <span class="toc-text">生成静态文件并部署网站到GitHub上以查看效果。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从GitHub上克隆这个版本库到本地。"><span class="toc-number">3.7.</span> <span class="toc-text">从GitHub上克隆这个版本库到本地。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将当前分支从master切换到my-blog"><span class="toc-number">3.8.</span> <span class="toc-text">将当前分支从master切换到my_blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动-zx9229-github-io-内的所有文件到-hexo-data-下。"><span class="toc-number">3.9.</span> <span class="toc-text">移动 zx9229.github.io 内的所有文件到 hexo_data 下。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编辑-gitignore文件，忽略无意义的文件。"><span class="toc-number">3.10.</span> <span class="toc-text">编辑.gitignore文件，忽略无意义的文件。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交有意义的文件到服务器的my-blog分支下。"><span class="toc-number">3.11.</span> <span class="toc-text">提交有意义的文件到服务器的my_blog分支下。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#以后写文章并发布的步骤"><span class="toc-number">3.12.</span> <span class="toc-text">以后写文章并发布的步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#从其他地方处理这个版本库的步骤"><span class="toc-number">4.</span> <span class="toc-text">从其他地方处理这个版本库的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装基础软件"><span class="toc-number">4.1.</span> <span class="toc-text">安装基础软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从GitHub上clone下来repository，并切换到相应的分支。"><span class="toc-number">4.2.</span> <span class="toc-text">从GitHub上clone下来repository，并切换到相应的分支。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选定一个目录作为Hexo的根目录，并初始化它。"><span class="toc-number">4.3.</span> <span class="toc-text">选定一个目录作为Hexo的根目录，并初始化它。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将repository与hexo-blog合并"><span class="toc-number">4.4.</span> <span class="toc-text">将repository与hexo_blog合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改文件并提交"><span class="toc-number">4.5.</span> <span class="toc-text">修改文件并提交</span></a></li></ol></li></ol>
-          </div>
-        
         <p>从一个什么都不知道的小白，到部署网站到GitHub，所需的全部操作。<br><a id="more"></a></p>
 <p>假使你的机器是Windows，你准备使用Hexo。<br>建议你访问 <code>https://hexo.io/zh-cn/</code> 以学习Hexo。<br>这篇文章是我写了给自己看的。<br>下面是第一次使用Hexo的步骤。</p>
 <h1 id="在本地配置Hexo环境"><a href="#在本地配置Hexo环境" class="headerlink" title="在本地配置Hexo环境"></a>在本地配置Hexo环境</h1><ol>
@@ -169,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2017/07/08/第一次使用Hexo/" data-id="cjrdpb7s300596wpr7sxdzxst" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2017/07/08/第一次使用Hexo/" data-id="cjrfo26wi004l2wprjhtyxlcm" class="article-share-link">Share</a>
       
       
     </footer>
