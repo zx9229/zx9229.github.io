@@ -4,7 +4,7 @@ date: 2017-07-08 00:09:45
 categories:
 - Hexo
 tags:
-toc: true
+toc: false
 ---
 从一个什么都不知道的小白，到部署网站到GitHub，所需的全部操作。
 <!-- more -->
