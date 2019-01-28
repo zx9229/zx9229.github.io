@@ -1,6 +1,7 @@
 ## 网址  
 https://zx9229.github.io/
 
+
 ## 常用操作  
 ```
 $ hexo new "新文章的标题"
@@ -23,7 +24,13 @@ $ git push
   将本地版本库的分支推送到远程服务器上。
 ```
 
-## 下载版本库到本地  
+
+## 下载版本库到一台全新的机器上的步骤  
+
+### 安装 Git 和 Node.js 和 Hexo  
+请参考"第一次使用Hexo"
+
+### 在 Git Bash 下执行如下命令  
 ```
 $ mkdir /d/_FOLDER_TEMP_STORE_REPO/
 $ cd    /d/_FOLDER_TEMP_STORE_REPO/
