@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="安装Go。配置GOPATH。VSCode设置代理。使用代理安装Go的插件。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-25T15:05:20.340Z">
+<meta property="og:updated_time" content="2019-01-29T06:54:00.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Go并用VSCode配置Go开发环境">
 <meta name="twitter:description" content="安装Go。配置GOPATH。VSCode设置代理。使用代理安装Go的插件。">
@@ -95,7 +95,7 @@
         <p>安装Go。配置GOPATH。VSCode设置代理。使用代理安装Go的插件。<br><a id="more"></a></p>
 <h2 id="安装Go和常用依赖"><a href="#安装Go和常用依赖" class="headerlink" title="安装Go和常用依赖"></a>安装Go和常用依赖</h2><p>Go的官网：<a href="https://golang.org/" target="_blank" rel="noopener">The Go Programming Language</a>。<br>在Windows下，我们可以下载最新版的安装包(2019-01-25是<code>go1.11.5.windows-amd64.msi</code>)并安装它。<br>它一般会默认安装到<code>C:\Go\</code>下。<br>它会自动创建系统变量<code>GOROOT</code>并指向<code>C:\Go\</code>。<br>创建用户变量<code>GOPATH</code>并指向<code>%USERPROFILE%\go\</code>。<br>然后我们可以<code>mkdir %USERPROFILE%\go\src\my_code</code>然后在<code>my_code</code>里面写代码并测试等。  </p>
 <h3 id="安装git-svn-hg-bzr等"><a href="#安装git-svn-hg-bzr等" class="headerlink" title="安装git/svn/hg/bzr等"></a>安装git/svn/hg/bzr等</h3><p>建议至少安装Git(<code>Git for Windows</code>，名字类似<code>Git-2.20.1-64-bit.exe</code>的安装包)。<br><a href="https://golang.org/s/gogetcmd" target="_blank" rel="noopener">Installing Version Control Tools for <code>go get</code></a>。<br>安装Git的时候，请尽量安装到<code>C:\Program_Files_x64\Git</code>等不含特殊字符(空格、括号、等)的目录下。  </p>
-<h3 id="关于GOPATH用户变量"><a href="#关于GOPATH用户变量" class="headerlink" title="关于GOPATH用户变量"></a>关于GOPATH用户变量</h3><p>查看变量：<code>go env GOPAHT</code>。查看帮助：<code>go help gopath</code>。<br>一个设置<code>GOPATH</code>的命令：<code>SETX GOPATH C:\Go_GOPATH;%USERPROFILE%\go</code>。<br>当有多个<code>GOPATH</code>时默认将<code>go get</code>获取的包存放在第一个目录下。<br>例如：我们在”命令行提示”(<code>command-line prompt(cmd.exe)</code>)里执行<code>go get -u -v github.com/cw1997/NATBypass</code>之后，会发现它们出现在<code>C:\Go_GOPATH\</code>路径下面。  </p>
+<h3 id="关于GOPATH用户变量"><a href="#关于GOPATH用户变量" class="headerlink" title="关于GOPATH用户变量"></a>关于GOPATH用户变量</h3><p>查看变量：<code>go env GOPAHT</code>。查看帮助：<code>go help gopath</code>。<br>一个设置<code>GOPATH</code>的命令：<code>SETX GOPATH %USERPROFILE%\go;D:\Go_GOPATHd</code>。<br>当有多个<code>GOPATH</code>时默认将<code>go get</code>获取的包存放在第一个目录下。<br>例如：我们在”命令行提示”(<code>command-line prompt(cmd.exe)</code>)里执行<code>go get -u -v github.com/cw1997/NATBypass</code>之后，会发现它们出现在<code>%USERPROFILE%\go</code>路径下面。<br>极度建议<code>GOPATH</code>的第一个目录是<code>%USERPROFILE%\go</code>。比如，用<code>protoc.exe</code>生成<code>grpc</code>的代码时，如果第一个目录不是<code>%USERPROFILE%\go</code>可能出现异常。<br>如果不想将文件放到C盘，而是选择放到<code>D:\Go_GOPATHc\</code>，那么可以：创建文件夹&amp;&amp;创建软链接：<br><code>MKDIR D:\Go_GOPATHc\  &amp;&amp;  MKLINK /J  %USERPROFILE%\go\  D:\Go_GOPATHc\</code>。  </p>
 <h2 id="为VSCode配置Go开发环境"><a href="#为VSCode配置Go开发环境" class="headerlink" title="为VSCode配置Go开发环境"></a>为VSCode配置Go开发环境</h2><p>思路：用VSCode打开一个后缀为go的文件，然后VSCode会自动推荐一些插件，然后择需安装即可。  </p>
 <h3 id="安装VSCode"><a href="#安装VSCode" class="headerlink" title="安装VSCode"></a>安装VSCode</h3><p>最新(2019-01-25)的Windows的<code>System Installer</code>是<code>VSCodeSetup-x64-1.30.2.exe</code>。我们可以安装它。  </p>
 <h3 id="安装Go插件"><a href="#安装Go插件" class="headerlink" title="安装Go插件"></a>安装Go插件</h3><p>创建一个后缀为go的文件(比如test.go)并用VSCode打开。此时它会自动推荐一些插件。<br>如无意外，它会推荐一个插件，该插件的名字是”Go”，简介(shortDesc)是”Rich Go language support for Visual Studio Code”。<br>这个插件我用着不错，也推荐你安装它。  </p>
@@ -151,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2017/11/19/安装Go并用VSCode配置Go开发环境/" data-id="cjrfo26w9004b2wpr0hodu9ag" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2017/11/19/安装Go并用VSCode配置Go开发环境/" data-id="cjrhn8o3v004j2cprgt7wxfq3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,6 +216,14 @@
       <ul>
         
           <li>
+            <a href="/2019/01/28/Windows快捷方式、硬链接、软连接、符号链接/">Windows快捷方式、硬链接、软连接、符号链接</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/28/Win10系统安装相关/">Win10系统安装相关</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/26/go-sqlite3在Windows下的使用/">go-sqlite3在Windows下的使用</a>
           </li>
         
@@ -225,14 +233,6 @@
         
           <li>
             <a href="/2019/01/25/vlmcsd相关/">vlmcsd相关</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/05/protobuf在Windows下的编译/">protobuf在Windows下的编译</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/03/VS因为宏定义和函数重名导致编译失败/">VS因为宏定义和函数重名导致编译失败</a>
           </li>
         
       </ul>
