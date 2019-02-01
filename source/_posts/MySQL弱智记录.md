@@ -92,6 +92,16 @@ mysql.exe      -h127.0.0.1      -P3306      -uroot          -ptoor -DdbName  < .
 #### 分析命令
 `Explain`。
 
+#### processlist
+`show processlist`。
+
+#### 修改密码
+```
+老做法: SET PASSWORD FOR <user> = PASSWORD('<plaintext_password>')    不建议了.
+新做法: SET PASSWORD FOR <user> = '<plaintext_password>'
+```
+比如修改root的密码为toor可以`SET PASSWORD FOR root@localhost = 'toor'`。
+
 ## MySQL Workbench  
 ```
 执行当前行    : Ctrl+Enter
