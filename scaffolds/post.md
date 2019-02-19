@@ -4,5 +4,5 @@ date: {{ date }}
 categories:
 - MyDefaultCategory
 tags:
-toc: true
+toc: false
 ---
