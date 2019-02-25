@@ -5,19 +5,20 @@
   
 
   
-  <title>lftp相关 | zx9229.github.io</title>
+  <title>DBeaver相关 | zx9229.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要暂略。">
+  <meta name="description" content="DBeaver Community - Free Universal Database Tool">
+<meta name="keywords" content="数据库客户端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lftp相关">
-<meta property="og:url" content="http://zx9229.github.io/2018/10/27/lftp相关/index.html">
+<meta property="og:title" content="DBeaver相关">
+<meta property="og:url" content="http://zx9229.github.io/2019/02/25/DBeaver相关/index.html">
 <meta property="og:site_name" content="zx9229.github.io">
-<meta property="og:description" content="摘要暂略。">
+<meta property="og:description" content="DBeaver Community - Free Universal Database Tool">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-27T12:17:51.944Z">
+<meta property="og:updated_time" content="2019-02-25T09:48:12.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lftp相关">
-<meta name="twitter:description" content="摘要暂略。">
+<meta name="twitter:title" content="DBeaver相关">
+<meta name="twitter:description" content="DBeaver Community - Free Universal Database Tool">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -64,14 +65,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-lftp相关" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-DBeaver相关" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/27/lftp相关/" class="article-date">
-  <time datetime="2018-10-27T12:15:20.000Z" itemprop="datePublished">2018-10-27</time>
+    <a href="/2019/02/25/DBeaver相关/" class="article-date">
+  <time datetime="2019-02-25T09:45:52.000Z" itemprop="datePublished">2019-02-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    <a class="article-category-link" href="/categories/软件/">软件</a>
   </div>
 
   </div>
@@ -82,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      lftp相关
+      DBeaver相关
     </h1>
   
 
@@ -92,38 +93,32 @@
       
         <!-- Table of Contents -->
         
-        <p>摘要暂略。<br><a id="more"></a></p>
+        <p>DBeaver Community - Free Universal Database Tool<br><a id="more"></a></p>
 <ul>
-<li>mirror<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mirror [OPTS] [source [target]]</span><br><span class="line">Mirror specified source directory to local target directory.</span><br><span class="line">将指定的源目录镜像到本地目标目录。</span><br><span class="line">If the second directory is omitted, base name of first directory is used.</span><br><span class="line">如果省略第二个目录，则使用第一个目录的基本名称。</span><br><span class="line">If both directories are omitted, current local and remote directories are used.</span><br><span class="line">如果省略两个目录，则使用当前的本地和远程目录。</span><br><span class="line">If target directory ends with a slash (except root directory) then base name of source directory is appended.</span><br><span class="line">如果目标目录以斜杠结尾（根目录除外），则附加源目录的基本名称。（源目录是否以斜杠结尾都一样因为都是$(basename source)的结果）</span><br><span class="line">-c, --continue      continue a mirror job if possible  如果可能的话，继续镜像作业。</span><br><span class="line">-v, --verbose[=level]    verbose operation  在下载之前显示详细操作。</span><br><span class="line">--use-pget[-n=N]     use pget to transfer every single file 使用pget传输每个文件(使用多个连接获取指定文件，可以加快传输速度，指定连接数)</span><br><span class="line">--Remove-source-files    remove files after transfer (use with caution)  在传输后删除文件（谨慎使用）(它只会删除文件，不会删除文件夹)</span><br></pre></td></tr></table></figure>
+<li><p>官网<br><a href="https://dbeaver.io/" target="_blank" rel="noopener">DBeaver Community</a>。</p>
+</li>
+<li><p>源码<br><a href="https://github.com/dbeaver/dbeaver" target="_blank" rel="noopener">GitHub - dbeaver</a>。</p>
 </li>
 </ul>
-<p>命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lftp sftp://用户:密码@主机:端口 -e &apos;mirror --continue --verbose=3 --use-pget-n=8                       源目录 目标目录&apos; &gt; 日志文件 2&gt;&amp;1</span><br><span class="line">lftp sftp://用户:密码@主机:端口 -e &apos;mirror --continue --verbose=3 --use-pget-n=8 --Remove-source-files 源目录 目标目录&apos; &gt; 日志文件 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/10/27/lftp相关/" data-id="cjsk79jxh00458kpru9sjtybd" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2019/02/25/DBeaver相关/" data-id="cjsk79jre00018kprklbc73sy" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库客户端/">数据库客户端</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/10/31/svn相关/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          svn相关
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/26/sftp相关/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/02/19/HeidiSQL相关/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">sftp相关</div>
+      <div class="article-nav-title">HeidiSQL相关</div>
     </a>
   
 </nav>
