@@ -49,15 +49,16 @@ git <command> --help
 举例：  
 假设某文件为`test_file`，其路径为`./dir/test_file`，我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，这次提交对`test_file`和一些其他文件一并进行了修改，我想看一下这次提交对`test_file`做了哪些修改，需执行命令：`git show db22a3 ./dir/test_file`
 
+* <span style="color:blue;">鼠标操作TortoiseGit对某文件执行Revert操作</span>  
+`git checkout HEAD </path/to/your/file>`  
+据说推荐`<span style="color:red;">这是比font标签更好的方式。可以试试。</span>`而不推荐`<font color=red>内容</font>`。
+
 * 对某文件执行Revert操作  
 `git checkout 文件名`  
 以下随手摘录同时未经确认：  
-一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
-一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；  
+一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。  
 总之，就是让这个文件回到最近一次git commit或git add时的状态。
-
-* 鼠标操作TortoiseGit对某文件执行Revert操作  
-`git checkout HEAD </path/to/your/file>`
 
 * 恢复单个文件到指定版本  
 `git checkout <sha1-of-a-commit> </path/to/your/file>`  

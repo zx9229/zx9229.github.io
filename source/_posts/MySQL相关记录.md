@@ -74,7 +74,7 @@ mysql.exe     --host=127.0.0.1 --port=3306 --user=root --password=toor          
 ①同时导出结构以及数据时可同时省略-d和-t
 ②同时 不 导出结构和数据可使用-ntd
 ③只导出存储过程和函数可使用-R -ntd
-④导出所有(结构&数据&存储过程&函数&事件&触发器)使用-R -E(相当于①，省略了-d -t;触发器默认导出)
+④`导出所有(结构&数据&存储过程&函数&事件&触发器)`使用-R -E(相当于①，省略了-d -t;触发器默认导出)
 ⑤只导出结构&函数&事件&触发器使用 -R -E -d
 
 #### 导出某数据库的某个表的建表语句和相应数据
@@ -101,6 +101,70 @@ mysql.exe      -h127.0.0.1      -P3306      -uroot          -ptoor -DdbName  < .
 新做法: SET PASSWORD FOR <user> = '<plaintext_password>'
 ```
 比如修改root的密码为toor可以`SET PASSWORD FOR root@localhost = 'toor'`。
+
+
+* 用DELIMITER重定义MySQL的delimiter
+[Defining Stored Programs](https://dev.mysql.com/doc/refman/8.0/en/stored-programs-defining.html)。  
+本例还展示了循环操作(LOOP/WHILE)的一个写法。  
+```SQL
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `proTest`;
+$$
+CREATE PROCEDURE `proTest`(
+    OUT o_ret_code INT,
+    OUT o_ret_mesg VARCHAR(32)
+)
+label: BEGIN
+
+DECLARE v_done INT DEFAULT 0;
+DECLARE v_id   INT;
+DECLARE v_name VARCHAR(32);
+DECLARE v_age  INT;
+
+DECLARE cur_req CURSOR FOR
+    SELECT `id`, `name`, `age` FROM t_src;
+
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_done = 1;
+
+DROP TABLE IF EXISTS t_src, t_dst;
+CREATE TEMPORARY TABLE t_src(`id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(32), `age` INT, PRIMARY KEY (`id`) );
+CREATE TEMPORARY TABLE t_dst(`id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(32), `age` INT, PRIMARY KEY (`id`) );
+
+INSERT INTO t_src (`id`,`name`,`age`) VALUES (3,'zhang3',33), (4,'li4',44), (5,'wang5',55);
+-- INSERT INTO t_dst (`id`,`name`,`age`) VALUES                             (5,'wang5',55);
+
+START TRANSACTION;
+
+SET o_ret_code = 0, o_ret_mesg = 'SUCCESS';
+
+OPEN cur_req;
+
+loop_cycle1: LOOP
+    FETCH cur_req INTO v_id, v_name, v_age;
+
+    IF v_done <> 0 THEN
+        LEAVE loop_cycle1;
+    END IF;
+
+    IF EXISTS (SELECT 1 FROM t_dst WHERE id=v_id) THEN
+        SET o_ret_code = -1, o_ret_mesg = CONCAT("id(",v_id,") is exists");
+        ROLLBACK;
+        LEAVE label;
+    END IF;
+
+    INSERT INTO t_dst(`id`,`name`,`age`) SELECT v_id, v_name, v_age;
+END LOOP;
+
+COMMIT;
+
+SELECT COUNT(*) INTO o_ret_code FROM t_dst;
+SET o_ret_mesg = "COUNT_VALUE";
+
+END;
+$$
+DELIMITER ;
+```
+执行`proTest`的命令为`CALL proTest(@r1,@r2);`和`SELECT @r1, @r2;`。
 
 ## MySQL Workbench  
 ```
