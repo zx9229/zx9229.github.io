@@ -73,3 +73,8 @@ Vim单独维护了一些参数。修改Linux的操作系统编码，一般来说
 4. 往vim里粘贴代码。
 5. 按`Esc`退出插入模式。
 6. 执行`:set nopaste`退出粘贴模式。
+
+#### 在vim中批量替换字符串
+查看帮助`:help :substitute`。  
+格式：`:[range]s[ubstitute]/{pattern}/{string}/[flags] [count]`。  
+例子：`:%s#pattern#string#g`或`:1,$s/pattern/string/g`。  
