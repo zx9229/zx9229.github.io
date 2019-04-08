@@ -1,7 +1,7 @@
 ---
 title: InternetDownloadManager相关
 categories:
-  - MyDefaultCategory
+  - 软件
 toc: false
 date: 2018-08-25 19:33:53
 tags:
@@ -22,6 +22,7 @@ IDM的IP地址列表是【50.22.78.28,169.55.0.224,169.55.0.227,169.55.40.5】
 netsh advfirewall firewall add rule name="IDM_OUT_BLOCK" dir=out action=block program="C:\Program Files (x86)\Internet Download Manager\IDMan.exe" remoteip="50.22.78.28,169.55.0.224,169.55.0.227,169.55.40.5"
 netsh advfirewall firewall add rule /?
 ```
+查询指定名字的规则：`netsh advfirewall firewall show rule name="IDM_OUT_BLOCK"`。  
 然后就可以注册了。如果你的机器安装了代理程序，我不知道会不会受到影响。
 
 #### 一个可用的IDM
