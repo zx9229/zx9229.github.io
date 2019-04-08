@@ -97,6 +97,26 @@ grep -Ev "(^[[:space:]]*$)|(^[[:space:]]*[;#])" smb.conf  # man POSIX
 grep -Pv "(^[ \t]*$)|(^[ \t]*[;#])" smb.conf
 ```
 
+### 用grep查找文件
+我想找到所有包含`some_content`的所有文件，同时跳过`.svn`和`.git`文件夹：
+```
+grep --exclude-dir="\.git" --exclude-dir="\.svn" -r -a -i -l "some_content" ./
+-r, --recursive           like --directories=recurse
+-a, --text                equivalent to --binary-files=text
+-i, --ignore-case         ignore case distinctions
+-l, --files-with-matches  print only names of FILEs containing matches
+```
+也可以使用`GREP_OPTIONS`环境变量(该方式已经被弃用)：
+```
+export GREP_OPTIONS="--exclude-dir=\.git --exclude-dir=\.svn"
+grep -r -a -i -l "some_content" ./
+```
+也可以使用`alias`：
+```
+alias grep='grep --exclude-dir=.git --exclude-dir=.svn'
+grep -r -a -i -l "some_content" ./
+```
+
 ### 往shell中的stderr输出内容  
 ```
 echo "echo_message_to_stderr" >&2

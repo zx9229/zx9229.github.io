@@ -102,6 +102,54 @@ mysql.exe      -h127.0.0.1      -P3306      -uroot          -ptoor -DdbName  < .
 ```
 比如修改root的密码为toor可以`SET PASSWORD FOR root@localhost = 'toor'`。
 
+#### 查看MySQL的所有的表
+```SQL
+SELECT `table_schema`,`table_name` FROM `information_schema`.`tables`;
+```
+
+#### LOAD DATA
+[LOAD DATA Syntax](https://dev.mysql.com/doc/refman/5.7/en/load-data.html)。  
+```SQL
+LOAD DATA
+    [LOW_PRIORITY | CONCURRENT] [LOCAL]
+    INFILE 'file_name'
+    [REPLACE | IGNORE]
+    INTO TABLE tbl_name
+    [PARTITION (partition_name [, partition_name] ...)]
+    [CHARACTER SET charset_name]
+    [{FIELDS | COLUMNS}
+        [TERMINATED BY 'string']
+        [[OPTIONALLY] ENCLOSED BY 'char']
+        [ESCAPED BY 'char']
+    ]
+    [LINES
+        [STARTING BY 'string']
+        [TERMINATED BY 'string']
+    ]
+    [IGNORE number {LINES | ROWS}]
+    [(col_name_or_user_var
+        [, col_name_or_user_var] ...)]
+    [SET col_name={expr | DEFAULT},
+        [, col_name={expr | DEFAULT}] ...]
+```
+If you specify no FIELDS or LINES clause, the defaults are the same as if you had written this:
+```SQL
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+-- 字段被'\t'分隔, 被''环绕,
+LINES  TERMINATED BY '\n' STARTING BY ''
+```
+例子
+```SQL
+LOAD DATA LOCAL INFILE 'D:/datA.csv' INTO table my_tb FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n' (`col_name1`,`col_name2`);
+```
+
+#### LIKE忽略大小写和匹配大小写
+```SQL
+SELECT 'AbCdEfG' LIKE '%abc%'        FROM dual; -- 忽略大小写.
+SELECT 'AbCdEfG' LIKE BINARY  '%abc%' FROM dual;
+SELECT 'AbCdEfG' LIKE _LATIN1 '%abc%' COLLATE LATIN1_BIN;
+SELECT 'AbCdEfG' LIKE _LATIN1 '%abc%' COLLATE LATIN1_GENERAL_CS;
+```
 
 * 用DELIMITER重定义MySQL的delimiter
 [Defining Stored Programs](https://dev.mysql.com/doc/refman/8.0/en/stored-programs-defining.html)。  
