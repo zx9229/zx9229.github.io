@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-28T08:59:04.283Z">
+<meta property="og:updated_time" content="2019-04-08T02:33:31.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -108,6 +108,9 @@
 <h3 id="文件被哪些程序使用"><a href="#文件被哪些程序使用" class="headerlink" title="文件被哪些程序使用"></a>文件被哪些程序使用</h3><p><code>fuser -v 文件名</code></p>
 <h3 id="压缩解压预览命令"><a href="#压缩解压预览命令" class="headerlink" title="压缩解压预览命令"></a>压缩解压预览命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">压缩: tar -caf 压缩包名.tar.xz  路径</span><br><span class="line">解压: tar -xaf 压缩包名.tar.xz</span><br><span class="line">测试: tar -tvf 压缩包名.tar.xz</span><br><span class="line">关于压缩和解压:</span><br><span class="line">-c, --create               create a new archive</span><br><span class="line">-x, --extract, --get       extract files from an archive</span><br><span class="line">-a, --auto-compress        use archive suffix to determine the compression</span><br><span class="line">其中 a 表示自动检测，这个 a 也可以省略，然而个人还是习惯输入——因为如果万一某个地方的 tar 版本不支持自动检测，你至少还能得到一个警告</span><br><span class="line">-t, --list                 list the contents of an archive</span><br><span class="line">-v, --verbose              verbosely list files processed</span><br></pre></td></tr></table></figure>
 <h3 id="过滤掉配置文件的注释项"><a href="#过滤掉配置文件的注释项" class="headerlink" title="过滤掉配置文件的注释项"></a>过滤掉配置文件的注释项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep -Ev &quot;(^[[:space:]]*$)|(^[[:space:]]*[;#])&quot; smb.conf  # man POSIX</span><br><span class="line">grep -Pv &quot;(^[ \t]*$)|(^[ \t]*[;#])&quot; smb.conf</span><br></pre></td></tr></table></figure>
+<h3 id="用grep查找文件"><a href="#用grep查找文件" class="headerlink" title="用grep查找文件"></a>用grep查找文件</h3><p>我想找到所有包含<code>some_content</code>的所有文件，同时跳过<code>.svn</code>和<code>.git</code>文件夹：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grep --exclude-dir=&quot;\.git&quot; --exclude-dir=&quot;\.svn&quot; -r -a -i -l &quot;some_content&quot; ./</span><br><span class="line">-r, --recursive           like --directories=recurse</span><br><span class="line">-a, --text                equivalent to --binary-files=text</span><br><span class="line">-i, --ignore-case         ignore case distinctions</span><br><span class="line">-l, --files-with-matches  print only names of FILEs containing matches</span><br></pre></td></tr></table></figure></p>
+<p>也可以使用<code>GREP_OPTIONS</code>环境变量(该方式已经被弃用)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export GREP_OPTIONS=&quot;--exclude-dir=\.git --exclude-dir=\.svn&quot;</span><br><span class="line">grep -r -a -i -l &quot;some_content&quot; ./</span><br></pre></td></tr></table></figure></p>
+<p>也可以使用<code>alias</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alias grep=&apos;grep --exclude-dir=.git --exclude-dir=.svn&apos;</span><br><span class="line">grep -r -a -i -l &quot;some_content&quot; ./</span><br></pre></td></tr></table></figure></p>
 <h3 id="往shell中的stderr输出内容"><a href="#往shell中的stderr输出内容" class="headerlink" title="往shell中的stderr输出内容"></a>往shell中的stderr输出内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;echo_message_to_stderr&quot; &gt;&amp;2</span><br></pre></td></tr></table></figure>
 <h3 id="crontab-定时任务日志"><a href="#crontab-定时任务日志" class="headerlink" title="crontab 定时任务日志"></a>crontab 定时任务日志</h3><p>假设root用户的<code>crontab -l</code>有配置。那么：<br><code>/var/spool/cron/root</code>有配置的内容。<br><code>/var/log/cron</code>文件有简要记录。<br><code>/var/spool/mail/root</code>文件有详细记录。</p>
 <h3 id="yum使用代理服务器"><a href="#yum使用代理服务器" class="headerlink" title="yum使用代理服务器"></a>yum使用代理服务器</h3><p><a href="https://docs.huihoo.com/yum/managing-software-with-yum-zh_cn/sn-yum-proxy-server.html" target="_blank" rel="noopener">有代理服务器时使用 yum</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果只是暂时使用代理,在命令行输入下面一条命令:</span><br><span class="line">export http_proxy=&quot;http://127.0.0.1:8080&quot;</span><br><span class="line">长久使用代理: 修改/etc/yum.conf文件。</span><br><span class="line">备注：版本库连接都在【/etc/yum.repos.d/*.repo】目录。</span><br></pre></td></tr></table></figure></p>
@@ -122,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjsk79jtm001h8kpr1pvfrbdc" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cju7qs5b60018akprvmjoxvrg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,7 +191,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -201,6 +204,14 @@
       <ul>
         
           <li>
+            <a href="/2019/03/28/Postman相关/">Postman相关</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/07/ADB相关/">ADB相关</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/25/DBeaver相关/">DBeaver相关</a>
           </li>
         
@@ -210,14 +221,6 @@
         
           <li>
             <a href="/2019/02/19/TagSpaces相关/">TagSpaces相关</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/18/Joplin相关/">Joplin相关</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/28/Windows快捷方式、硬链接、软连接、符号链接/">Windows快捷方式、硬链接、软连接、符号链接</a>
           </li>
         
       </ul>

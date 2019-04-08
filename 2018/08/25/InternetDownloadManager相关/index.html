@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-30T01:41:01.373Z">
+<meta property="og:updated_time" content="2019-04-08T02:33:30.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="InternetDownloadManager相关">
 <meta name="twitter:description" content="略。">
@@ -71,7 +71,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a>
+    <a class="article-category-link" href="/categories/软件/">软件</a>
   </div>
 
   </div>
@@ -95,14 +95,14 @@
         <p>略。</p>
 <a id="more"></a>
 <h4 id="利用系统防火墙阻断IDM连接自家的网站去验证序列号"><a href="#利用系统防火墙阻断IDM连接自家的网站去验证序列号" class="headerlink" title="利用系统防火墙阻断IDM连接自家的网站去验证序列号"></a>利用系统防火墙阻断IDM连接自家的网站去验证序列号</h4><p>源自<a href="http://tieba.baidu.com/p/3878377959" target="_blank" rel="noopener">为了治疗不用破解补丁的强迫症们、你懂的【idm吧】_百度贴吧</a>。<br>总结：阻断idm连接自家的网站去验证序列号。<br>【一定要打开Windows防火墙】我参考该教程，写了一个命令，假如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IDM的一个序列号是【OS5HG-K90NH-SXOGT-7JYEZ】</span><br><span class="line">IMD的程序的路径是【C:\Program Files (x86)\Internet Download Manager\IDMan.exe】</span><br><span class="line">IDM的IP地址列表是【50.22.78.28,169.55.0.224,169.55.0.227,169.55.40.5】</span><br><span class="line">那么，命令是：</span><br><span class="line">netsh advfirewall firewall add rule name=&quot;IDM_OUT_BLOCK&quot; dir=out action=block program=&quot;C:\Program Files (x86)\Internet Download Manager\IDMan.exe&quot; remoteip=&quot;50.22.78.28,169.55.0.224,169.55.0.227,169.55.40.5&quot;</span><br><span class="line">netsh advfirewall firewall add rule /?</span><br></pre></td></tr></table></figure></p>
-<p>然后就可以注册了。如果你的机器安装了代理程序，我不知道会不会受到影响。</p>
+<p>查询指定名字的规则：<code>netsh advfirewall firewall show rule name=&quot;IDM_OUT_BLOCK&quot;</code>。<br>然后就可以注册了。如果你的机器安装了代理程序，我不知道会不会受到影响。</p>
 <h4 id="一个可用的IDM"><a href="#一个可用的IDM" class="headerlink" title="一个可用的IDM"></a>一个可用的IDM</h4><p>我从一个帖子找到了<code>Yanu</code>的一个作品并将其保留了下来。<br><a href="http://tieba.baidu.com/p/4942180901" target="_blank" rel="noopener">恕我直言，只有yanu大神的IDM破解安装包好用</a>。<br><a href="www.ccav1.com">Yanu - 分享优秀、纯净、绿色、实用的精品软件</a>。<br><a href="http://www.ccav1.com/idm.html" target="_blank" rel="noopener">IDM 6.28 Build5 最新破解版</a>。<br><a href="http://www.ccav1.com/idm.html" target="_blank" rel="noopener">原始下载地址</a>。<br><a href="IDMan628Build5-Yanu.ex">我的下载地址</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MD5: 9FABA635ECFF34BA5634DE41262487B6</span><br><span class="line">SHA1: F6C862F417028C8E6B978CF848FF417D441C69E8</span><br><span class="line">CRC32: 9007B8AC</span><br></pre></td></tr></table></figure></p>
 <h4 id="某些连接，我不想调用IDM下载，该怎么办？"><a href="#某些连接，我不想调用IDM下载，该怎么办？" class="headerlink" title="某些连接，我不想调用IDM下载，该怎么办？"></a>某些连接，我不想调用IDM下载，该怎么办？</h4><p>方法1：使用快捷键暂停调用IDM下载任何链接(<code>下载</code>=&gt;<code>选项</code>=&gt;<code>常规</code>=&gt;<code>自定义暂停调用或强制调用IDM的快捷键</code>)。<br>方法2：<code>两次取消同一下载事件</code>，然后设置弹窗。<br>方法3：<code>下载</code>=&gt;<code>选项</code>=&gt;<code>文件类型</code>=&gt;<code>下列站点不要自动开始下载</code>和<code>下列地址不要自动开始下载</code>。  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/08/25/InternetDownloadManager相关/" data-id="cjsk79js9000f8kprklqo1552" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/08/25/InternetDownloadManager相关/" data-id="cju7qs5ae000cakpr344ckud2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,7 +168,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -181,6 +181,14 @@
       <ul>
         
           <li>
+            <a href="/2019/03/28/Postman相关/">Postman相关</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/07/ADB相关/">ADB相关</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/25/DBeaver相关/">DBeaver相关</a>
           </li>
         
@@ -190,14 +198,6 @@
         
           <li>
             <a href="/2019/02/19/TagSpaces相关/">TagSpaces相关</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/18/Joplin相关/">Joplin相关</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/28/Windows快捷方式、硬链接、软连接、符号链接/">Windows快捷方式、硬链接、软连接、符号链接</a>
           </li>
         
       </ul>
