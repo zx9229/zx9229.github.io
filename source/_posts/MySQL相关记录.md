@@ -77,16 +77,39 @@ mysql.exe     --host=127.0.0.1 --port=3306 --user=root --password=toor          
 ④`导出所有(结构&数据&存储过程&函数&事件&触发器)`使用-R -E(相当于①，省略了-d -t;触发器默认导出)
 ⑤只导出结构&函数&事件&触发器使用 -R -E -d
 
-#### 导出某数据库的某个表的建表语句和相应数据
-`-d, --no-data       No row information.`
+#### 导入和导出
+导出
 ```
-mysqldump.exe --host=127.0.0.1 --port=3306 --user=root --password=toor --result-file=./sql.sql  --databases dbName
-mysqldump.exe      -h127.0.0.1      -P3306      -uroot          -ptoor             -r./sql.sql  dbName 某表
+Usage: mysqldump [OPTIONS] database [tables]
+OR     mysqldump [OPTIONS] --databases [OPTIONS] DB1 [DB2 DB3...]
+OR     mysqldump [OPTIONS] --all-databases [OPTIONS]
+  -n, --no-create-db  Suppress the CREATE DATABASE ... IF EXISTS statement that
+                      normally is output for each dumped database if
+                      --all-databases or --databases is given.
+  -t, --no-create-info 
+                      Don't write table creation info.
+  -d, --no-data       No row information.
+  -E, --events        Dump events.
+  -R, --routines      Dump stored routines (functions and procedures).
+  -N, --no-set-names  Same as --skip-set-charset.
+  -r, --result-file=name 
+导出某数据库(db_test)的某些表(tb_user,tb_info),(默认导出结构(建表语句,触发器)和数据):
+mysqldump.exe -h127.0.0.1 -P3306 -uroot -ptoor -r./sql.sql                   db_test tb_user tb_info
+导出某数据库(db_test)的某些表(tb_user,tb_info),仅导出结构(建表语句,触发器):
+mysqldump.exe -h127.0.0.1 -P3306 -uroot -ptoor -r./sql.sql -d                db_test tb_user tb_info
+导出某数据库(db_test)的某些表(tb_user,tb_info),仅导出数据:
+mysqldump.exe -h127.0.0.1 -P3306 -uroot -ptoor -r./sql.sql -t                db_test tb_user tb_info
+导出某数据库(db_test)的所有(建表语句&触发器&数据&存储过程&函数&事件):
+mysqldump.exe -h127.0.0.1 -P3306 -uroot -ptoor -r./sql.sql -E -R --databases db_test
 ```
-#### 导入
+导入
 ```
-mysql.exe --host=127.0.0.1 --port=3306 --user=root --password=toor           < ./sql.sql
-mysql.exe      -h127.0.0.1      -P3306      -uroot          -ptoor -DdbName  < ./sql.sql
+Usage: mysql.exe [OPTIONS] [database]
+  -D, --database=name Database to use.
+  --default-character-set=name 
+                      Set the default character set.
+往某数据库(db_test)导入数据:
+mysql.exe     -h127.0.0.1 -P3306 -uroot -ptoor --default-character-set=utf8  -Ddb_test < ./sql.sql
 ```
 
 #### 分析命令
@@ -213,6 +236,11 @@ $$
 DELIMITER ;
 ```
 执行`proTest`的命令为`CALL proTest(@r1,@r2);`和`SELECT @r1, @r2;`。
+
+* MySQL备份和恢复
+能找到MySQL的`datadir`(一般为`C:\ProgramData\MySQL\MySQL Server 5.7\Data`)，能进入`services.msc`。  
+备份：先停止`MySQL`的相关服务，再备份`datadir`，最后启动`MySQL`的相关服务。  
+恢复：先停止`MySQL`的相关服务，再还原`datadir`，最后启动`MySQL`的相关服务。  
 
 ## MySQL Workbench  
 ```
