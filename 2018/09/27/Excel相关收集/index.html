@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-08T02:33:31.184Z">
+<meta property="og:updated_time" content="2019-04-19T10:31:47.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Excel相关收集">
 <meta name="twitter:description" content="摘要暂略。">
@@ -172,11 +172,13 @@
 <h4 id="怎么用Excel画图"><a href="#怎么用Excel画图" class="headerlink" title="怎么用Excel画图"></a>怎么用Excel画图</h4><p>Excel的<code>行号</code>用数字表示，<code>列号</code>用(A~Z)和(AA~ZZ)等表示。<br>选中第A列：鼠标左键点击列号A即可选中第A列的所有数据。<br>选择第A列和第C列：按着Ctrl的同时，选中第A列和第C列。<br>根据某列画图表：<code>用Excel打开某文件</code>&gt;<code>选中一列或多列</code>&gt;<code>插入</code>&gt;<code>图表</code>&gt;<code>所有图表</code>&gt;<code>折线图</code>&gt;<code>折线图</code>&gt;<code>确定</code>。<br>设置图表的横轴：<code>(右键)图表区</code>&gt;<code>选择数据</code>&gt;<code>水平(分类)轴标签</code>&gt;<code>编辑</code>&gt;<code>(左键)选中(要当做横轴的)某列</code>&gt;<code>确定</code>。</p>
 <h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>如果我们任意选择的单元格，上下前后有空白单元格的话，那它只能定位到最接近空白单元格的一个单元格。所以我们在选择单元格时，一定要防止这种情况发生。</p>
 <p>####<br>我在<code>M2</code>(第M列的第2行)写了一个公式，然后想填充整个M3~Mend的整个M列，则<br>①选中M2②Ctrl+Shift+End选中M列③Ctrl+D向下填充。</p>
+<h4 id="设置单元格格式"><a href="#设置单元格格式" class="headerlink" title="设置单元格格式"></a>设置单元格格式</h4><p><a href="https://support.office.com/en-us/article/review-guidelines-for-customizing-a-number-format-c0a1d1fa-d3f4-4018-96b7-9c9354dd99f5?ui=en-US&amp;rs=en-US&amp;ad=US" target="_blank" rel="noopener">Review guidelines for customizing a number format</a>。<br><a href="https://support.office.com/zh-cn/article/查看有关自定义数字格式的准则-c0a1d1fa-d3f4-4018-96b7-9c9354dd99f5" target="_blank" rel="noopener">查看有关自定义数字格式的准则</a>。<br>可以搜索<code>Excel设置单元格格式</code>或<code>Excel设置单元格格式自定义</code>等查看相关内容。<br>可以搜索<code>详解EXCEL单元格自定义格式</code>或<code>Excel单元格格式设置自定义格式详解(很全面、完整)</code>等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0: 数字占位符。会显示无效的零。如果单元格的内容大于占位符的数量，则显示实际数字；如果小于点位符的数量，则用0补足。</span><br><span class="line">#: 数字占位符。不显示无效的零。小数点后数字如大于&quot;#&quot;的数量，则按&quot;#&quot;的位数四舍五入。</span><br><span class="line">.: 数字占位符。在数字中显示小数点。</span><br></pre></td></tr></table></figure></p>
+<p>模拟“万位分隔符”：右键某列，设置单元格格式，数字，自定义，在类型中输入<code>####&quot;,&quot;####</code>。<br>数字模拟时间格式：<code>00&quot;:&quot;00&quot;:&quot;00</code>。<br>猜测：可以用“双引号”包含字符串，然后连接各项。  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/09/27/Excel相关收集/" data-id="cju7qs5a60005akpr7dtf6ojr" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/09/27/Excel相关收集/" data-id="cjunxt4kq0005o4proafhan4y" class="article-share-link">Share</a>
       
       
     </footer>
