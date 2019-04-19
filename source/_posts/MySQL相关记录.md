@@ -136,24 +136,24 @@ SELECT `table_schema`,`table_name` FROM `information_schema`.`tables`;
 LOAD DATA
     [LOW_PRIORITY | CONCURRENT] [LOCAL]
     INFILE 'file_name'
-    [REPLACE | IGNORE]
+    [REPLACE | IGNORE] -- 遇到重复的时候的处理方法，替换或者是忽略.
     INTO TABLE tbl_name
-    [PARTITION (partition_name [, partition_name] ...)]
-    [CHARACTER SET charset_name]
+    [PARTITION (partition_name [, partition_name] ...)] -- (?)分区选择.
+    [CHARACTER SET charset_name] -- (?)字符集.
     [{FIELDS | COLUMNS}
-        [TERMINATED BY 'string']
-        [[OPTIONALLY] ENCLOSED BY 'char']
-        [ESCAPED BY 'char']
+        [TERMINATED BY 'string']          -- 字段之间分隔符号.
+        [[OPTIONALLY] ENCLOSED BY 'char'] -- 字段被包含在char中间.
+        [ESCAPED BY 'char']               -- 通过char进行转义.
     ]
     [LINES
-        [STARTING BY 'string']
-        [TERMINATED BY 'string']
+        [STARTING BY 'string']   -- 忽略开头是string的行.
+        [TERMINATED BY 'string'] -- 行分隔符.
     ]
-    [IGNORE number {LINES | ROWS}]
+    [IGNORE number {LINES | ROWS}] -- 忽略行.
     [(col_name_or_user_var
-        [, col_name_or_user_var] ...)]
+        [, col_name_or_user_var] ...)] -- 目的表的表字段名或者用户变量名.
     [SET col_name={expr | DEFAULT},
-        [, col_name={expr | DEFAULT}] ...]
+        [, col_name={expr | DEFAULT}] ...] -- 设置表字段值.
 ```
 If you specify no FIELDS or LINES clause, the defaults are the same as if you had written this:
 ```SQL
