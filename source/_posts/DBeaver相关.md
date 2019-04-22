@@ -15,3 +15,6 @@ DBeaver Community - Free Universal Database Tool
 
 * 源码
 [GitHub - dbeaver](https://github.com/dbeaver/dbeaver)。
+
+* 获取所有表的所有字段
+`数据库导航`>`双击某连接`>`双击某数据库`>`双击某SchemasName/模式名字`>`ER图/实体关系图`>`保存图表为外部格式`>`GraphML format(*graphml)`。  
