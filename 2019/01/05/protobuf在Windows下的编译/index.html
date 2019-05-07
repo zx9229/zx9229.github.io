@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="在Windows下编译protobuf给Qt_for_MSVC、Qt_for_MinGW、Qt_for_Android用。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-26T09:23:43.934Z">
+<meta property="og:updated_time" content="2019-05-02T10:27:29.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="protobuf在Windows下的编译">
 <meta name="twitter:description" content="在Windows下编译protobuf给Qt_for_MSVC、Qt_for_MinGW、Qt_for_Android用。">
@@ -71,7 +71,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a>
+    <a class="article-category-link" href="/categories/Go/">Go</a>
   </div>
 
   </div>
@@ -94,13 +94,13 @@
         
         <p>在Windows下编译protobuf给Qt_for_MSVC、Qt_for_MinGW、Qt_for_Android用。<br><a id="more"></a></p>
 <ul>
-<li><p>Qt编译protobuf<br>其实是：使用Qt自带的MinGW编译器，为C++语言，编译出protobuf的链接库。<br>我们需要安装Qt和Git。在安装时，需要注意其安装路径（不要有空格等特殊字符）。<br>比如：Git的路径尽量为<code>C:\Program_Files_x86\Git</code>而非<code>C:\Program Files (x86)\Git</code>。<br>假定我安装了Git(相关路径为<code>C:\Program_Files_x86\Git\cmd</code>)和Qt(相关路径<code>C:\Qt\Qt5.9.4\Tools\mingw530_32\bin</code>)，将它们加入系统变量<code>Path</code>，<br>且将它们放到Path的最前面，这样从Path目录寻找程序时，可以确保使用了该目录下的程序。<br>并<code>xcopy C:\Qt\Qt5.9.4\Tools\mingw530_32\bin\mingw32-make.exe C:\Qt\Qt5.9.4\Tools\mingw530_32\bin\make.exe</code>。<br>然后可以按照<code>https://github.com/protocolbuffers/protobuf</code>的步骤进行编译。<br>实际上是按照<code>https://github.com/protocolbuffers/protobuf/blob/master/src/README.md</code>的步骤进行编译。  </p>
+<li><p>Qt编译protobuf<br>其实是：使用Qt自带的MinGW编译器，为C++语言，编译出protobuf的链接库。<br>我们需要安装Qt和Git。在安装时，需要注意其安装路径（不要有空格等特殊字符）。<br>比如：Git的路径尽量为<code>C:\Program_Files_x86\Git</code>而非<code>C:\Program Files (x86)\Git</code>。<br>假定我安装了Git(相关路径为<code>C:\Program_Files_x86\Git\cmd</code>)和Qt(相关路径<code>C:\Qt\Qt5.12.3\Tools\mingw730_32\bin</code>)，将它们加入系统变量<code>Path</code>，<br>且将它们放到Path的最前面，这样从Path目录寻找程序时，可以确保使用了该目录下的程序。<br>并<code>xcopy C:\Qt\Qt5.12.3\Tools\mingw730_32\bin\mingw32-make.exe C:\Qt\Qt5.12.3\Tools\mingw730_32\bin\make.exe</code>。<br>然后可以按照<code>https://github.com/protocolbuffers/protobuf</code>的步骤进行编译。<br>实际上是按照<code>https://github.com/protocolbuffers/protobuf/blob/master/src/README.md</code>的步骤进行编译。<br>实际上从步骤<code>./configure</code>开始执行就可以了。它可能生成<code>libprotobuf.a</code>文件。<br>它只需要编译谷歌发布的源文件，你自己的proto文件生成的代码，是不需要在这里编译的。  </p>
 </li>
 <li><p>MinGW编译protobuf<br>同上。  </p>
 </li>
 <li><p>MSVC编译protobuf<br><a href="https://blog.csdn.net/hp_cpp/article/details/81561310" target="_blank" rel="noopener">protobuf的编译和使用，在windows平台上</a>。  </p>
 </li>
-<li><p>NDK编译protobuf给Android用<br><a href="https://www.cnblogs.com/UniqPtr/p/7859758.html" target="_blank" rel="noopener">protobuf 交叉编译笔记</a>。<br>我们需要安装NDK和CMake。<br>NDK(Native Development Kit)是Android的一个工具开发包。NDK是属于Android的，与Java并无直接关系。<br>NDK相关的几个链接：<br><code>https://developer.android.com/</code><br><code>https://developer.android.com/ndk/downloads/</code><br><code>https://developer.android.google.cn/ndk/downloads/</code><br><code>https://dl.google.com/android/repository/android-ndk-r16b-windows-x86.zip</code><br><code>https://dl.google.com/android/repository/android-ndk-r16b-windows-x86_64.zip</code>  </p>
+<li><p>NDK编译protobuf给Android用<br><a href="https://www.cnblogs.com/UniqPtr/p/7859758.html" target="_blank" rel="noopener">protobuf 交叉编译笔记</a>。<br>我们需要安装NDK和CMake。然后就可以在任意目录开始编译。<br>NDK(Native Development Kit)是Android的一个工具开发包。NDK是属于Android的，与Java并无直接关系。<br>NDK相关的几个链接：<br><code>https://developer.android.com/</code><br><code>https://developer.android.com/ndk/downloads/</code><br><code>https://developer.android.google.cn/ndk/downloads/</code><br><code>https://dl.google.com/android/repository/android-ndk-r16b-windows-x86.zip</code><br><code>https://dl.google.com/android/repository/android-ndk-r16b-windows-x86_64.zip</code>  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake -G &quot;MinGW Makefiles&quot; ^</span><br><span class="line">    -DCMAKE_TOOLCHAIN_FILE=&lt;Your_NDK_PATH&gt;/build/cmake/android.toolchain.cmake ^</span><br><span class="line">    -DCMAKE_MAKE_PROGRAM=&lt;Your_NDK_PATH&gt;/prebuilt/windows-x86_64/bin/make.exe ^</span><br><span class="line">    -Dprotobuf_BUILD_TESTS=OFF ^</span><br><span class="line">    &lt;Protobuf_source_PATH&gt;/cmake</span><br><span class="line">cmake --build . --target libprotobuf</span><br><span class="line">cmake --build . --target libprotobuf-lite</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -109,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2019/01/05/protobuf在Windows下的编译/" data-id="cjunxt4pr004bo4prj3281ery" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2019/01/05/protobuf在Windows下的编译/" data-id="cjve166bh003zlwprjel5glik" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +175,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -188,23 +188,23 @@
       <ul>
         
           <li>
-            <a href="/2019/03/28/Postman相关/">Postman相关</a>
+            <a href="/2019/05/07/rsync相关/">rsync相关</a>
           </li>
         
           <li>
-            <a href="/2019/03/07/ADB相关/">ADB相关</a>
+            <a href="/2019/04/30/MySQL的INFILE和OUTFILE相关/">MySQL的INFILE和OUTFILE相关</a>
           </li>
         
           <li>
-            <a href="/2019/02/25/DBeaver相关/">DBeaver相关</a>
+            <a href="/2019/04/28/Flutter相关/">Flutter相关</a>
           </li>
         
           <li>
-            <a href="/2019/02/19/HeidiSQL相关/">HeidiSQL相关</a>
+            <a href="/2019/04/23/shell相关/">shell相关</a>
           </li>
         
           <li>
-            <a href="/2019/02/19/TagSpaces相关/">TagSpaces相关</a>
+            <a href="/2019/04/22/业务相关/">业务相关</a>
           </li>
         
       </ul>
