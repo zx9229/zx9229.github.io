@@ -24,7 +24,7 @@ Go的官网：[The Go Programming Language](https://golang.org/)。
 
 ### 关于GOPATH用户变量
 查看变量：`go env GOPAHT`。查看帮助：`go help gopath`。  
-一个设置`GOPATH`的命令：`SETX GOPATH %USERPROFILE%\go;D:\Go_GOPATHd`。  
+一个设置`GOPATH`的用户变量的命令：`SETX GOPATH %USERPROFILE%\go;D:\Go_GOPATHd`。  
 当有多个`GOPATH`时默认将`go get`获取的包存放在第一个目录下。  
 例如：我们在"命令行提示"(`command-line prompt(cmd.exe)`)里执行`go get -u -v github.com/cw1997/NATBypass`之后，会发现它们出现在`%USERPROFILE%\go`路径下面。  
 极度建议`GOPATH`的第一个目录是`%USERPROFILE%\go`。比如，用`protoc.exe`生成`grpc`的代码时，如果第一个目录不是`%USERPROFILE%\go`可能出现异常。  

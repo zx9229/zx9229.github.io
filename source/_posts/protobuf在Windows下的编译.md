@@ -1,7 +1,7 @@
 ---
 title: protobuf在Windows下的编译
 categories:
-  - MyDefaultCategory
+  - Go
 toc: false
 date: 2019-01-05 17:55:56
 tags:
@@ -13,11 +13,13 @@ tags:
 其实是：使用Qt自带的MinGW编译器，为C++语言，编译出protobuf的链接库。  
 我们需要安装Qt和Git。在安装时，需要注意其安装路径（不要有空格等特殊字符）。  
 比如：Git的路径尽量为`C:\Program_Files_x86\Git`而非`C:\Program Files (x86)\Git`。  
-假定我安装了Git(相关路径为`C:\Program_Files_x86\Git\cmd`)和Qt(相关路径`C:\Qt\Qt5.9.4\Tools\mingw530_32\bin`)，将它们加入系统变量`Path`，  
+假定我安装了Git(相关路径为`C:\Program_Files_x86\Git\cmd`)和Qt(相关路径`C:\Qt\Qt5.12.3\Tools\mingw730_32\bin`)，将它们加入系统变量`Path`，  
 且将它们放到Path的最前面，这样从Path目录寻找程序时，可以确保使用了该目录下的程序。  
-并`xcopy C:\Qt\Qt5.9.4\Tools\mingw530_32\bin\mingw32-make.exe C:\Qt\Qt5.9.4\Tools\mingw530_32\bin\make.exe`。  
+并`xcopy C:\Qt\Qt5.12.3\Tools\mingw730_32\bin\mingw32-make.exe C:\Qt\Qt5.12.3\Tools\mingw730_32\bin\make.exe`。  
 然后可以按照`https://github.com/protocolbuffers/protobuf`的步骤进行编译。  
 实际上是按照`https://github.com/protocolbuffers/protobuf/blob/master/src/README.md`的步骤进行编译。  
+实际上从步骤`./configure`开始执行就可以了。它可能生成`libprotobuf.a`文件。  
+它只需要编译谷歌发布的源文件，你自己的proto文件生成的代码，是不需要在这里编译的。  
 
 * MinGW编译protobuf
 同上。  
@@ -27,7 +29,7 @@ tags:
 
 * NDK编译protobuf给Android用
 [protobuf 交叉编译笔记](https://www.cnblogs.com/UniqPtr/p/7859758.html)。  
-我们需要安装NDK和CMake。  
+我们需要安装NDK和CMake。然后就可以在任意目录开始编译。  
 NDK(Native Development Kit)是Android的一个工具开发包。NDK是属于Android的，与Java并无直接关系。  
 NDK相关的几个链接：  
 `https://developer.android.com/`  

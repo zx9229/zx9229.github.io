@@ -172,3 +172,5 @@ ${dst}
 `sed ':L;N;s/\n//;t L' filename`
 * 正则表达式与组号(重复本行内容)  
 `sed 's/^\(.*\)$/\1\1/g' filename`
+* 把所有的abc替换成def，并打印发生替换的那些行  
+`sed -n 's/abc/def/gp' filename`
