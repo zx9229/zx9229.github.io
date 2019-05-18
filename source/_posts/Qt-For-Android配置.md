@@ -5,6 +5,7 @@ categories:
 toc: false
 date: 2019-01-26 18:29:06
 tags:
+  - Qt
 ---
 用Qt编写Android程序时需要的设置。
 <!-- more -->
