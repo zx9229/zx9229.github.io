@@ -2,7 +2,7 @@
 title: MySQL相关记录
 date: 2017-10-25 19:34:24
 categories:
-- SQL
+  - SQL
 tags:
 toc: false
 ---
