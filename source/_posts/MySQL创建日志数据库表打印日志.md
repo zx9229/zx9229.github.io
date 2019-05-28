@@ -128,7 +128,7 @@ CREATE PROCEDURE `log_do7`(
     IN i_f4 VARCHAR(512),
     IN i_f5 VARCHAR(512),
     IN i_f6 VARCHAR(512),
-    IN i_f7 VARCHAR(512),
+    IN i_f7 VARCHAR(512)
 )
 BEGIN
 CALL log_do(i_f1,i_f2,i_f3,i_f4,i_f5,i_f6,i_f7,NULL,NULL);
@@ -145,7 +145,7 @@ CREATE PROCEDURE `log_do8`(
     IN i_f5 VARCHAR(512),
     IN i_f6 VARCHAR(512),
     IN i_f7 VARCHAR(512),
-    IN i_f8 VARCHAR(512),
+    IN i_f8 VARCHAR(512)
 )
 BEGIN
 CALL log_do(i_f1,i_f2,i_f3,i_f4,i_f5,i_f6,i_f7,i_f8,NULL);
