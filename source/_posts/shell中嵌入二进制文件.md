@@ -3,7 +3,7 @@ title: shell中嵌入二进制文件
 categories:
   - Linux
   - shell
-toc: true
+toc: false
 date: 2018-06-29 16:55:01
 tags:
 ---

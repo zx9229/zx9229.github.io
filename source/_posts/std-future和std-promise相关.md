@@ -17,6 +17,7 @@ tags:
 #include <string>
 #include <iostream>
 #include <chrono>
+#define lambda_localtime []() {auto x = std::time(NULL); return std::put_time(std::localtime(&x), "%c"); }()
 int main(int argc, char** argv)
 {
     std::promise<std::string> promiseObj;
@@ -30,12 +31,13 @@ int main(int argc, char** argv)
     //}, std::ref(promiseObj));
     //////////////////////////////////////////////////////////////////////////
     std::async(std::launch::async, [](std::promise<std::string>& p) {
-        std::cout << std::this_thread::get_id() << ", beg" << std::endl;
+        std::cout << std::this_thread::get_id() << ", beg, " << lambda_localtime << std::endl;
         std::this_thread::sleep_for(std::chrono::seconds(5));
-        std::cout << std::this_thread::get_id() << ", end" << std::endl;
+        std::cout << std::this_thread::get_id() << ", end, " << lambda_localtime << std::endl;
         p.set_value("hello_world");
     }, std::ref(promiseObj));
     //////////////////////////////////////////////////////////////////////////
+    std::cout << std::this_thread::get_id() << ", main, " << lambda_localtime << std::endl;
     std::string result = futureObj.get();
     std::cout << std::this_thread::get_id() << ", " << result << std::endl;
     //////////////////////////////////////////////////////////////////////////
