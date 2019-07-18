@@ -20,8 +20,8 @@ tags:
 #include <future>
 #include <string>
 #include <iostream>
-#include <chrono>
-#include <iomanip>
+#include <ctime> // std::time_t time( std::time_t* arg );
+#include <iomanip> // put_time( const std::tm* tmb, const CharT* fmt );
 #define lambda_localtime []() {auto x = std::time(NULL); return std::put_time(std::localtime(&x), "%c"); }()
 int main(int argc, char** argv)
 {
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-结果
+结果(子线程和主线程并行)
 ```
 14652, m_thread, main, 07/09/19 15:01:34
 13836, c_thread, beg_, 07/09/19 15:01:34
@@ -56,7 +56,8 @@ int main(int argc, char** argv)
 #include <future>
 #include <string>
 #include <iostream>
-#include <chrono>
+#include <ctime> // std::time_t time( std::time_t* arg );
+#include <iomanip> // put_time( const std::tm* tmb, const CharT* fmt );
 #define lambda_localtime []() {auto x = std::time(NULL); return std::put_time(std::localtime(&x), "%c"); }()
 int main(int argc, char** argv)
 {
@@ -78,7 +79,7 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-结果
+结果(子线程和主线程并行)
 ```
 11052, m_thread, main, 07/09/19 14:35:22
 19560, c_thread, beg_, 07/09/19 14:35:22
@@ -91,7 +92,40 @@ int main(int argc, char** argv)
 #include <future>
 #include <string>
 #include <iostream>
-#include <chrono>
+#include <ctime> // std::time_t time( std::time_t* arg );
+#include <iomanip> // put_time( const std::tm* tmb, const CharT* fmt );
+#define lambda_localtime []() {auto x = std::time(NULL); return std::put_time(std::localtime(&x), "%c"); }()
+int main(int argc, char** argv)
+{
+    //////////////////////////////////////////////////////////////////////////
+    std::async(std::launch::async, []()->std::string
+    {
+        std::cout << std::this_thread::get_id() << ", c_thread, beg_, " << lambda_localtime << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+        std::cout << std::this_thread::get_id() << ", c_thread, end_, " << lambda_localtime << std::endl;
+        return "hello_world";
+    });
+    //////////////////////////////////////////////////////////////////////////
+    std::cout << std::this_thread::get_id() << ", m_thread, main, " << lambda_localtime << std::endl;
+    //////////////////////////////////////////////////////////////////////////
+    while (getchar() != '\n') {}
+    return 0;
+}
+```
+结果(子线程启动，子线程运行，子线程结束，主线程继续)
+```
+23096, c_thread, beg_, 07/18/19 15:32:19
+23096, c_thread, end_, 07/18/19 15:32:24
+23820, m_thread, main, 07/18/19 15:32:24
+```
+
+* 示例4
+```c++
+#include <future>
+#include <string>
+#include <iostream>
+#include <ctime> // std::time_t time( std::time_t* arg );
+#include <iomanip> // put_time( const std::tm* tmb, const CharT* fmt );
 #define lambda_localtime []() {auto x = std::time(NULL); return std::put_time(std::localtime(&x), "%c"); }()
 int main(int argc, char** argv)
 {
@@ -113,7 +147,7 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-结果
+结果(子线程启动，子线程运行，子线程结束，主线程继续)
 ```
 16736, c_thread, beg_, 07/09/19 14:56:42
 16736, c_thread, end_, 07/09/19 14:56:47

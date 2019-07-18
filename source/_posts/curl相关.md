@@ -35,3 +35,10 @@ tags:
 `curl --insecure -o test.txt -u 用户: --key OpenSSHprivateKey sftp://主机:端口/tmp/test.log`。  
 `curl --insecure -O          --key OpenSSHprivateKey sftp://用户@主机:端口/tmp/test.log`。  
 `curl --insecure -o test.txt --key OpenSSHprivateKey sftp://用户@主机:端口/tmp/test.log`。  
+
+* sftp远端的几种写法
+`-u 用户:密码 sftp://主机:端口/`。  
+`sftp://用户:密码@主机:端口/`。  
+`-u 用户: --key OpenSSHprivateKey sftp://主机:端口/`。  
+`--key OpenSSHprivateKey sftp://用户@主机:端口/`。  
+`--key OpenSSHprivateKey sftp://用户:@主机:端口/`。  

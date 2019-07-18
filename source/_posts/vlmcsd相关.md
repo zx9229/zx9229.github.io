@@ -1,7 +1,7 @@
 ---
 title: vlmcsd相关
 categories:
-  - MyDefaultCategory
+  - Windows
 toc: false
 date: 2019-01-25 14:40:17
 tags:
@@ -18,10 +18,12 @@ KMS服务器模拟器。
 * 几点说明  
 Github上有它的版本库，版本库里面有man文件夹，它里面有文档。  
 如果我们要在Windows下运行的话，可以直接运行`binaries\Windows\intel\vlmcsd-Windows-x64.exe`程序，此时它会默认监听`1688`端口。  
-`vlmcsd.exe`可执行程序运行在本机上，并且为本机激活，很可能无法成功激活。如果放到另一台机器上，应当可以成功激活。  
+<label style="color:red">**`vlmcsd.exe`可执行程序运行在本机上，并且为本机激活，很可能无法成功激活。如果放到另一台机器上，应当可以成功激活。**</label>  
 `vlmcsd.exe --help`可以查看程序的帮助说明。  
 
 * 使用步骤  
+`W269N-WFGWX-YVC9B-4J6C9-T83GX : Windows 10 Professional`，  
+`NPPR9-FWDCX-D2C8J-H872K-2YT43 : Windows 10 Enterprise`。  
 ```
 slmgr.vbs /skms localhost:1688
 slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
