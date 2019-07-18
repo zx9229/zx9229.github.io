@@ -50,7 +50,7 @@ Node.js官网：https://nodejs.org/en/
 
 5. 安装Hexo  
 
-打开"命令行提示"(`command-line prompt(cmd.exe)`)，然后执行 `npm install hexo-cli -g` 命令。其中`-g`表示全局安装。  
+打开"命令行提示"(`command-line prompt(cmd.exe)`)，然后执行 `npm install hexo-cli -g` 命令。其中`-g`表示全局安装。该命令不会影响工作目录。  
 Hexo的英文网站：https://hexo.io/  
 Hexo的中文网站：https://hexo.io/zh-cn/  
 
@@ -59,7 +59,7 @@ Hexo的中文网站：https://hexo.io/zh-cn/
 在cmd下，将当前目录切到"D:\"下面。  
 在cmd下运行命令`hexo init hexo_demo`。  
 将当前目录切到"D:\hexo_demo\"下。  
-在cmd下执行命令`mpm install`。  
+在cmd下执行命令`npm install`。  
 在cmd下执行命令`hexo server`。  
 在浏览器里访问`http://localhost:4000/`查看情况。  
 如果一切正常的话，我们会看到一个网站，此时我们的成就感得到初步满足。  
@@ -380,7 +380,7 @@ git push
 
 ## 安装基础软件  
 
-安装 Git 和 TortoiseGit 和 Node.js 。  
+安装 Git 和 TortoiseGit 和 Node.js 和 Hexo 。  
 
 ## 从GitHub上clone下来repository，并切换到相应的分支。  
 ```

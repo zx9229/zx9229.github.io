@@ -2,7 +2,7 @@
 title: VisualStudio自动创建UTF-8格式编码的文件
 date: 2018-02-01 18:40:31
 categories:
-- MyDefaultCategory
+- MSVC
 tags:
 toc: false
 ---

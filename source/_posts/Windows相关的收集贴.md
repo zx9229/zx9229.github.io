@@ -75,10 +75,5 @@ REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx\command" /ve /t REG
 REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx"         /ve /t REG_SZ /d "open cmd here"
 ```
 
-### Win10V1809默认英文输入法
-`设置`>`时间和语言`>`语言`>`拼写、键入和键盘设置`>`输入`>`高级键盘设置`：  
-`替代默认输入法`：`英语(美国)-美式键盘`。  
-`切换输入法`：`允许我为每个应用窗口使用不同的输入法`。  
-
 ### Windows程序崩溃生成dump文件
 [windows程序崩溃生成dump文件](https://blog.csdn.net/whatday/article/details/47275711)。  
