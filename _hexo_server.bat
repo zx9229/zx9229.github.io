@@ -12,3 +12,8 @@
 @REM  示例： `SCHTASKS /Create /TN HEXO_SERVER_BAT /RU SYSTEM /SC ONSTART /TR "%SCRIPTS__DIR%%SCRIPTS_NAME%"`。
 @REM  解释：创建一个任务计划，名为`HEXO_SERVER_BAT`，运行命令是`%SCRIPTS__DIR%%SCRIPTS_NAME%`。
 @REM  注意：如果需要更细致的设置，请在`任务计划程序`里面进行设置。
+
+@REM  最新情报：
+@REM    请使用指定用户(比如【ZHANG-LAPTOP\zhang】)；
+@REM    不管用户是否登录都要运行；
+@REM    使用最高权限运行。
