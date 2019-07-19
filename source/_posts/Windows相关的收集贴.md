@@ -77,3 +77,11 @@ REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx"         /ve /t REG
 
 ### Windows程序崩溃生成dump文件
 [windows程序崩溃生成dump文件](https://blog.csdn.net/whatday/article/details/47275711)。  
+
+### wmic设置系统环境变量
+[在cmd命令行下使用wmic永久修改Windows环境变量](https://blog.csdn.net/qidi_huang/article/details/52634293)。
+```
+wmic ENVIRONMENT CREATE name="PYTHON_ROOT_37",    username="<system>",     VariableValue="C:\Program_Files_zx\python-3.7.4-embed-amd64"
+wmic ENVIRONMENT WHERE "name='PYTHON_ROOT_37' AND username='<system>'" SET VariableValue="C:\Program_Files_zx\python-3.7.4-embed-amd64"
+wmic ENVIRONMENT WHERE "name='PYTHON_ROOT_37'" DELETE
+```

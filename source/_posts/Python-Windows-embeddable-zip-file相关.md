@@ -1,0 +1,60 @@
+---
+title: Python-Windows-embeddable-zip-file相关
+categories:
+  - python
+toc: false
+date: 2019-07-19 13:26:16
+tags:
+---
+略。
+<!-- more -->
+
+[嵌入式Python : 如何在U盘安装绿色版 Python](https://baijiahao.baidu.com/s?id=1592976804446590381)。  
+[Python 3.7.1 embeddable 及 PyQt5 开发环境搭建](https://blog.csdn.net/blackwoodcliff/article/details/84844917)。  
+
+#### 下载Python嵌入包
+[python-3.7.4-embed-amd64.zip](https://www.python.org/ftp/python/3.7.4/python-3.7.4-embed-amd64.zip)。  
+我将其解压并匹配到`C:\Program_Files_zx\python-3.7.4-embed-amd64\python.exe`路径。  
+
+#### 编辑`python37._pth`文件
+文件路径`C:\Program_Files_zx\python-3.7.4-embed-amd64\python37._pth`。取消注释`import site`。  
+```
+python37.zip
+.
+
+# Uncomment to run site.main() automatically
+# import site
+# ##########################################
+import site
+```
+
+#### 安装pip
+[get-pip.py](https://bootstrap.pypa.io/get-pip.py)。  
+下载`get-pip.py`，并将其匹配到`C:\Program_Files_zx\python-3.7.4-embed-amd64\get-pip.py`，然后：  
+```
+C:\Program_Files_zx\python-3.7.4-embed-amd64>python.exe get-pip.py
+...(略)...
+Installing collected packages: pip, setuptools, wheel
+  WARNING: The script wheel.exe is installed in 'C:\Program_Files_zx\python-3.7.4-embed-amd64\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed pip-19.1.1 setuptools-41.0.1 wheel-0.33.4
+
+C:\Program_Files_zx\python-3.7.4-embed-amd64>DIR /B .\Scripts\.
+easy_install-3.7.exe
+easy_install.exe
+pip.exe
+pip3.7.exe
+pip3.exe
+wheel.exe
+
+C:\Program_Files_zx\python-3.7.4-embed-amd64>
+```
+它会在python目录下新建`Scripts`目录放置pip相关文件，以及`Lib\site-packages`目录放置pip未来下载的扩展依赖模块库。  
+成功后，即可用类似`python -m pip install xxx`的方式安装自己的依赖包（xxx替换为自己想安装的模块名）。  
+
+#### 加入PATH
+建议将`python.exe`和`pip.exe`加入`PATH`。
+```bat
+wmic ENVIRONMENT CREATE name="PYTHON_ROOT_37", username="<system>", VariableValue="C:\Program_Files_zx\python-3.7.4-embed-amd64"
+wmic ENVIRONMENT WHERE "name='PATH'        AND username='<system>'" SET VariableValue="%PATH%;%PYTHON_ROOT_37%;%PYTHON_ROOT_37%\Scripts;"
+```
