@@ -57,4 +57,5 @@ C:\Program_Files_zx\python-3.7.4-embed-amd64>
 ```bat
 wmic ENVIRONMENT CREATE name="PYTHON_ROOT_37", username="<system>", VariableValue="C:\Program_Files_zx\python-3.7.4-embed-amd64"
 wmic ENVIRONMENT WHERE "name='PATH'        AND username='<system>'" SET VariableValue="%PATH%;%PYTHON_ROOT_37%;%PYTHON_ROOT_37%\Scripts;"
+REM 注意这条SET命令,如果PATH里面原来有(环境变量)的话,在设置之后,环境变量会被替换成对应的值.
 ```
