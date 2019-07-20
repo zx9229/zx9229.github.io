@@ -2,7 +2,7 @@
 title: 手机安装Termux和开启SSH
 date: 2017-09-28 23:10:33
 categories:
-- MyDefaultCategory
+- Linux
 tags:
 toc: true
 ---

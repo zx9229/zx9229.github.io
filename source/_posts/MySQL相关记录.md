@@ -252,6 +252,13 @@ DELIMITER ;
 备份：先停止`MySQL`的相关服务，再备份`datadir`，最后启动`MySQL`的相关服务。  
 恢复：先停止`MySQL`的相关服务，再还原`datadir`，最后启动`MySQL`的相关服务。  
 
+* MySQL日期和字符串互转
+```SQL
+SELECT STR_TO_DATE('2006-01-02 15:04:05.123'   ,'%Y-%m-%d %H:%i:%S.%f') FROM dual;
+SELECT STR_TO_DATE('2006-01-02 15:04:05.123456','%Y-%m-%d %H:%i:%S.%f') FROM dual;
+SELECT DATE_FORMAT(                       NOW(),'%Y-%m-%d %H:%i:%S.%f') FROM dual;
+```
+
 ## MySQL Workbench  
 ```
 执行当前行    : Ctrl+Enter
