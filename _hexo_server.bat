@@ -2,7 +2,8 @@
 @SET SCRIPT_NAME=%~nx0
 @SET SCRIPT_NAME=%~n0%~x0
 
-@ECHO SCHTASKS /Create /TN HEXO_SERVER_BAT /RU SYSTEM /SC ONSTART /TR "%SCRIPTS_DIR%%SCRIPT_NAME%"
+@ECHO SCHTASKS /Create /TN HEXO_SERVER_BAT /RU SYSTEM   /SC ONSTART /TR "%SCRIPTS_DIR%%SCRIPT_NAME%"
+@ECHO SCHTASKS /Create /TN HEXO_SERVER_BAT /RU zhangsan /SC ONSTART /TR "%SCRIPTS_DIR%%SCRIPT_NAME%"
 
 %USERPROFILE%\AppData\Roaming\npm\hexo.cmd  server  --port=4000  --cwd=%SCRIPTS_DIR%
 
@@ -14,7 +15,7 @@
 @REM  注意：如果需要更细致的设置，请在`任务计划程序`里面进行设置。
 
 @REM  最新说明：
-@REM    请使用某一个用户账户(比如【ZHANG-LAPTOP\zhang】)；
+@REM    请使用某一个用户账户(比如【ZHANG-LAPTOP\zhangsan】)；
 @REM    不管用户是否登录都要运行；
 @REM    使用最高权限运行；
 @REM    这样的话，我们可以随时在`任务计划程序`里面(结束/运行)它。
