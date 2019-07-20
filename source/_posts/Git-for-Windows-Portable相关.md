@@ -13,9 +13,12 @@ tags:
 
 * 为系统环境变量添加`Git_PortableGit`系统变量
 假如我们将`PortableGit\git-bash.exe`匹配到路径`C:\Program_Files_zx\PortableGit\git-bash.exe`，可以：
-```
+```bat
 SETX /M  Git_PortableGit  "C:\Program_Files_zx\PortableGit"
+REM 将其加入PATH系统环境变量
+wmic ENVIRONMENT WHERE "name='PATH' AND username='<system>'" SET VariableValue="%PATH%;%Git_PortableGit%\cmd;"
 ```
+备注：加入PATH时，加入`%Git_PortableGit%\cmd`即可，无需加入更多路径。本信息可以从安装版的PATH中侧面证明。
 
 * 为鼠标右键添加一个"open git_bash_zx here"选项(可重复执行)
 ```

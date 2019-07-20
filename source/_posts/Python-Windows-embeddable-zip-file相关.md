@@ -59,3 +59,4 @@ wmic ENVIRONMENT CREATE name="PYTHON_ROOT_37", username="<system>", VariableValu
 wmic ENVIRONMENT WHERE "name='PATH'        AND username='<system>'" SET VariableValue="%PATH%;%PYTHON_ROOT_37%;%PYTHON_ROOT_37%\Scripts;"
 REM 注意这条SET命令,如果PATH里面原来有(环境变量)的话,在设置之后,环境变量会被替换成对应的值.
 ```
+备注：加入PATH时，至少需加入`%PYTHON_ROOT_37%`(python.exe)和`%PYTHON_ROOT_37%\Scripts`(pip.exe)。本信息可以从安装版的PATH中侧面窥得。
