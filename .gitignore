@@ -1,4 +1,5 @@
 .deploy*/
+.vscode/
 node_modules/
 public/
 recycle_bin/
