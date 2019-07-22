@@ -2,6 +2,7 @@
 title: shell相关
 categories:
   - Linux
+  - shell
 toc: false
 date: 2019-04-23 20:30:17
 tags:
