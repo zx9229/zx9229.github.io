@@ -112,7 +112,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E:\qtbase-everywhere-src-5.11.3\src\3rdparty\sqlite.pri</span><br><span class="line">E:\qtbase-everywhere-src-5.11.3\src\3rdparty\sqlite\sqlite3.c</span><br><span class="line">E:\qtbase-everywhere-src-5.11.3\src\3rdparty\sqlite\sqlite3.h</span><br><span class="line">E:\qtbase-everywhere-src-5.11.3\src\plugins\sqldrivers\configure.json</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改<code>sqlite.pri</code>文件<br>删除<code>SQLITE_OMIT_LOAD_EXTENSION</code>增加<code>SQLITE_ENABLE_JSON1</code>。例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> DEFINES += SQLITE_ENABLE_COLUMN_METADATA SQLITE_OMIT_LOAD_EXTENSION SQLITE_OMIT_COMPLETE SQLITE_ENABLE_FTS3 SQLITE_ENABLE_FTS3_PARENTHESIS SQLITE_ENABLE_FTS5 SQLITE_ENABLE_RTREE</span><br><span class="line">DEFINES   += SQLITE_ENABLE_COLUMN_METADATA                            SQLITE_OMIT_COMPLETE SQLITE_ENABLE_FTS3 SQLITE_ENABLE_FTS3_PARENTHESIS SQLITE_ENABLE_FTS5 SQLITE_ENABLE_RTREE SQLITE_ENABLE_JSON1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> DEFINES += SQLITE_ENABLE_COLUMN_METADATA SQLITE_OMIT_LOAD_EXTENSION SQLITE_OMIT_COMPLETE SQLITE_ENABLE_FTS3 SQLITE_ENABLE_FTS3_PARENTHESIS SQLITE_ENABLE_FTS5 SQLITE_ENABLE_RTREE</span></span><br><span class="line">DEFINES   += SQLITE_ENABLE_COLUMN_METADATA                            SQLITE_OMIT_COMPLETE SQLITE_ENABLE_FTS3 SQLITE_ENABLE_FTS3_PARENTHESIS SQLITE_ENABLE_FTS5 SQLITE_ENABLE_RTREE SQLITE_ENABLE_JSON1</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更新<code>sqlite3.c</code>和<code>sqlite3.h</code>文件<br>将下载好的SQLite源码覆盖过去。</p>
 </li>
@@ -142,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2019/05/19/Qt5-11-3编译SQLite开启JSON扩展/" data-id="cjy919tca0025jkprxj490tvr" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2019/05/19/Qt5-11-3编译SQLite开启JSON扩展/" data-id="cjyjvrwxd002tysprbsmcm3at" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQLite/">SQLite</a></li></ul>
@@ -181,7 +181,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/svn/">svn</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
     </div>
   </div>
 
@@ -201,7 +201,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 20px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 20px;">笔记软件</a>
+      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 15px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 15px;">笔记软件</a>
     </div>
   </div>
 
@@ -223,23 +223,23 @@
       <ul>
         
           <li>
-            <a href="/2019/07/18/Git-for-Windows-Portable相关/">Git-for-Windows-Portable相关</a>
+            <a href="/2019/07/22/grep相关/">grep相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/18/Windows10设置输入法/">Windows10设置输入法</a>
+            <a href="/2019/07/21/Docker-for-Windows相关/">Docker-for-Windows相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/16/U盘安装操作系统/">U盘安装操作系统</a>
+            <a href="/2019/07/21/go-windows-amd64-zip相关/">go.windows-amd64.zip相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/cxx临时收集贴/">cxx临时收集贴</a>
+            <a href="/2019/07/19/Windows-Subsystem-for-Linux相关/">Windows-Subsystem-for-Linux相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/08/curl相关/">curl相关</a>
+            <a href="/2019/07/19/Python-Windows-embeddable-zip-file相关/">Python-Windows-embeddable-zip-file相关</a>
           </li>
         
       </ul>

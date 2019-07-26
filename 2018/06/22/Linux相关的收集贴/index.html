@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-08T02:33:31.185Z">
+<meta property="og:updated_time" content="2019-07-26T09:04:21.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux相关的收集贴">
 <meta name="twitter:description" content="摘要暂略。">
@@ -121,11 +121,12 @@
 <h4 id="获取shell脚本自身所在目录"><a href="#获取shell脚本自身所在目录" class="headerlink" title="获取shell脚本自身所在目录"></a>获取shell脚本自身所在目录</h4><p>对于软链接也能正确得到其原始目录。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SRC="$0"</span><br><span class="line">while [ -L "$SRC" ]; do # resolve $SRC until the file is no longer a symlink</span><br><span class="line">    DIR="$( cd -P "$( dirname "$SRC" )" &amp;&amp; pwd )"</span><br><span class="line">    SRC="$( readlink "$SRC" )"</span><br><span class="line">    # 判断$SRC是否以/开头,你测试[[ "/test" != /* ]]和[[ "./test" != /* ]]应该就明白了.</span><br><span class="line">    [[ "$SRC" != /* ]] &amp;&amp; SRC="$DIR/$SRC" # if $SRC was a relative symlink, we need to resolve it relative to the path where the symlink file was located</span><br><span class="line">done</span><br><span class="line">DIR="$( cd -P "$( dirname "$SRC" )" &amp;&amp; pwd )"</span><br></pre></td></tr></table></figure></p>
 <h4 id="设置别名"><a href="#设置别名" class="headerlink" title="设置别名"></a>设置别名</h4><p>查看当前设置：<code>alias</code>。<br>临时设置别名：<code>alias ll=&#39;ls -l&#39;</code>。<br>永久设置别名：在<code>${HOME}/.bashrc</code>里添加<code>alias ll=&#39;ls -l&#39;</code>。<br>删除某个别名：<code>unalias ll</code>。</p>
 <h4 id="grep和awk配合时可能出现的问题"><a href="#grep和awk配合时可能出现的问题" class="headerlink" title="grep和awk配合时可能出现的问题"></a>grep和awk配合时可能出现的问题</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 先grep后awk无任何显示</span><br><span class="line">tail -f 文件名 | grep "匹配条件" | awk '操作'</span><br><span class="line"><span class="meta">#</span> 先awk后grep会正常显示</span><br><span class="line">tail -f 文件名 | awk '操作' | grep "匹配条件"</span><br></pre></td></tr></table></figure>
+<h4 id="Makefile添加cleanobj"><a href="#Makefile添加cleanobj" class="headerlink" title="Makefile添加cleanobj"></a>Makefile添加cleanobj</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cleanobj:</span><br><span class="line">  find . -type f -name &quot;*.o&quot; -exec rm -f &#123;&#125; \;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjy919tc5001zjkpr7z67mzld" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/06/22/Linux相关的收集贴/" data-id="cjyjvrww6001jysproz0ryku0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +163,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/svn/">svn</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
     </div>
   </div>
 
@@ -182,7 +183,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 20px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 20px;">笔记软件</a>
+      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 15px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 15px;">笔记软件</a>
     </div>
   </div>
 
@@ -204,23 +205,23 @@
       <ul>
         
           <li>
-            <a href="/2019/07/18/Git-for-Windows-Portable相关/">Git-for-Windows-Portable相关</a>
+            <a href="/2019/07/22/grep相关/">grep相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/18/Windows10设置输入法/">Windows10设置输入法</a>
+            <a href="/2019/07/21/Docker-for-Windows相关/">Docker-for-Windows相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/16/U盘安装操作系统/">U盘安装操作系统</a>
+            <a href="/2019/07/21/go-windows-amd64-zip相关/">go.windows-amd64.zip相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/cxx临时收集贴/">cxx临时收集贴</a>
+            <a href="/2019/07/19/Windows-Subsystem-for-Linux相关/">Windows-Subsystem-for-Linux相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/08/curl相关/">curl相关</a>
+            <a href="/2019/07/19/Python-Windows-embeddable-zip-file相关/">Python-Windows-embeddable-zip-file相关</a>
           </li>
         
       </ul>

@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="用Qt编写Android程序时需要的设置。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://zx9229.github.io/2019/01/26/Qt-For-Android配置/配置Android选项.png">
-<meta property="og:updated_time" content="2019-05-18T18:45:17.160Z">
+<meta property="og:image" content="http://zx9229.github.io/2019/01/26/Qt-For-Android配置/qt-5.12.4-配置Android选项Android.png">
+<meta property="og:updated_time" content="2019-07-20T21:14:06.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt-For-Android配置">
 <meta name="twitter:description" content="用Qt编写Android程序时需要的设置。">
-<meta name="twitter:image" content="http://zx9229.github.io/2019/01/26/Qt-For-Android配置/配置Android选项.png">
+<meta name="twitter:image" content="http://zx9229.github.io/2019/01/26/Qt-For-Android配置/qt-5.12.4-配置Android选项Android.png">
   
     <link rel="alternate" href="/atom.xml" title="zx9229.github.io" type="application/atom+xml">
   
@@ -99,24 +99,24 @@
 <ul>
 <li><p>Qt下载地址<br><a href="http://download.qt.io/archive/qt/" target="_blank" rel="noopener">http://download.qt.io/archive/qt/</a></p>
 </li>
-<li><p>安装<br>安装文件：我(2019-01-25)选择了<code>http://download.qt.io/archive/qt/5.9/5.9.7/qt-opensource-windows-x86-5.9.7.exe</code>。<br>安装方式：除了<code>Strawberry Perl 5.22.1.3</code>，其他的全部勾选，然后安装，期间无报错，安装完毕。  </p>
+<li><p>安装<br>安装文件：我(2019-07-20)选择了<code>http://download.qt.io/archive/qt/5.12/5.12.4/qt-opensource-windows-x86-5.12.4.exe</code>。<br>安装方式：全部勾选，然后安装，期间无报错，安装完毕。  </p>
 </li>
-<li><p>Qt For Android 配置<br>启动<code>qtcreator.exe</code>，然后<code>工具</code>&gt;<code>选项</code>&gt;<code>设备</code>&gt;<code>Android</code>，可以看到，Qt需要<code>JDK</code>、<code>Android SDK</code>、<code>Android NDK</code>这3个东西。并且Qt给出了每个软件的下载地址：<br>JDK:<code>http://www.oracle.com/technetwork/java/javase/downloads/index.html</code>。<br>Android SDK: <code>https://developer.android.com/studio/</code>。<br>Android NDK: <code>https://developer.android.com/ndk/downloads/</code>。  </p>
+<li><p>Qt For Android 配置<br>启动<code>qtcreator.exe</code>，然后<code>工具</code>&gt;<code>选项</code>&gt;<code>设备</code>&gt;<code>Android</code>，可以看到，Qt需要<code>JDK</code>、<code>Android SDK</code>、<code>Android NDK</code>这3个东西。并且Qt给出了每个软件的下载地址：<br>JDK:<code>http://www.oracle.com/technetwork/java/javase/downloads/</code>。<br>Android SDK: <code>https://developer.android.com/studio/</code>。<br>Android NDK: <code>https://developer.android.com/ndk/downloads/</code>。  </p>
 </li>
-<li><p>安装JDK<br>无脑下一步。略。</p>
+<li><p>安装JDK<br>下载JDK8，无脑下一步。<br>注意：当前(jdk-8u221-windows-x64.exe)有(jdk-11.0.4_windows-x64_bin.zip) 。因为<code>java.xml.bind</code>在JAVA8以后就被弃用了，所以，不建议使用JAVA8以上的版本。  </p>
 </li>
-<li><p>安装Android SDK<br>简要说明：我们又不用 Android Studio 编写代码，所以下载基本的 Android 命令行工具就够用了。<br>下载地址：<code>https://dl.google.com/android/repository/sdk-tools-windows-4333796.zip</code><br>安装方式：解压即可。不需要配置环境变量。我将其匹配到了目录<code>C:\android-studio-sdk\sdk-tools-windows-4333796</code>。<br>如果您不需要 Android Studio，可以从下面下载基本的 Android 命令行工具。您可以使用随附的 sdkmanager 下载其他 SDK 软件包。<br><a href="https://developer.android.com/studio/command-line/sdkmanager" target="_blank" rel="noopener">sdkmanager  |  Android Developers</a>。<br>或许我们可以执行<code>sdkmanager  &quot;build-tools&quot;  &quot;platform-tools&quot;  &quot;platforms;android-28&quot;</code>命令。  </p>
+<li><p>安装Android SDK<br>简要说明：我们又不用 Android Studio 编写代码，所以下载基本的 Android 命令行工具(basic Android command line tools)就够用了。<br>下载地址：<code>https://dl.google.com/android/repository/sdk-tools-windows-4333796.zip</code>。<br>安装方式：解压即可。不需要配置环境变量。我将其匹配到了目录<code>C:\sdk-tools-windows-4333796\</code>。(我们还可以将其用git管理，方便验证一些猜测)。<br>如果您不需要 Android Studio，可以从下面下载基本的 Android 命令行工具。您可以使用随附的 sdkmanager 下载其他 SDK 软件包。<br><a href="https://developer.android.com/studio/command-line/sdkmanager" target="_blank" rel="noopener">sdkmanager  |  Android Developers</a>。<br>或许我们可以执行<code>sdkmanager  &quot;build-tools&quot;  &quot;platform-tools&quot;  &quot;platforms;android-28&quot;</code>命令。  </p>
 </li>
-<li><p>安装Android NDK<br>下载地址：<code>https://dl.google.com/android/repository/android-ndk-r16b-windows-x86_64.zip</code>。<br>安装方式：解压即可。不需要配置环境变量。我将其匹配到了目录<code>C:\android-ndk-r16b-windows-x86_64\android-ndk-r16b</code>。  </p>
+<li><p>安装Android NDK<br>下载地址：<code>https://dl.google.com/android/repository/android-ndk-r19c-windows-x86_64.zip</code>。<br>安装方式：解压即可。不需要配置环境变量。我将其匹配到了目录<code>C:\android-ndk-r19c-windows-x86_64\android-ndk-r19c\</code>。<br>注意：<code>Qt-5.12.4</code>和<code>android-ndk-r19c</code>更配呦(使用其他版本的ndk可能会出现各种问题)。  </p>
 </li>
-<li><p>配置 Qt creator<br><img src="配置Android选项.png" alt="配置Android选项">  </p>
+<li><p>配置 Qt creator<br><img src="qt-5.12.4-配置Android选项Android.png" alt="配置Android选项">  </p>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2019/01/26/Qt-For-Android配置/" data-id="cjy919tc2001xjkpruigpvh2l" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2019/01/26/Qt-For-Android配置/" data-id="cjyjvrwx6002jysprmrzqzlbc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
@@ -127,11 +127,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/01/26/go-sqlite3在Windows下的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/26/Qt-For-Android配置-5.9/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          go-sqlite3在Windows下的使用
+          Qt-For-Android配置-5.9
         
       </div>
     </a>
@@ -155,7 +155,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/svn/">svn</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
     </div>
   </div>
 
@@ -175,7 +175,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 20px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 20px;">笔记软件</a>
+      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 15px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 15px;">笔记软件</a>
     </div>
   </div>
 
@@ -197,23 +197,23 @@
       <ul>
         
           <li>
-            <a href="/2019/07/18/Git-for-Windows-Portable相关/">Git-for-Windows-Portable相关</a>
+            <a href="/2019/07/22/grep相关/">grep相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/18/Windows10设置输入法/">Windows10设置输入法</a>
+            <a href="/2019/07/21/Docker-for-Windows相关/">Docker-for-Windows相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/16/U盘安装操作系统/">U盘安装操作系统</a>
+            <a href="/2019/07/21/go-windows-amd64-zip相关/">go.windows-amd64.zip相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/cxx临时收集贴/">cxx临时收集贴</a>
+            <a href="/2019/07/19/Windows-Subsystem-for-Linux相关/">Windows-Subsystem-for-Linux相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/08/curl相关/">curl相关</a>
+            <a href="/2019/07/19/Python-Windows-embeddable-zip-file相关/">Python-Windows-embeddable-zip-file相关</a>
           </li>
         
       </ul>

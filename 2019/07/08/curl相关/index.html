@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="略  下载curlcurl - Download。curl for Windows。    上传文件curl -F &amp;quot;file=@localfile;filename=nameinpost&amp;quot; url.com。To force the ’content’ part to be a file, prefix the file name with an @ sign.。    下载文">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-10T08:37:52.799Z">
+<meta property="og:updated_time" content="2019-07-26T09:04:21.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="curl相关">
 <meta name="twitter:description" content="略  下载curlcurl - Download。curl for Windows。    上传文件curl -F &amp;quot;file=@localfile;filename=nameinpost&amp;quot; url.com。To force the ’content’ part to be a file, prefix the file name with an @ sign.。    下载文">
@@ -100,16 +100,18 @@
 </li>
 <li><p>下载文件<br><code>curl -O https://www.baidu.com/index.html</code>。<br><code>curl -o homepage.txt https://cn.bing.com/</code>。  </p>
 </li>
-<li><p>sftp上传下载文件<br><a href="https://blog.csdn.net/cmzsteven/article/details/73382333" target="_blank" rel="noopener">curl 使用举例详解(一）</a>。<br><code>curl --insecure -T test.txt -u 用户:密码 sftp://主机:端口/tmp/</code>。<br><code>curl --insecure -T test.txt -u 用户:密码 sftp://主机:端口/tmp/test.log</code>。<br><code>curl --insecure -O          -u 用户:密码 sftp://主机:端口/tmp/test.log</code>。<br><code>curl --insecure -o test.txt -u 用户:密码 sftp://主机:端口/tmp/test.log</code>。<br><code>curl --insecure -T test.txt sftp://用户:密码@主机:端口/tmp/</code>。<br><code>curl --insecure -T test.txt sftp://用户:密码@主机:端口/tmp/test.log</code>。<br><code>curl --insecure -O          sftp://用户:密码@主机:端口/tmp/test.log</code>。<br><code>curl --insecure -o test.txt sftp://用户:密码@主机:端口/tmp/test.log</code>。<br><code>curl --insecure -O          -u 用户: --key OpenSSHprivateKey sftp://主机:端口/tmp/test.log</code>。<br><code>curl --insecure -o test.txt -u 用户: --key OpenSSHprivateKey sftp://主机:端口/tmp/test.log</code>。<br><code>curl --insecure -O          --key OpenSSHprivateKey sftp://用户@主机:端口/tmp/test.log</code>。<br><code>curl --insecure -o test.txt --key OpenSSHprivateKey sftp://用户@主机:端口/tmp/test.log</code>。  </p>
+<li><p>sftp上传下载文件<br><a href="https://blog.csdn.net/cmzsteven/article/details/73382333" target="_blank" rel="noopener">curl 使用举例详解(一）</a>。  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl --insecure -T test.txt -u 用户:密码 sftp://主机:端口/tmp/</span><br><span class="line">curl --insecure -T test.txt -u 用户:密码 sftp://主机:端口/tmp/test.log</span><br><span class="line">curl --insecure -O          -u 用户:密码 sftp://主机:端口/tmp/test.log</span><br><span class="line">curl --insecure -o test.txt -u 用户:密码 sftp://主机:端口/tmp/test.log</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>sftp远端的几种写法<br><code>-u 用户:密码 sftp://主机:端口/</code>。<br><code>sftp://用户:密码@主机:端口/</code>。<br><code>-u 用户: --key OpenSSHprivateKey sftp://主机:端口/</code>。<br><code>--key OpenSSHprivateKey sftp://用户@主机:端口/</code>。<br><code>--key OpenSSHprivateKey sftp://用户:@主机:端口/</code>。  </p>
+<li><p>sftp远端的几种写法示例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl --insecure -T test.txt    -u 用户:密码                      sftp://主机:端口/</span><br><span class="line">curl --insecure -T test.txt    -u 用户: --key OpenSSHprivateKey sftp://主机:端口/</span><br><span class="line">curl --insecure -T test.txt    sftp://用户:密码@主机:端口/</span><br><span class="line">curl --insecure -T test.txt    --key OpenSSHprivateKey sftp://用户@主机:端口/</span><br><span class="line">curl --insecure -T test.txt    --key OpenSSHprivateKey sftp://用户:@主机:端口/</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2019/07/08/curl相关/" data-id="cjy919teg003ujkprc9enoebk" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2019/07/08/curl相关/" data-id="cjyjvrwz50049ysprbo366sh2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +148,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/svn/">svn</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
     </div>
   </div>
 
@@ -166,7 +168,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 20px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 20px;">笔记软件</a>
+      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 15px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 15px;">笔记软件</a>
     </div>
   </div>
 
@@ -188,23 +190,23 @@
       <ul>
         
           <li>
-            <a href="/2019/07/18/Git-for-Windows-Portable相关/">Git-for-Windows-Portable相关</a>
+            <a href="/2019/07/22/grep相关/">grep相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/18/Windows10设置输入法/">Windows10设置输入法</a>
+            <a href="/2019/07/21/Docker-for-Windows相关/">Docker-for-Windows相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/16/U盘安装操作系统/">U盘安装操作系统</a>
+            <a href="/2019/07/21/go-windows-amd64-zip相关/">go.windows-amd64.zip相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/cxx临时收集贴/">cxx临时收集贴</a>
+            <a href="/2019/07/19/Windows-Subsystem-for-Linux相关/">Windows-Subsystem-for-Linux相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/08/curl相关/">curl相关</a>
+            <a href="/2019/07/19/Python-Windows-embeddable-zip-file相关/">Python-Windows-embeddable-zip-file相关</a>
           </li>
         
       </ul>

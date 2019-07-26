@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T17:32:18.104Z">
+<meta property="og:updated_time" content="2019-07-20T21:14:06.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git-for-Windows-Portable相关">
 <meta name="twitter:description" content="略。">
@@ -94,9 +94,11 @@
         
         <p>略。<br><a id="more"></a><br>貌似，执行<code>git-cmd.exe</code>之后，可以简单的输入<code>git</code>或<code>gitk</code>以调用<code>git.exe</code>或<code>gitk.exe</code>。<br>假如我们想进入<code>C:\my_test\</code>目录。可以<code>git-bash.exe --cd=C:\my_test\.</code>。  </p>
 <ul>
-<li><p>为系统环境变量添加<code>Git_PortableGit</code>系统变量<br>假如我们将<code>PortableGit\git-bash.exe</code>匹配到路径<code>C:\Program_Files_zx\PortableGit\git-bash.exe</code>，可以：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SETX /M  Git_PortableGit  &quot;C:\Program_Files_zx\PortableGit&quot;</span><br></pre></td></tr></table></figure>
+<li>为系统环境变量添加<code>Git_PortableGit</code>系统变量<br>假如我们将<code>PortableGit\git-bash.exe</code>匹配到路径<code>C:\Program_Files_zx\PortableGit\git-bash.exe</code>，可以：<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SETX /M  Git_PortableGit  "C:\Program_Files_zx\PortableGit"</span><br><span class="line"><span class="comment">REM 将其加入PATH系统环境变量</span></span><br><span class="line">wmic ENVIRONMENT WHERE "name='<span class="built_in">PATH</span>' AND username='&lt;system&gt;'" <span class="built_in">SET</span> VariableValue="<span class="variable">%PATH%</span>;<span class="variable">%Git_PortableGit%</span>\<span class="built_in">cmd</span>;"</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<p>备注：加入PATH时，加入<code>%Git_PortableGit%\cmd</code>即可，无需加入更多路径。本信息可以从安装版的PATH中侧面证明。</p>
+<ul>
 <li><p>为鼠标右键添加一个”open git_bash_zx here”选项(可重复执行)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">REG ADD &quot;HKEY_CLASSES_ROOT\Directory\Background\shell\git_bash_zx\command&quot; /ve /t REG_SZ /d &quot;\&quot;%Git_PortableGit%\git-bash.exe\&quot; \&quot;--cd=%v.\&quot;&quot;</span><br><span class="line">REG ADD &quot;HKEY_CLASSES_ROOT\Directory\Background\shell\git_bash_zx&quot;         /ve /t REG_SZ /d &quot;open git_bash_zx here&quot;</span><br></pre></td></tr></table></figure>
 </li>
@@ -114,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2019/07/18/Git-for-Windows-Portable相关/" data-id="cjy919ta1000hjkpr33rjuc4u" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2019/07/18/Git-for-Windows-Portable相关/" data-id="cjyjvrwvj000pyspr6fwqwfqz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -122,6 +124,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/07/19/svn相关的收集贴/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          svn相关的收集贴
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/18/Windows10设置输入法/" id="article-nav-older" class="article-nav-link-wrap">
@@ -142,7 +153,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/shell/">shell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyDefaultCategory/">MyDefaultCategory</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt/">Qt</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RaspberryPi/">RaspberryPi</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/MSVC/">MSVC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/powershell/">powershell</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali/">kali</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lua/">lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/Ansible/">Ansible</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/svn/">svn</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
     </div>
   </div>
 
@@ -162,7 +173,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 20px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 20px;">笔记软件</a>
+      <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/数据库客户端/" style="font-size: 15px;">数据库客户端</a> <a href="/tags/文件管理/" style="font-size: 10px;">文件管理</a> <a href="/tags/笔记软件/" style="font-size: 15px;">笔记软件</a>
     </div>
   </div>
 
@@ -184,23 +195,23 @@
       <ul>
         
           <li>
-            <a href="/2019/07/18/Git-for-Windows-Portable相关/">Git-for-Windows-Portable相关</a>
+            <a href="/2019/07/22/grep相关/">grep相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/18/Windows10设置输入法/">Windows10设置输入法</a>
+            <a href="/2019/07/21/Docker-for-Windows相关/">Docker-for-Windows相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/16/U盘安装操作系统/">U盘安装操作系统</a>
+            <a href="/2019/07/21/go-windows-amd64-zip相关/">go.windows-amd64.zip相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/cxx临时收集贴/">cxx临时收集贴</a>
+            <a href="/2019/07/19/Windows-Subsystem-for-Linux相关/">Windows-Subsystem-for-Linux相关</a>
           </li>
         
           <li>
-            <a href="/2019/07/08/curl相关/">curl相关</a>
+            <a href="/2019/07/19/Python-Windows-embeddable-zip-file相关/">Python-Windows-embeddable-zip-file相关</a>
           </li>
         
       </ul>
