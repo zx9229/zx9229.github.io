@@ -195,3 +195,9 @@ tail -f 文件名 | grep "匹配条件" | awk '操作'
 # 先awk后grep会正常显示
 tail -f 文件名 | awk '操作' | grep "匹配条件"
 ```
+
+#### Makefile添加cleanobj
+```
+cleanobj:
+  find . -type f -name "*.o" -exec rm -f {} \;
+```

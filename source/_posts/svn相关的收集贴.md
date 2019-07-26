@@ -1,7 +1,7 @@
 ---
 title: svn相关的收集贴
 categories:
-  - MyDefaultCategory
+  - svn
 toc: false
 date: 2019-07-19 11:46:38
 tags:
@@ -48,4 +48,19 @@ export: Create an unversioned copy of a tree.
 usage: 1. export [-r REV]   URL[@PEGREV] [PATH]
        2. export [-r REV] PATH1[@PEGREV] [PATH2]
 ```
-例如：`svn export -r 11392 http://localhost/repos/money/trunk/test.txt C:\.`。  
+例如：`svn export -r 110120 http://localhost/repos/my_code/trunk/test.txt C:\.`。  
+
+#### svn update 忽略指定目录
+[SVN update 忽略指定文件](https://www.jianshu.com/p/3fda584b0a01)。
+```
+[root@09b4bf96e3d5 ~]# svn checkout http://localhost/repos/my_code
+...(略)...
+Checked out revision 110120.
+[root@09b4bf96e3d5 ~]# cd my_code/
+[root@09b4bf96e3d5 my_code]# svn update --set-depth=exclude ./trunk/Solutions/projectA/Release/ ./trunk/Solutions/projectB/ ./trunk/Solutions/projectC/
+D         trunk/Solutions/projectA/Release
+D         trunk/Solutions/projectB
+D         trunk/Solutions/projectC
+[root@09b4bf96e3d5 my_code]# svn status
+[root@09b4bf96e3d5 my_code]#
+```
