@@ -64,3 +64,4 @@ D         trunk/Solutions/projectC
 [root@09b4bf96e3d5 my_code]# svn status
 [root@09b4bf96e3d5 my_code]#
 ```
+如果要恢复过来，可以`svn update --set-depth=infinity`。  
