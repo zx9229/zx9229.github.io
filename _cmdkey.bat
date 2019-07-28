@@ -1,16 +1,18 @@
-@echo off
+@ECHO OFF
+REM cmdkey /generic:git:https://github.com /user:zx9229   /pass:ÃÜÂë
+REM cmdkey /generic:targetname             /user:username /pass:password
 
-cmdkey   /list:git:https://github.com
+CMDKEY   /LIST:git:https://github.com
 
-set /p INPUT=ÒªÉ¾³ý¸ÃÆ¾Ö¤Âð£¿[y/N]: 
+SET /P INPUT=ÒªÉ¾³ý¸ÃÆ¾Ö¤Âð£¿[y/N]: 
 
-if /i "%INPUT%"=="y" (
-cmdkey /delete:git:https://github.com
-echo.
-) else (
-echo.
-echo Î´É¾³ý
-echo\
+IF /I "%INPUT%"=="y" (
+CMDKEY /DELETE:git:https://github.com
+ECHO.
+) ELSE (
+ECHO.
+ECHO Î´É¾³ý
+ECHO\
 )
 
-pause
+PAUSE
