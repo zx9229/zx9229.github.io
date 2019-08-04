@@ -48,6 +48,7 @@ Go的官网：[The Go Programming Language](https://golang.org/)。
 假定我们的代理端口位于本机的1080端口，那么可以如下设置：  
 `VSCode`=>`文件`=>`首选项`=>`设置`=>`搜索"http.proxy"`=>`填写"http://localhost:1080/"`。  
 如果你想让VSCode重新弹出"Install All"的提示，你可以删除/重命名`%USERPROFILE%\go\bin`文件夹，然后你应当能达到目的。  
+<label style="color:red">**如果在VSCode里安装`dlv`失败，可以进入其官网，找到安装命令，尝试手动在cmd里人工安装它，应当能成功，我也不知道为什么。**</label>  
 
 ### 安装插件的依赖程序(手动安装)  
 预备知识：  

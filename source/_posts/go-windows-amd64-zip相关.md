@@ -1,7 +1,7 @@
 ---
 title: go.windows-amd64.zip相关
 categories:
-  - go
+  - Go
 toc: false
 date: 2019-07-21 04:43:58
 tags:
