@@ -22,20 +22,23 @@ wmic ENVIRONMENT WHERE "name='PATH' AND username='<system>'" SET VariableValue="
 
 * 为鼠标右键添加一个"open git_bash_zx here"选项(可重复执行)
 ```
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\git_bash_zx\command" /ve /t REG_SZ /d "\"%Git_PortableGit%\git-bash.exe\" \"--cd=%v.\""
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\git_bash_zx"         /ve /t REG_SZ /d "open git_bash_zx here"
+REG ADD    "HKEY_CLASSES_ROOT\Directory\Background\shell\git_bash_zx\command" /ve /t REG_SZ /d "\"%Git_PortableGit%\git-bash.exe\" \"--cd=%v.\""
+REG ADD    "HKEY_CLASSES_ROOT\Directory\Background\shell\git_bash_zx"         /ve /t REG_SZ /d "open git_bash_zx here"
+REG DELETE "HKEY_CLASSES_ROOT\Directory\Background\shell\git_bash_zx"
 ```
 
 * 为鼠标右键添加一个"open git_cmd_zx here"选项(可重复执行)
 ```
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\git_cmd_zx\command" /ve /t REG_SZ /d "\"%Git_PortableGit%\git-cmd.exe\""
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\git_cmd_zx"         /ve /t REG_SZ /d "open git_cmd_zx here"
+REG ADD    "HKEY_CLASSES_ROOT\Directory\Background\shell\git_cmd_zx\command" /ve /t REG_SZ /d "\"%Git_PortableGit%\git-cmd.exe\""
+REG ADD    "HKEY_CLASSES_ROOT\Directory\Background\shell\git_cmd_zx"         /ve /t REG_SZ /d "open git_cmd_zx here"
+REG DELETE "HKEY_CLASSES_ROOT\Directory\Background\shell\git_cmd_zx"
 ```
 
 * 为鼠标右键添加一个"open cmd_zx here"选项(可重复执行)
 ```
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx\command" /ve /t REG_SZ /d "cmd.exe /s /k pushd \"%V\""
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx"         /ve /t REG_SZ /d "open cmd_zx here"
+REG ADD    "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx\command" /ve /t REG_SZ /d "cmd.exe /s /k pushd \"%V\""
+REG ADD    "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx"         /ve /t REG_SZ /d "open cmd_zx here"
+REG DELETE "HKEY_CLASSES_ROOT\Directory\Background\shell\cmd_zx"
 ```
 
 * 临时记录

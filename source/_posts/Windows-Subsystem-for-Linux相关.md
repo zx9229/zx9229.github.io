@@ -21,3 +21,25 @@ tags:
 `wsl --list --running`：`列出当前正在运行的所有分布区。`。  
 `终止所有 WSL 实例使用wsl --shutdown命令`。  
 `wsl -s <DistributionName>， wsl --setdefault <DistributionName>`：`设置为默认分发<DistributionName>。`。  
+`--distribution, -d <DistributionName>`：`运行指定的分发。`。  
+
+* 临时2
+`yum install redhat-lsb-core`然后可以`lsb_release`。  
+
+* WSL的ubuntu启动ssh
+`sudo apt install openssh-server`。  
+`sudo vi /etc/ssh/sshd_config`
+```
+user@host:~$ diff /etc/ssh/sshd_config*
+13c13
+< Port 22
+---
+> #Port 22
+56c56
+< PasswordAuthentication yes
+---
+> PasswordAuthentication no
+user@host:~$
+```
+`sudo service ssh start`。  
+`sudo apt-get install expect`。  
