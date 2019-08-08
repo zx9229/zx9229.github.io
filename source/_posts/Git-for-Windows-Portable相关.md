@@ -48,4 +48,10 @@ git config --global user.name  "zx"
 git config --global --get core.autocrlf
 git config --global       core.autocrlf input  # 不太建议
 git config --global       core.autocrlf false  # 强烈建议
+git config --system --get credential.helper
+git config --global --get credential.helper
+git config --global       credential.helper manager  # 酌情操作
 ```
+
+* git的credential相关
+`cat ${HOME}/.gitconfig`或`type %USERPROFILE%\.gitconfig`。如果执行类似`git config --global credential.helper manager`的命令，则会在文件中留下数据。
