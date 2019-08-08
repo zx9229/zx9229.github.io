@@ -62,8 +62,8 @@ OPENFILES /Query /FO LIST /V
 
 ### Beyond Compare 4 重置试用时间
 ```
-REG QUERY  "HKEY_CURRENT_USER\Software\Scooter Software\Beyond Compare 4" /v CacheId
-REG DELETE "HKEY_CURRENT_USER\Software\Scooter Software\Beyond Compare 4" /v CacheId
+REG QUERY  "HKEY_CURRENT_USER\Software\Scooter Software\Beyond Compare 4" /V CacheId
+REG DELETE "HKEY_CURRENT_USER\Software\Scooter Software\Beyond Compare 4" /V CacheId
 ```
 
 ### 为Win10添加"在此处打开命令窗口"
