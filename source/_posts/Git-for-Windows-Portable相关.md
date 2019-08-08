@@ -48,9 +48,11 @@ git config --global user.name  "zx"
 git config --global --get core.autocrlf
 git config --global       core.autocrlf input  # 不太建议
 git config --global       core.autocrlf false  # 强烈建议
-git config --system --get credential.helper
-git config --global --get credential.helper
-git config --global       credential.helper manager  # 酌情操作
+git config --system --get     credential.helper
+git config --global --get     credential.helper
+git config          --get-all credential.helper
+git config --global           credential.helper manager  # 酌情操作
+git config --global --unset   credential.helper
 ```
 
 * git的credential相关
