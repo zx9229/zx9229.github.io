@@ -73,10 +73,10 @@ ModuleNotFoundError: No module named 'my_module'
 [site — Site-specific configuration hook](https://docs.python.org/3/library/site.html)。  
 [How does python find packages?](https://leemendelowitz.github.io/blog/how-does-python-find-packages.html)。  
 * 往`sys.path`中加入路径的一个方式(荐)
-Win:::`os.path.realpath(os.path.join(sys.prefix, "lib/site-packages"))`  
-Win:::`os.path.realpath(os.path.join(sys.exec_prefix, "lib/site-packages"))`  
-Linux:`os.path.realpath(os.path.join(sys.prefix, "lib/pythonX.Y/site-packages"))`  
-Linux:`os.path.realpath(os.path.join(sys.exec_prefix, "lib/pythonX.Y/site-packages"))`  
+Win:::`os.path.realpath(os.path.join(sys.prefix, 'lib/site-packages'))`  
+Win:::`os.path.realpath(os.path.join(sys.exec_prefix, 'lib/site-packages'))`  
+Linux:`os.path.realpath(os.path.join(sys.prefix, 'lib/pythonX.Y/site-packages'))`  
+Linux:`os.path.realpath(os.path.join(sys.exec_prefix, 'lib/pythonX.Y/site-packages'))`  
 在上述目录下，创建名称格式为`文件名.pth`的文件，每行一个路径，(如果路径存在)那么，这些路径便会添加到`sys.path`中。
 * 往`sys.path`中加入路径的一个方式
 `sys.path.insert(0, os.path.split(os.path.realpath(__file__))[0])`。
