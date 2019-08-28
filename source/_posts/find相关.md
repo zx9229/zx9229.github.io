@@ -60,3 +60,6 @@ $ stat --help
 Usage: stat [OPTION]... FILE...
 Display file or file system status.
 ```
+
+### 临时收集
+`find . -type f -name "*.o" -exec rm -f {} \;`

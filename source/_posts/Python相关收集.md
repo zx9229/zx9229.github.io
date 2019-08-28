@@ -10,7 +10,7 @@ tags:
 摘要暂略。
 <!-- more -->
 
-![Unofficial Windows Binaries for Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)  
+[Unofficial Windows Binaries for Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)  
 
 ### Linux安装Python35
 先用epel-release，找不到python35的话，再用ius。

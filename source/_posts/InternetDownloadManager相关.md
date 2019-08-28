@@ -44,4 +44,7 @@ CRC32: 9007B8AC
 方法3：`下载`=>`选项`=>`文件类型`=>`下列站点不要自动开始下载`和`下列地址不要自动开始下载`。  
 
 #### IDM通过注册表重置到期时间
-[IDM通过注册表重置到期时间.reg](IDM通过注册表重置到期时间.reg)。
+[IDM通过注册表重置到期时间](https://www.cnblogs.com/webkb/p/5249463.html)。  
+[IDM解惑 正在更新ing](https://hhplow.github.io)中的`清理注册信息的文件 [opensource]IDM-trial-reset.zip`。  
+[[opensource]IDM-trial-reset.zip](http://ys-k.ys168.com/549340455/VJgMjIo2J6L3I655FMN7/[opensource]IDM-trial-reset.zip)。  
+[IDM通过注册表重置到期时间.reg](IDM通过注册表重置到期时间.reg)。  

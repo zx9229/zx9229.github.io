@@ -60,3 +60,23 @@ wmic ENVIRONMENT WHERE "name='PATH'        AND username='<system>'" SET Variable
 REM 注意这条SET命令,如果PATH里面原来有(环境变量)的话,在设置之后,环境变量会被替换成对应的值.
 ```
 备注：加入PATH时，至少需加入`%PYTHON_ROOT_37%`(python.exe)和`%PYTHON_ROOT_37%\Scripts`(pip.exe)。本信息可以从安装版的PATH中侧面窥得。
+
+#### ModuleNotFoundError
+```python
+>>> import my_module
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'my_module'
+```
+简答：要么`my_module`不存在，要么`my_module`不在`sys.path`(模块的搜索路径)中。  
+[sys — System-specific parameters and functions](https://docs.python.org/3/library/sys.html#sys.path)。  
+[site — Site-specific configuration hook](https://docs.python.org/3/library/site.html)。  
+[How does python find packages?](https://leemendelowitz.github.io/blog/how-does-python-find-packages.html)。  
+* 往`sys.path`中加入路径的一个方式(荐)
+Win:::`os.path.realpath(os.path.join(sys.prefix, "lib/site-packages"))`  
+Win:::`os.path.realpath(os.path.join(sys.exec_prefix, "lib/site-packages"))`  
+Linux:`os.path.realpath(os.path.join(sys.prefix, "lib/pythonX.Y/site-packages"))`  
+Linux:`os.path.realpath(os.path.join(sys.exec_prefix, "lib/pythonX.Y/site-packages"))`  
+在上述目录下，创建名称格式为`文件名.pth`的文件，每行一个路径，(如果路径存在)那么，这些路径便会添加到`sys.path`中。
+* 往`sys.path`中加入路径的一个方式
+`sys.path.insert(0, os.path.split(os.path.realpath(__file__))[0])`。
