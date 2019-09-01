@@ -11,6 +11,7 @@ tags:
 
 [MySQL :: Download MySQL Installer (Archived Versions)](https://downloads.mysql.com/archives/installer/)。  
 [mysql-installer-web-community-8.0.16.0.msi](https://downloads.mysql.com/archives/get/file/mysql-installer-web-community-8.0.16.0.msi)。  
+[MySql 5.8 解压版安装步骤](https://blog.csdn.net/E_xiake/article/details/84951002)。  
 
 #### 安装
 
@@ -23,6 +24,9 @@ tags:
 basedir=D:/program_files_zx/mysql-8.0.16-winx64_zip
 # set datadir to the location of your data directory
 datadir=D:/program_files_zx/mysql-8.0.16-winx64_zip/data
+# https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html
+# https://dev.mysql.com/doc/refman/5.7/en/load-data-local.html
+# loose-local-infile = 1
 ```
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --initialize --console --user=mysql`并记下`root`的临时密码。  
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --console`用于首次启动服务端进程。  
@@ -30,6 +34,8 @@ datadir=D:/program_files_zx/mysql-8.0.16-winx64_zip/data
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe`用于启动服务端进程。  
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysql -u root -p`用于启动客户端进程，需输入密码。  
 执行SQL语句`ALTER USER 'root'@'localhost' IDENTIFIED BY 'toor';`可以修改root密码到toor。  
+打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --install`用于安装服务。  
+打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --remove`用于删除服务。  
 
 0. 相关链接
 [Installing MySQL on Microsoft Windows](https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html)。  
@@ -96,6 +102,14 @@ datadir=D:/program_files_zx/mysql-8.0.16-winx64_zip/data
 
 8. Starting MySQL as a Windows Service
 将MySQL作为Windows服务启动。  
+安装服务(自动启动)`.\bin\mysqld.exe --install`。  
+安装服务(手动启动)`.\bin\mysqld.exe --install-manual`。  
+删除服务(　　　　)`.\bin\mysqld.exe --remove`。  
+启动服务`sc  start  服务名`。  
+启动服务`net start  服务名`。  
+关闭服务`sc  stop   服务名`。  
+关闭服务`net stop   服务名`。  
+删除服务`sc  delete 服务名`。  
 
 9. Testing The MySQL Installation
 测试MySQL安装。  
