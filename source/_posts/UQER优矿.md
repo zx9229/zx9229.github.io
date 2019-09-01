@@ -14,6 +14,7 @@ UQER(优矿)允许邮箱注册账号，我很喜欢！
 
 * Python
 ```
+pip install numpy
 pip install pandas
 ```
 
