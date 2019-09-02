@@ -2,6 +2,7 @@
 title: MySQL的INFILE和OUTFILE相关
 categories:
   - SQL
+  - MySQL
 toc: false
 date: 2019-04-30 17:19:44
 tags:

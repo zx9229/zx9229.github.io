@@ -3,6 +3,7 @@ title: MySQL相关记录
 date: 2017-10-25 19:34:24
 categories:
   - SQL
+  - MySQL
 tags:
 toc: false
 ---
@@ -257,6 +258,13 @@ DELIMITER ;
 SELECT STR_TO_DATE('2006-01-02 15:04:05.123'   ,'%Y-%m-%d %H:%i:%S.%f') FROM dual;
 SELECT STR_TO_DATE('2006-01-02 15:04:05.123456','%Y-%m-%d %H:%i:%S.%f') FROM dual;
 SELECT DATE_FORMAT(                       NOW(),'%Y-%m-%d %H:%i:%S.%f') FROM dual;
+```
+
+* UPDATE临时收集
+```SQL
+UPDATE dst d, src s 
+  SET d.field_1=s.field_a,d.field_2=s.field_b 
+  WHERE d.key_1=s.key_a AND d.key_2=s.key_b;
 ```
 
 ## MySQL Workbench  

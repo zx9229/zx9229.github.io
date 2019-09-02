@@ -1,6 +1,7 @@
 ---
 title: MySQL-Installer-Archived-Versions相关
 categories:
+  - SQL
   - MySQL
 toc: false
 date: 2019-08-31 17:34:39

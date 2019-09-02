@@ -2,6 +2,7 @@
 title: MySQL创建日志数据库表打印日志
 categories:
   - SQL
+  - MySQL
 toc: false
 date: 2019-05-28 19:14:49
 tags:
