@@ -115,3 +115,17 @@ wmic ENVIRONMENT WHERE "name='PYTHON_ROOT_37'" DELETE
 ①Win+D显示桌面，然后点击上下左右的随便的一个，让“选中状态”保持到桌面上，②(注意看着点)，一直按Tab，即可切换“选中状态”到托盘栏里，然后按上下左右选中某托盘图标。  
 ①Win+T(T可以记为Task或Taskbar)将选中状态切换到任务栏上，②(注意看着点)，一直按Tab，即可切换“选中状态”到托盘栏里，然后按上下左右选中某托盘图标。  
 ①`Win+T`(T可以记为Task或Taskbar)将选中状态切换到任务栏上，②(注意看着点)，按`Ctrl+Tab`或`Shift+Tab`到托盘栏。  
+
+### powershell编辑时间戳
+[如何使用Windows10 PowerShell编辑时间戳](http://www.ghost580.com/win10/2017-10-10/22107.html)。  
+[windows用powershell修改文档/文件夹创建时间、修改时间](https://blog.csdn.net/u012223913/article/details/72123906)。  
+修改单个文件/文件夹的命令
+```
+$(Get-Item FILENAME.EXT).CreationTime='2006-01-02 15:04:05'
+$(Get-Item FILENAME.EXT).LastAccessTime='2006-01-02 15:04:05'
+$(Get-Item FILENAME.EXT).LastWriteTime='2006-01-02 15:04:05'
+```
+递归文件夹中所有文件
+```
+Get-Childitem -path 'C:\test\' -Recurse | foreach-object { $_.LastWriteTime = Get-Date; $_.CreationTime = Get-Date }
+```
