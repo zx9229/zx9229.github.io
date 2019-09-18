@@ -267,6 +267,31 @@ UPDATE dst d, src s
   WHERE d.key_1=s.key_a AND d.key_2=s.key_b;
 ```
 
+* MySQL`LEFT JOIN`多个表
+```SQL
+SELECT a.password_last_changed, a.User, b.User, c.User 
+FROM      mysql.user a 
+LEFT JOIN mysql.user b ON a.password_last_changed=b.password_last_changed 
+LEFT JOIN mysql.user c ON a.password_last_changed=c.password_last_changed;
+```
+
+* 特殊的GROUP
+```SQL
+SELECT * FROM mysql.user;
+
+SELECT User,COUNT(Host) FROM mysql.user GROUP BY User;
+
+SELECT User,COUNT(Host) FROM(
+SELECT IF(User='root','root','NULL')AS User,Host FROM mysql.user
+)t GROUP BY User;
+
+SELECT IF(User='root','root','NULL'),COUNT(Host) FROM mysql.user GROUP BY IF(User='root','root','NULL');
+SELECT    User                      ,COUNT(Host) FROM mysql.user GROUP BY IF(User='root','root','NULL');
+
+SELECT IF(User='root','root',IF(User='mysql.sys','mysql.sys','NULL')),COUNT(Host) FROM mysql.user GROUP BY IF(User='root','root',IF(User='mysql.sys','sys','NULL'));
+SELECT    User                                                       ,COUNT(Host) FROM mysql.user GROUP BY IF(User='root','root',IF(User='mysql.sys','sys','NULL'));
+```
+
 ## MySQL Workbench  
 ```
 执行当前行    : Ctrl+Enter
