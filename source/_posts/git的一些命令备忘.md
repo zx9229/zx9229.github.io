@@ -12,6 +12,8 @@ tags:
 * 查看帮助  
 ```
 git --help
+git stash --help
+git rebase --help
 git commit --help
 git checkout --help
 git <command> --help

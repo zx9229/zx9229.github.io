@@ -77,3 +77,21 @@ Excel的`行号`用数字表示，`列号`用(A~Z)和(AA~ZZ)等表示。
 模拟“万位分隔符”：右键某列，设置单元格格式，数字，自定义，在类型中输入`####","####`。
 数字模拟时间格式：`00":"00":"00`。  
 猜测：可以用“双引号”包含字符串，然后连接各项。  
+
+#### 从excel中提取超链接的地址
+先`Alt+F11`再`Alt+I`再`Alt+M`，然后书写以下语句：
+```VB
+' VBA对象、属性和方法
+' https://www.w3cschool.cn/excelvba/excelvba-object.html
+' 在关键字上面按F1可查看帮助.
+Sub 获取超链接的地址()
+' Range("A1:D10") => 单元格区域 A1:D10 中进行循环
+For Each cell In Range("C3:C143")
+' 假设当前单元格是cell, 那么 cell.Offset(0, 1) 将会指向往下0行和往右1列的单元格.
+If cell.Hyperlinks.Count > 0 Then
+    cell.Offset(0, 1) = cell.Value
+    cell.Offset(0, 2) = cell.Hyperlinks(1).Address
+End If
+Next
+End Sub
+```

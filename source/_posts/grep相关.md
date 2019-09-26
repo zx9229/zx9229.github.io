@@ -15,3 +15,6 @@ tags:
 -F, --fixed-strings       PATTERN is a set of newline-separated fixed strings
 grep -F "原始字符串" filename
 ```
+
+* 使用正则表达式
+`grep -o -E '66097218[^,]+,([^,]+,){4}' 20190913_befortrade.dmp`

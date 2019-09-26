@@ -170,7 +170,7 @@ ${dst}
 * 替换逗号为换行符  
 `sed 's/,/\n/g' filename`
 * 删除空行
-`sed '/^$/d'`
+`sed '/^$/d'`。<label style="color:red">注意`d`仅和`/`搭配时才生效，比如`sed '#^$#d'`就是无效的。</label>  
 * 删除空白行
 `sed '/^[[:space:]]*$/d'`
 * 删除换行符  
