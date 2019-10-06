@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="MySQL的一些最基本的信息">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-02T08:17:23.077Z">
+<meta property="og:updated_time" content="2019-09-18T12:06:59.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL相关记录">
 <meta name="twitter:description" content="MySQL的一些最基本的信息">
@@ -132,13 +132,19 @@
 <li><p>UPDATE临时收集</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> dst d, src s </span><br><span class="line">  <span class="keyword">SET</span> d.field_1=s.field_a,d.field_2=s.field_b </span><br><span class="line">  <span class="keyword">WHERE</span> d.key_1=s.key_a <span class="keyword">AND</span> d.key_2=s.key_b;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>MySQL<code>LEFT JOIN</code>多个表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.password_last_changed, a.User, b.User, c.User </span><br><span class="line"><span class="keyword">FROM</span>      mysql.user a </span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> mysql.user b <span class="keyword">ON</span> a.password_last_changed=b.password_last_changed </span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> mysql.user c <span class="keyword">ON</span> a.password_last_changed=c.password_last_changed;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特殊的GROUP</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mysql.user;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">User</span>,<span class="keyword">COUNT</span>(Host) <span class="keyword">FROM</span> mysql.user <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">User</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">User</span>,<span class="keyword">COUNT</span>(Host) <span class="keyword">FROM</span>(</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'root'</span>,<span class="string">'root'</span>,<span class="string">'NULL'</span>)<span class="keyword">AS</span> <span class="keyword">User</span>,Host <span class="keyword">FROM</span> mysql.user</span><br><span class="line">)t <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">User</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'root'</span>,<span class="string">'root'</span>,<span class="string">'NULL'</span>),<span class="keyword">COUNT</span>(Host) <span class="keyword">FROM</span> mysql.user <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'root'</span>,<span class="string">'root'</span>,<span class="string">'NULL'</span>);</span><br><span class="line"><span class="keyword">SELECT</span>    <span class="keyword">User</span>                      ,<span class="keyword">COUNT</span>(Host) <span class="keyword">FROM</span> mysql.user <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'root'</span>,<span class="string">'root'</span>,<span class="string">'NULL'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'root'</span>,<span class="string">'root'</span>,<span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'mysql.sys'</span>,<span class="string">'mysql.sys'</span>,<span class="string">'NULL'</span>)),<span class="keyword">COUNT</span>(Host) <span class="keyword">FROM</span> mysql.user <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'root'</span>,<span class="string">'root'</span>,<span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'mysql.sys'</span>,<span class="string">'sys'</span>,<span class="string">'NULL'</span>));</span><br><span class="line"><span class="keyword">SELECT</span>    <span class="keyword">User</span>                                                       ,<span class="keyword">COUNT</span>(Host) <span class="keyword">FROM</span> mysql.user <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'root'</span>,<span class="string">'root'</span>,<span class="keyword">IF</span>(<span class="keyword">User</span>=<span class="string">'mysql.sys'</span>,<span class="string">'sys'</span>,<span class="string">'NULL'</span>));</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="MySQL-Workbench"><a href="#MySQL-Workbench" class="headerlink" title="MySQL Workbench"></a>MySQL Workbench</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">执行当前行    : Ctrl+Enter</span><br><span class="line">执行所有/选中 : Ctrl+Shift+Enter</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2017/10/25/MySQL相关记录/" data-id="ck09rnzy9002g20prg9klhtkm" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2017/10/25/MySQL相关记录/" data-id="ck1fcg86l0020lkprh639dbl4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +210,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -217,23 +223,23 @@
       <ul>
         
           <li>
-            <a href="/2019/09/02/东方财富终端-经典版/">东方财富终端-经典版</a>
+            <a href="/2019/10/06/Hexo在project类型的GitHub-Pages-site的使用/">Hexo在project类型的GitHub-Pages-site的使用</a>
           </li>
         
           <li>
-            <a href="/2019/09/01/UQER优矿/">UQER优矿</a>
+            <a href="/2019/09/25/SQLserver相关记录/">SQLserver相关记录</a>
           </li>
         
           <li>
-            <a href="/2019/08/31/MySQL-Installer-Archived-Versions相关/">MySQL-Installer-Archived-Versions相关</a>
+            <a href="/2019/09/23/git出现-master-REBASE-1-1/">git出现(master|REBASE 1/1)</a>
           </li>
         
           <li>
-            <a href="/2019/08/20/wget相关/">wget相关</a>
+            <a href="/2019/09/19/同花顺免费版/">同花顺免费版</a>
           </li>
         
           <li>
-            <a href="/2019/08/16/金融收集贴/">金融收集贴</a>
+            <a href="/2019/09/10/东方财富终端-经典版-公式/">东方财富终端-经典版-公式</a>
           </li>
         
       </ul>

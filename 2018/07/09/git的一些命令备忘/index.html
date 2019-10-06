@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T01:45:12.986Z">
+<meta property="og:updated_time" content="2019-10-06T18:50:24.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的一些命令备忘">
 <meta name="twitter:description" content="摘要暂略。">
@@ -95,7 +95,7 @@
         <p>摘要暂略。<br><a id="more"></a></p>
 <ul>
 <li><p>查看帮助  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git --help</span><br><span class="line">git commit --help</span><br><span class="line">git checkout --help</span><br><span class="line">git &lt;command&gt; --help</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git --help</span><br><span class="line">git stash --help</span><br><span class="line">git rebase --help</span><br><span class="line">git commit --help</span><br><span class="line">git checkout --help</span><br><span class="line">git &lt;command&gt; --help</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看当前状态<br><code>git status</code></p>
 </li>
@@ -103,11 +103,13 @@
 </li>
 <li><p>查看版本库上(某目录下)的文件<br><code>git ls-files 某目录</code></p>
 </li>
-<li><p>查看提交信息<br><code>git log</code></p>
+<li><p>查看提交信息<br><code>git log</code>或<code>git log --graph</code>。</p>
 </li>
 <li><p>查看(某目录/某文件的)提交信息<br><code>git log 某目录</code><br><code>git log 某文件</code></p>
 </li>
 <li><p>查看两个版本之间变更了哪些文件<br><code>git diff HEAD     HEAD~1   --name-status</code> : 当前版本和上一版本之间变更了哪些文件。<br><code>git diff HEAD~1   HEAD~2   --stat</code>        : 上一版本和上二版本之间变更了哪些文件。<br><code>git diff commit_1 commit_2 --name-status</code> : 某一提交和某二提交之间变更了哪些文件。<br>举例：<br>我某次进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，一段时间之后，又进行了一次提交(SHA-1: 8844f9ecad53386cfd7b63e708242bb555b2163c)，我想查看这两个版本号之间变更了哪些文件，需执行命令：<code>git diff db22a3 8844f9 --name-status</code></p>
+</li>
+<li><p>查看查看某版本号增删改了哪些文件<br><code>git show REVISION --stat</code>或<code>git show REVISION</code>。<br>某次提交是<code>commit 10b71b4b74d247fa9ac934082dcad0c57de27dd2</code>，则命令可以是<code>git show 10b71b4b --stat</code>。  </p>
 </li>
 <li><p>查看某版本号时某文件的全部内容<br><code>git show REVISION:./path/to/file</code><br>举例：<br>假设某文件为<code>test_file</code>，其路径为<code>./dir/test_file</code>，很早就把它提交到git上，很久没有改动过它了。我最近进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，我想查看这一版本时候的<code>test_file</code>的全部内容，需执行命令：<code>git show db22a3:./dir/test_file</code></p>
 </li>
@@ -128,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/07/09/git的一些命令备忘/" data-id="ck09ro022005q20prsiuzbbxn" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/07/09/git的一些命令备忘/" data-id="ck1fcg8a5005hlkpr5ni7c1s1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -194,7 +196,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -207,23 +209,23 @@
       <ul>
         
           <li>
-            <a href="/2019/09/02/东方财富终端-经典版/">东方财富终端-经典版</a>
+            <a href="/2019/10/06/Hexo在project类型的GitHub-Pages-site的使用/">Hexo在project类型的GitHub-Pages-site的使用</a>
           </li>
         
           <li>
-            <a href="/2019/09/01/UQER优矿/">UQER优矿</a>
+            <a href="/2019/09/25/SQLserver相关记录/">SQLserver相关记录</a>
           </li>
         
           <li>
-            <a href="/2019/08/31/MySQL-Installer-Archived-Versions相关/">MySQL-Installer-Archived-Versions相关</a>
+            <a href="/2019/09/23/git出现-master-REBASE-1-1/">git出现(master|REBASE 1/1)</a>
           </li>
         
           <li>
-            <a href="/2019/08/20/wget相关/">wget相关</a>
+            <a href="/2019/09/19/同花顺免费版/">同花顺免费版</a>
           </li>
         
           <li>
-            <a href="/2019/08/16/金融收集贴/">金融收集贴</a>
+            <a href="/2019/09/10/东方财富终端-经典版-公式/">东方财富终端-经典版-公式</a>
           </li>
         
       </ul>

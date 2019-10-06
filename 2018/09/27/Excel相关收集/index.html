@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="zx9229.github.io">
 <meta property="og:description" content="摘要暂略。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-19T10:31:47.708Z">
+<meta property="og:updated_time" content="2019-09-25T11:39:45.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Excel相关收集">
 <meta name="twitter:description" content="摘要暂略。">
@@ -174,11 +174,12 @@
 <p>####<br>我在<code>M2</code>(第M列的第2行)写了一个公式，然后想填充整个M3~Mend的整个M列，则<br>①选中M2②Ctrl+Shift+End选中M列③Ctrl+D向下填充。</p>
 <h4 id="设置单元格格式"><a href="#设置单元格格式" class="headerlink" title="设置单元格格式"></a>设置单元格格式</h4><p><a href="https://support.office.com/en-us/article/review-guidelines-for-customizing-a-number-format-c0a1d1fa-d3f4-4018-96b7-9c9354dd99f5?ui=en-US&amp;rs=en-US&amp;ad=US" target="_blank" rel="noopener">Review guidelines for customizing a number format</a>。<br><a href="https://support.office.com/zh-cn/article/查看有关自定义数字格式的准则-c0a1d1fa-d3f4-4018-96b7-9c9354dd99f5" target="_blank" rel="noopener">查看有关自定义数字格式的准则</a>。<br>可以搜索<code>Excel设置单元格格式</code>或<code>Excel设置单元格格式自定义</code>等查看相关内容。<br>可以搜索<code>详解EXCEL单元格自定义格式</code>或<code>Excel单元格格式设置自定义格式详解(很全面、完整)</code>等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0: 数字占位符。会显示无效的零。如果单元格的内容大于占位符的数量，则显示实际数字；如果小于点位符的数量，则用0补足。</span><br><span class="line">#: 数字占位符。不显示无效的零。小数点后数字如大于&quot;#&quot;的数量，则按&quot;#&quot;的位数四舍五入。</span><br><span class="line">.: 数字占位符。在数字中显示小数点。</span><br></pre></td></tr></table></figure></p>
 <p>模拟“万位分隔符”：右键某列，设置单元格格式，数字，自定义，在类型中输入<code>####&quot;,&quot;####</code>。<br>数字模拟时间格式：<code>00&quot;:&quot;00&quot;:&quot;00</code>。<br>猜测：可以用“双引号”包含字符串，然后连接各项。  </p>
+<h4 id="从excel中提取超链接的地址"><a href="#从excel中提取超链接的地址" class="headerlink" title="从excel中提取超链接的地址"></a>从excel中提取超链接的地址</h4><p>先<code>Alt+F11</code>再<code>Alt+I</code>再<code>Alt+M</code>，然后书写以下语句：<br><figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">' VBA对象、属性和方法</span></span><br><span class="line"><span class="comment">' https://www.w3cschool.cn/excelvba/excelvba-object.html</span></span><br><span class="line"><span class="comment">' 在关键字上面按F1可查看帮助.</span></span><br><span class="line"><span class="keyword">Sub</span> 获取超链接的地址()</span><br><span class="line"><span class="comment">' Range("A1:D10") =&gt; 单元格区域 A1:D10 中进行循环</span></span><br><span class="line"><span class="keyword">For</span> <span class="keyword">Each</span> cell <span class="keyword">In</span> Range(<span class="string">"C3:C143"</span>)</span><br><span class="line"><span class="comment">' 假设当前单元格是cell, 那么 cell.Offset(0, 1) 将会指向往下0行和往右1列的单元格.</span></span><br><span class="line"><span class="keyword">If</span> cell.Hyperlinks.Count &gt; <span class="number">0</span> <span class="keyword">Then</span></span><br><span class="line">    cell.Offset(<span class="number">0</span>, <span class="number">1</span>) = cell.Value</span><br><span class="line">    cell.Offset(<span class="number">0</span>, <span class="number">2</span>) = cell.Hyperlinks(<span class="number">1</span>).Address</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">Next</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zx9229.github.io/2018/09/27/Excel相关收集/" data-id="ck09rnzvq000r20prwkrgfdvn" class="article-share-link">Share</a>
+      <a data-url="http://zx9229.github.io/2018/09/27/Excel相关收集/" data-id="ck1fcg8590014lkprddpf0esi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -244,7 +245,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -257,23 +258,23 @@
       <ul>
         
           <li>
-            <a href="/2019/09/02/东方财富终端-经典版/">东方财富终端-经典版</a>
+            <a href="/2019/10/06/Hexo在project类型的GitHub-Pages-site的使用/">Hexo在project类型的GitHub-Pages-site的使用</a>
           </li>
         
           <li>
-            <a href="/2019/09/01/UQER优矿/">UQER优矿</a>
+            <a href="/2019/09/25/SQLserver相关记录/">SQLserver相关记录</a>
           </li>
         
           <li>
-            <a href="/2019/08/31/MySQL-Installer-Archived-Versions相关/">MySQL-Installer-Archived-Versions相关</a>
+            <a href="/2019/09/23/git出现-master-REBASE-1-1/">git出现(master|REBASE 1/1)</a>
           </li>
         
           <li>
-            <a href="/2019/08/20/wget相关/">wget相关</a>
+            <a href="/2019/09/19/同花顺免费版/">同花顺免费版</a>
           </li>
         
           <li>
-            <a href="/2019/08/16/金融收集贴/">金融收集贴</a>
+            <a href="/2019/09/10/东方财富终端-经典版-公式/">东方财富终端-经典版-公式</a>
           </li>
         
       </ul>
