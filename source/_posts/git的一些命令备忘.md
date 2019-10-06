@@ -28,7 +28,7 @@ git <command> --help
 `git ls-files 某目录`
 
 * 查看提交信息
-`git log`
+`git log`或`git log --graph`。
 
 * 查看(某目录/某文件的)提交信息  
 `git log 某目录`  
@@ -40,6 +40,10 @@ git <command> --help
 `git diff commit_1 commit_2 --name-status` : 某一提交和某二提交之间变更了哪些文件。  
 举例：  
 我某次进行了一次提交(SHA-1: db22a3632a79c0b235530d025924e657809eb0ab)，一段时间之后，又进行了一次提交(SHA-1: 8844f9ecad53386cfd7b63e708242bb555b2163c)，我想查看这两个版本号之间变更了哪些文件，需执行命令：`git diff db22a3 8844f9 --name-status`
+
+* 查看查看某版本号增删改了哪些文件
+`git show REVISION --stat`或`git show REVISION`。  
+某次提交是`commit 10b71b4b74d247fa9ac934082dcad0c57de27dd2`，则命令可以是`git show 10b71b4b --stat`。  
 
 * 查看某版本号时某文件的全部内容  
 `git show REVISION:./path/to/file`  
