@@ -56,6 +56,7 @@ F:\my_site\hexo_section>
 
 ##### 配置_config.yml
 [hexo-deployer-git/README.md](https://github.com/hexojs/hexo-deployer-git/blob/master/README.md)。  
+[资源文件夹 | Hexo](https://hexo.io/zh-cn/docs/asset-folders.html#文章资源文件夹)。  
 项目站点在项目路径下。  
 要部署到`gh-pages`分支。  
 ![](配置_config.yml.png)  

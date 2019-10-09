@@ -71,7 +71,7 @@ git <command> --help
 备注：它好像对应的是帮助文档中的`git checkout [-p|--patch] [<tree-ish>] [--] <pathspec>…`。
 
 * 查看所有分支  
-`git branch  -a`  
+`git branch  -a`或`git branch -av`或`git branch -avv`  
 `git branch --all`
 
 * 删除REPO上的文件同时保留本地文件
