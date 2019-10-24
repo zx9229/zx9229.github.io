@@ -8,3 +8,4 @@ scaffolds/
 themes/
 db.json
 package.json
+package-lock.json
