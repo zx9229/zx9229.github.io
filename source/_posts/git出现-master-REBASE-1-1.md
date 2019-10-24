@@ -34,6 +34,7 @@ tags:
 [python-8进制转换为汉字（utf-8）](https://blog.csdn.net/CD2016/article/details/81358612)。  
 python3下执行`b"\346\224\266\351\233\206\350\264\264.md".decode('UTF-8')`。  
 附送：python3下执行`print( bytes.fromhex('090D0A') )`有惊喜。  
+附送：python3下执行`print( binascii.a2b_hex('090D0A') )`有惊喜，不过要先`import binascii`。  
 
 * 解决冲突步骤
 [用rebase合并【教程1 操作分支】](https://backlog.com/git-tutorial/cn/stepup/stepup2_8.html)。  
