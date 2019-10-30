@@ -292,6 +292,35 @@ SELECT IF(User='root','root',IF(User='mysql.sys','mysql.sys','NULL')),COUNT(Host
 SELECT    User                                                       ,COUNT(Host) FROM mysql.user GROUP BY IF(User='root','root',IF(User='mysql.sys','sys','NULL'));
 ```
 
+* 使用JSON类型
+```SQL
+-- 建表
+CREATE TABLE tb_config(
+    `id`          BIGINT        NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `key`         VARCHAR(128)  NOT NULL UNIQUE,
+    `text_value`  VARCHAR(1024)     NULL,
+    `json_value`  JSON              NULL
+);
+-- 插入
+INSERT INTO tb_config(`key`,`json_value`)VALUES
+('DEFAULT_CFG','
+{
+    "user": "TEST",
+    "friend": ["Lucy", "Lili"],
+    "phone_number": {
+        "13912341234": "中国移动",
+        "18612341234": "中国联通"
+    }
+}');
+-- 查询
+SELECT JSON_UNQUOTE(             json_value->'$.user' ) FROM tb_config WHERE `key`='DEFAULT_CFG';
+SELECT                           json_value->'$.user'   FROM tb_config WHERE `key`='DEFAULT_CFG';
+SELECT              JSON_EXTRACT(json_value, '$.user')  FROM tb_config WHERE `key`='DEFAULT_CFG';
+SELECT JSON_UNQUOTE(JSON_EXTRACT(json_value, '$.user')) FROM tb_config WHERE `key`='DEFAULT_CFG';
+SELECT json_value->'$.phone_number."13912341234"'       FROM tb_config WHERE `key`='DEFAULT_CFG';
+SELECT json_value->'$.friend[0]'                        FROM tb_config WHERE `key`='DEFAULT_CFG';
+```
+
 ## MySQL Workbench  
 ```
 执行当前行    : Ctrl+Enter
