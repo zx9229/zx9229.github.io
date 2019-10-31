@@ -65,3 +65,6 @@ D         trunk/Solutions/projectC
 [root@09b4bf96e3d5 my_code]#
 ```
 如果要恢复过来，可以`svn update --set-depth=infinity`。  
+
+#### Working copy ??? locked
+![Working_copy_XXX_locked](Working_copy_XXX_locked.png)
