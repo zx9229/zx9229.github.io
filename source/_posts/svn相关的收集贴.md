@@ -68,3 +68,6 @@ D         trunk/Solutions/projectC
 
 #### Working copy ??? locked
 ![Working_copy_XXX_locked](Working_copy_XXX_locked.png)
+
+#### Create path 和 Apply patch
+![Create_path_Apply_patch](Create_path_Apply_patch.png)
