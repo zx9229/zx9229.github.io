@@ -81,9 +81,13 @@ Linux:　`os.path.realpath(os.path.join(sys.exec_prefix, 'lib/pythonX.Y/site-pac
 * 往`sys.path`中加入路径的一个方式
 `sys.path.insert(0, os.path.split(os.path.realpath(__file__))[0])`。
 
-#### VSCode里用yapf格式化python脚本
+#### VSCode用yapf格式化python脚本
 VSCode的用户级别的配置文件一般位于`%APPDATA%\Code\User\settings.json`(即`%USERPROFILE%\AppData\Roaming\Code\User\settings.json`)。  
 1. 安装yapf：  
 `python -m pip install yapf`。  
 2. 设置VSCode：  
 `[File]文件`>`[Preferences]首选项`>`[Settings]设置(Ctrl+,)`然后搜索`python.formatting.provider`并将用户级别的选项设置到`yapf`。  
+
+#### VSCode中python代码智能提示(IntelliSense)
+1. 设置VSCode
+`[File]文件`>`[Preferences]首选项`>`[Settings]设置(Ctrl+,)`然后搜索`python.jediEnabled`并将用户级别的复选框取消勾选。这样就启用了默认的`Microsoft Python Analysis Engine`。  
