@@ -145,6 +145,9 @@ datadir=./data
 # https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html
 # https://dev.mysql.com/doc/refman/5.7/en/load-data-local.html
 # loose-local-infile = 1
+# Disabling X Plugin
+# https://dev.mysql.com/doc/refman/8.0/en/x-plugin-disabling.html
+mysqlx=0
 ```
 4. 初始化数据目录
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --initialize --console --user=mysql`并记下`root`的临时密码。  
