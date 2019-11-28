@@ -137,7 +137,7 @@ datadir=G:/mysql_archived_version/mysql-8.0.18-winx64/data
 ```ini
 [mysqld]
 # The TCP/IP Port the MySQL Server will listen on
-port=23306
+port=13306
 # set basedir to your installation path
 basedir=.
 # set datadir to the location of your data directory
@@ -166,3 +166,39 @@ mysqlx=0
 启动：打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe`。  
 启动：打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --console`。  
 关闭：打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqladmin.exe -P 端口 -u root shutdown -p`。  
+
+9. 启停脚本
+启动脚本`start.bat`：
+```bat
+@SETLOCAL enabledelayedexpansion  
+.\bin\mysqld.exe --console  
+@IF NOT "!ERRORLEVEL!" == "0" (  
+ECHO=  
+ECHO -------------------------------------------  
+ECHO,  
+ECHO executable exit and return !ERRORLEVEL!  
+ECHO;  
+PAUSE  
+)  
+```
+停止脚本`stop.bat`：
+```bat
+@SET PORT=13306
+@SET PSWD=
+
+@SET /P MANUAL_PORT=please input MySQL port (default %PORT%):  
+@IF /I NOT "%MANUAL_PORT%"=="" (  
+    SET PORT=%MANUAL_PORT%
+)  
+
+@SETLOCAL enabledelayedexpansion  
+.\bin\mysqladmin.exe -P %PORT% -u root shutdown -p %PSWD%  
+@IF NOT "!ERRORLEVEL!" == "0" (  
+ECHO=  
+ECHO -------------------------------------------  
+ECHO,  
+ECHO executable exit and return !ERRORLEVEL!  
+ECHO;  
+PAUSE  
+)  
+```
