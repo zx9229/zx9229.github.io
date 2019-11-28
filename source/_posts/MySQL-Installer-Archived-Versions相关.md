@@ -10,21 +10,25 @@ tags:
 略
 <!-- more -->
 
-[MySQL :: Download MySQL Installer (Archived Versions)](https://downloads.mysql.com/archives/installer/)。  
-[mysql-installer-web-community-8.0.16.0.msi](https://downloads.mysql.com/archives/get/file/mysql-installer-web-community-8.0.16.0.msi)。  
+[MySQL :: Download MySQL Community Server (Archived Versions)](https://downloads.mysql.com/archives/community/)。本链接极易失效。MySQL的下载链接很容易失效。  
 [MySql 5.8 解压版安装步骤](https://blog.csdn.net/E_xiake/article/details/84951002)。  
+
+#### 下载
+如果想下载Windows下的"MySQL Installer (Archived Versions)"，一般应选择带有`MySQL Community (GPL) Downloads`、`MySQL Community Server`、`Windows (x86, 64-bit), ZIP Archive`、`Windows (x86, 64-bit), ZIP Archive  Debug Binaries & Test Suite`等类似字眼的链接。  
+[mysql-8.0.18-winx64.zip](https://dev.mysql.com/downloads/file/?id=490026)。  
+[mysql-8.0.18-winx64-debug-test.zip](https://dev.mysql.com/downloads/file/?id=490027)。  
 
 #### 安装
 
 * 总结
-解压`mysql-8.0.16-winx64.zip`并使其能匹配到`D:\program_files_zx\mysql-8.0.16-winx64_zip\bin\mysql.exe`。  
-创建`D:\program_files_zx\mysql-8.0.16-winx64_zip\my.ini`并填入下面的内容：
+解压`mysql-8.0.18-winx64.zip`并使其能匹配到`G:\mysql_archived_version\mysql-8.0.18-winx64\bin\mysql.exe`。  
+创建`G:\mysql_archived_version\mysql-8.0.18-winx64\my.ini`并填入下面的内容：
 ```ini
 [mysqld]
 # set basedir to your installation path
-basedir=D:/program_files_zx/mysql-8.0.16-winx64_zip
+basedir=G:/mysql_archived_version/mysql-8.0.18-winx64
 # set datadir to the location of your data directory
-datadir=D:/program_files_zx/mysql-8.0.16-winx64_zip/data
+datadir=G:/mysql_archived_version/mysql-8.0.18-winx64/data
 # https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html
 # https://dev.mysql.com/doc/refman/5.7/en/load-data-local.html
 # loose-local-infile = 1
@@ -33,7 +37,7 @@ datadir=D:/program_files_zx/mysql-8.0.16-winx64_zip/data
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --console`用于首次启动服务端进程。  
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqladmin.exe -u root shutdown -p`用于关闭服务端进程，需输入密码。  
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe`用于启动服务端进程。  
-打开`cmd`并进入`BASEDIR`并执行`.\bin\mysql -u root -p`用于启动客户端进程，需输入密码。  
+打开`cmd`并进入`BASEDIR`并执行`.\bin\mysql.exe -u root -p`用于启动客户端进程，需输入密码。  
 执行SQL语句`ALTER USER 'root'@'localhost' IDENTIFIED BY 'toor';`可以修改root密码到toor。  
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --install`用于安装服务。  
 打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --remove`用于删除服务。  
@@ -48,13 +52,13 @@ datadir=D:/program_files_zx/mysql-8.0.16-winx64_zip/data
 2. Creating an Option File
 创建一个配置文件。  
 总结：
-假定我们的目录和程序可以匹配到`D:\program_files_zx\mysql-8.0.16-winx64_zip\bin\mysql.exe`，那么`BASEDIR`是`D:\program_files_zx\mysql-8.0.16-winx64_zip`，创建`BASEDIR\my.ini`并写入以下内容：
+假定我们的目录和程序可以匹配到`G:\mysql_archived_version\mysql-8.0.18-winx64\bin\mysql.exe`，那么`BASEDIR`是`G:\mysql_archived_version\mysql-8.0.18-winx64`，创建`BASEDIR\my.ini`并写入以下内容：
 ```ini
 [mysqld]
 # set basedir to your installation path
-basedir=D:/program_files_zx/mysql-8.0.16-winx64_zip
+basedir=G:/mysql_archived_version/mysql-8.0.18-winx64
 # set datadir to the location of your data directory
-datadir=D:/program_files_zx/mysql-8.0.16-winx64_zip/data
+datadir=G:/mysql_archived_version/mysql-8.0.18-winx64/data
 ```
 更多相关知识如下所述：  
 [Creating an Option File](https://dev.mysql.com/doc/refman/8.0/en/windows-create-option-file.html)。  
@@ -114,3 +118,48 @@ datadir=D:/program_files_zx/mysql-8.0.16-winx64_zip/data
 
 9. Testing The MySQL Installation
 测试MySQL安装。  
+
+#### 安装(定制版)
+
+配置文件没有绝对路径，不修改系统环境配置，  
+
+1. 解压
+解压`mysql-8.0.18-winx64.zip`并使其能匹配到`G:\mysql_archived_version\mysql-8.0.18-winx64\bin\mysql.exe`。  
+
+2. 版本库
+①创建版本库：(cmd)`git init G:\mysql_archived_version\mysql-8.0.18-winx64\`。  
+②查询所有的空文件夹：(sh)`find . -type d -empty`。  
+③留痕有效的空文件夹：(sh)`find . -not -path "./.git/*" -type d -empty -exec touch {}/placeholder \;`。  
+④提交版本库：(cmd)`git add * && git commit -m "initial submission"`。  
+
+3. my.ini
+创建`G:\mysql_archived_version\mysql-8.0.18-winx64\my.ini`并填入下面的内容：
+```ini
+[mysqld]
+# The TCP/IP Port the MySQL Server will listen on
+port=23306
+# set basedir to your installation path
+basedir=.
+# set datadir to the location of your data directory
+datadir=./data
+# https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html
+# https://dev.mysql.com/doc/refman/5.7/en/load-data-local.html
+# loose-local-infile = 1
+```
+4. 初始化数据目录
+打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --initialize --console --user=mysql`并记下`root`的临时密码。  
+
+5. 启动服务端进程
+打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --console`用于首次启动服务端进程。  
+
+6. 客户端登录+修改临时密码
+打开`cmd`并进入`BASEDIR`并执行`.\bin\mysql.exe -P 端口 -u root -p`用于启动客户端进程，需输入密码。  
+执行SQL语句`ALTER USER 'root'@'localhost' IDENTIFIED BY 'toor';`可以修改root密码到toor。  
+
+7. 关闭服务端进程
+打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqladmin.exe -P 端口 -u root shutdown -p`用于关闭服务端进程，需输入密码。  
+
+8. 启停服务端进程
+启动：打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe`。  
+启动：打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqld.exe --console`。  
+关闭：打开`cmd`并进入`BASEDIR`并执行`.\bin\mysqladmin.exe -P 端口 -u root shutdown -p`。  
