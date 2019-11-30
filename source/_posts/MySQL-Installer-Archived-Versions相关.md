@@ -12,6 +12,7 @@ tags:
 
 [MySQL :: Download MySQL Community Server (Archived Versions)](https://downloads.mysql.com/archives/community/)。本链接极易失效。MySQL的下载链接很容易失效。  
 [MySql 5.8 解压版安装步骤](https://blog.csdn.net/E_xiake/article/details/84951002)。  
+[5.8 Running Multiple MySQL Instances on One Machine](https://dev.mysql.com/doc/refman/8.0/en/multiple-servers.html)。  
 
 #### 下载
 如果想下载Windows下的"MySQL Installer (Archived Versions)"，一般应选择带有`MySQL Community (GPL) Downloads`、`MySQL Community Server`、`Windows (x86, 64-bit), ZIP Archive`、`Windows (x86, 64-bit), ZIP Archive  Debug Binaries & Test Suite`等类似字眼的链接。  
